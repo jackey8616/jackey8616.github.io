@@ -4,8 +4,6 @@ var vm = new Vue({
 	mywidth: document.body.clientWidth -100,
 	myheight: document.body.clientHeight -100
 	},
-	computed: {
-
-	}
+	computed: {  }
 })
 	
