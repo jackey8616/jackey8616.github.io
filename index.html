@@ -2,9 +2,10 @@
  <head>
 	
  </head>
- <body onload="draw();" style="background-color: WHITE;">
+ <body onload="draw();" style="background-color: BLACK;">
 	<div id="app" style="text-align: center; background-color: BLACK;">
 		<canvas id="canvas" v-bind:width="mywidth" v-bind:height="myheight" ></canvas>
+		<p v-bind:style="{top: myheight - 30}" style="position: absolute; color: WHITE; text-align: left; padding-left: 20px; padding-bottom: 20px;">{{ scale }} (Km)</p>
 	</div>
 	<script src="https://unpkg.com/vue"></script>
 	<script src="src/config.js"></script>

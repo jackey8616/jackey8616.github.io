@@ -12,8 +12,7 @@ var cam_width = vm.mywidth;
 var cam_height = vm.myheight;
 // Bigger than screen
 var display_distance = Math.sqrt(Math.pow(cam_width, 2) + Math.pow(cam_height, 2));
-var cam_center_x = solar_system.user.viewx;
-var cam_center_y = solar_system.user.viewy;
+
 
 function draw() {
   var ctx = document.getElementById('canvas').getContext('2d');
@@ -25,9 +24,17 @@ function draw() {
   ctx.strokeStyle = 'rgba(0, 153, 255, 0.4)';
   ctx.save();
 
-  for(var i = 0; i < solar_system.planet.length; i++) {
+  drawCamPlanet(ctx, solar_system.user.viewx, solar_system.user.viewy);
+  
+  ctx.restore(); 
+ 
+  window.requestAnimationFrame(draw);
+}
+
+function drawCamPlanet(ctx, cam_center_x, cam_center_y) {
+    for(var i = 0; i < solar_system.planet.length; i++) {
 	  var distance = Math.sqrt(Math.pow(solar_system.planet[i].x - cam_center_x, 2) + Math.pow(solar_system.planet[i].y - cam_center_y, 2));
-	  if(distance <= display_distance * solar_system.user.scale) {
+	  if(distance <= display_distance * solar_system.user.scale + solar_system.planet[i].r) {
 		  var planet_x = cam_width  / 2 + (solar_system.planet[i].x - cam_center_x) / solar_system.user.scale;
 		  var planet_y = cam_height / 2 + (solar_system.planet[i].y - cam_center_y) / solar_system.user.scale;
 		  var planet_r = solar_system.planet[i].r / solar_system.user.scale;
@@ -42,9 +49,6 @@ function draw() {
 		  ctx.fillText(solar_system.planet[i].name, planet_x + planet_r, planet_y - planet_r);
 	  }
   }
-  ctx.restore();
- 
-  window.requestAnimationFrame(draw);
 }
 
 init();

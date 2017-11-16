@@ -33,10 +33,10 @@ var solar_system = {
 		
 	],
 	user:{
-		viewx:0,
+		viewx:1.496e8,
 		viewy:0,
 		// Kilometer per pixel.
-		scale: 20000,
+		scale: 2000,
 		time_scale: 1
 	}
 }
