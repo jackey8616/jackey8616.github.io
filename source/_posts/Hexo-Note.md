@@ -11,8 +11,5 @@ categories: Note
 
 <!-- More -->
 ### Requirement  
-{% pullquote %}
-NVM  
-NPM  
-NodeJS
-{% endpullquote %}
+> NodeJS
+> Git
