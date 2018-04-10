@@ -78,7 +78,7 @@ theme: next-reloaded
 robotstxt:
   useragent: "*"
   sitemap:
-    - /sitemap.xml
+    - https://jackey8616.github.io/sitemap.xml
 
 symbols_count_time:
   symbols: true

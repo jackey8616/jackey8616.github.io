@@ -1,3 +1,6 @@
+# Some custome stuff.
+date_time_format: YYYY-MM-DD HH:mm:ss
+
 # ---------------------------------------------------------------
 # Theme Core Configuration Settings
 # ---------------------------------------------------------------
@@ -138,8 +141,8 @@ menu_settings:
 # Schemes
 #scheme: Muse
 #scheme: Mist
-scheme: Pisces
-#scheme: Gemini
+#scheme: Pisces
+scheme: Gemini
 
 
 # ---------------------------------------------------------------
@@ -265,6 +268,7 @@ post_meta:
   updated_at: true
   # Only show 'updated' if different from 'created'.
   updated_diff: true
+  date_time_merge: true
   categories: true
 
 # Post wordcount display settings
