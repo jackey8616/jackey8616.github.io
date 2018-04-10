@@ -7,7 +7,7 @@ categories: Note
   
 Recently I am trying to use nvm under fish.  
 But it seems not so well.  
-  
+<!-- More -->  
 # [edc/bass](https://github.com/edc/bass)  
 By installing a plugin in fish,  
 This plugin can execute command for users.  
