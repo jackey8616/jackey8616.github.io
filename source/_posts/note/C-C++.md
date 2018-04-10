@@ -1,5 +1,5 @@
 ---
-title: C/C++ Note
+title: C/C++
 date: 2018-04-10 11:15:00
 updated: 2018-04-10 17:50:00
 tags:

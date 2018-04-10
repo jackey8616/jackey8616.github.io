@@ -75,13 +75,16 @@ pagination_dir: page
 ## Themes: https://hexo.io/themes/
 theme: next-reloaded
 
+robotstxt:
+  useragent: "*"
+  sitemap:
+    - /sitemap.xml
+
 symbols_count_time:
   symbols: true
   time: true
   total_symbols: true
   total_time: true
-
-plugins: hexo-generator-sitemap
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html

@@ -40,7 +40,7 @@ Travis是名字, CI是指持續整合(Continuous integration), 有機會再介�
 來讓CI替我們generate靜態檔案，  
 然後自動Push到網站的master分支，來達到更新的目的。  
   
-<hr/>
+--- 
 
 # 環境 & 需求  
 我不喜歡用Windows XDDDD"  
