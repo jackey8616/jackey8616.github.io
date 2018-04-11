@@ -1,6 +1,3 @@
-# Some custome stuff.
-date_time_format: YYYY-MM-DD HH:mm:ss
-
 # ---------------------------------------------------------------
 # Theme Core Configuration Settings
 # ---------------------------------------------------------------
@@ -268,7 +265,7 @@ post_meta:
   updated_at: true
   # Only show 'updated' if different from 'created'.
   updated_diff: true
-  date_time_merge: true
+  date_time_merge: false
   categories: true
 
 # Post wordcount display settings

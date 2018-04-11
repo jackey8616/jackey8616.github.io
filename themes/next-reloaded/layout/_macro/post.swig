@@ -84,7 +84,8 @@
             #}</time>
             {% endif %}
 
-            {% set date_updated_diff = date(post.date, datetime_format) != date(post.updated, datetime_format) %}
+            {#% set date_updated_diff = date(post.date, datetime_format) != date(post.updated, datetime_format) %#}
+            {% set date_updated_diff = date(post.date, config.date_format + ' ' + config.time_format) != date(post.updated, config.date_format + ' ' + config.time_format) %}
             {% if theme.post_meta.updated_at %}
               {% if !theme.post_meta.updated_diff || theme.post_meta.updated_diff && date_updated_diff %}
                 {% set display_updated = true %}
