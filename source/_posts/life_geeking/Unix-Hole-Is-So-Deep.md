@@ -1,9 +1,11 @@
 ---
-title: Unix
+title: Unix got telents(holes).
 date: 2018-04-11 15:08:16
 tags:
   - Note
-categories: Note
+  - Linux
+  - Ubuntu
+categories: LifeGeeking
 ---
 
 紀錄一下踩過Unix系的天坑。  

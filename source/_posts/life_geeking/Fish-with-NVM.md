@@ -2,7 +2,11 @@
 title: Fish with NVM, Be friendly ok?
 date: 2018-04-10 14:01:51
 tags:
-categories: Note
+  - Fish
+  - Linux
+  - NVM
+  - NPM
+categories: Share
 ---
   
 Recently I am trying to use nvm under fish.  

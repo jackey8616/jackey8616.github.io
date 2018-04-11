@@ -1,9 +1,10 @@
 ---
-title: Django
+title: (Django) First time teaching how to use a frontend framework.
 date: 2018-04-10 19:44:03
 tags:
   - Django
-categories: Note
+  - Python
+categories: Tutorial
 ---
 
 This is the tutorial for Yuntech OSC.  

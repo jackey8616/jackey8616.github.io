@@ -1,9 +1,11 @@
 ---
-title: C/C++
+title: Magic C & C++
 date: 2018-04-10 11:15:00
-updated: 2018-04-10 17:50:00
 tags:
   - Note
+  - C
+  - C++
+  - Programming
 categories: Note
 ---
 這裏面放了一些石破天驚之類的想法，然後搜尋之後得到的解答。  

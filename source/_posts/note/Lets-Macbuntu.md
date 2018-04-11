@@ -3,6 +3,7 @@ title: Lets-Macbuntu
 date: 2018-04-11 06:10:08
 tags:
   - Note
+  - Ubuntu
 categories: Note
 ---
 

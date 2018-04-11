@@ -1,9 +1,11 @@
 ---
 title: Hexo / Gitpage / TravisCI 建置
 date: 2018-04-10 12:21:03
-categories: Hexo
+categories: Application
 tags:
   - Hexo
+  - Git
+  - CI
 ---
 
 # 前言  
