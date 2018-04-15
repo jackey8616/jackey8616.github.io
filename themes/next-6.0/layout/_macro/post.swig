@@ -75,7 +75,8 @@
           <span class="post-time">
 
             {% set date_diff = date(post.date) != date(post.updated) %}
-            {% set datetime_diff = full_date(post.date) != full_date(post.updated) %}
+            {% set time_diff = time(post.date) != time(post.updated) %}
+            {% set datetime_diff = date_diff or time_diff %}
 
             {% if theme.post_meta.created_at %}
               <span class="post-meta-item-icon">
@@ -85,8 +86,8 @@
                 <span class="post-meta-item-text">{{ __('post.posted') }}</span>
               {% endif %}
 
-              {% if !date_diff && theme.post_meta.updated_at %}
-                {% set create_title = __('post.created') + ' ' + full_date(post.date) + '/' + __('post.modified') + ' ' + full_date(post.updated) %}
+              {% if !date_diff && time_diff && theme.post_meta.updated_at %}
+                {% set create_title = __('post.created') + ' ' + full_date(post.date) + ' / ' + __('post.modified') + ' ' + time(post.updated) %}
               {% else %}
                 {% set create_title = full_date(post.date) %}
               {% endif %}
@@ -250,9 +251,9 @@
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 {% if theme.symbols_count_time.item_text_post %}
-                  <span class="post-meta-item-text">{{ __('post.symbols_count') + __('symbol.colon') }}</span>
+                  <span class="post-meta-item-text">{{ __('symbols_count_time.count') + __('symbol.colon') }}</span>
                 {% endif %}
-                <span title="{{ __('post.symbols_count') }}">{#
+                <span title="{{ __('symbols_count_time.count') }}">{#
                 #}{{ symbolsCount(post.content) }}{#
               #}</span>
               {% endif %}
@@ -266,10 +267,10 @@
                   <i class="fa fa-clock-o"></i>
                 </span>
                 {% if theme.symbols_count_time.item_text_post %}
-                  <span class="post-meta-item-text">{{ __('post.symbols_time') }}&asymp;</span>
+                  <span class="post-meta-item-text">{{ __('symbols_count_time.time') }} &asymp;</span>
                 {% endif %}
-                <span title="{{ __('post.symbols_time') }}">{#
-                #}{{ symbolsTime(post.content, theme.symbols_count_time.awl, theme.symbols_count_time.wpm) }}{#
+                <span title="{{ __('symbols_count_time.time') }}">{#
+                #}{{ symbolsTime(post.content, theme.symbols_count_time.awl, theme.symbols_count_time.wpm, __('symbols_count_time.time_minutes')) }}{#
               #}</span>
               {% endif %}
             </div>
