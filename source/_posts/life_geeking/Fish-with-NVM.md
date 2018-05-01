@@ -6,7 +6,7 @@ tags:
   - Linux
   - NVM
   - NPM
-categories: Share
+categories: LifeGeeking
 ---
   
 Recently I am trying to use nvm under fish.  

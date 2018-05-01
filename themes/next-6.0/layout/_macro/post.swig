@@ -86,22 +86,22 @@
                 <span class="post-meta-item-text">{{ __('post.posted') }}</span>
               {% endif %}
 
-              {% if !date_diff && time_diff && theme.post_meta.updated_at %}
-                {% set create_title = __('post.created') + ' ' + full_date(post.date) + ' / ' + __('post.modified') + ' ' + time(post.updated) %}
+              {% if !date_diff && time_diff && theme.post_meta.updated_at.enabled && theme.post_meta.updated_at.another_day %}
+                {% set create_title = __('post.created') + __('symbol.colon') + full_date(post.date) + ' / ' + __('post.modified') + __('symbol.colon') + time(post.updated) %}
               {% else %}
-                {% set create_title = full_date(post.date) %}
+                {% set create_title = __('post.created') + __('symbol.colon') + full_date(post.date) %}
               {% endif %}
 
               <time title="{{ create_title }}" itemprop="dateCreated datePublished" datetime="{{ moment(post.date).format() }}">{#
-              #}{{ date(post.date) }}{#
-            #}</time>
+              #}{{ date(post.date) -}}
+              </time>
             {% endif %}
 
-            {% if theme.post_meta.updated_at && date_diff %}
-              {% set display_updated = !theme.post_meta.updated_diff || theme.post_meta.updated_diff && datetime_diff %}
+            {% if theme.post_meta.updated_at.enabled && datetime_diff %}
+              {% set display_updated = !theme.post_meta.updated_at.another_day || theme.post_meta.updated_at.another_day && date_diff %}
 
               {% if display_updated or !theme.post_meta.created_at %}
-                {% if theme.post_meta.created_at and theme.post_meta.updated_at %}
+                {% if theme.post_meta.created_at and theme.post_meta.updated_at.enabled %}
                 <span class="post-meta-divider">|</span>
                 {% endif %}
 
@@ -109,11 +109,15 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 {% if theme.post_meta.item_text %}
-                  <span class="post-meta-item-text">{{ __('post.modified') + __('symbol.colon') }}</span>
+                  <span class="post-meta-item-text">{{ __('post.edited') }}</span>
                 {% endif %}
-                <time title="{{ full_date(post.updated) }}" itemprop="dateModified" datetime="{{ moment(post.updated).format() }}">{#
-                #}{{ date(post.updated) }}{#
-              #}</time>
+                <time title="{{ __('post.modified') + __('symbol.colon') + full_date(post.updated) }}" itemprop="dateModified" datetime="{{ moment(post.updated).format() }}">{#
+                #}{% if date_diff -%}
+                    {{- date(post.updated) -}}
+                  {%- else -%}
+                    {{- time(post.updated) -}}
+                  {%- endif -%}
+                </time>
               {% endif %}
             {% endif %}
           </span>
