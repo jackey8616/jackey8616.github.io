@@ -38,4 +38,13 @@ apktool b <APK_NAME.apk>
 Decompile will make a new folder same name as apk.  
 Build will to into <APK_NAME>/dist/  
 
+## Note Webs
+
+[人人都會的 Android Apk 反編譯](https://blog.techbridge.cc/2016/03/24/android-decompile-introduction/)  
+[Smali--Dalvik虚拟机指令语言-->【android\_smali语法学习一】](https://blog.csdn.net/wdaming1986/article/details/8299996)  
+[補丁(patch)的製作與應用](https://goo.gl/smMv5X)  
+[Android逆向之smali语法宝典](https://www.jianshu.com/p/ba9b374346dd)  
+[smali语句类的静态成员查看，invoke-virtual、invoke-direct、invoke-super解释](http://www.cnblogs.com/Fang3s/p/3782903.html)  
+[ImobileSdkAd](https://sppartner.i-mobile.co.jp/downloads/sdk/i-mobile_SDK_manual_for_Android.pdf)  
+[直接從 Google Play 商店下載 app apk 檔到電腦](https://hkappschannel.com/2016/12/06/web-apk-downloader-sites-1/)  
 
