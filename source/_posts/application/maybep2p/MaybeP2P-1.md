@@ -77,4 +77,14 @@ And this is why i called it a " FRAMEWORK".
 >>> p.exit()
 >>> ctrl-D
 ```  
+## Note Webs
+[Kademlia协议原理简介](http://www.yeolar.com/note/2010/03/21/kademlia/)  
+[易懂分布式 | Kademlia算法](https://www.jianshu.com/p/f2c31e632f1d)  
+[聊聊分布式散列表（DHT）的原理——以 Kademlia（Kad） 和 Chord 为例](https://program-think.blogspot.com/2017/09/Introduction-DHT-Kademlia-Chord.html)
+[P2P技术详解(二)：P2P中的NAT穿越(打洞)方案详解](http://www.52im.net/thread-542-1-1.html)  
+[不为人知的网络编程(七)：如何让不可靠的UDP变的可靠？](http://www.52im.net/thread-1293-1-1.html)  
+[以太坊源码P2P网络及节点发现机制](https://blog.csdn.net/DDFFR/article/details/78919530)  
+[\[以太坊源代码分析\] VI. 基于p2p的底层通信(上篇)](https://blog.csdn.net/DDFFR/article/details/78773930)
+[TCP实现P2P通信、TCP穿越NAT的方法、TCP打洞](https://blog.csdn.net/daichanglin/article/details/1751324)  
+[P2P Programming Framework - Python](http://cs.berry.edu/~nhamid/p2p/framework-python.html)  
 
