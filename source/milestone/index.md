@@ -1,6 +1,7 @@
 ---
 title: Milestone
 date: 2018-04-09 20:36:59
+comments: false
 ---
 
 **2018-04-11** NexT GitHub PR: 文章最後編輯時間協助補上datetime格式, [PR #223 Merged](https://github.com/theme-next/hexo-theme-next/pull/223).  
