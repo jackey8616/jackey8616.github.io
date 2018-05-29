@@ -9,7 +9,7 @@ categories:
   - CTF
   - pwnable.kr
 ---
-![](http://pwnable.kr/img/bof.png)
+![](/images/pwnable-kr/bof.png)
 ## Problem  
 Points: 5 pt  
 ```

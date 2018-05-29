@@ -2,7 +2,10 @@
 title: x86_64 Register
 date: 2018-05-24 14:12:06
 tags:
+  - CTF
+  - Note
 categories:
+  - CTF
 ---
 
 ### Register  

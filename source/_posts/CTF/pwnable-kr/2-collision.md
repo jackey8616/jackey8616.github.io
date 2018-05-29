@@ -9,7 +9,7 @@ categories:
   - CTF
   - pwnable.kr
 ---
-![](http://pwnable.kr/img/collision.png)
+![](/images/pwnable-kr/collision.png)
 ## Problem  
 Points: 3 pt  
 ```
@@ -63,11 +63,11 @@ int main(int argc, char* argv[]){
 
 ## Thinking  
 L16 需求一個參數作為passcode，L19 passcode必須長20Byte。  
-L4 check\_password方法，將輸入p強制以int方式處理。
+L4 `check_password`方法，將輸入p強制以int方式處理。
 對應20Byte輸入passcode將轉為5個int處理，呼應L8 for迴圈上限5。  
 回傳值為5個int總和。
 
-L24 若check\_password回傳值等於 L3 0x21DD09EC則獲得flag。
+L24 若`check_password`回傳值等於 L3 0x21DD09EC則獲得flag。
 
 
 ## Solution  

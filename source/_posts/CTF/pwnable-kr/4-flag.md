@@ -9,7 +9,7 @@ categories:
   - CTF
   - pwnable.kr
 ---
-![](http://pwnable.kr/img/flag.png)
+![](/images/pwnable-kr/flag.png)
 ## Problem  
 Points: 7 pt  
 ```
@@ -30,7 +30,7 @@ This is reversing task. all you need is binary
 000000b0  fc ac e0 a1 55 50 58 21  1c 08 0d 16 00 00 00 00  |....UPX!........|
 000000c0  21 7c 0d 00 21 7c 0d 00  90 01 00 00 92 00 00 00  |!|..!|..........|
 ```
-結果顯示是有經過UPX加殼，於是`upx -d <filename>`脫殼。  
+結果顯示是有經過`UPX`加殼，於是`upx -d <filename>`脫殼。  
 脫殼之後就可以用`gdb`或者是`objdump`反組譯。  
 
 ## Code
@@ -56,7 +56,7 @@ This is reversing task. all you need is binary
 ## Solution  
 程式當中+32特別強調了flag。  
 直接單步執行到+39行。  
-接著查看rdx裏面放了什麼。  
+接著查看`rdx`裏面放了什麼。  
 ```sh  
 gdb-peda$ x /s $rdx
 0x496628:       "UPX...? sounds like a delivery service :)"

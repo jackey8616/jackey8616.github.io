@@ -9,7 +9,7 @@ categories:
   - CTF
   - pwnable.kr
 ---
-![](http://pwnable.kr/img/fd.png)
+![](/images/pwnable-kr/fd.png)
 ## Problem  
 Points: 1 pt  
 ```
@@ -49,9 +49,9 @@ int main(int argc, char* argv[], char* envp[]){
 ```
 ## Prepare  
 ### Linux fd(file descriptor)   
-fd是一個索引值，指向Kernel為維護每一個Process所打開文件的紀錄表。  
-當程式打開一個現有文件或者創建一個新文件時，Kernel會向Process回傳一個fd。  
-通常適用於UNIX跟Linux的作業系統。  
+`fd`是一個索引值，指向Kernel為維護每一個Process所打開文件的紀錄表。  
+當程式打開一個現有文件或者創建一個新文件時，Kernel會向Process回傳一個`fd`。  
+通常適用於`UNIX`跟`Linux`的作業系統。  
 
 一般UNIX的Process中應該均有3個標準的[POSIX](https://zh.wikipedia.org/wiki/POSIX) fd，對應於3個標準輸出入流。  
  
@@ -77,16 +77,16 @@ return: if str is a string can be convert to int, return it. otherwise return 0.
 
 ## Thinking  
 L6 顯示輸入必須包含一個參數。  
-L10 會用atoi方法轉成數字並且減掉0x1234(4460)。
-L12 從fd讀取32Byte資料進入buff。
+L10 會用`atoi`方法轉成數字並且減掉0x1234(4460)。
+L12 從`fd`讀取32Byte資料進入buff。
 
 重點：如何控制讀取的資料為LETMEWIN\n即可獲得flag。
 
 ## Solution  
 以本題來講，開檔是一個不需要執行的動作。  
-read的function是用來從STDIN獲得資料的手段。  
+read的function是用來從`STDIN`獲得資料的手段。  
 
-所以我們需要讓fd為0來對應STDIN\_FILENO, 因此輸入的參數必須減去0x1234剛好為0，  
+所以我們需要讓`fd`為0來對應`STDIN_FILENO`, 因此輸入的參數必須減去0x1234剛好為0，  
 即為0x1234本身。
 
 接著進入L13手動輸入資料，為了對應密碼，輸入LETMEWIN即可。  
