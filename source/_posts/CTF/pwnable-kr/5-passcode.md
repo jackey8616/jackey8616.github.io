@@ -5,9 +5,12 @@ tags:
   - CTF
   - PWN
   - pwnable.kr
+  - Toddler's Bottle
+  - WriteUps
 categories:
   - CTF
   - pwnable.kr
+  - Toddler's Bottle
 ---
 ![](/images/pwnable-kr/passcode.png)
 ## Problem  
@@ -90,10 +93,13 @@ gdb-peda$
 
 ## Prepare  
 ### C scanf  
+```c
+#include <stdio.h>
+int scanf(const char *format, ...);
 ```
-include: #include <stdio.h>
-function define: int scanf(const char *format, ...);
-return: If success, return the number of items of argument list successfully filled.
+
+```
+If success, return the number of items of argument list successfully filled.
 if a reading error happens or the EOF is reached while reading, 
 the proper indicator is set. 
 ```

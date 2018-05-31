@@ -5,9 +5,12 @@ tags:
   - CTF
   - PWN
   - pwnable.kr
+  - Toddler's Bottle
+  - WriteUps
 categories:
   - CTF
   - pwnable.kr
+  - Toddler's Bottle
 ---
 ![](/images/pwnable-kr/flag.png)
 ## Problem  

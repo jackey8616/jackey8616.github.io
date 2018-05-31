@@ -5,9 +5,12 @@ tags:
   - CTF
   - PWN
   - pwnable.kr
+  - Toddler's Bottle
+  - WriteUps
 categories:
   - CTF
   - pwnable.kr
+  - Toddler's Bottle
 ---
 ![](/images/pwnable-kr/fd.png)
 ## Problem  
@@ -62,17 +65,23 @@ int main(int argc, char* argv[], char* envp[]){
 | 2 | Standard error | STDERR\_FILENO | strerr |  
 
 ### C read  
-```  
-include file: #include <unistd.h>  
-function define: ssize\_t read(int fd, void \*buf, size\_t count);  
-return: length of data read in.
+```c
+#include <unistd.h>  
+ssize\_t read(int fd, void \*buf, size\_t count);  
+```
+
+```
+return length of data read in.
 ```
 
 ### C atoi  
-``` 
-include file: #include <stdlib.h>  
-function define: int atoi(const char \*str);
-return: if str is a string can be convert to int, return it. otherwise return 0.  
+```c 
+#include <stdlib.h>  
+int atoi(const char \*str);
+```
+
+```
+if str is a string can be convert to int, return it. otherwise return 0.  
 ```
 
 ## Thinking  
