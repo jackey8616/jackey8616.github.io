@@ -5,7 +5,6 @@ tags:
   - CTF
   - AIS3
   - pre exam
-  - 
 categories:
   - CTF
   - AIS3
