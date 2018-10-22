@@ -27,8 +27,6 @@ ssh leg@pwnable.kr -p2222 (pw:guest)
 [Link](http://pwnable.kr/play.php)
 <!-- More -->
 
-## Thinking
-
 ## Code
 ```c
 #include <stdio.h>
@@ -152,7 +150,31 @@ Dump of assembler code for function key3:
    0x00008d38 <+24>:    bx  lr
 End of assembler dump.
 ```
+
+## Thinking
+Problem provide C code and ARM asm code, just focus on C code first.  
+Don't look around and pay attention on `main`.
+
+```c
+    if( (key1()+key2()+key3()) == key ){
+        printf("Congratz!\n");
+        int fd = open("flag", O_RDONLY);
+        char buf[100];
+        int r = read(fd, buf, 100);
+        write(0, buf, r); 
+    }   
+    else{
+        printf("I have strong leg :P\n");
+    }
+```
+The `is` tells us the result of `key1()`, `key2()` and `key3()` will be answer to the flag.
+Let's solve some ARM!  
+
+Before start on ARM, make sure you understance basic ASM instruction and ARM's pipline & thumb modes.
+Reference at [here](/2018/08/02/CTF/ARM-ISA/).
+
 ## Solution
+### key1()
 ```asm
 (gdb) disass key1
 Dump of assembler code for function key1:
@@ -165,5 +187,84 @@ Dump of assembler code for function key1:
    0x00008cec <+24>:    bx  lr  
 End of assembler dump.
 ```
-<+0> pushed {r11} into stack
-<+4> r11 = r11 + sp + 0  <-- sp in here
+In order to use register, first push the register's value into stack.
+So `<+0>` make a push of r11, and assign `sp` to `r11`.
+Ofcourse, remember to give value back to register from stack and restore sp,
+which `<+16>` and `<+20>` is doing.
+
+So the code will looks like:
+```asm
+   0x00008cdc <+8>: mov r3, pc
+   0x00008ce0 <+12>:    mov r0, r3
+   ...
+   0x00008cec <+24>:    bx  lr  
+```
+Here `<+8>` move pc into r3, before we do that. We should check pc's value, and it leads us to check the processor's status is under `ARM` or `Thumb`.
+In order to check that, we should seek any `BX` or `BLX` instruction before enter this function in `main`, which is nothing we can find! looool.
+So, ARM status is default for processor, then we can sure the pc will point to current instruction + 8, and that is `0x00008cdc <+12> + 8 = 0x00008ce4`.
+Then move `r3` to `r0`, which is the function's return value.
+
+After that, a cool `bx lr` back to `main`.
+BUT! this is a `bx` which means it may cause status change.
+So we need to check what is in `lr` to change mode or node.
+The value of `lr` is the next instruction address before calling `key1()`, and that would be `0x00008d6c`, the last bit of `lr` is `0`, so we are still under `ARM status`.
+
+### key2()
+```asm
+(gdb) disass key2
+Dump of assembler code for function key2:
+   0x00008cf0 <+0>: push    {r11}       ; (str r11, [sp, #-4]!)
+   0x00008cf4 <+4>: add r11, sp, #0
+   0x00008cf8 <+8>: push    {r6}        ; (str r6, [sp, #-4]!)
+   0x00008cfc <+12>:    add r6, pc, #1
+   0x00008d00 <+16>:    bx  r6
+   0x00008d04 <+20>:    mov r3, pc
+   0x00008d06 <+22>:    adds    r3, #4
+   0x00008d08 <+24>:    push    {r3}
+   0x00008d0a <+26>:    pop {pc}
+   0x00008d0c <+28>:    pop {r6}        ; (ldr r6, [sp], #4)
+   0x00008d10 <+32>:    mov r0, r3
+   0x00008d14 <+36>:    sub sp, r11, #0
+   0x00008d18 <+40>:    pop {r11}       ; (ldr r11, [sp], #4)
+   0x00008d1c <+44>:    bx  lr
+End of assembler dump.
+```
+Under `ARM status`, `r11` stores main's `sp`, and `r6` is `pc + 1`, which `pc` is `0x00008cfc <+12> + 8 + 1 = 0x00008d05`.
+And than a `bx` to exchange status, `r6`'s last bit is `1`, so change to `thumb` mode.
+Move `pc` into `r3`, which `r3 = 0x00008d04 + 4 = 0x00008d08`.
+After that make a `adds` to `r3`, so right now `r3 = 0x00008d0c`.
+blah blah blah. and move `r3` to `r0`.
+So the return is `0x00008d0c`
+
+Don't forget `<+44>`, check `lr` is `0x00008d74`, cool, still under `ARM status`.
+### key3()
+```asm
+(gdb) disass key3
+Dump of assembler code for function key3:
+   0x00008d20 <+0>: push    {r11}       ; (str r11, [sp, #-4]!)
+   0x00008d24 <+4>: add r11, sp, #0
+   0x00008d28 <+8>: mov r3, lr
+   0x00008d2c <+12>:    mov r0, r3
+   0x00008d30 <+16>:    sub sp, r11, #0
+   0x00008d34 <+20>:    pop {r11}       ; (ldr r11, [sp], #4)
+   0x00008d38 <+24>:    bx  lr
+End of assembler dump.
+```
+Stll `ARM status`, the first thing we found is `lr` put into `r3`, and `lr` is `0x00008d80 <+68>` at `main`.
+And? not, there is no then, that is the return value, looooooooooool.!
+
+### Summation
+So `key1() + key2() + key3()` = `0x00008ce4 + 0x00008d0c + 0x00008d80` which is `0x0001a770`.
+
+### If you noticed....
+We seems not care about main's value, but this is the time we should take a look about it.
+After `key1()` executed, the return value is `0x00008ce4`, this value have been store at `r4`, which shows by `0x00008d6c <+48>`.
+Also after `key2()` executed, `0x00008d0c` been store at `r3`.
+Here is funny things at `<+60>` in `main()`, which is `0x00008d78 <+60>:    add r4, r4, r3`.
+Now, `r4 += r3`, we may need this value later, just put it next to you.  
+
+After `key3()` executed, the return value is `0x00008d80`, and `r3` is already been overwrite to it.
+And `r2 = r4 + r3`, at this point, the `r2` stores summation of all three functions.  
+
+## Reference
+[ARM Instruction Set Architecture Notes](/2018/08/02/CTF/ARM-ISA/).

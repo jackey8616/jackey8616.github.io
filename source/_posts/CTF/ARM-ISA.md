@@ -13,7 +13,7 @@ categories:
 `#` represents a immdediate value.
 Usage `MOV register, #value`  
 `MOV R0, #10` means `register0 = 10`  
-
+<!-- More -->
 ### (LDR) Load any data into register
 Usage `LDR register, =data`
 `LDR R1, =0x12345678` means `Load 0x12345678 into register1`
