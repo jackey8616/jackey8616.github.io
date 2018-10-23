@@ -11,6 +11,9 @@ categories:
   - 2018
 ---
 
+This is 2018 AIS3 prexam web writeups.
+<!-- More -->
+
 ## warmup
 Check header found `Paritial-Flag`,
 Wrote a simple python crawler keeping get this praitial-flag until get last char `}`

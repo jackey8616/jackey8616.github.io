@@ -11,6 +11,10 @@ categories:
   - 2018
 ---
 
+
+This is 2018 AIS3 prexam pwn writeups.
+<!-- More -->
+
 ## mail
 `disass` shows nothing.
 `objdump -d ./mail | less` found a function called `reply`.

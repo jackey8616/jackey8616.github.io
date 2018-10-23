@@ -11,6 +11,9 @@ categories:
   - 2018
 ---
 
+This is 2018 AIS3 prexam reverse writeups.
+<!-- More -->
+
 ## find
 
 `cat find` gets a ELF and dummy data merged together.

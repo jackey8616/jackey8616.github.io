@@ -11,7 +11,8 @@ categories:
   - 2018
 ---
 
-
+This is 2018 AIS3 prexam crypto writeups.
+<!-- More -->
 
 ## pow 
 ```python=
