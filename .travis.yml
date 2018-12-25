@@ -15,6 +15,7 @@ install:
 
 before_script:
   - npm install -g mocha
+  - cp lib/hexo-renderer-markdown-it/lib/renderer.js node_modules/hexo-renderer-markdown-it/lib/renderer.js
   - git clone --branch master https://github.com/jackey8616/jackey8616.github.io.git public
 
 script: 
