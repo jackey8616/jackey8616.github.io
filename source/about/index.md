@@ -6,13 +6,14 @@ comments: false
 
 clooooode a.k.a clo5de
 
-Yuntech Junior(2018)
+Yuntech Junior(2019)
 
 - Curriculum Experience
   - 2017
     - Yuntech Opensource Club, Minister of Education.
     - Yuntech Networking Management Group, Minister of System and Education.
 - Community & Conference
+  - SITCON 2019
   - TDOH 2018
   - COSCUP 2018
 - Competition
