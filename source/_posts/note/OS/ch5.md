@@ -1,0 +1,112 @@
+---
+title: "CH5 Process Scheduleing"
+date: 2019-04-25 14:42:05
+tags:
+  - Note
+  - Operating System
+categories: Note
+---
+
+教授真的是一種不討喜的生物。
+今天上課的內容最讓人印象深刻的就是：
+<!-- More --> 
+用印度的種姓制度來比喻Multilevel Queue跟
+伊莉看鋼鐵人好爽。
+
+這教授完全不行啊。
+結論：教授講的都是垃圾...
+
+## Basic Concepts
+- 利用Multiprogramming去儘可能的最大化CPU使用率。
+- CPU-I/O Busrt Cycle
+    - CPU Burst以及I/O Burst所組成。
+    - CPU Burst在I/O Burst之前。
+
+## CPU Scheduler
+- Short-term shceduler
+    - 從ready queue中選擇並分配給其中一個核心。
+- CPU scheduleing會在下列四個行程狀態的變更中做出決策：
+    - running到waiting(非搶佔式): I/O或event wait
+    - running到ready(搶佔式): interrupt
+    - waiting到ready(搶佔式): I/O或event completion
+    - terminates(非搶佔式)
+- Consideration of preemptive
+    - 資料分享（Shared Data）
+    - Kernel Mode與否
+    - 關鍵的作業系統活動時是否會有中斷觸發
+
+## Dispatcher(分配器)
+- Short-term scheduler選出來的行程給予CPU控制權。
+- 會調用：
+    - Context switch
+    - User mode切換
+- Dispatch latency：從一個行程停止到啟動另外一個行程的時間差。
+
+## Scheduling Critieria
+- CPU uitlization：讓CPU保持忙碌，愈高愈好。
+- Throughout（吞吐量）：每時間單位所完成的執行量，愈高愈好。
+- Turnaround time：執行特定行程所需的時間，愈低愈好。
+- Waiting time：行程在Ready Queue中的等待時間，愈低愈好。
+- Response time：發出請求時的第一個回應時間差，非指輸出。（Ex:網路IO）愈低愈好。
+
+## Priority Scheduling
+- 缺點： 可能會有可撥仔優先度太低，永遠等不到。
+- 解決方法：Aging，放愈久，讓行程優先度愈高。
+
+## Round Robin(RR)
+- Q（time quantum）
+    - 太大 -> FIFO，因為時間夠多，所以進去的一下子就被做完了。
+    - 太小
+        - 必須大於Context switch time.
+        - 如果小於Context switch time，
+          就會導致沒做到什麼，就要context switching了。
+
+## Multilevel Queue
+![](https://contribute.geeksforgeeks.org/wp-content/uploads/multilevel-queue-schedueling-1-300x217.png)
+- Ready Queue內部被分做兩個Queue：
+    - Foreground(前景)：互動式、RR。
+    - Background(背景)：批次、FCFS。
+- 必須在佇列間的調度
+    - 固定優先權調度（Fixed Prority Scheduling）
+        - 先處理優先度高的佇列（Ex：前景先，再背景）
+        - 如果前景佇列有源源不絕的東西可以處理，非常有可能就會餓死（Starvation)。
+    - 時間切片（Time Slice)
+        - 每個佇列會給定特定的CPU時間來給其中的行程來處理。
+- 80% 前景 RR, 20% 背景 FCFS
+- [Reference](https://www.geeksforgeeks.org/operating-system-multilevel-queue-scheduling/)
+
+## Multilevel Feedback Queue
+![](https://contribute.geeksforgeeks.org/wp-content/uploads/Multilevel-Feedback-Queue-Scheduling-300x269.png)
+- 行程可以被移到到各種不同的佇列中。Aging可以用這種方式來實現。
+- 特點
+    - 搶佔式（可以插隊）
+    - 不公平
+    - 不會餓死
+    - 設計複雜
+- 根據以下幾個參數來定義MFQ:
+    - 安排的數量
+    - 每一個佇列的演算法
+    - 升級/降級一個行程的方法
+    - 決定當一個行程需要被服務的時候該進入哪一個佇列的方法
+- 有做完的就做完，沒做完的，就被移到下一級優先度的佇列，
+  確保不會有一直是最高優先的被處理。
+  同時，優先度較低的佇列通常會擁有比較高的Time Quantum。
+- [Reference](https://www.geeksforgeeks.org/multilevel-feedback-queue-scheduling/)
+
+## Thread Scheduling
+- User thread跟Kernel thread有不同的分別。
+- 如果有多個線程，則這些線程會被調度，而不是行程。
+- M2O跟M2M模型下，Thread Library會去調度User-level threads在LWP(LightweightProcess)上執行。
+    - 也被稱為PCS，因為競爭是在一個行程內。
+    - 一般會由Programmer來透過優先度集合(Prority Set)來完成。
+- PCS(Process-Contention Scope): 多個線程在同一個行程內競爭CPU時間。
+- SCS(System-Contention Scope): 線程直接跟系統範圍內的其他線程競爭。
+    
+## Pthread Scheduling
+- API可以在線程建立的時候指定PCS或者SCS
+
+## Multiple-Processor Scheduling
+
+## Reference
+[[1] OS讀書會20170504](https://www.slideshare.net/JenWeiCheng/os20170504-75680132)
+[[2] Operating Systems - CH5 CPU Schedling](http://yhhsutw.blogspot.com/2015/12/ch5-cpu-schedling.html)
