@@ -1,5 +1,5 @@
 ---
-title: "慘讀: Automatic Memory Control of Multiple Virtual Machines on a Consolidated Server"
+title: CH4
 date: 2019-04-19 00:17:05
 tags:
   - Note
@@ -16,8 +16,13 @@ categories: Note
 # Concurrency vs Paralleism
 
 並發 以及 並行的比較。
-舉實際例子來看：
-這是並發的示意圖。
+
+
+## Concurrency
+
+並發的概念即為在相同的時間間隔下完成任務。
+任務並不一定要同時執行，但是他們可以被分成交錯執行的小任務。
+
 ![Concurrency](https://user-images.githubusercontent.com/4419992/35572695-ee6275c8-05b3-11e8-8460-2c1ac7081574.jpg)
 
 在廚房裏面有一個廚師（Process），理所當然我們知道這個廚師同時只能做一件事情。  
@@ -31,3 +36,16 @@ categories: Note
 一旦烤雞烤好了，他就會中斷他現在的工作，然後去把烤雞拿出來，再接著繼續榨油，
 直到雞好了、油也榨夠了、可以準備來炸鹹酥雞（普羅旺斯嫩春雞佐地中海初榨橄欖油米蘭空運羅勒葉）了。
 
+如果失去了並發性（不眼觀四面、耳聽八方），廚師就得先老實的把雞烤熟了，才可以去榨油。
+否則雞丟著跑去榨油，可能雞就變炭了。
+
+## Parallelism
+
+並行則為任務在相同的時間點被執行。
+顧名思義，任務跟任務是平行的。
+![Parallelism](https://user-images.githubusercontent.com/4419992/35572701-f14520f6-05b3-11e8-9989-f4dcc7fc987e.jpg)
+
+同樣回到廚房內，這次我們有兩個廚師（Process A and B），這次我們就可以把雞給廚師甲去烤、
+油給廚師乙去榨，在同一個時間點內，廚師甲跟乙都在做事情。
+
+# 
