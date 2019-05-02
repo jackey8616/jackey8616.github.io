@@ -5,6 +5,7 @@ tags:
   - Note
   - Operating System
 categories: Note
+mathjax: true
 ---
 
 教授真的是一種不討喜的生物。
@@ -106,6 +107,30 @@ categories: Note
 - API可以在線程建立的時候指定PCS或者SCS
 
 ## Multiple-Processor Scheduling
+
+## Windwos Prority Classes
+不知道在上什麼鬼 = =..
+- Default priority is NORMAL
+- Fixed priority is for REALTIME_PRIORITY_CLASS
+- Quantum expired -> prority lowered, but never lower than base.
+- wait occurr -> priority highered
+
+## Algorithm Evaluation
+- Deterministic modeling
+    - 分析型評估
+    - 針對固定的負載去比較各種演算法的表現
+- Queueing model
+    - 描述行程, CPU和I/O的Burst Time的機率
+        - 通常式指數性，以均值來描述
+        - 計算平均的吞吐量, 利用率, 等待時間等
+    - 電腦系統被描述為伺服器構成的網路，每一個都有存放等待行程的佇列
+        - 了解到達率和服務率
+        - 計算利用率, 平均佇列長度, 平均等待時間等
+
+## Little's Formula
+$
+n = \lambda \times W
+$
 
 ## Reference
 [[1] OS讀書會20170504](https://www.slideshare.net/JenWeiCheng/os20170504-75680132)
