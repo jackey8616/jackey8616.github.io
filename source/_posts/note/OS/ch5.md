@@ -1,5 +1,5 @@
 ---
-title: "CH5 Process Scheduleing"
+title: "CH5 Process Scheduling"
 date: 2019-04-25 14:42:05
 tags:
   - Note
@@ -27,7 +27,7 @@ mathjax: true
 ![](/images/OS/CPU-Cycle.jpg =600x)  
 - Short-term shceduler
     - 從ready queue中選擇並分配給其中一個核心。
-- CPU scheduleing會在下列四個行程狀態的變更中做出決策：
+- CPU Scheduling會在下列四個行程狀態的變更中做出決策：
     - running到waiting(非搶佔式): I/O或event wait
     - running到ready(搶佔式): interrupt
     - waiting到ready(搶佔式): I/O或event completion
@@ -69,7 +69,7 @@ mathjax: true
     - Foreground(前景)：互動式、RR。
     - Background(背景)：批次、FCFS。
 - 必須在佇列間的調度
-    - 固定優先權調度（Fixed Prority Scheduling）
+    - 固定優先權調度（Fixed Priority Scheduling）
         - 先處理優先度高的佇列（Ex：前景先，再背景）
         - 如果前景佇列有源源不絕的東西可以處理，非常有可能就會餓死（Starvation)。
     - 時間切片（Time Slice)
@@ -100,7 +100,7 @@ mathjax: true
 - 如果有多個線程，則這些線程會被調度，而不是行程。
 - [M2O](/2019/04/25/note/OS/ch4/#many-to-one)跟[M2M](/2019/04/25/note/OS/ch4/#many-to-many)模型下，Thread Library會去調度User-level threads在LWP(LightweightProcess)上執行。
     - 也被稱為PCS，因為競爭是在一個行程內。
-    - 一般會由Programmer來透過優先度集合(Prority Set)來完成。
+    - 一般會由Programmer來透過優先度集合(Priority Set)來完成。
 - PCS(Process-Contention Scope): 多個線程在同一個行程內競爭CPU時間。
 - SCS(System-Contention Scope): 線程直接跟系統範圍內的其他線程競爭。
     
@@ -108,12 +108,43 @@ mathjax: true
 - API可以在線程建立的時候指定PCS或者SCS
 
 ## Multiple-Processor Scheduling
+- Homogeneous（同質）: CPU長一樣。
+- Asymmetric（AMP, 非對稱）:
+    把系統要處理的工作進行高度的切割，分配交給專門的處理器執行，
+    所以就可以避免重疊的資源存取。
+    需要特殊的編譯器與作業系統配合。
+- Symmetric multiprocessing(SMP, 對稱)：
+    使用排程的機制，平均的將工作分配給任一個空閒的處理器執行。
+    目前常見。
+- Processor affinity(親和性):
+    每次處理器執行完行程工作之後，會殘留資料在處理器中。  
+    如果下一次的排程將同樣一個行程分配到該處理器上，可以提高執行的效率（減少快取失誤的成本）  
 
-## Windwos Prority Classes
+### Load Balancing
+- 在SMP之下達到高效率的前提，儘量保持所有的處理器載入。
+- Load Balancing(負載平衡)：儘量保持負載均勻分佈。
+- Push migration：定期檢查把過載處理器的工作推送到其他處理器。
+- Pull migration：閒置的處理器會去拉其他忙碌處理器中等待執行的工作。
+
+## Multicore Processors
+- 最近把多個處理器塞到同一個物理晶片上愈來愈潮。
+- 更快，更少的電力。
+- 單個核心可運行的線程數量上升。
+    - Memory Stall發生的時候，可以把時間拿去執行其他線程。
+      真是太機智了呢！
+![](/images/OS/Multithread-memory-stall.jpg)  
+
+## Windows Scheduling
+- Windows使用基於優先度的搶佔式調度
+- 最高優先的線程會下一個執行
+- 分配器就是調度器
+- ...
+
+## Windows Priority Classes
 不知道在上什麼鬼 = =..
 - Default priority is NORMAL
 - Fixed priority is for REALTIME_PRIORITY_CLASS
-- Quantum expired -> prority lowered, but never lower than base.
+- Quantum expired -> priority lowered, but never lower than base.
 - wait occurr -> priority highered
 
 ## Algorithm Evaluation
@@ -130,10 +161,9 @@ mathjax: true
 
 ## Little's Formula
 $
-n: 平均佇列長度
-W: 平均佇列等待時間
-\lambda: 平均佇列到達率
-
+n: 平均佇列長度\\\\
+W: 平均佇列等待時間\\\\  
+\lambda: 平均佇列到達率\\\\
 n = \lambda \times W
 $
 
