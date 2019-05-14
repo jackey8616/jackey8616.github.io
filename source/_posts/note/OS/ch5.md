@@ -24,6 +24,7 @@ mathjax: true
     - CPU Burst在I/O Burst之前。
 
 ## CPU Scheduler
+![](/images/OS/CPU-Cycle.jpg =600x)  
 - Short-term shceduler
     - 從ready queue中選擇並分配給其中一個核心。
 - CPU scheduleing會在下列四個行程狀態的變更中做出決策：
@@ -43,9 +44,9 @@ mathjax: true
     - User mode切換
 - Dispatch latency：從一個行程停止到啟動另外一個行程的時間差。
 
-## Scheduling Critieria
-- CPU uitlization：讓CPU保持忙碌，愈高愈好。
-- Throughout（吞吐量）：每時間單位所完成的執行量，愈高愈好。
+## Scheduling Criteria(排程準則)
+- CPU utilization：讓CPU保持忙碌，愈高愈好。
+- Throughput（吞吐量）：每時間單位所完成的執行量，愈高愈好。
 - Turnaround time：執行特定行程所需的時間，愈低愈好。
 - Waiting time：行程在Ready Queue中的等待時間，愈低愈好。
 - Response time：發出請求時的第一個回應時間差，非指輸出。（Ex:網路IO）愈低愈好。
@@ -97,7 +98,7 @@ mathjax: true
 ## Thread Scheduling
 - User thread跟Kernel thread有不同的分別。
 - 如果有多個線程，則這些線程會被調度，而不是行程。
-- M2O跟M2M模型下，Thread Library會去調度User-level threads在LWP(LightweightProcess)上執行。
+- [M2O](/2019/04/25/note/OS/ch4/#many-to-one)跟[M2M](/2019/04/25/note/OS/ch4/#many-to-many)模型下，Thread Library會去調度User-level threads在LWP(LightweightProcess)上執行。
     - 也被稱為PCS，因為競爭是在一個行程內。
     - 一般會由Programmer來透過優先度集合(Prority Set)來完成。
 - PCS(Process-Contention Scope): 多個線程在同一個行程內競爭CPU時間。
@@ -129,6 +130,10 @@ mathjax: true
 
 ## Little's Formula
 $
+n: 平均佇列長度
+W: 平均佇列等待時間
+\lambda: 平均佇列到達率
+
 n = \lambda \times W
 $
 
