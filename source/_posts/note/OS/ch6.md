@@ -7,6 +7,8 @@ tags:
 categories: Note
 ---
 
+雙二一退學保衛戰。
+
 <!-- More -->
 
 ## The Critical-Section Problem
