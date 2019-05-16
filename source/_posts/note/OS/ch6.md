@@ -24,7 +24,7 @@ Critical-Section:
     - 不想進入Critical-Section的行程，不可參與其他行程進入Critical-Section的決策。
     - 必須在有限時間內從想進入Critical-Section的行程中挑選一個進入。
       隱含No Deadlock。（有空位就讓`想進的人` `馬上` 進去）
-- Bound waiting:
+- Bounded waiting:
     - 從一個行程提出進入Critical-Section到獲准進入之間的等待時間是有限的。
     - 如果有n個行程在等待，那麼每個行程最多等待n-1段時間即可進入Critical-Section。
       隱含No starvation。
@@ -49,7 +49,7 @@ do {
 ## Synchronization Hardware
 - 用Lock來達到保護Critical Region(關鍵區域)的目的。
 - 單處理器：可以禁用中斷。
-    - 當前運行的程式不會被插隊（Preemption）
+    - 當前運行的程式不會被插隊（without preemption）
     - 通常在多處理器上效率太低, 作業系統不能廣泛的擴展。
 - 當代的機器多提供特殊的原子性指令，意即不會被中斷。
 ```cpp
@@ -83,7 +83,7 @@ do {
       ```
 
 ### compare_and_swap instruction
-- 如果鎖的狀態跟預期的一樣，行程就可以取得當次執行Critical Section的權力，否則就會在`while`前阻塞。
+- 如果鎖的狀態跟預期的`False`，行程就可以取得當次執行Critical Section的權力，否則就會在`while`前阻塞。
 - Define
     ```cpp
     int compare_and_swap(int *value, int expected, int new_value) {
@@ -107,7 +107,7 @@ do {
       
 ## Mutex Locks
 - 前面的方法太複雜，而且通常應用程式的Programmer沒辦法存取。
-- OS的設計者會提供軟體工具來解決Critical-Section問題
+- OS的設計者會提供軟體工具來解決Critical-Section Problem
 - Mutex Lock就是最簡單的作法。
 - `acquire`用來取得鎖, `release`用來釋放鎖。
     - 這兩個方法必須是原子性，才不會被打斷。
@@ -136,7 +136,31 @@ do {
 ```
 
 ## Semaphores
-- 拿到鎖之前不用等到海枯石爛。
-- 
+- 拿到鎖之前不用等到海枯石爛，但是如果沒有鎖可以拿，還是會等到海枯石爛。 
+  ```cpp
+  wait (S) {
+    while (S <= 0);
+        // busy wait
+    S--;
+  }
+
+  signal (S) {
+    S++;
+  }
+  ```
+
+### Usage
+- Counting Semaphores: 非負整數計數器。
+- Binary Semaphores: 二進位計數器。
+    - 類似Mutex(邏輯上)
+```cpp
+P1:
+    S1;
+    signal(synch);
+
+P2:
+    wait(synch);
+    S2;
+```
 
 ## Classic Problems of Synchronization
