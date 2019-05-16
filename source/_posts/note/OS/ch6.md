@@ -317,7 +317,7 @@ signal(semaphore *S) {
     - 哲學家想吃飯的時候，但是左邊或右邊的任一支筷子被拿走了，需要等待。
     - 共享資料：
         - 飯（資料集合）
-        - Samephore 筷子[5], 初始值是`1`： 0代表有人在用
+        - Semaphores 筷子[5], 初始值是`1`： 0代表有人在用
 - 行程
     ```cpp
     do {
@@ -347,7 +347,7 @@ signal(semaphore *S) {
 - 所以你們就餓死吧...
 
 ### Problems with Semaphores
-- Samephore的不正確操作
+- Semaphore的不正確操作
     - signal() 再 wait()
         先加信號再等待信號？？？... 怪怪的
     - wait() 又 wait()
@@ -355,3 +355,6 @@ signal(semaphore *S) {
     - 省略了signal或wait或兩個都省略了
         不等了， 或者不把信號還回去， 直接出車禍.
 - 死鎖(Deadlock)跟餓死(Starvation)
+
+## Reference
+- [[1]OS讀書會20170518 ](https://www.slideshare.net/JenWeiCheng/os20170518)
