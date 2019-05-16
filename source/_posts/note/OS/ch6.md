@@ -97,7 +97,7 @@ do {
     - 共享`lock`變數， 初始值為`False`
       ```cpp
       do {
-          while (compare and swap(&lock, 0, 1) != 0);
+          while (compare_and_swap(&lock, 0, 1) != 0);
             /* do nothing */
           /* critical section */
           lock = 0;
@@ -150,8 +150,9 @@ do {
   ```
 
 ### Usage
-- Counting Semaphores: 非負整數計數器。
-- Binary Semaphores: 二進位計數器。
+- Counting Semaphores: 整數計數器
+    - 
+- Binary Semaphores: 二進位計數器
     - 類似Mutex(邏輯上)
 ```cpp
 P1:
@@ -163,4 +164,92 @@ P2:
     S2;
 ```
 
+### Semaphore Implementation
+- 沒人懂這在講什麼鬼...
+- 必須保證同一個信號內的`sinal`跟`wait`不會同時在兩個不同的行程中呼叫
+- 當`sinal`跟`wait`被放在Critical Section中的時候，會變成Critical Section Problem
+- 現在多使用`busy waiting`來實作
+    - 程式碼少
+    - 但是效率低
+    - 應用程式可能花很多時間在waiting，所以不是很好的方法。
+
+### Semaphore Implementation with no Busy waiting
+- 每一個`semaphore`都有一個關聯的等待佇列（waiting queue）
+- 佇列中的每一項都包含有兩個資料元素
+    - 數值（integer)
+    - 下一項的指標
+- 兩種操作
+    - block: 把行程放在適當的等待佇列中
+    - wake: 把行程從等待佇列放到就緒佇列（ready queue）中
+```cpp
+typedef struct {
+    int value;
+    struct process *list;
+} semaphore;
+
+wait(semaphore *S) {
+    S->value--;
+    if (S->value < 0) {
+        // add this process to S->list;
+        block();
+    }
+}
+
+signal(semaphore *S) {
+    S->value++;
+    if (S->value <= 0) {
+        // remove a process P from S->list;
+        wakeup(P);
+    }
+}
+```
+
+### Deadlock and Starvation
+- Deadlock
+    兩個或更多的行程在互相等待各自的資源釋放。
+    A等B放開鎖， B也在等A放開鎖。
+    等到海枯石爛。
+- Starvation: 阻塞到死。
+    行程沒有從等待佇列被放到就緒佇列。
+- Priority Inversion:
+    - 高優先權行程的資源被低優先權行程占住了。
+      必須要等待低優先行程釋放才能繼續。
+    - 透過priority-inheritance protocol解決
+
 ## Classic Problems of Synchronization
+### Bounded-Buffer Problem
+- Variable
+    - n個buffer, 每個可以放一個元素
+    - Semaphore mutex, 初始值為`1`
+    - Semaphore full, 初始值為`0`
+    - Semaphore empty, 初始值為`n`
+- 生產者（Producer）行程
+    ```cpp
+    do {
+        ...
+        /* produce an item in next_produced */
+        ...
+        wait(empty);
+        wait(mutex);
+        ...
+        /* add next produced to the buffer */
+        ...
+        signal(mutex);
+        signal(full);
+    } while (true);
+    ```
+- 消費者（Consumer）行程
+    ```cpp
+    do {
+        wait(full);
+        wait(mutex);
+        ...
+        /* remove an item from buffer to next_consumed */
+        ...
+        signal(mutex);
+        signal(empty);
+        ...
+        /* consume the item in next consumed */
+        ...
+    } while (true);
+    ```
