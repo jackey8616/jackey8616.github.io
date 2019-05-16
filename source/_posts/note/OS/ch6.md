@@ -166,8 +166,8 @@ P2:
 
 ### Semaphore Implementation
 - 沒人懂這在講什麼鬼...
-- 必須保證同一個信號內的`sinal`跟`wait`不會同時在兩個不同的行程中呼叫
-- 當`sinal`跟`wait`被放在Critical Section中的時候，會變成Critical Section Problem
+- 必須保證同一個信號內的`signal`跟`wait`不會同時在兩個不同的行程中呼叫
+- 當`signal`跟`wait`被放在Critical Section中的時候，會變成Critical Section Problem
 - 現在多使用`busy waiting`來實作
     - 程式碼少
     - 但是效率低
@@ -180,7 +180,7 @@ P2:
     - 下一項的指標
 - 兩種操作
     - block: 把行程放在適當的等待佇列中
-    - wake: 把行程從等待佇列放到就緒佇列（ready queue）中
+    - wakeup: 把行程從等待佇列放到就緒佇列（ready queue）中
 ```cpp
 typedef struct {
     int value;
@@ -219,10 +219,14 @@ signal(semaphore *S) {
 ## Classic Problems of Synchronization
 ### Bounded-Buffer Problem
 - Variable
-    - n個buffer, 每個可以放一個元素
-    - Semaphore mutex, 初始值為`1`
+    - n個Buffer, 每個可以放一個元素
+    - Semaphore mutex, 初始值為`1`: 控制生產者跟消費者存取Buffer
     - Semaphore full, 初始值為`0`
+        - 表示目前Buffer有多少空間被使用
+        - 0表示Buffer是空的，消費者要等待
     - Semaphore empty, 初始值為`n`
+        - 表示目前Buffer還有多少空間
+        - <=0表示Buffer是滿的, 生產者要等待
 - 生產者（Producer）行程
     ```cpp
     do {
@@ -253,3 +257,101 @@ signal(semaphore *S) {
         ...
     } while (true);
     ```
+
+### Readers-Writers Problem
+- 數個同時執行的行程，共享資料集合
+    - Readers: 只讀取資料, 不會對資料做任何更動。
+    - Writers: 同時可以讀寫。
+- 問題：允許數個Reader同時讀取資料。
+    只有單一個Writer可以讀寫資料。
+- Reader跟Writer的數種變化取決於優先權(Priority)
+- 共享資料
+    - 資料集合
+    - Semaphore rw_mutex, 初始值為`1`
+        - 控制Reader/Writer進入文件的信號
+        - 0代表有人正在存取文件， 需要等待
+    - Semaphore mutex, 初始值為`1`
+        - 控制reader_count增減的信號
+        - 0代表reader_count正在變動，需要等待
+    - 整數reader_count, 初始值為`0`：用來計算現在有幾個Reader
+- Writer行程
+    ```cpp
+    do {
+        wait(rw_mutex);
+        ...
+        /* writing is performed */
+        ...
+        signal(rw_mutex);
+    } while (true);
+    ```
+- Reader行程
+    ```cpp
+    do {
+        wait(mutex);
+        read_count++;
+        if (read_count == 1)
+            wait(rw_mutex);
+        signal(mutex);
+        ...
+        /* reading is performed */
+        ...
+        wait(mutex);
+        read_count--;
+        if (read_count == 0)
+            signal(rw_mutex);
+        signal(mutex);
+    } while (true);
+    ```
+#### Readers-Writers Problem Variations
+- Variation 1
+    如果有無限個Reader在讀取，Writer會餓死(Starvation)。 
+- Variation 2
+    Writer準備好之後就馬上開始讀寫，Reader會餓死
+- 某些系統為了解決這些問題， 會由Kernel提供讀寫鎖(Reader-Writer Lock)
+
+### Dining-Philosophers Problem
+![](/images/OS/dining-philosopher.png)  
+- 哲學家只能思考（Wait）或吃飯（Do），他們之間不能交流，
+  每次吃飯都需要同時拿左邊跟右邊的筷子，吃完就會把筷子放回去。
+- 問題：
+    - 哲學家想吃飯的時候，但是左邊或右邊的任一支筷子被拿走了，需要等待。
+    - 共享資料：
+        - 飯（資料集合）
+        - Samephore 筷子[5], 初始值是`1`： 0代表有人在用
+- 行程
+    ```cpp
+    do {
+        wait ( chopstick[i] );
+        wait ( chopStick[ (i + 1) % 5] );
+        // eat
+        signal ( chopstick[i] );
+        signal (chopstick[ (i + 1) % 5] );
+        // think
+    } while (TRUE);
+    ```
+
+#### Problem of this algorithm
+- 會產生死鎖（Deadlock）:要等其他人放下筷子， 才能拿筷子。
+    - 大家都先拿右邊的筷子， 全部的人都在等左邊的筷子，
+      可是左邊筷子已經被左邊的人先拿走了。
+    - 如果哲學家1, 3一直拿著筷子， 哲學家2就會等到死。
+- 解法
+    - 最多限制(n - 1)個吃，可以解決死鎖，但是會有人餓死。
+    - 除非可以拿到左右筷子，不然就不准吃。
+      可以打破Hold-and-Wait（死鎖），但是也是會有人餓死。
+    - 奇數者先拿左邊再拿右邊，偶數者則相反，
+      可以打破Circular Waiting（環狀等待）, 還是會有人餓死。
+    - Chandy/Misra Solution：
+        先把筷子湊成對， 要吃的領筷子券, 吃完再釋放
+        搶奪筷子券，沒有錯，還是會有人餓死。
+- 所以你們就餓死吧...
+
+### Problems with Semaphores
+- Samephore的不正確操作
+    - signal() 再 wait()
+        先加信號再等待信號？？？... 怪怪的
+    - wait() 又 wait()
+        等一個信號 然後又等一個信號？？？ ... 等一個人咖啡館？？？
+    - 省略了signal或wait或兩個都省略了
+        不等了， 或者不把信號還回去， 直接出車禍.
+- 死鎖(Deadlock)跟餓死(Starvation)
