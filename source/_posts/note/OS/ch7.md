@@ -116,6 +116,38 @@ $n = 行程數量, m = 資源型態數量$
 - Need: $n \times m$矩陣，如果need[i, j] = k, 則目前$P_i$還需要k個$R_J$以完成工作。
 - $Need[i, j] = Max[i, j] - Allocation[i, j]$
 
+##### Safety Algorithm
+- Step 1: 令Work和Finish長度為m和n。
+    - Work = Available
+    - Finish[i] = False For i = 0, 1, ... (n - 1)
+- Step 2: 迭代陣列並尋找符合下列條件
+    - Finish[i] = False
+    - $Need_i$ <= Work
+    - 如果沒有任何一次迭代符合條件，則進入Step 4。
+- Step 3: 
+    - Work += $Allocation_i$
+    - Finish[i] = True
+    - 返回Step 2。
+- Step 4:
+    - 如果Finish陣列中值皆為True，則系統處於Safe state。
+
+#### Resource-Request Algorithm for Process $P_i$
+- Request = $P_i$所要求的資源向量。
+  如果$Request_i[j]$ = k，則$P_i$希望存取k個資源$R_j$
+- Step 1: 如果$Request_i <= Need_i$，繼續Step 2，否則跳出行程達到請求資源上限的例外。
+  （明明只需要5個，卻要求6個）
+- Step 2: 如果$Request_i <= Available$，繼續Step 3，否則$P_i$必須等到資源可供使用。
+- Step 3: 
+  $
+    Available = Available - Request_i \\\\
+    Allocation_i = Allocation_i + Request_i \\\\
+    Need_i = Need_i - Request_i \\\\
+  $
+  如果是Safe State => 分配資源給$P_i$。
+  否則，$P_i$必須等待，並且恢復Step 3所執行的動作。
+
 ## Deadlock Detection
+- 允許系統進入死鎖
+- 
 
 ## Recovery from Deadlock
