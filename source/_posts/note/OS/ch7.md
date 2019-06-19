@@ -119,7 +119,7 @@ $n = 行程數量, m = 資源型態數量$
 ##### Safety Algorithm
 - Step 1: 令Work和Finish長度為m和n。
     - Work = Available
-    - Finish[i] = False For i = 0, 1, ... (n - 1)
+    - Finish[i] = False For i = 0, 1, ... n
 - Step 2: 迭代陣列並尋找符合下列條件
     - Finish[i] = False
     - $Need_i$ <= Work
@@ -148,6 +148,61 @@ $n = 行程數量, m = 資源型態數量$
 
 ## Deadlock Detection
 - 允許系統進入死鎖
-- 
+- 偵測演算法
+- 恢復方案
+
+### Single Instance of Each Resource Type
+- 維護wait-for圖表
+- 定期調用環形偵測演算法， 如果偵測到環形，則存在死鎖。
+- 用來檢測環形的演算法需要$n^2$次操作，其中$n$代表節點(Process)數。
+
+#### RAG and wait-for graph
+| Resource-Allocation Graph(RAG) | wait-for graph | 
+|:------------------------------:|:--------------:|
+| ![](/images/OS/ch7/RAG.jpg)    | ![](/images/OS/ch7/wait-for-graph.jpg) |
+
+### Serveral Instances of a Resource Type
+- Available: 長度為m的Vector，如果available[i] = j，則型態i的資源有j個可以分配。
+- Allocation: $n \times m$矩陣，如果allication[i, j] = k，則目前$P_i$持有k個$R_j$資源。
+- Request = $P_i$所要求的資源向量。
+
+### Detection Algorithm
+- Step 1: 令Work和Finish長度為m和n。
+    - Work = Available
+    - For i = 0, 1, ... n, 若Allocation != 0, Finish[i] = False，否則設為True。
+- Step 2: 迭代陣列並尋找符合下列條件
+    - Finish[i] = False
+    - $Request_i$ <= Work
+    - 如果沒有任何一次迭代符合條件，則進入Step 4。
+- Step 3: 
+    - Work += $Allocation_i$
+    - Finish[i] = True
+    - 返回Step 2。
+- Step 4:
+    - 如果Finish[i]為False，若$1 <= i <= n$，則系統處於Deadlock，且$P_i$為死鎖發生行程。
+- 演算法需要$O(m \times n^2)$
+
+### Detection-Algorithm Usage
+- 何時使用以及多常使用，其根據什麼條件使用?
+    - 死鎖多常發生
+    - 有多少的行程需要Roll back
+- 如果演算法被任意調用，則RAG裡頭可能會有很多環形，
+  這樣會導致無法正確的辨認死鎖發生的數量以及確切行程。
 
 ## Recovery from Deadlock
+
+### Process Termination
+- 放棄所有死鎖的行程。
+- 一次中止一個行程，直接死鎖被消除。
+- 依據條件來進行中止
+    - 行程優先度
+    - 行程已經花費多少時間以及還需要多少時間來完成
+    - 行程已經使用的資源量
+    - 行程完成所需要的資源量
+    - 有多少行程需要被中止
+    - 行程是互動式還是批次
+
+### Resource Preemption
+- Selecting a victim(選擇受害的行程))：最小成本
+- Rollback(回滾): 回到某個安全狀態，重新啟動行程。
+- Starvation(飢餓)：很容易抓到相同的victim，導致其process一直無法執行，便形成了starvaction的狀態。
