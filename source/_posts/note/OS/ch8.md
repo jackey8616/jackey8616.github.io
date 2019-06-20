@@ -116,10 +116,78 @@ PPT寫的有夠爛，有夠難讀...
 - 主記憶體通常會有兩個分區
     - 常駐作業系統，通常會放在較低位址的記憶體區塊，帶有中斷向量。
     - 使用者行程，通常會放在比較高位址的記憶體區塊。
-    - 
+
+### Multiple-partition allocation
+- Fixed-partition: 固定分區大小，除非Process需求的大小剛好等於每分區大小的倍數，不然通常都會多給。
+- Variable-partition: 滿足Process的需求，要多少給多少。
+- Hole: 一塊連續記憶體。
+- 多個大小不同的Hole，分散在記憶體之中。
+- Process要放入記憶體中時，會被分配在大小足夠容納的Hole中。
+- 作業系統維護已分配的區域，還有尚未被分配的區域（Hole）。
 ![](/images/OS/ch8/multiple-partition-allocation.jpg)
 
+### Dynamic Storage-Allocation Problem
+如何滿足大小為n的資料進入記憶體？
+- First-fit：分配第一個大小滿足的Hole。
+- Best-fit：
+    分配第一個最小剛好滿足的Hole。
+    必須搜尋整個Hole的列表，除非列表已經依照大小排列。
+- Wrost-fit：
+    分配最大的Hole。
+    也必須搜尋整個Hole的列表。
+- 在速度以及空間利用率方面，first-fit跟best-fit好過於wrost-fit。
+
+### Fragmentation
+- External Fragmentation（外碎）：
+    剩餘的記憶體空間能夠滿足需求，但是不連續，仍舊無法使用。
+    - 解決方法：Compaction（聚集）
+        - 將空閒的Hole聚集在一起，合併成一塊大的。
+        - 只有在Relocation是動態的時候，可以在執行時間合併。
+        - 
+- Internal Fragmentation（內碎）：
+    分配到的記憶體，稍微大於需求記憶體，多餘的部份並沒有被使用。
+    Ex: 我給你4KB, 你只用3KB。
+
 ## Segmentation
+- 可以被使用者查看的記憶體管理方案。
+- 一個程序是由多個Segements所組成;
+  Segement是一個邏輯單元如：
+    - main program
+    - procedure
+    - function
+    - method
+    - object
+    - local variables, global variables
+    - common block
+    - stack
+    - symbol table
+    - arrays
+
+### User’s View of a Program
+其實我不知道這怎麼解釋，
+大概應該是使用者觀點來看一支程序的話，大概長這樣子...
+![](/images/OS/ch8/user-view-program.jpg)
+
+### Logical View of Segmentation
+然後這是實際上在記憶體空間中的分佈，
+所以可能看起來像連續，其實位址是不連續的。
+![](/images/OS/ch8/logical-view-segment.jpg)
+
+### Segmentation Architecture
+- Logical address:
+    有兩個部份，segment-number跟offset：<segment-number, offset>
+- Segment table(ST):
+    映射到二維的實體位址，每一條紀錄都有：
+    - Base: segment的起始實體位址。
+    - Limit: segment的長度。
+- Segment-table base register (STBR): 指向ST的起始實體位址。
+- Segment-table length register (STLR):Segment的數量。
+    - 如果Segment的數量小於STLR，是合法的。
+- 保護機制
+    - 1
+
+### Segmentation Hardware
+![](/images/OS/ch8/segment-arch.jpg)
 
 ## Paging
 
