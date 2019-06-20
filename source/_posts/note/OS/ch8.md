@@ -183,12 +183,32 @@ PPT寫的有夠爛，有夠難讀...
 - Segment-table base register (STBR): 指向ST的起始實體位址。
 - Segment-table length register (STLR):Segment的數量。
     - 如果Segment的數量小於STLR，是合法的。
-- 保護機制
-    - 1
+- 保護機制：每一個ST中的紀錄包含了：
+    - Validation bit（驗證位元）：如果是0的話，是不合法的Segment。
+    - 擁有Read/Write/Execute特權。
+- 保護位元跟Segment有關; 程式共享發生在Segment層級。
+- 因為Segment長度變化，記憶體分配是一個動態儲存分配問題。
 
 ### Segmentation Hardware
 ![](/images/OS/ch8/segment-arch.jpg)
 
 ## Paging
+- 行程的實體位址空間可以是不相鄰，只要可以使用，就可以分配給行程使用。
+    - 避免外碎。
+    - 避免不同大小的記憶體區塊。
+- 將實體記憶體分成固定大小的區塊稱為Frames：
+    大小必須為2的冪數，介於512bytes跟16Mbytes之間。
+- 將邏輯記憶體分為相同大小稱為Pages。
+- 持續追蹤所有空閒的Frames。
+- 要執行一個N個Page的程序，必須先找到N個空閒的Frames來分配給程序。
+- Page Table：負責將邏輯位址翻譯為實體位址。
+- Backing Store也被分做Pages。
+- 仍然會有內碎的情形。
+
+### Address Translation Scheme
+- CPU產生的地址被分為：
+    - Page number(p)：PT(Page Table)的索引，而該索引指引的Page紀錄包含了實體位址。
+    - Page offset(d):結合基址(Base)來定義送到記憶體單元的實體位址。
+![](/images/OS/ch8/page.jpg)
 
 ## Structure of the Page Table
