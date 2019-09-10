@@ -19,12 +19,13 @@ Switch# show snmp ?
 ```
 Any command with `no` to remove it.
 
-# Group
+# Setups
+## Group
 ```
 Switch(config)# snmp-server group [groupName] v3 [auth | noauth | priv] [read read-view] [write write-view] [notify notify-view] [access access-list] 
 ```
 
-# User
+## User
 ```
 authNoPriv
 Switch(config)# snmp-server user [userName] [groupName] [remote ip-address [udp-port port]] [encrypted] v3 [auth {md5 | sha}]
@@ -32,10 +33,24 @@ authPriv
 Switch(config)# snmp-server user [userName] [groupName] [remote ip-address [udp-port port]] [encrypted] v3 [auth {md5 | sha} auth-password] [priv {3des|aes 128|aes 192|aes 256|des} pass]
 ```
 
-# View
+## View
 ```
 Switch(config)# snmp-server view view-name oid-tree {included|excluded}
 ```
+
+# Traps
+先依序設定好Group跟User。  
+```
+# 設定接收Notification的Server位置
+# 如果最後面Trap Type留空，預設所有的Trap都會發送。
+Switch(config)# snmp-server host [ip or domain] version 3 priv [user name] [trap type]
+```
+
+## Debugging
+```
+Switch# debug snmp packets
+```
+
 
 # Reference
 [Cisco Wiki SNMPv3](http://docwiki.cisco.com/wiki/Snmp_v3_configurations)
