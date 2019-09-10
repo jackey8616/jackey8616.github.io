@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="sjYQopsdc56bjkx1IhUyZ57y44Yt893LOVYUBb41clg" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.1.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.1.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="不得不吐嘈對於讀論文當作作業這件事情非常的奇妙。 其實有點陰謀論覺得是助教不想看，所以丟給我們當翻譯蒟蒻…">
+<meta name="keywords" content="Paper Reading,Virtualization,Operating System">
+<meta property="og:type" content="article">
+<meta property="og:title" content="慘讀: Automatic Memory Control of Multiple Virtual Machines on a Consolidated Server">
+<meta property="og:url" content="https://www.clo5de.info/2019/04/19/paper_reading/Automatic_Memory_Control_of_Multiple_Virtual Machines_on_a_Consolidated Server/index.html">
+<meta property="og:site_name" content="clooooode">
+<meta property="og:description" content="不得不吐嘈對於讀論文當作作業這件事情非常的奇妙。 其實有點陰謀論覺得是助教不想看，所以丟給我們當翻譯蒟蒻…">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-09-10T08:20:17.938Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="慘讀: Automatic Memory Control of Multiple Virtual Machines on a Consolidated Server">
+<meta name="twitter:description" content="不得不吐嘈對於讀論文當作作業這件事情非常的奇妙。 其實有點陰謀論覺得是助教不想看，所以丟給我們當翻譯蒟蒻…">
+
+
+
+
+
+
+  <link rel="canonical" href="https://www.clo5de.info/2019/04/19/paper_reading/Automatic_Memory_Control_of_Multiple_Virtual Machines_on_a_Consolidated Server/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>慘讀: Automatic Memory Control of Multiple Virtual Machines on a Consolidated Server | clooooode</title>
+  
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-59633918-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-59633918-3');
+</script>
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">clooooode</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">a.k.a. clo5de</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />About</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags<span class="badge">39</span></a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories<span class="badge">11</span></a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives<span class="badge">40</span></a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+  
+    
+      
+    
+    <a href="https://github.com/jackey8616" class="github-corner" target="_blank" title="Follow me on GitHub" aria-label="Follow me on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#222; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg>
+    
+      </a>
+    
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.clo5de.info/2019/04/19/paper_reading/Automatic_Memory_Control_of_Multiple_Virtual Machines_on_a_Consolidated Server/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="clooooode">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars1.githubusercontent.com/u/12930377?s=400&u=3e932a7f6b769a0e1028806815067be598db3351&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="clooooode">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">慘讀: Automatic Memory Control of Multiple Virtual Machines on a Consolidated Server
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-04-19 00:17:05" itemprop="dateCreated datePublished" datetime="2019-04-19T00:17:05+00:00">2019-04-19</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-09-10 08:20:17" itemprop="dateModified" datetime="2019-09-10T08:20:17+00:00">2019-09-10</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/PaperReading/" itemprop="url" rel="index"><span itemprop="name">PaperReading</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/04/19/paper_reading/Automatic_Memory_Control_of_Multiple_Virtual Machines_on_a_Consolidated Server/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2019/04/19/paper_reading/Automatic_Memory_Control_of_Multiple_Virtual Machines_on_a_Consolidated Server/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/04/19/paper_reading/Automatic_Memory_Control_of_Multiple_Virtual Machines_on_a_Consolidated Server/" class="leancloud_visitors" data-flag-title="慘讀: Automatic Memory Control of Multiple Virtual Machines on a Consolidated Server">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Views: </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">3.9k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">4 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>不得不吐嘈對於讀論文當作作業這件事情非常的奇妙。<br>
+其實有點陰謀論覺得是助教不想看，所以丟給我們當翻譯蒟蒻…</p>
+<a id="more"></a>
+<p>就結果而言，真的是太慘了，<br>
+這篇IEEE的論文有一種滿滿的水量感XD…<br>
+最後是沒有看完，實在是沒有辦法在不太了解演算法的狀況之下去讀他的Evaluation.</p>
+<p>不過這也讓我有個啟發可以把讀過的論文大綱放上來，<br>
+留（水）個文字紀錄？…</p>
+<p>這篇在ieeexplore上面可以直接看，歡迎自行<a href="https://ieeexplore.ieee.org/document/7012089" target="_blank" rel="noopener">開門</a>…<br>
+如果有什麼覺得我譯的怪怪的，或者是你看出什麼端倪了，<br>
+拜託告訴我… XD</p>
+<h1>Information</h1>
+<ul>
+<li>Authors:
+<ul>
+<li>Wei-Zhe Zhang</li>
+<li>Hu-Cheng Xie</li>
+<li>Ching-Hsien Hsu</li>
+</ul>
+</li>
+<li>Electronic ISSN: 2168-7161</li>
+<li>DOI: 10.1109/TCC.2014.2378794</li>
+</ul>
+<h1>Introduction</h1>
+<p>虛擬化技術因為雲端運算的需求而開始出現，愈來愈多的應用程式被佈署在虛擬機器中以複用實體機。雖然這些虛擬機的資源被虛擬機監控軟體（VMM）所隔離，但是自動化控制系統能夠重新分配給整合性伺服器受到限制的資源，而這有助於減少程序運行的時間以及最大化使用資源。</p>
+<p>CPU自動化控制系統已被廣泛的研究，但是記憶體的分時卻仍然是一個很大的課題。正常來說，記憶體在一個虛擬機被啟動時，就已經被靜態的賦予，而記憶體的大小在整個虛擬機的生命周期中並不會變化。當要求的記憶體大小達到了總實體記憶體的上限，記憶體的競爭會呈指數上升，進而造成應用程式的效能下降。虛擬化平台中的實體記憶體自動控制是一個瓶頸，限制了整個系統的效率。</p>
+<p>而本論文在伺服器整合部份針對記憶體控制面對了三個新的挑戰：</p>
+<ul>
+<li>記憶體控制的工具需要更進一步的研究。為了啟動底層機制以及產生介面, Xen, VMware和KVM實作了page sharing, virtual hotplugs和balloon driver。然而，這些機制以及介面只專注個體虛擬機中核心模式（Kernel mode）重新調整記憶體的底層方法。它們不能全視野的指定特定虛擬機需要重新分配記憶體或是應該獲得多少分頁（Pages）。因此，使用者模式（User mode）下，高層（High-Level）記憶體資訊蒐集，且全視野調節虛擬機的記憶體使用量工具是必須的。</li>
+<li>無論記憶體狀態足夠與否，記憶體調度演算法必須要能夠自適應所有的使用場景。每一個虛擬機都能夠提交他們所需的記憶體（Commited Memory）在未來使用。如果所有虛擬機的commited memory小於實體機的可用記憶體，該記憶體狀態即為足夠（Sufficient）否則為不足（Insufficient）。而我們的論文會著重在記憶體足夠的狀況。</li>
+<li>前面所提到的評估與大型供應商的虛擬機整合率並不一致。雖然一些雲端計算供應商（Amazon EC2等）樂於透露單一實體機上所能佈署的虛擬機數量，我們保守估計一台伺服器包含10或12台虛擬機（注：不並沒有明確指出怎麼算出10到12台的數據，這邊的引用的兩個連結第一個是Amazon的Data Center的Size，第二個連結已經失效。第一個該論文的疑慮點。），然而，先前的實驗被限制在最多二或四台虛擬機。這些實驗採用合成且trace-driven（這是什麼，也沒有明確指出，疑慮點二。）的工作負載。因此更多的測試以及實際的基準應該在額外的虛擬機上運行。</li>
+</ul>
+<p>在這個研究中，基於Xen balloon driver設計了一個輕量的框架來控制多個虛擬機整合之下的記憶體。我們的系統實作在使用者空間（User space，不知道是什麼意思？推測是指虛擬機內部。疑慮點三。）下，不需與VMM對接。對於這個框架，論文建議一個運行在Domain0的（完全沒有解釋Domain0是什麼，推測是指虛擬機個體。疑慮點四。）全域調度（Global Scheduling）演算法。這個演算法解決一個線性方程式來獲得全域的解，且使用動態底線（Dynamic Baseline）來獲得記憶體狀態足夠或不足。實驗中採用實際基準作為工作負載，並且使用十個虛擬機。</p>
+<h1>Proposed</h1>
+<ul>
+<li>演算法output<br>
+每個os的空閒記憶體(Idle memory)，可以讓Hypervisor有效率的分配給其他相對有需要的OS使用，減少SWAP的次數。至於如何決定哪個OS是可以被分配者跟接收者透過讓每個VM都有一個稅率(tax)，這個價值會決定每一個OS的Memory要被調用都有一個成本價。最終達到每個成本價都是一樣的這樣Hypervisor就完成了最終任務不需要再調動。<br>
+Ex：VM1的committed memory有3G，閒置記憶體有1G；VM2的committed memory有30G，閒置記憶體比較有10G，雖然兩個的使用率都是2/3，但是VM1剩下可以被調用的記憶體比較少，因此調用VM1的tax會比較高(風險比較高)，因此Hypervisor會優先把VM2的shares(Resource)調動給VM1使用。</li>
+<li>Pseudo</li>
+</ul>
+<pre><code>Global-Scheduling Algorithm
+Input: N, n, N_i, A_i
+Output: Nt_i
+ 1. While true do
+ 2. A &lt;- Null
+ 3. for 1 &lt;= i &lt;= n do
+ 4.   N_i &lt;- xs_read(/local/domain/VM_i/mem/total);
+ 5.   F_i &lt;- xs_read(/local/domain/VM_i/mem/free);
+ 6.   A_i = N_i - F_i
+ 7.   AppendTo(A, A_i);
+ 8. end
+ 9. \tau &lt;- calculating_idle_memory_tax(A, f);
+10. for 1 &lt;= i &lt;= n do
+11.   Nt_i &lt;= solve_linear_equation(N_i, A_i, \tau);
+12.   xs_write(Nt_i, /local/domain/VM_i/mem/target);
+13.   xc_domain_set_pod_target(VM_i, Nt_i);
+14. end
+15. sleep(interval);
+16. end
+</code></pre>
+<ul>
+<li>
+<p>step1</p>
+<ul>
+<li>找到目前VMs的committed Memory，簡稱 $N_i$</li>
+<li>total committed Memory簡稱 N</li>
+<li>所有VMs的數量 簡稱 n</li>
+<li>每個VM的free(Idle) Memory簡稱 $F_i$</li>
+<li>每個VM的Used Memory簡稱 $A_i$</li>
+<li>計算整體會調用SWAP的臨界閥值 簡稱 $\xi_0$</li>
+</ul>
+</li>
+<li>
+<p>step2</p>
+<ul>
+<li>計算當前總體的稅率($\tau$)：<br>
+$\dfrac{\xi_0 + max(A) - \dfrac{1}{n}}{max(A_i) - avg(A_i)}$</li>
+<li>轉換稅率到每個VM成本價P<br>
+$P_i = \dfrac{1 - \tau}{N_i - \tau * A_1}$</li>
+<li>計算調動優先權<br>
+$Ni = linear\_equation(N_i , A_i , tax)$</li>
+</ul>
+</li>
+<li>
+<p>step3</p>
+<ul>
+<li>寫入到Hypervisor裡面<br>
+$xs\_write()$</li>
+<li>把分配到的新記憶體設定給每一個VM<br>
+$xc\_domain\_set\_pod\_target(VMs , N_i)$</li>
+</ul>
+</li>
+</ul>
+<h1>Experiment</h1>
+<p>證實透過Automatic Memory Control，讓Hypervisor自行調整每個VM的free memory(pages)藉由計算每個idle memory per VM的價值可以決定出先把哪個VM的資源用balloon佔住給其他VM使用，達到減少Guests OS呼叫Swap的次數，達到更快的境界。<br>
+本篇論文在最後的測試階段使用了不同的測試框架諸如Mono、DaCapo、Phoronix Test Suite等，並且於不同VM數量下做測試。</p>
+<ul>
+<li>Mono框架下，用了兩個VM(VM1、VM2)，測試已證實可以互相調整Memory的使用權，當VM1達到committed memory上限時，記憶體控制系統會自動調配VM2的閒置記憶體供VM1使用。</li>
+</ul>
+<h1>Impression</h1>
+<p>從論文的架構來看，只能說是分崩離析。<br>
+Intro的部分可以很明顯看出有一小部分的引用數據是不透明的，也無從得知其引用的用意在什麼地方<br>
+實作中演算法的描述完全就是慘不忍睹，關鍵的$\tau$參數完全沒有詳細解釋其計算公式，連其最基本的單位都沒有，讀者只能靠後面的虛擬碼以及線性方程來猜這個$\tau$參數其所代表的意義。除此之外，$\xi_0$參數也讓人覺得不明所以，該參數其中計算的公式為$\xi_0 = \dfrac{f}{N}$，而f的解釋在該文中為 <em>Reversed free memory of VMs</em> ，其意義究竟是所有VM的空閒記憶體總和的倒數還是有什麼其他意涵，我想只有原作者群才有辦法理解了。<br>
+整體來看，該論文對於讀者極度的不友善、定義不嚴謹、操作步驟不清晰，其所提供的GitHub專案連結也無明顯的維護，不知道是因為該Reporitory為Prototype的原因，或者是有其他什麼原因，作為實作參考價值來講，不甚健壯。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Paper-Reading/" rel="tag"># Paper Reading</a>
+          
+            <a href="/tags/Virtualization/" rel="tag"># Virtualization</a>
+          
+            <a href="/tags/Operating-System/" rel="tag"># Operating System</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/05/note/Unity/Unity-Communicate-With-Arduino/" rel="next" title="Unity communicate with Arduino by Serial">
+                <i class="fa fa-chevron-left"></i> Unity communicate with Arduino by Serial
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/25/note/OS/ch4/" rel="prev" title="CH4 Multithreaded Programming">
+                CH4 Multithreaded Programming <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://avatars1.githubusercontent.com/u/12930377?s=400&u=3e932a7f6b769a0e1028806815067be598db3351&v=4"
+                alt="clooooode" />
+            
+              <p class="site-author-name" itemprop="name">clooooode</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">40</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">39</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/jackey8616" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="/milestone" title="Milestone" target="_blank">Milestone</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Information</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">Proposed</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">Experiment</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">Impression</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">clooooode</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Symbols count total: </span>
+    
+    <span title="Symbols count total">104k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Reading time total &asymp;</span>
+    
+    <span title="Reading time total">1:34</span>
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Gemini</a> v6.1.0</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv" title="Total Visitors">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="site-pv" title="Total Views">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.1.0"></script>
+
+
+
+  
+
+  
+    <script id="dsq-count-scr" src="https://clooooode.disqus.com/count.js" async></script>
+  
+
+  
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'https://www.clo5de.info/2019/04/19/paper_reading/Automatic_Memory_Control_of_Multiple_Virtual Machines_on_a_Consolidated Server/';
+        this.page.identifier = '2019/04/19/paper_reading/Automatic_Memory_Control_of_Multiple_Virtual Machines_on_a_Consolidated Server/';
+        this.page.title = '慘讀: Automatic Memory Control of Multiple Virtual Machines on a Consolidated Server';
+      };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://clooooode.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        $(function () {
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          if (offsetTop <= 0) {
+            // load directly when there's no a scrollbar
+            loadComments();
+          } else {
+            $(window).on('scroll.disqus_scroll', function () {
+              var scrollTop = document.documentElement.scrollTop;
+              if (scrollTop >= offsetTop) {
+                $(window).off('.disqus_scroll');
+                loadComments();
+              }
+            });
+          }
+        });
+      
+    </script>
+  
+
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("BS1vAn9Etrkp6F0f6AwP27RR-MdYXbMMI", "vf7X6CDE2mTM3ATStyeAYT0l");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            
+            counter.save(null, {
+              success: function(counter) {
+                
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            
+              var newcounter = new Counter();
+              /* Set ACL */
+              var acl = new AV.ACL();
+              acl.setPublicReadAccess(true);
+              acl.setPublicWriteAccess(true);
+              newcounter.setACL(acl);
+              /* End Set ACL */
+              newcounter.set("title", title);
+              newcounter.set("url", url);
+              newcounter.set("time", 1);
+              newcounter.save(null, {
+                success: function(newcounter) {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+                },
+                error: function(newcounter, error) {
+                  console.log('Failed to create');
+                }
+              });
+            
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
