@@ -1,152 +1,55 @@
 <!DOCTYPE html>
-
-
-
-  
-
-
-<html class="theme-next gemini use-motion" lang="">
+<html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
-<meta name="theme-color" content="#222">
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.clo5de.info","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.17.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-
-
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-  <meta name="google-site-verification" content="sjYQopsdc56bjkx1IhUyZ57y44Yt893LOVYUBb41clg" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=6.1.0" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.1.0">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.1.0">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.1.0">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=6.1.0" color="#222">
-
-
-
-
-
-
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Gemini',
-    version: '6.1.0',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-  
-
-
-
-
-  <meta name="description" content="Problem Points: 7 pt 12345Papa brought me a packed present! let&amp;apos;s open it.Download : http://pwnable.kr/bin/flagThis is reversing task. all you need is binary Link">
-<meta name="keywords" content="CTF,PWN,pwnable.kr,Toddler&#39;s Bottle,WriteUps">
+    <meta name="description" content="ProblemPoints: 7 pt   12345Papa brought me a packed present! let&amp;#x27;s open it.Download : http:&#x2F;&#x2F;pwnable.kr&#x2F;bin&#x2F;flagThis is reversing task. all you need is binary Link">
 <meta property="og:type" content="article">
 <meta property="og:title" content="pwnable.kr(4) - flag">
 <meta property="og:url" content="https://www.clo5de.info/2018/05/24/CTF/pwnable-kr/Toddlers_Bottle/4-flag/index.html">
 <meta property="og:site_name" content="clooooode">
-<meta property="og:description" content="Problem Points: 7 pt 12345Papa brought me a packed present! let&amp;apos;s open it.Download : http://pwnable.kr/bin/flagThis is reversing task. all you need is binary Link">
-<meta property="og:locale" content="default">
+<meta property="og:description" content="ProblemPoints: 7 pt   12345Papa brought me a packed present! let&amp;#x27;s open it.Download : http:&#x2F;&#x2F;pwnable.kr&#x2F;bin&#x2F;flagThis is reversing task. all you need is binary Link">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://www.clo5de.info/images/pwnable-kr/flag.png">
-<meta property="og:updated_time" content="2019-09-10T08:20:17.934Z">
+<meta property="article:published_time" content="2018-05-24T23:46:51.000Z">
+<meta property="article:modified_time" content="2023-07-11T15:01:11.248Z">
+<meta property="article:author" content="clooooode">
+<meta property="article:tag" content="CTF">
+<meta property="article:tag" content="PWN">
+<meta property="article:tag" content="pwnable.kr">
+<meta property="article:tag" content="Toddler&#39;s Bottle">
+<meta property="article:tag" content="WriteUps">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="pwnable.kr(4) - flag">
-<meta name="twitter:description" content="Problem Points: 7 pt 12345Papa brought me a packed present! let&amp;apos;s open it.Download : http://pwnable.kr/bin/flagThis is reversing task. all you need is binary Link">
 <meta name="twitter:image" content="https://www.clo5de.info/images/pwnable-kr/flag.png">
 
 
+<link rel="canonical" href="https://www.clo5de.info/2018/05/24/CTF/pwnable-kr/Toddlers_Bottle/4-flag/">
 
 
 
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.clo5de.info/2018/05/24/CTF/pwnable-kr/Toddlers_Bottle/4-flag/","path":"2018/05/24/CTF/pwnable-kr/Toddlers_Bottle/4-flag/","title":"pwnable.kr(4) - flag"}</script>
 
-  <link rel="canonical" href="https://www.clo5de.info/2018/05/24/CTF/pwnable-kr/Toddlers_Bottle/4-flag/"/>
-
-
-
-<script type="text/javascript" id="page.configurations">
-  CONFIG.page = {
-    sidebar: "",
-  };
-</script>
-
-  <title>pwnable.kr(4) - flag | clooooode</title>
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>pwnable.kr(4) - flag | clooooode</title>
   
 
 
-
-
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-59633918-3"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-59633918-3');
-</script>
 
 
 
@@ -154,809 +57,241 @@
 
 
   <noscript>
-  <style type="text/css">
-    .use-motion .motion-element,
-    .use-motion .brand,
-    .use-motion .menu-item,
-    .sidebar-inner,
-    .use-motion .post-block,
-    .use-motion .pagination,
-    .use-motion .comments,
-    .use-motion .post-header,
-    .use-motion .post-body,
-    .use-motion .collection-title { opacity: initial; }
-
-    .use-motion .logo,
-    .use-motion .site-title,
-    .use-motion .site-subtitle {
-      opacity: initial;
-      top: initial;
-    }
-
-    .use-motion {
-      .logo-line-before i { left: initial; }
-      .logo-line-after i { right: initial; }
-    }
-  </style>
-</noscript>
-
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
 
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left page-post-detail">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">clooooode</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-      
-        <p class="site-subtitle">a.k.a. clo5de</p>
-      
-  </div>
-
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <button aria-label="Toggle navigation bar">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">clooooode</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">a.k.a. clo5de</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
   </div>
 </div>
 
 
 
 
-<nav class="site-nav">
+
+
+
+</header>
+        
   
-    <ul id="menu" class="menu">
-      
-        
-        
-        
-          
-          <li class="menu-item menu-item-home">
-    <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-about">
-    <a href="/about/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />About</a>
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-tags">
-    <a href="/tags/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags<span class="badge">39</span></a>
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-categories">
-    <a href="/categories/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories<span class="badge">11</span></a>
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-archives">
-    <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives<span class="badge">40</span></a>
-  </li>
+  <aside class="sidebar">
 
-      
-      
-    </ul>
-  
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
 
-  
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Thinking"><span class="nav-number">2.</span> <span class="nav-text">Thinking</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code"><span class="nav-number">3.</span> <span class="nav-text">Code</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution"><span class="nav-number">4.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Prepare"><span class="nav-number">5.</span> <span class="nav-text">Prepare</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Register"><span class="nav-number">5.1.</span> <span class="nav-text">Register</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UPX"><span class="nav-number">5.2.</span> <span class="nav-text">UPX</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">6.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
 
-  
-</nav>
-
-
-
-  
-
-
-
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">clooooode</p>
+  <div class="site-description" itemprop="description"></div>
 </div>
-    </header>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">41</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">41</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
 
     
-  
-  
-  
-    
-      
-    
-    <a href="https://github.com/jackey8616" class="github-corner" target="_blank" title="Follow me on GitHub" aria-label="Follow me on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#222; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg>
-    
-      </a>
-    
+  </aside>
 
 
+    </div>
 
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-            
+    <div class="main-inner post posts-expand">
 
-          
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
-    
 
   
 
-  
+
+<div class="post-block">
   
   
 
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
     <link itemprop="mainEntityOfPage" href="https://www.clo5de.info/2018/05/24/CTF/pwnable-kr/Toddlers_Bottle/4-flag/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="clooooode">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars1.githubusercontent.com/u/12930377?s=400&u=3e932a7f6b769a0e1028806815067be598db3351&v=4">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="clooooode">
+      <meta itemprop="description" content="">
     </span>
 
-    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="pwnable.kr(4) - flag | clooooode">
+      <meta itemprop="description" content="">
+    </span>
       <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          pwnable.kr(4) - flag
+        </h1>
 
-        
-        
-          <h1 class="post-title" itemprop="name headline">pwnable.kr(4) - flag
-              
-            
-          </h1>
-        
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
 
-        <div class="post-meta">
-          <span class="post-time">
+      <time title="Created: 2018-05-24 23:46:51" itemprop="dateCreated datePublished" datetime="2018-05-24T23:46:51+00:00">2018-05-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-07-11 15:01:11" itemprop="dateModified" datetime="2023-07-11T15:01:11+00:00">2023-07-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CTF/" itemprop="url" rel="index"><span itemprop="name">CTF</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CTF/pwnable-kr/" itemprop="url" rel="index"><span itemprop="name">pwnable.kr</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CTF/pwnable-kr/Toddler-s-Bottle/" itemprop="url" rel="index"><span itemprop="name">Toddler's Bottle</span></a>
+        </span>
+    </span>
 
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-05-24 23:46:51" itemprop="dateCreated datePublished" datetime="2018-05-24T23:46:51+00:00">2018-05-24</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-09-10 08:20:17" itemprop="dateModified" datetime="2019-09-10T08:20:17+00:00">2019-09-10</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CTF/" itemprop="url" rel="index"><span itemprop="name">CTF</span></a></span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CTF/pwnable-kr/" itemprop="url" rel="index"><span itemprop="name">pwnable.kr</span></a></span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CTF/pwnable-kr/Toddler-s-Bottle/" itemprop="url" rel="index"><span itemprop="name">Toddler's Bottle</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/05/24/CTF/pwnable-kr/Toddlers_Bottle/4-flag/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/05/24/CTF/pwnable-kr/Toddlers_Bottle/4-flag/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/05/24/CTF/pwnable-kr/Toddlers_Bottle/4-flag/" class="leancloud_visitors" data-flag-title="pwnable.kr(4) - flag">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Views: </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">1.8k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">2 mins.</span>
-              
-            </div>
-          
-
-          
+  
+</div>
 
         </div>
       </header>
-    
 
     
     
     
-    <div class="post-body" itemprop="articleBody">
+    <div class="post-body" itemprop="articleBody"><p><img src="/images/pwnable-kr/flag.png"></p>
+<h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><p>Points: 7 pt  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Papa brought me a packed present! let&#x27;s open it.</span><br><span class="line"></span><br><span class="line">Download : http://pwnable.kr/bin/flag</span><br><span class="line"></span><br><span class="line">This is reversing task. all you need is binary</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="http://pwnable.kr/play.php">Link</a></p>
+<span id="more"></span>
 
-      
-      
-
-      
-        <p><img src="/images/pwnable-kr/flag.png" alt=""></p>
-<h2 id="problem"><a class="header-anchor" href="#problem"></a>Problem</h2>
-<p>Points: 7 pt</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Papa brought me a packed present! let&apos;s open it.</span><br><span class="line"></span><br><span class="line">Download : http://pwnable.kr/bin/flag</span><br><span class="line"></span><br><span class="line">This is reversing task. all you need is binary</span><br></pre></td></tr></table></figure>
-<p><a href="http://pwnable.kr/play.php" target="_blank" rel="noopener">Link</a></p>
-<a id="more"></a>
-<h2 id="thinking"><a class="header-anchor" href="#thinking"></a>Thinking</h2>
-<p>程式沒有辦法直接使用<code>objdump</code>或者是<code>gdb</code>來反組譯。<br>
-透過 <code>hexdump -C &lt;filename&gt; | grep -C 1 UPX</code> 檢查是不是有加殼。</p>
+<h2 id="Thinking"><a href="#Thinking" class="headerlink" title="Thinking"></a>Thinking</h2><p>程式沒有辦法直接使用<code>objdump</code>或者是<code>gdb</code>來反組譯。<br>透過 <code>hexdump -C &lt;filename&gt; | grep -C 1 UPX</code> 檢查是不是有加殼。</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">000000a0  00 00 00 00 00 00 00 00  00 00 20 00 00 00 00 00  |.......... .....|</span><br><span class="line">000000b0  <span class="built_in">fc</span> ac e0 a1 55 50 58 21  1c 08 0d 16 00 00 00 00  |....UPX!........|</span><br><span class="line">000000c0  21 7c 0d 00 21 7c 0d 00  90 01 00 00 92 00 00 00  |!|..!|..........|</span><br></pre></td></tr></table></figure>
-<p>結果顯示是有經過<code>UPX</code>加殼，於是<code>upx -d &lt;filename&gt;</code>脫殼。<br>
-脫殼之後就可以用<code>gdb</code>或者是<code>objdump</code>反組譯。</p>
-<h2 id="code"><a class="header-anchor" href="#code"></a>Code</h2>
-<figure class="highlight x86asm"><figcaption><span>main</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0x0000000000401164</span> &lt;+<span class="number">0</span>&gt;:     <span class="keyword">push</span>   <span class="built_in">rbp</span></span><br><span class="line"><span class="number">0x0000000000401165</span> &lt;+<span class="number">1</span>&gt;:     <span class="keyword">mov</span>    <span class="built_in">rbp</span>,<span class="built_in">rsp</span></span><br><span class="line"><span class="number">0x0000000000401168</span> &lt;+<span class="number">4</span>&gt;:     <span class="keyword">sub</span>    <span class="built_in">rsp</span>,<span class="number">0x10</span></span><br><span class="line"><span class="number">0x000000000040116c</span> &lt;+<span class="number">8</span>&gt;:     <span class="keyword">mov</span>    <span class="built_in">edi</span>,<span class="number">0x496658</span></span><br><span class="line"><span class="number">0x0000000000401171</span> &lt;+<span class="number">13</span>&gt;:    <span class="keyword">call</span>   <span class="number">0x402080</span> &lt;puts&gt;</span><br><span class="line"><span class="number">0x0000000000401176</span> &lt;+<span class="number">18</span>&gt;:    <span class="keyword">mov</span>    <span class="built_in">edi</span>,<span class="number">0x64</span></span><br><span class="line"><span class="number">0x000000000040117b</span> &lt;+<span class="number">23</span>&gt;:    <span class="keyword">call</span>   <span class="number">0x4099d0</span> &lt;malloc&gt;</span><br><span class="line"><span class="number">0x0000000000401180</span> &lt;+<span class="number">28</span>&gt;:    <span class="keyword">mov</span>    <span class="built_in">QWORD</span> <span class="built_in">PTR</span> [<span class="built_in">rbp</span>-<span class="number">0x8</span>],<span class="built_in">rax</span></span><br><span class="line"><span class="number">0x0000000000401184</span> &lt;+<span class="number">32</span>&gt;:    <span class="keyword">mov</span>    <span class="built_in">rdx</span>,<span class="built_in">QWORD</span> <span class="built_in">PTR</span> [<span class="built_in">rip</span>+<span class="number">0x2c0ee5</span>]        # <span class="number">0x6c2070</span> &lt;flag&gt;</span><br><span class="line"><span class="number">0x000000000040118b</span> &lt;+<span class="number">39</span>&gt;:    <span class="keyword">mov</span>    <span class="built_in">rax</span>,<span class="built_in">QWORD</span> <span class="built_in">PTR</span> [<span class="built_in">rbp</span>-<span class="number">0x8</span>]</span><br><span class="line"><span class="number">0x000000000040118f</span> &lt;+<span class="number">43</span>&gt;:    <span class="keyword">mov</span>    <span class="built_in">rsi</span>,<span class="built_in">rdx</span></span><br><span class="line"><span class="number">0x0000000000401192</span> &lt;+<span class="number">46</span>&gt;:    <span class="keyword">mov</span>    <span class="built_in">rdi</span>,<span class="built_in">rax</span></span><br><span class="line"><span class="number">0x0000000000401195</span> &lt;+<span class="number">49</span>&gt;:    <span class="keyword">call</span>   <span class="number">0x400320</span></span><br><span class="line"><span class="number">0x000000000040119a</span> &lt;+<span class="number">54</span>&gt;:    <span class="keyword">mov</span>    <span class="built_in">eax</span>,<span class="number">0x0</span></span><br><span class="line"><span class="number">0x000000000040119f</span> &lt;+<span class="number">59</span>&gt;:    <span class="keyword">leave</span>  </span><br><span class="line"><span class="number">0x00000000004011a0</span> &lt;+<span class="number">60</span>&gt;:    <span class="keyword">ret</span>    </span><br></pre></td></tr></table></figure>
-<h2 id="solution"><a class="header-anchor" href="#solution"></a>Solution</h2>
-<p>程式當中+32特別強調了flag。<br>
-直接單步執行到+39行。<br>
-接著查看<code>rdx</code>裏面放了什麼。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gdb-peda$ x /s <span class="variable">$rdx</span></span><br><span class="line">0x496628:       <span class="string">"UPX...? sounds like a delivery service :)"</span></span><br><span class="line">gdb-peda$</span><br></pre></td></tr></table></figure>
-<p>GET flag!</p>
-<h2 id="prepare"><a class="header-anchor" href="#prepare"></a>Prepare</h2>
-<h3 id="register"><a class="header-anchor" href="#register"></a>Register</h3>
-<table>
+<p>結果顯示是有經過<code>UPX</code>加殼，於是<code>upx -d &lt;filename&gt;</code>脫殼。<br>脫殼之後就可以用<code>gdb</code>或者是<code>objdump</code>反組譯。  </p>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight x86asm"><figcaption><span>main</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0x0000000000401164</span> &lt;+<span class="number">0</span>&gt;:     <span class="keyword">push</span>   <span class="built_in">rbp</span></span><br><span class="line"><span class="number">0x0000000000401165</span> &lt;+<span class="number">1</span>&gt;:     <span class="keyword">mov</span>    <span class="built_in">rbp</span>,<span class="built_in">rsp</span></span><br><span class="line"><span class="number">0x0000000000401168</span> &lt;+<span class="number">4</span>&gt;:     <span class="keyword">sub</span>    <span class="built_in">rsp</span>,<span class="number">0x10</span></span><br><span class="line"><span class="number">0x000000000040116c</span> &lt;+<span class="number">8</span>&gt;:     <span class="keyword">mov</span>    <span class="built_in">edi</span>,<span class="number">0x496658</span></span><br><span class="line"><span class="number">0x0000000000401171</span> &lt;+<span class="number">13</span>&gt;:    <span class="keyword">call</span>   <span class="number">0x402080</span> &lt;puts&gt;</span><br><span class="line"><span class="number">0x0000000000401176</span> &lt;+<span class="number">18</span>&gt;:    <span class="keyword">mov</span>    <span class="built_in">edi</span>,<span class="number">0x64</span></span><br><span class="line"><span class="number">0x000000000040117b</span> &lt;+<span class="number">23</span>&gt;:    <span class="keyword">call</span>   <span class="number">0x4099d0</span> &lt;malloc&gt;</span><br><span class="line"><span class="number">0x0000000000401180</span> &lt;+<span class="number">28</span>&gt;:    <span class="keyword">mov</span>    <span class="built_in">QWORD</span> <span class="built_in">PTR</span> [<span class="built_in">rbp</span>-<span class="number">0x8</span>],<span class="built_in">rax</span></span><br><span class="line"><span class="number">0x0000000000401184</span> &lt;+<span class="number">32</span>&gt;:    <span class="keyword">mov</span>    <span class="built_in">rdx</span>,<span class="built_in">QWORD</span> <span class="built_in">PTR</span> [<span class="built_in">rip</span>+<span class="number">0x2c0ee5</span>]        # <span class="number">0x6c2070</span> &lt;flag&gt;</span><br><span class="line"><span class="number">0x000000000040118b</span> &lt;+<span class="number">39</span>&gt;:    <span class="keyword">mov</span>    <span class="built_in">rax</span>,<span class="built_in">QWORD</span> <span class="built_in">PTR</span> [<span class="built_in">rbp</span>-<span class="number">0x8</span>]</span><br><span class="line"><span class="number">0x000000000040118f</span> &lt;+<span class="number">43</span>&gt;:    <span class="keyword">mov</span>    <span class="built_in">rsi</span>,<span class="built_in">rdx</span></span><br><span class="line"><span class="number">0x0000000000401192</span> &lt;+<span class="number">46</span>&gt;:    <span class="keyword">mov</span>    <span class="built_in">rdi</span>,<span class="built_in">rax</span></span><br><span class="line"><span class="number">0x0000000000401195</span> &lt;+<span class="number">49</span>&gt;:    <span class="keyword">call</span>   <span class="number">0x400320</span></span><br><span class="line"><span class="number">0x000000000040119a</span> &lt;+<span class="number">54</span>&gt;:    <span class="keyword">mov</span>    <span class="built_in">eax</span>,<span class="number">0x0</span></span><br><span class="line"><span class="number">0x000000000040119f</span> &lt;+<span class="number">59</span>&gt;:    <span class="keyword">leave</span>  </span><br><span class="line"><span class="number">0x00000000004011a0</span> &lt;+<span class="number">60</span>&gt;:    <span class="keyword">ret</span>    </span><br></pre></td></tr></table></figure>
+
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>程式當中+32特別強調了flag。<br>直接單步執行到+39行。<br>接著查看<code>rdx</code>裏面放了什麼。  </p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gdb-peda$ x /s <span class="variable">$rdx</span></span><br><span class="line">0x496628:       <span class="string">&quot;UPX...? sounds like a delivery service :)&quot;</span></span><br><span class="line">gdb-peda$ </span><br></pre></td></tr></table></figure>
+
+<p>GET flag!  </p>
+<h2 id="Prepare"><a href="#Prepare" class="headerlink" title="Prepare"></a>Prepare</h2><h3 id="Register"><a href="#Register" class="headerlink" title="Register"></a>Register</h3><table>
 <thead>
 <tr>
-<th style="text-align:center">Name</th>
-<th style="text-align:center">16bit</th>
-<th style="text-align:center">32bit</th>
-<th style="text-align:center">64bit</th>
+<th align="center">Name</th>
+<th align="center">16bit</th>
+<th align="center">32bit</th>
+<th align="center">64bit</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">Data</td>
-<td style="text-align:center">DX</td>
-<td style="text-align:center">EDX</td>
-<td style="text-align:center">RDX</td>
+<tbody><tr>
+<td align="center">Data</td>
+<td align="center">DX</td>
+<td align="center">EDX</td>
+<td align="center">RDX</td>
 </tr>
-</tbody>
-</table>
-<h3 id="upx"><a class="header-anchor" href="#upx"></a>UPX</h3>
-<h2 id="reference"><a class="header-anchor" href="#reference"></a>Reference</h2>
-<p><a href="https://www.tutorialspoint.com/assembly_programming/assembly_registers.htm" target="_blank" rel="noopener">Assembly - Registers</a></p>
+</tbody></table>
+<h3 id="UPX"><a href="#UPX" class="headerlink" title="UPX"></a>UPX</h3><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a target="_blank" rel="noopener" href="https://www.tutorialspoint.com/assembly_programming/assembly_registers.htm">Assembly - Registers</a></p>
 
-      
     </div>
 
     
-
     
-    
-    
-
-    
-
-    
-
     
 
     <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/CTF/" rel="tag"># CTF</a>
-          
-            <a href="/tags/PWN/" rel="tag"># PWN</a>
-          
-            <a href="/tags/pwnable-kr/" rel="tag"># pwnable.kr</a>
-          
-            <a href="/tags/Toddler-s-Bottle/" rel="tag"># Toddler's Bottle</a>
-          
-            <a href="/tags/WriteUps/" rel="tag"># WriteUps</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2018/05/24/CTF/x86-64-Register/" rel="next" title="x86_64 Register">
-                <i class="fa fa-chevron-left"></i> x86_64 Register
-              </a>
-            
+          <div class="post-tags">
+              <a href="/tags/CTF/" rel="tag"># CTF</a>
+              <a href="/tags/PWN/" rel="tag"># PWN</a>
+              <a href="/tags/pwnable-kr/" rel="tag"># pwnable.kr</a>
+              <a href="/tags/Toddler-s-Bottle/" rel="tag"># Toddler's Bottle</a>
+              <a href="/tags/WriteUps/" rel="tag"># WriteUps</a>
           </div>
 
-          <span class="post-nav-divider"></span>
+        
 
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/05/25/CTF/pwnable-kr/Toddlers_Bottle/5-passcode/" rel="prev" title="pwnable.kr(5) - passcode">
-                pwnable.kr(5) - passcode <i class="fa fa-chevron-right"></i>
-              </a>
-            
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2018/05/24/CTF/x86-64-Register/" rel="prev" title="x86_64 Register">
+                  <i class="fa fa-chevron-left"></i> x86_64 Register
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2018/05/25/CTF/pwnable-kr/Toddlers_Bottle/5-passcode/" rel="next" title="pwnable.kr(5) - passcode">
+                  pwnable.kr(5) - passcode <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
           </div>
-        </div>
-      
-
-      
-      
     </footer>
-  </div>
-  
-  
-  
   </article>
-
-
-
-    <div class="post-spread">
-      
-    </div>
-  </div>
-
-
-          </div>
-          
-
-  
-    <div class="comments" id="comments">
-      <div id="disqus_thread">
-        <noscript>
-          Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-        </noscript>
-      </div>
-    </div>
-
-  
-
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
-
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <img class="site-author-image" itemprop="image"
-                src="https://avatars1.githubusercontent.com/u/12930377?s=400&u=3e932a7f6b769a0e1028806815067be598db3351&v=4"
-                alt="clooooode" />
-            
-              <p class="site-author-name" itemprop="name">clooooode</p>
-              <p class="site-description motion-element" itemprop="description"></p>
-          </div>
-
-          
-            <nav class="site-state motion-element">
-              
-                <div class="site-state-item site-state-posts">
-                
-                  <a href="/archives/">
-                
-                    <span class="site-state-item-count">40</span>
-                    <span class="site-state-item-name">posts</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-categories">
-                  <a href="/categories/index.html">
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">11</span>
-                    <span class="site-state-item-name">categories</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-tags">
-                  <a href="/tags/index.html">
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">39</span>
-                    <span class="site-state-item-name">tags</span>
-                  </a>
-                </div>
-              
-            </nav>
-          
-
-          
-
-          
-            <div class="links-of-author motion-element">
-              
-                <span class="links-of-author-item">
-                  <a href="https://github.com/jackey8616" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
-                  
-                </span>
-              
-            </div>
-          
-
-          
-          
-
-          
-          
-            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
-              <div class="links-of-blogroll-title">
-                <i class="fa  fa-fw fa-link"></i>
-                Links
-              </div>
-              <ul class="links-of-blogroll-list">
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="/milestone" title="Milestone" target="_blank">Milestone</a>
-                  </li>
-                
-              </ul>
-            </div>
-          
-
-          
-            
-          
-          
-
-        </div>
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#thinking"><span class="nav-number">2.</span> <span class="nav-text">Thinking</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#code"><span class="nav-number">3.</span> <span class="nav-text">Code</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#solution"><span class="nav-number">4.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#prepare"><span class="nav-number">5.</span> <span class="nav-text">Prepare</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#register"><span class="nav-number">5.1.</span> <span class="nav-text">Register</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#upx"><span class="nav-number">5.2.</span> <span class="nav-text">UPX</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reference"><span class="nav-number">6.</span> <span class="nav-text">Reference</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
-
-      
-        <div class="back-to-top">
-          <i class="fa fa-arrow-up"></i>
-          
-            <span id="scrollpercent"><span>0</span>%</span>
-          
-        </div>
-      
-
-    </div>
-  </aside>
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love" id="animate">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">clooooode</span>
-
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-    
-      <span class="post-meta-item-text">Symbols count total: </span>
-    
-    <span title="Symbols count total">104k</span>
-  
-
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-coffee"></i>
-    </span>
-    
-      <span class="post-meta-item-text">Reading time total &asymp;</span>
-    
-    <span title="Reading time total">1:34</span>
-  
-</div>
-
-
-
-
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.0</div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Gemini</a> v6.1.0</div>
-
-
-
-
-        
-<div class="busuanzi-count">
-  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-  
-    <span class="site-uv" title="Total Visitors">
-      <i class="fa fa-user"></i>
-      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
-    </span>
-  
-
-  
-    <span class="site-pv" title="Total Views">
-      <i class="fa fa-eye"></i>
-      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
-    </span>
-  
 </div>
 
 
@@ -964,156 +299,48 @@
 
 
 
+</div>
+  </main>
 
+  <footer class="footer">
+    <div class="footer-inner">
 
-
-        
-      </div>
-    </footer>
-
-    
-
-    
-
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">clooooode</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
   </div>
 
+    </div>
+  </footer>
+
   
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
 
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
 
 
   
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
 
   
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=6.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=6.1.0"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=6.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.1.0"></script>
-
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.1.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=6.1.0"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.1.0"></script>
-
-
-
-  
-
-  
-    <script id="dsq-count-scr" src="https://clooooode.disqus.com/count.js" async></script>
-  
-
-  
-    <script type="text/javascript">
-      var disqus_config = function () {
-        this.page.url = 'https://www.clo5de.info/2018/05/24/CTF/pwnable-kr/Toddlers_Bottle/4-flag/';
-        this.page.identifier = '2018/05/24/CTF/pwnable-kr/Toddlers_Bottle/4-flag/';
-        this.page.title = 'pwnable.kr(4) - flag';
-      };
-      function loadComments () {
-        var d = document, s = d.createElement('script');
-        s.src = 'https://clooooode.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', '' + +new Date());
-        (d.head || d.body).appendChild(s);
-      }
-      
-        $(function () {
-          var offsetTop = $('#comments').offset().top - $(window).height();
-          if (offsetTop <= 0) {
-            // load directly when there's no a scrollbar
-            loadComments();
-          } else {
-            $(window).on('scroll.disqus_scroll', function () {
-              var scrollTop = document.documentElement.scrollTop;
-              if (scrollTop >= offsetTop) {
-                $(window).off('.disqus_scroll');
-                loadComments();
-              }
-            });
-          }
-        });
-      
-    </script>
-  
-
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-
 
 
 
@@ -1125,146 +352,6 @@
 
 
 
-
-  
-
-  
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
-  <script>AV.initialize("BS1vAn9Etrkp6F0f6AwP27RR-MdYXbMMI", "vf7X6CDE2mTM3ATStyeAYT0l");</script>
-  <script>
-    function showTime(Counter) {
-      var query = new AV.Query(Counter);
-      var entries = [];
-      var $visitors = $(".leancloud_visitors");
-
-      $visitors.each(function () {
-        entries.push( $(this).attr("id").trim() );
-      });
-
-      query.containedIn('url', entries);
-      query.find()
-        .done(function (results) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.get('url');
-            var time = item.get('time');
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for(var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if( countSpan.text() == '') {
-              countSpan.text(0);
-            }
-          }
-        })
-        .fail(function (object, error) {
-          console.log("Error: " + error.code + " " + error.message);
-        });
-    }
-
-    function addCount(Counter) {
-      var $visitors = $(".leancloud_visitors");
-      var url = $visitors.attr('id').trim();
-      var title = $visitors.attr('data-flag-title').trim();
-      var query = new AV.Query(Counter);
-
-      query.equalTo("url", url);
-      query.find({
-        success: function(results) {
-          if (results.length > 0) {
-            var counter = results[0];
-            counter.fetchWhenSave(true);
-            counter.increment("time");
-            
-            counter.save(null, {
-              success: function(counter) {
-                
-                  var $element = $(document.getElementById(url));
-                  $element.find('.leancloud-visitors-count').text(counter.get('time'));
-                
-              },
-              error: function(counter, error) {
-                console.log('Failed to save Visitor num, with error message: ' + error.message);
-              }
-            });
-          } else {
-            
-              var newcounter = new Counter();
-              /* Set ACL */
-              var acl = new AV.ACL();
-              acl.setPublicReadAccess(true);
-              acl.setPublicWriteAccess(true);
-              newcounter.setACL(acl);
-              /* End Set ACL */
-              newcounter.set("title", title);
-              newcounter.set("url", url);
-              newcounter.set("time", 1);
-              newcounter.save(null, {
-                success: function(newcounter) {
-                  var $element = $(document.getElementById(url));
-                  $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-                },
-                error: function(newcounter, error) {
-                  console.log('Failed to create');
-                }
-              });
-            
-          }
-        },
-        error: function(error) {
-          console.log('Error:' + error.code + " " + error.message);
-        }
-      });
-    }
-
-    $(function() {
-      var Counter = AV.Object.extend("Counter");
-      if ($('.leancloud_visitors').length == 1) {
-        addCount(Counter);
-      } else if ($('.post-title-link').length > 1) {
-        showTime(Counter);
-      }
-    });
-  </script>
-
-
-
-  
-
-  
-
-  
-  
-
-  
-  
-
-  
-
-
-  
-  
-
-  
-
-  
-
-  
-
-  
-
-  
 
 </body>
 </html>

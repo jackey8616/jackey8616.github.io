@@ -1,116 +1,31 @@
 <!DOCTYPE html>
-
-
-
-  
-
-
-<html class="theme-next gemini use-motion" lang="">
+<html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
-<meta name="theme-color" content="#222">
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.clo5de.info","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.17.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-
-
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-  <meta name="google-site-verification" content="sjYQopsdc56bjkx1IhUyZ57y44Yt893LOVYUBb41clg" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=6.1.0" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.1.0">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.1.0">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.1.0">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=6.1.0" color="#222">
-
-
-
-
-
-
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Gemini',
-    version: '6.1.0',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-  
-
-
-
-
-  <meta name="description" content="濟世第七章">
-<meta name="keywords" content="Note,Operating System">
+    <meta name="description" content="濟世第七章">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CH7 Deadlocks">
 <meta property="og:url" content="https://www.clo5de.info/2019/06/15/note/OS/ch7/index.html">
 <meta property="og:site_name" content="clooooode">
 <meta property="og:description" content="濟世第七章">
-<meta property="og:locale" content="default">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://www.clo5de.info/images/OS/ch7/process.jpg">
 <meta property="og:image" content="https://www.clo5de.info/images/OS/ch7/resource.jpg">
 <meta property="og:image" content="https://www.clo5de.info/images/OS/ch7/request.jpg">
@@ -120,41 +35,26 @@
 <meta property="og:image" content="https://www.clo5de.info/images/OS/ch7/circle-deadlock.jpg">
 <meta property="og:image" content="https://www.clo5de.info/images/OS/ch7/RAG.jpg">
 <meta property="og:image" content="https://www.clo5de.info/images/OS/ch7/wait-for-graph.jpg">
-<meta property="og:updated_time" content="2019-09-10T08:20:17.938Z">
+<meta property="article:published_time" content="2019-06-15T14:15:21.000Z">
+<meta property="article:modified_time" content="2023-07-11T15:01:11.248Z">
+<meta property="article:author" content="clooooode">
+<meta property="article:tag" content="Note">
+<meta property="article:tag" content="Operating System">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CH7 Deadlocks">
-<meta name="twitter:description" content="濟世第七章">
 <meta name="twitter:image" content="https://www.clo5de.info/images/OS/ch7/process.jpg">
 
 
+<link rel="canonical" href="https://www.clo5de.info/2019/06/15/note/OS/ch7/">
 
 
 
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.clo5de.info/2019/06/15/note/OS/ch7/","path":"2019/06/15/note/OS/ch7/","title":"CH7 Deadlocks"}</script>
 
-  <link rel="canonical" href="https://www.clo5de.info/2019/06/15/note/OS/ch7/"/>
-
-
-
-<script type="text/javascript" id="page.configurations">
-  CONFIG.page = {
-    sidebar: "",
-  };
-</script>
-
-  <title>CH7 Deadlocks | clooooode</title>
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>CH7 Deadlocks | clooooode</title>
   
 
 
-
-
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-59633918-3"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-59633918-3');
-</script>
 
 
 
@@ -162,599 +62,363 @@
 
 
   <noscript>
-  <style type="text/css">
-    .use-motion .motion-element,
-    .use-motion .brand,
-    .use-motion .menu-item,
-    .sidebar-inner,
-    .use-motion .post-block,
-    .use-motion .pagination,
-    .use-motion .comments,
-    .use-motion .post-header,
-    .use-motion .post-body,
-    .use-motion .collection-title { opacity: initial; }
-
-    .use-motion .logo,
-    .use-motion .site-title,
-    .use-motion .site-subtitle {
-      opacity: initial;
-      top: initial;
-    }
-
-    .use-motion {
-      .logo-line-before i { left: initial; }
-      .logo-line-after i { right: initial; }
-    }
-  </style>
-</noscript>
-
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
 
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left page-post-detail">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">clooooode</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-      
-        <p class="site-subtitle">a.k.a. clo5de</p>
-      
-  </div>
-
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <button aria-label="Toggle navigation bar">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">clooooode</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">a.k.a. clo5de</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
   </div>
 </div>
 
 
 
 
-<nav class="site-nav">
+
+
+
+</header>
+        
   
-    <ul id="menu" class="menu">
-      
-        
-        
-        
-          
-          <li class="menu-item menu-item-home">
-    <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-about">
-    <a href="/about/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />About</a>
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-tags">
-    <a href="/tags/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags<span class="badge">39</span></a>
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-categories">
-    <a href="/categories/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories<span class="badge">11</span></a>
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-archives">
-    <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives<span class="badge">40</span></a>
-  </li>
+  <aside class="sidebar">
 
-      
-      
-    </ul>
-  
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
 
-  
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Deadlock-Characterization"><span class="nav-number">1.</span> <span class="nav-text">Deadlock Characterization</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Resource-Allocation-Graph"><span class="nav-number">1.1.</span> <span class="nav-text">Resource-Allocation Graph</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Example-without-Deadlock"><span class="nav-number">1.2.</span> <span class="nav-text">Example without Deadlock</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Circle-without-Deadlock"><span class="nav-number">1.3.</span> <span class="nav-text">Circle without Deadlock</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Circle-with-Deadlock"><span class="nav-number">1.4.</span> <span class="nav-text">Circle with Deadlock</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Basic-Facts"><span class="nav-number">1.5.</span> <span class="nav-text">Basic Facts</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Methods-for-Handling-Deadlocks"><span class="nav-number">2.</span> <span class="nav-text">Methods for Handling Deadlocks</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Deadlock-Prevention"><span class="nav-number">3.</span> <span class="nav-text">Deadlock Prevention</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Deadlock-Avoidance"><span class="nav-number">4.</span> <span class="nav-text">Deadlock Avoidance</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Safe-state"><span class="nav-number">4.1.</span> <span class="nav-text">Safe state</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Basic-Facts-1"><span class="nav-number">4.2.</span> <span class="nav-text">Basic Facts</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Avoidance-algorithms"><span class="nav-number">4.3.</span> <span class="nav-text">Avoidance algorithms</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Resource-Allocation-Graph-Scheme"><span class="nav-number">4.3.1.</span> <span class="nav-text">Resource-Allocation Graph Scheme</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Resource-Allocation-Graph-Algorithm"><span class="nav-number">4.3.1.1.</span> <span class="nav-text">Resource-Allocation Graph Algorithm</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Banker%E2%80%99s-Algorithm"><span class="nav-number">4.3.2.</span> <span class="nav-text">Banker’s Algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Data-Structures"><span class="nav-number">4.3.2.1.</span> <span class="nav-text">Data Structures</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Safety-Algorithm"><span class="nav-number">4.3.2.2.</span> <span class="nav-text">Safety Algorithm</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Resource-Request-Algorithm-for-Process-P-i"><span class="nav-number">4.3.3.</span> <span class="nav-text">Resource-Request Algorithm for Process $P_i$</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Deadlock-Detection"><span class="nav-number">5.</span> <span class="nav-text">Deadlock Detection</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Single-Instance-of-Each-Resource-Type"><span class="nav-number">5.1.</span> <span class="nav-text">Single Instance of Each Resource Type</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#RAG-and-wait-for-graph"><span class="nav-number">5.1.1.</span> <span class="nav-text">RAG and wait-for graph</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Serveral-Instances-of-a-Resource-Type"><span class="nav-number">5.2.</span> <span class="nav-text">Serveral Instances of a Resource Type</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Detection-Algorithm"><span class="nav-number">5.3.</span> <span class="nav-text">Detection Algorithm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Detection-Algorithm-Usage"><span class="nav-number">5.4.</span> <span class="nav-text">Detection-Algorithm Usage</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Recovery-from-Deadlock"><span class="nav-number">6.</span> <span class="nav-text">Recovery from Deadlock</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Process-Termination"><span class="nav-number">6.1.</span> <span class="nav-text">Process Termination</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Resource-Preemption"><span class="nav-number">6.2.</span> <span class="nav-text">Resource Preemption</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
 
-  
-</nav>
-
-
-
-  
-
-
-
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">clooooode</p>
+  <div class="site-description" itemprop="description"></div>
 </div>
-    </header>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">41</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">41</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
 
     
-  
-  
-  
-    
-      
-    
-    <a href="https://github.com/jackey8616" class="github-corner" target="_blank" title="Follow me on GitHub" aria-label="Follow me on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#222; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg>
-    
-      </a>
-    
+  </aside>
 
 
+    </div>
 
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-            
+    <div class="main-inner post posts-expand">
 
-          
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
-    
 
   
 
-  
+
+<div class="post-block">
   
   
 
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
     <link itemprop="mainEntityOfPage" href="https://www.clo5de.info/2019/06/15/note/OS/ch7/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="clooooode">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars1.githubusercontent.com/u/12930377?s=400&u=3e932a7f6b769a0e1028806815067be598db3351&v=4">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="clooooode">
+      <meta itemprop="description" content="">
     </span>
 
-    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="CH7 Deadlocks | clooooode">
+      <meta itemprop="description" content="">
+    </span>
       <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          CH7 Deadlocks
+        </h1>
 
-        
-        
-          <h1 class="post-title" itemprop="name headline">CH7 Deadlocks
-              
-            
-          </h1>
-        
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
 
-        <div class="post-meta">
-          <span class="post-time">
+      <time title="Created: 2019-06-15 14:15:21" itemprop="dateCreated datePublished" datetime="2019-06-15T14:15:21+00:00">2019-06-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-07-11 15:01:11" itemprop="dateModified" datetime="2023-07-11T15:01:11+00:00">2023-07-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Note/" itemprop="url" rel="index"><span itemprop="name">Note</span></a>
+        </span>
+    </span>
 
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-06-15 14:15:21" itemprop="dateCreated datePublished" datetime="2019-06-15T14:15:21+00:00">2019-06-15</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-09-10 08:20:17" itemprop="dateModified" datetime="2019-09-10T08:20:17+00:00">2019-09-10</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Note/" itemprop="url" rel="index"><span itemprop="name">Note</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/06/15/note/OS/ch7/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2019/06/15/note/OS/ch7/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2019/06/15/note/OS/ch7/" class="leancloud_visitors" data-flag-title="CH7 Deadlocks">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Views: </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">4.6k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">4 mins.</span>
-              
-            </div>
-          
-
-          
+  
+</div>
 
         </div>
       </header>
-    
 
     
     
     
-    <div class="post-body" itemprop="articleBody">
+    <div class="post-body" itemprop="articleBody"><p>濟世第七章</p>
+<span id="more"></span>
 
-      
-      
-
-      
-        <p>濟世第七章</p>
-<a id="more"></a>
-<h2 id="deadlock-characterization"><a class="header-anchor" href="#deadlock-characterization"></a>Deadlock Characterization</h2>
-<p>如果滿足以下四個條件，就有可能出現死鎖：</p>
+<h2 id="Deadlock-Characterization"><a href="#Deadlock-Characterization" class="headerlink" title="Deadlock Characterization"></a>Deadlock Characterization</h2><p>如果滿足以下四個條件，就有可能出現死鎖：</p>
 <ul>
 <li>Mutual exclusion(互斥)：同時只有一個行程可以使用資源。</li>
 <li>Hold and wait:持有一個資源的行程在等待另外一個行程所擁有的資源。</li>
 <li>No preemption(非搶佔式、不能插隊):持有資源的行程只能自願釋放所持有的資源。</li>
 <li>Circular wait(循環等待): $P_0 -&gt; P_1 -&gt; P_2 -&gt; P_0$</li>
 </ul>
-<h3 id="resource-allocation-graph"><a class="header-anchor" href="#resource-allocation-graph"></a>Resource-Allocation Graph</h3>
-<table>
+<h3 id="Resource-Allocation-Graph"><a href="#Resource-Allocation-Graph" class="headerlink" title="Resource-Allocation Graph"></a>Resource-Allocation Graph</h3><table>
 <thead>
 <tr>
-<th style="text-align:center">Process</th>
-<th style="text-align:center">Resource</th>
-<th style="text-align:center">Request resources</th>
-<th style="text-align:center">Holding resources</th>
+<th align="center">Process</th>
+<th align="center">Resource</th>
+<th align="center">Request resources</th>
+<th align="center">Holding resources</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center"><img src="/images/OS/ch7/process.jpg" alt=""></td>
-<td style="text-align:center"><img src="/images/OS/ch7/resource.jpg" alt=""></td>
-<td style="text-align:center"><img src="/images/OS/ch7/request.jpg" alt=""></td>
-<td style="text-align:center"><img src="/images/OS/ch7/hold.jpg" alt=""></td>
+<tbody><tr>
+<td align="center"><img src="/images/OS/ch7/process.jpg"></td>
+<td align="center"><img src="/images/OS/ch7/resource.jpg"></td>
+<td align="center"><img src="/images/OS/ch7/request.jpg"></td>
+<td align="center"><img src="/images/OS/ch7/hold.jpg"></td>
 </tr>
-</tbody>
-</table>
-<h3 id="example-without-deadlock"><a class="header-anchor" href="#example-without-deadlock"></a>Example without Deadlock</h3>
-<p>$P_3$釋放$R_3$資源之後$P_2$就可以獲得資源接續處理，<br>
-接著$P_2$釋放$R_1$資源之後，$P_1$也能夠繼續處理，<br>
-所以不會有死鎖的狀況。<br>
-<img src="/images/OS/ch7/example-without-deadlock.jpg" alt=""></p>
-<h3 id="circle-without-deadlock"><a class="header-anchor" href="#circle-without-deadlock"></a>Circle without Deadlock</h3>
-<p>$P_1$擁有$R_2$資源並且等待$R_1$資源、$P_3$擁有$R_1$資源等待$R_2$資源，兩者相互等待，構成環狀。<br>
-但是$R_1$跟$R_2$資源都有兩個實體可以使用，並且分別被$P_2$跟$P_4$持有，<br>
-$P_2$跟$P_4$本身也沒有其他等待資源，所以等到$P_2$跟$P_4$釋放資源之後，<br>
-$P_1$跟$P_2$就可以繼續運作，所以不構成死鎖。<br>
-<img src="/images/OS/ch7/circle-without-deadlock.jpg" alt=""></p>
-<h3 id="circle-with-deadlock"><a class="header-anchor" href="#circle-with-deadlock"></a>Circle with Deadlock</h3>
-<p>恩對，死鎖，3個行程相互等待對方釋放資源。<br>
-<img src="/images/OS/ch7/circle-deadlock.jpg" alt=""></p>
-<h3 id="basic-facts"><a class="header-anchor" href="#basic-facts"></a>Basic Facts</h3>
-<ul>
-<li>如果沒有環狀 -&gt; 沒死鎖。</li>
-<li>如果有環狀<br>
--&gt; 每個資源都只有一個實體，死鎖鎖好鎖滿<br>
--&gt; 資源有多個實體，可能死鎖，要稍微推一下。</li>
+</tbody></table>
+<h3 id="Example-without-Deadlock"><a href="#Example-without-Deadlock" class="headerlink" title="Example without Deadlock"></a>Example without Deadlock</h3><p>$P_3$釋放$R_3$資源之後$P_2$就可以獲得資源接續處理，<br>接著$P_2$釋放$R_1$資源之後，$P_1$也能夠繼續處理，<br>所以不會有死鎖的狀況。<br><img src="/images/OS/ch7/example-without-deadlock.jpg">  </p>
+<h3 id="Circle-without-Deadlock"><a href="#Circle-without-Deadlock" class="headerlink" title="Circle without Deadlock"></a>Circle without Deadlock</h3><p>$P_1$擁有$R_2$資源並且等待$R_1$資源、$P_3$擁有$R_1$資源等待$R_2$資源，兩者相互等待，構成環狀。<br>但是$R_1$跟$R_2$資源都有兩個實體可以使用，並且分別被$P_2$跟$P_4$持有，<br>$P_2$跟$P_4$本身也沒有其他等待資源，所以等到$P_2$跟$P_4$釋放資源之後，<br>$P_1$跟$P_2$就可以繼續運作，所以不構成死鎖。<br><img src="/images/OS/ch7/circle-without-deadlock.jpg"></p>
+<h3 id="Circle-with-Deadlock"><a href="#Circle-with-Deadlock" class="headerlink" title="Circle with Deadlock"></a>Circle with Deadlock</h3><p>恩對，死鎖，3個行程相互等待對方釋放資源。<br><img src="/images/OS/ch7/circle-deadlock.jpg"></p>
+<h3 id="Basic-Facts"><a href="#Basic-Facts" class="headerlink" title="Basic Facts"></a>Basic Facts</h3><ul>
+<li>如果沒有環狀 -&gt; 沒死鎖。 </li>
+<li>如果有環狀<br>  -&gt; 每個資源都只有一個實體，死鎖鎖好鎖滿<br>  -&gt; 資源有多個實體，可能死鎖，要稍微推一下。</li>
 </ul>
-<h2 id="methods-for-handling-deadlocks"><a class="header-anchor" href="#methods-for-handling-deadlocks"></a>Methods for Handling Deadlocks</h2>
-<ul>
+<h2 id="Methods-for-Handling-Deadlocks"><a href="#Methods-for-Handling-Deadlocks" class="headerlink" title="Methods for Handling Deadlocks"></a>Methods for Handling Deadlocks</h2><ul>
 <li>確保系統永遠不會進入死鎖（廢話？）</li>
 <li>允許系統進入死鎖，然後恢復。</li>
-<li>無視死鎖，假裝沒發生過。（鴕鳥？）
-<ul>
+<li>無視死鎖，假裝沒發生過。（鴕鳥？）<ul>
 <li>最常被使用，Unix Windows blah blah blah。</li>
 </ul>
 </li>
 </ul>
-<h2 id="deadlock-prevention"><a class="header-anchor" href="#deadlock-prevention"></a>Deadlock Prevention</h2>
-<ul>
-<li>Mutual exclusion<br>
-共享資料沒這個問題，非共享資料就沒救了，一定會互斥。</li>
-<li>Hold and Wait<br>
-必須保證行程要求資源時，本身沒有持有任何資源。
-<ul>
+<h2 id="Deadlock-Prevention"><a href="#Deadlock-Prevention" class="headerlink" title="Deadlock Prevention"></a>Deadlock Prevention</h2><ul>
+<li>Mutual exclusion<br>  共享資料沒這個問題，非共享資料就沒救了，一定會互斥。</li>
+<li>Hold and Wait<br>  必須保證行程要求資源時，本身沒有持有任何資源。  <ul>
 <li>要求行程在執行前去請求並分配所有資源，或者是當行程沒有持有資源的時候允許存取。</li>
 <li>資源利用率低的話，有可能會發生飢餓。</li>
 </ul>
 </li>
-<li>No Preemption
-<ul>
+<li>No Preemption<ul>
 <li>如果一個當前持有資源的行程要求另一個資源無法立刻被分配，該行程當前持有的資源會被釋放。</li>
 <li>搶佔的資源將添加到正在等待中的行程的資源列表中。</li>
 <li>只有當行程可以獲得舊資淵還有要求的資源的時候，才會重新啟動行程。</li>
 </ul>
 </li>
-<li>Circular Wait<br>
-針對要求資源的行程給予一個順序。</li>
+<li>Circular Wait<br>  針對要求資源的行程給予一個順序。</li>
 </ul>
-<h2 id="deadlock-avoidance"><a class="header-anchor" href="#deadlock-avoidance"></a>Deadlock Avoidance</h2>
-<p>要求系統提供一些額外的先驗資訊</p>
+<h2 id="Deadlock-Avoidance"><a href="#Deadlock-Avoidance" class="headerlink" title="Deadlock Avoidance"></a>Deadlock Avoidance</h2><p>要求系統提供一些額外的先驗資訊</p>
 <ul>
 <li>最簡單而且有用的模型是要求每一個行程宣告他可能需要的每種資源最大數值。</li>
 <li>死鎖迴避演算法可以動態的測試資源分配狀態來避免Circular Wait。</li>
 <li>資源分配狀態由可用資源、已分配資源的數量和行程的最大需求量所定義。</li>
 </ul>
-<h3 id="safe-state"><a class="header-anchor" href="#safe-state"></a>Safe state</h3>
-<p>（這邊我完全不知道課本在供三小）</p>
+<h3 id="Safe-state"><a href="#Safe-state" class="headerlink" title="Safe state"></a>Safe state</h3><p>（這邊我完全不知道課本在供三小）</p>
 <ul>
 <li>當行程請求可用資源時，系統必須確認立刻分配是否使系統處於安全狀態</li>
-<li>當行程要求一個資源，且存在一個行程序列；<br>
-每個行程依照其順序取得資源，就能確保每個行程都擁有資源，不會發生死鎖的狀況，則說系統在安全狀態中。</li>
-<li>如果$P_i$需要的資源沒辦法立刻被滿足（因為$P_j$持有），那$P_i$會等到$P_j$結束，<br>
-然後$P_i$拿到需要的資源，執行，然後釋放資源，<br>
-其他的$P_i+1$就可以拿到需要的資源，執行，並且釋放，持續下去到$n$</li>
+<li>當行程要求一個資源，且存在一個行程序列；<br>每個行程依照其順序取得資源，就能確保每個行程都擁有資源，不會發生死鎖的狀況，則說系統在安全狀態中。</li>
+<li>如果$P_i$需要的資源沒辦法立刻被滿足（因為$P_j$持有），那$P_i$會等到$P_j$結束，<br>然後$P_i$拿到需要的資源，執行，然後釋放資源，<br>其他的$P_i+1$就可以拿到需要的資源，執行，並且釋放，持續下去到$n$</li>
 </ul>
-<h3 id="basic-facts-v2"><a class="header-anchor" href="#basic-facts-v2"></a>Basic Facts</h3>
-<ul>
+<h3 id="Basic-Facts-1"><a href="#Basic-Facts-1" class="headerlink" title="Basic Facts"></a>Basic Facts</h3><ul>
 <li>如果系統在安全狀態 -&gt; 沒有死鎖（廢話）</li>
 <li>如果系統在不安全狀態 -&gt; 可能有死鎖</li>
 <li>避免方法: 保持系統永遠不會進入不安全狀態（太棒了又是廢話）</li>
 </ul>
-<h3 id="avoidance-algorithms"><a class="header-anchor" href="#avoidance-algorithms"></a>Avoidance algorithms</h3>
-<ul>
+<h3 id="Avoidance-algorithms"><a href="#Avoidance-algorithms" class="headerlink" title="Avoidance algorithms"></a>Avoidance algorithms</h3><ul>
 <li>單實體資源：用resource-allocation graph</li>
 <li>多實體資源：用banker’s algorithm</li>
 </ul>
-<h4 id="resource-allocation-graph-scheme"><a class="header-anchor" href="#resource-allocation-graph-scheme"></a>Resource-Allocation Graph Scheme</h4>
-<ul>
+<h4 id="Resource-Allocation-Graph-Scheme"><a href="#Resource-Allocation-Graph-Scheme" class="headerlink" title="Resource-Allocation Graph Scheme"></a>Resource-Allocation Graph Scheme</h4><ul>
 <li>Claim edge：當$P_i$向$R_j$請求資源時，在圖案上我們以虛線表示關係。</li>
 <li>當行程要求資源的時候，Claim edge會轉變為Request edge。</li>
 <li>當資源被分配給行程的時候，Request edge會轉變為Assignment edge。</li>
 <li>當資源被行程釋放的時候，Assignment edge又變回Claim edge。</li>
 <li>必須在系統中事先聲明資源。</li>
 </ul>
-<h5 id="resource-allocation-graph-algorithm"><a class="header-anchor" href="#resource-allocation-graph-algorithm"></a>Resource-Allocation Graph Algorithm</h5>
-<ul>
+<h5 id="Resource-Allocation-Graph-Algorithm"><a href="#Resource-Allocation-Graph-Algorithm" class="headerlink" title="Resource-Allocation Graph Algorithm"></a>Resource-Allocation Graph Algorithm</h5><ul>
 <li>假設行程$P_i$要求資源$R_j$</li>
 <li>只有在Request edge轉換為Assignment edge不會造成環狀時，才准許轉換。</li>
 </ul>
-<h4 id="banker-s-algorithm"><a class="header-anchor" href="#banker-s-algorithm"></a>Banker’s Algorithm</h4>
-<ul>
+<h4 id="Banker’s-Algorithm"><a href="#Banker’s-Algorithm" class="headerlink" title="Banker’s Algorithm"></a>Banker’s Algorithm</h4><ul>
 <li>多實體資源</li>
 <li>每一個行程必須先聲明最大使用量(max)</li>
 <li>行程請求資源的時候，可能會進入等待。</li>
 <li>當行程獲得所有需要的資源時，必須在有限時間內釋放這些資源。</li>
 </ul>
-<h5 id="data-structures"><a class="header-anchor" href="#data-structures"></a>Data Structures</h5>
-<p>$n = 行程數量, m = 資源型態數量$</p>
+<h5 id="Data-Structures"><a href="#Data-Structures" class="headerlink" title="Data Structures"></a>Data Structures</h5><p>$n &#x3D; 行程數量, m &#x3D; 資源型態數量$</p>
 <ul>
-<li>Available: 長度為m的Vector，如果available[i] = j，則型態i的資源有j個可以分配。</li>
-<li>Max: $n \times m$矩陣，如果max[i, j] = k，則$P_i$可能會要求最多k個$R_j$資源。</li>
-<li>Allocation: $n \times m$矩陣，如果allication[i, j] = k，則目前$P_i$持有k個$R_j$資源。</li>
-<li>Need: $n \times m$矩陣，如果need[i, j] = k, 則目前$P_i$還需要k個$R_J$以完成工作。</li>
-<li>$Need[i, j] = Max[i, j] - Allocation[i, j]$</li>
+<li>Available: 長度為m的Vector，如果available[i] &#x3D; j，則型態i的資源有j個可以分配。</li>
+<li>Max: $n \times m$矩陣，如果max[i, j] &#x3D; k，則$P_i$可能會要求最多k個$R_j$資源。</li>
+<li>Allocation: $n \times m$矩陣，如果allication[i, j] &#x3D; k，則目前$P_i$持有k個$R_j$資源。</li>
+<li>Need: $n \times m$矩陣，如果need[i, j] &#x3D; k, 則目前$P_i$還需要k個$R_J$以完成工作。</li>
+<li>$Need[i, j] &#x3D; Max[i, j] - Allocation[i, j]$</li>
 </ul>
-<h5 id="safety-algorithm"><a class="header-anchor" href="#safety-algorithm"></a>Safety Algorithm</h5>
-<ul>
-<li>Step 1: 令Work和Finish長度為m和n。
-<ul>
-<li>Work = Available</li>
-<li>Finish[i] = False For i = 0, 1, … n</li>
+<h5 id="Safety-Algorithm"><a href="#Safety-Algorithm" class="headerlink" title="Safety Algorithm"></a>Safety Algorithm</h5><ul>
+<li>Step 1: 令Work和Finish長度為m和n。<ul>
+<li>Work &#x3D; Available</li>
+<li>Finish[i] &#x3D; False For i &#x3D; 0, 1, … n</li>
 </ul>
 </li>
-<li>Step 2: 迭代陣列並尋找符合下列條件
-<ul>
-<li>Finish[i] = False</li>
-<li>$Need_i$ &lt;= Work</li>
+<li>Step 2: 迭代陣列並尋找符合下列條件<ul>
+<li>Finish[i] &#x3D; False</li>
+<li>$Need_i$ &lt;&#x3D; Work</li>
 <li>如果沒有任何一次迭代符合條件，則進入Step 4。</li>
 </ul>
 </li>
-<li>Step 3:
-<ul>
-<li>Work += $Allocation_i$</li>
-<li>Finish[i] = True</li>
+<li>Step 3: <ul>
+<li>Work +&#x3D; $Allocation_i$</li>
+<li>Finish[i] &#x3D; True</li>
 <li>返回Step 2。</li>
 </ul>
 </li>
-<li>Step 4:
-<ul>
+<li>Step 4:<ul>
 <li>如果Finish陣列中值皆為True，則系統處於Safe state。</li>
 </ul>
 </li>
 </ul>
-<h4 id="resource-request-algorithm-for-process-p-i"><a class="header-anchor" href="#resource-request-algorithm-for-process-p-i"></a>Resource-Request Algorithm for Process $P_i$</h4>
-<ul>
-<li>Request = $P_i$所要求的資源向量。<br>
-如果$Request_i[j]$ = k，則$P_i$希望存取k個資源$R_j$</li>
-<li>Step 1: 如果$Request_i &lt;= Need_i$，繼續Step 2，否則跳出行程達到請求資源上限的例外。<br>
-（明明只需要5個，卻要求6個）</li>
-<li>Step 2: 如果$Request_i &lt;= Available$，繼續Step 3，否則$P_i$必須等到資源可供使用。</li>
-<li>Step 3:<br>
-$<br>
-Available = Available - Request_i \\<br>
-Allocation_i = Allocation_i + Request_i \\<br>
-Need_i = Need_i - Request_i \\<br>
-$<br>
-如果是Safe State =&gt; 分配資源給$P_i$。<br>
-否則，$P_i$必須等待，並且恢復Step 3所執行的動作。</li>
+<h4 id="Resource-Request-Algorithm-for-Process-P-i"><a href="#Resource-Request-Algorithm-for-Process-P-i" class="headerlink" title="Resource-Request Algorithm for Process $P_i$"></a>Resource-Request Algorithm for Process $P_i$</h4><ul>
+<li>Request &#x3D; $P_i$所要求的資源向量。<br>如果$Request_i[j]$ &#x3D; k，則$P_i$希望存取k個資源$R_j$</li>
+<li>Step 1: 如果$Request_i &lt;&#x3D; Need_i$，繼續Step 2，否則跳出行程達到請求資源上限的例外。<br>（明明只需要5個，卻要求6個）</li>
+<li>Step 2: 如果$Request_i &lt;&#x3D; Available$，繼續Step 3，否則$P_i$必須等到資源可供使用。</li>
+<li>Step 3:<br>$<br>  Available &#x3D; Available - Request_i \\<br>  Allocation_i &#x3D; Allocation_i + Request_i \\<br>  Need_i &#x3D; Need_i - Request_i \\<br>$<br>如果是Safe State &#x3D;&gt; 分配資源給$P_i$。<br>否則，$P_i$必須等待，並且恢復Step 3所執行的動作。</li>
 </ul>
-<h2 id="deadlock-detection"><a class="header-anchor" href="#deadlock-detection"></a>Deadlock Detection</h2>
-<ul>
+<h2 id="Deadlock-Detection"><a href="#Deadlock-Detection" class="headerlink" title="Deadlock Detection"></a>Deadlock Detection</h2><ul>
 <li>允許系統進入死鎖</li>
 <li>偵測演算法</li>
 <li>恢復方案</li>
 </ul>
-<h3 id="single-instance-of-each-resource-type"><a class="header-anchor" href="#single-instance-of-each-resource-type"></a>Single Instance of Each Resource Type</h3>
-<ul>
+<h3 id="Single-Instance-of-Each-Resource-Type"><a href="#Single-Instance-of-Each-Resource-Type" class="headerlink" title="Single Instance of Each Resource Type"></a>Single Instance of Each Resource Type</h3><ul>
 <li>維護wait-for圖表</li>
 <li>定期調用環形偵測演算法， 如果偵測到環形，則存在死鎖。</li>
 <li>用來檢測環形的演算法需要$n^2$次操作，其中$n$代表節點(Process)數。</li>
 </ul>
-<h4 id="rag-and-wait-for-graph"><a class="header-anchor" href="#rag-and-wait-for-graph"></a>RAG and wait-for graph</h4>
-<table>
+<h4 id="RAG-and-wait-for-graph"><a href="#RAG-and-wait-for-graph" class="headerlink" title="RAG and wait-for graph"></a>RAG and wait-for graph</h4><table>
 <thead>
 <tr>
-<th style="text-align:center">Resource-Allocation Graph(RAG)</th>
-<th style="text-align:center">wait-for graph</th>
+<th align="center">Resource-Allocation Graph(RAG)</th>
+<th align="center">wait-for graph</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center"><img src="/images/OS/ch7/RAG.jpg" alt=""></td>
-<td style="text-align:center"><img src="/images/OS/ch7/wait-for-graph.jpg" alt=""></td>
+<tbody><tr>
+<td align="center"><img src="/images/OS/ch7/RAG.jpg"></td>
+<td align="center"><img src="/images/OS/ch7/wait-for-graph.jpg"></td>
 </tr>
-</tbody>
-</table>
-<h3 id="serveral-instances-of-a-resource-type"><a class="header-anchor" href="#serveral-instances-of-a-resource-type"></a>Serveral Instances of a Resource Type</h3>
-<ul>
-<li>Available: 長度為m的Vector，如果available[i] = j，則型態i的資源有j個可以分配。</li>
-<li>Allocation: $n \times m$矩陣，如果allication[i, j] = k，則目前$P_i$持有k個$R_j$資源。</li>
-<li>Request = $P_i$所要求的資源向量。</li>
+</tbody></table>
+<h3 id="Serveral-Instances-of-a-Resource-Type"><a href="#Serveral-Instances-of-a-Resource-Type" class="headerlink" title="Serveral Instances of a Resource Type"></a>Serveral Instances of a Resource Type</h3><ul>
+<li>Available: 長度為m的Vector，如果available[i] &#x3D; j，則型態i的資源有j個可以分配。</li>
+<li>Allocation: $n \times m$矩陣，如果allication[i, j] &#x3D; k，則目前$P_i$持有k個$R_j$資源。</li>
+<li>Request &#x3D; $P_i$所要求的資源向量。</li>
 </ul>
-<h3 id="detection-algorithm"><a class="header-anchor" href="#detection-algorithm"></a>Detection Algorithm</h3>
-<ul>
-<li>Step 1: 令Work和Finish長度為m和n。
-<ul>
-<li>Work = Available</li>
-<li>For i = 0, 1, … n, 若Allocation != 0, Finish[i] = False，否則設為True。</li>
+<h3 id="Detection-Algorithm"><a href="#Detection-Algorithm" class="headerlink" title="Detection Algorithm"></a>Detection Algorithm</h3><ul>
+<li>Step 1: 令Work和Finish長度為m和n。<ul>
+<li>Work &#x3D; Available</li>
+<li>For i &#x3D; 0, 1, … n, 若Allocation !&#x3D; 0, Finish[i] &#x3D; False，否則設為True。</li>
 </ul>
 </li>
-<li>Step 2: 迭代陣列並尋找符合下列條件
-<ul>
-<li>Finish[i] = False</li>
-<li>$Request_i$ &lt;= Work</li>
+<li>Step 2: 迭代陣列並尋找符合下列條件<ul>
+<li>Finish[i] &#x3D; False</li>
+<li>$Request_i$ &lt;&#x3D; Work</li>
 <li>如果沒有任何一次迭代符合條件，則進入Step 4。</li>
 </ul>
 </li>
-<li>Step 3:
-<ul>
-<li>Work += $Allocation_i$</li>
-<li>Finish[i] = True</li>
+<li>Step 3: <ul>
+<li>Work +&#x3D; $Allocation_i$</li>
+<li>Finish[i] &#x3D; True</li>
 <li>返回Step 2。</li>
 </ul>
 </li>
-<li>Step 4:
-<ul>
-<li>如果Finish[i]為False，若$1 &lt;= i &lt;= n$，則系統處於Deadlock，且$P_i$為死鎖發生行程。</li>
+<li>Step 4:<ul>
+<li>如果Finish[i]為False，若$1 &lt;&#x3D; i &lt;&#x3D; n$，則系統處於Deadlock，且$P_i$為死鎖發生行程。</li>
 </ul>
 </li>
 <li>演算法需要$O(m \times n^2)$</li>
 </ul>
-<h3 id="detection-algorithm-usage"><a class="header-anchor" href="#detection-algorithm-usage"></a>Detection-Algorithm Usage</h3>
-<ul>
-<li>何時使用以及多常使用，其根據什麼條件使用?
-<ul>
+<h3 id="Detection-Algorithm-Usage"><a href="#Detection-Algorithm-Usage" class="headerlink" title="Detection-Algorithm Usage"></a>Detection-Algorithm Usage</h3><ul>
+<li>何時使用以及多常使用，其根據什麼條件使用?<ul>
 <li>死鎖多常發生</li>
 <li>有多少的行程需要Roll back</li>
 </ul>
 </li>
-<li>如果演算法被任意調用，則RAG裡頭可能會有很多環形，<br>
-這樣會導致無法正確的辨認死鎖發生的數量以及確切行程。</li>
+<li>如果演算法被任意調用，則RAG裡頭可能會有很多環形，<br>這樣會導致無法正確的辨認死鎖發生的數量以及確切行程。</li>
 </ul>
-<h2 id="recovery-from-deadlock"><a class="header-anchor" href="#recovery-from-deadlock"></a>Recovery from Deadlock</h2>
-<h3 id="process-termination"><a class="header-anchor" href="#process-termination"></a>Process Termination</h3>
-<ul>
+<h2 id="Recovery-from-Deadlock"><a href="#Recovery-from-Deadlock" class="headerlink" title="Recovery from Deadlock"></a>Recovery from Deadlock</h2><h3 id="Process-Termination"><a href="#Process-Termination" class="headerlink" title="Process Termination"></a>Process Termination</h3><ul>
 <li>放棄所有死鎖的行程。</li>
 <li>一次中止一個行程，直接死鎖被消除。</li>
-<li>依據條件來進行中止
-<ul>
+<li>依據條件來進行中止<ul>
 <li>行程優先度</li>
 <li>行程已經花費多少時間以及還需要多少時間來完成</li>
 <li>行程已經使用的資源量</li>
@@ -764,421 +428,40 @@ $<br>
 </ul>
 </li>
 </ul>
-<h3 id="resource-preemption"><a class="header-anchor" href="#resource-preemption"></a>Resource Preemption</h3>
-<ul>
+<h3 id="Resource-Preemption"><a href="#Resource-Preemption" class="headerlink" title="Resource Preemption"></a>Resource Preemption</h3><ul>
 <li>Selecting a victim(選擇受害的行程))：最小成本</li>
 <li>Rollback(回滾): 回到某個安全狀態，重新啟動行程。</li>
 <li>Starvation(飢餓)：很容易抓到相同的victim，導致其process一直無法執行，便形成了starvaction的狀態。</li>
 </ul>
 
-      
     </div>
 
     
-
     
-    
-    
-
-    
-
-    
-
     
 
     <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/Note/" rel="tag"># Note</a>
-          
-            <a href="/tags/Operating-System/" rel="tag"># Operating System</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2019/05/15/note/OS/ch6/" rel="next" title="CH6 Synchronization">
-                <i class="fa fa-chevron-left"></i> CH6 Synchronization
-              </a>
-            
+          <div class="post-tags">
+              <a href="/tags/Note/" rel="tag"># Note</a>
+              <a href="/tags/Operating-System/" rel="tag"># Operating System</a>
           </div>
 
-          <span class="post-nav-divider"></span>
+        
 
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/06/19/note/OS/ch8/" rel="prev" title="Ch8 Memory-Management Strategies">
-                Ch8 Memory-Management Strategies <i class="fa fa-chevron-right"></i>
-              </a>
-            
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2019/05/15/note/OS/ch6/" rel="prev" title="CH6 Synchronization">
+                  <i class="fa fa-chevron-left"></i> CH6 Synchronization
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2019/06/19/note/OS/ch8/" rel="next" title="Ch8 Memory-Management Strategies">
+                  Ch8 Memory-Management Strategies <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
           </div>
-        </div>
-      
-
-      
-      
     </footer>
-  </div>
-  
-  
-  
   </article>
-
-
-
-    <div class="post-spread">
-      
-    </div>
-  </div>
-
-
-          </div>
-          
-
-  
-    <div class="comments" id="comments">
-      <div id="disqus_thread">
-        <noscript>
-          Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-        </noscript>
-      </div>
-    </div>
-
-  
-
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
-
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <img class="site-author-image" itemprop="image"
-                src="https://avatars1.githubusercontent.com/u/12930377?s=400&u=3e932a7f6b769a0e1028806815067be598db3351&v=4"
-                alt="clooooode" />
-            
-              <p class="site-author-name" itemprop="name">clooooode</p>
-              <p class="site-description motion-element" itemprop="description"></p>
-          </div>
-
-          
-            <nav class="site-state motion-element">
-              
-                <div class="site-state-item site-state-posts">
-                
-                  <a href="/archives/">
-                
-                    <span class="site-state-item-count">40</span>
-                    <span class="site-state-item-name">posts</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-categories">
-                  <a href="/categories/index.html">
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">11</span>
-                    <span class="site-state-item-name">categories</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-tags">
-                  <a href="/tags/index.html">
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">39</span>
-                    <span class="site-state-item-name">tags</span>
-                  </a>
-                </div>
-              
-            </nav>
-          
-
-          
-
-          
-            <div class="links-of-author motion-element">
-              
-                <span class="links-of-author-item">
-                  <a href="https://github.com/jackey8616" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
-                  
-                </span>
-              
-            </div>
-          
-
-          
-          
-
-          
-          
-            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
-              <div class="links-of-blogroll-title">
-                <i class="fa  fa-fw fa-link"></i>
-                Links
-              </div>
-              <ul class="links-of-blogroll-list">
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="/milestone" title="Milestone" target="_blank">Milestone</a>
-                  </li>
-                
-              </ul>
-            </div>
-          
-
-          
-            
-          
-          
-
-        </div>
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#deadlock-characterization"><span class="nav-number">1.</span> <span class="nav-text">Deadlock Characterization</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#resource-allocation-graph"><span class="nav-number">1.1.</span> <span class="nav-text">Resource-Allocation Graph</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#example-without-deadlock"><span class="nav-number">1.2.</span> <span class="nav-text">Example without Deadlock</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#circle-without-deadlock"><span class="nav-number">1.3.</span> <span class="nav-text">Circle without Deadlock</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#circle-with-deadlock"><span class="nav-number">1.4.</span> <span class="nav-text">Circle with Deadlock</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#basic-facts"><span class="nav-number">1.5.</span> <span class="nav-text">Basic Facts</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#methods-for-handling-deadlocks"><span class="nav-number">2.</span> <span class="nav-text">Methods for Handling Deadlocks</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#deadlock-prevention"><span class="nav-number">3.</span> <span class="nav-text">Deadlock Prevention</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#deadlock-avoidance"><span class="nav-number">4.</span> <span class="nav-text">Deadlock Avoidance</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#safe-state"><span class="nav-number">4.1.</span> <span class="nav-text">Safe state</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#basic-facts-v2"><span class="nav-number">4.2.</span> <span class="nav-text">Basic Facts</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#avoidance-algorithms"><span class="nav-number">4.3.</span> <span class="nav-text">Avoidance algorithms</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#resource-allocation-graph-scheme"><span class="nav-number">4.3.1.</span> <span class="nav-text">Resource-Allocation Graph Scheme</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#resource-allocation-graph-algorithm"><span class="nav-number">4.3.1.1.</span> <span class="nav-text">Resource-Allocation Graph Algorithm</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#banker-s-algorithm"><span class="nav-number">4.3.2.</span> <span class="nav-text">Banker’s Algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#data-structures"><span class="nav-number">4.3.2.1.</span> <span class="nav-text">Data Structures</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#safety-algorithm"><span class="nav-number">4.3.2.2.</span> <span class="nav-text">Safety Algorithm</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#resource-request-algorithm-for-process-p-i"><span class="nav-number">4.3.3.</span> <span class="nav-text">Resource-Request Algorithm for Process $P_i$</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#deadlock-detection"><span class="nav-number">5.</span> <span class="nav-text">Deadlock Detection</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#single-instance-of-each-resource-type"><span class="nav-number">5.1.</span> <span class="nav-text">Single Instance of Each Resource Type</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#rag-and-wait-for-graph"><span class="nav-number">5.1.1.</span> <span class="nav-text">RAG and wait-for graph</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#serveral-instances-of-a-resource-type"><span class="nav-number">5.2.</span> <span class="nav-text">Serveral Instances of a Resource Type</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#detection-algorithm"><span class="nav-number">5.3.</span> <span class="nav-text">Detection Algorithm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#detection-algorithm-usage"><span class="nav-number">5.4.</span> <span class="nav-text">Detection-Algorithm Usage</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#recovery-from-deadlock"><span class="nav-number">6.</span> <span class="nav-text">Recovery from Deadlock</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#process-termination"><span class="nav-number">6.1.</span> <span class="nav-text">Process Termination</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#resource-preemption"><span class="nav-number">6.2.</span> <span class="nav-text">Resource Preemption</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
-
-      
-        <div class="back-to-top">
-          <i class="fa fa-arrow-up"></i>
-          
-            <span id="scrollpercent"><span>0</span>%</span>
-          
-        </div>
-      
-
-    </div>
-  </aside>
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love" id="animate">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">clooooode</span>
-
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-    
-      <span class="post-meta-item-text">Symbols count total: </span>
-    
-    <span title="Symbols count total">104k</span>
-  
-
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-coffee"></i>
-    </span>
-    
-      <span class="post-meta-item-text">Reading time total &asymp;</span>
-    
-    <span title="Reading time total">1:34</span>
-  
-</div>
-
-
-
-
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.0</div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Gemini</a> v6.1.0</div>
-
-
-
-
-        
-<div class="busuanzi-count">
-  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-  
-    <span class="site-uv" title="Total Visitors">
-      <i class="fa fa-user"></i>
-      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
-    </span>
-  
-
-  
-    <span class="site-pv" title="Total Views">
-      <i class="fa fa-eye"></i>
-      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
-    </span>
-  
 </div>
 
 
@@ -1186,156 +469,48 @@ $<br>
 
 
 
+</div>
+  </main>
 
+  <footer class="footer">
+    <div class="footer-inner">
 
-
-        
-      </div>
-    </footer>
-
-    
-
-    
-
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">clooooode</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
   </div>
 
+    </div>
+  </footer>
+
   
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
 
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
 
 
   
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
 
   
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=6.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=6.1.0"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=6.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.1.0"></script>
-
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.1.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=6.1.0"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.1.0"></script>
-
-
-
-  
-
-  
-    <script id="dsq-count-scr" src="https://clooooode.disqus.com/count.js" async></script>
-  
-
-  
-    <script type="text/javascript">
-      var disqus_config = function () {
-        this.page.url = 'https://www.clo5de.info/2019/06/15/note/OS/ch7/';
-        this.page.identifier = '2019/06/15/note/OS/ch7/';
-        this.page.title = 'CH7 Deadlocks';
-      };
-      function loadComments () {
-        var d = document, s = d.createElement('script');
-        s.src = 'https://clooooode.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', '' + +new Date());
-        (d.head || d.body).appendChild(s);
-      }
-      
-        $(function () {
-          var offsetTop = $('#comments').offset().top - $(window).height();
-          if (offsetTop <= 0) {
-            // load directly when there's no a scrollbar
-            loadComments();
-          } else {
-            $(window).on('scroll.disqus_scroll', function () {
-              var scrollTop = document.documentElement.scrollTop;
-              if (scrollTop >= offsetTop) {
-                $(window).off('.disqus_scroll');
-                loadComments();
-              }
-            });
-          }
-        });
-      
-    </script>
-  
-
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-
 
 
 
@@ -1347,169 +522,6 @@ $<br>
 
 
 
-
-  
-
-  
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
-  <script>AV.initialize("BS1vAn9Etrkp6F0f6AwP27RR-MdYXbMMI", "vf7X6CDE2mTM3ATStyeAYT0l");</script>
-  <script>
-    function showTime(Counter) {
-      var query = new AV.Query(Counter);
-      var entries = [];
-      var $visitors = $(".leancloud_visitors");
-
-      $visitors.each(function () {
-        entries.push( $(this).attr("id").trim() );
-      });
-
-      query.containedIn('url', entries);
-      query.find()
-        .done(function (results) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.get('url');
-            var time = item.get('time');
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for(var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if( countSpan.text() == '') {
-              countSpan.text(0);
-            }
-          }
-        })
-        .fail(function (object, error) {
-          console.log("Error: " + error.code + " " + error.message);
-        });
-    }
-
-    function addCount(Counter) {
-      var $visitors = $(".leancloud_visitors");
-      var url = $visitors.attr('id').trim();
-      var title = $visitors.attr('data-flag-title').trim();
-      var query = new AV.Query(Counter);
-
-      query.equalTo("url", url);
-      query.find({
-        success: function(results) {
-          if (results.length > 0) {
-            var counter = results[0];
-            counter.fetchWhenSave(true);
-            counter.increment("time");
-            
-            counter.save(null, {
-              success: function(counter) {
-                
-                  var $element = $(document.getElementById(url));
-                  $element.find('.leancloud-visitors-count').text(counter.get('time'));
-                
-              },
-              error: function(counter, error) {
-                console.log('Failed to save Visitor num, with error message: ' + error.message);
-              }
-            });
-          } else {
-            
-              var newcounter = new Counter();
-              /* Set ACL */
-              var acl = new AV.ACL();
-              acl.setPublicReadAccess(true);
-              acl.setPublicWriteAccess(true);
-              newcounter.setACL(acl);
-              /* End Set ACL */
-              newcounter.set("title", title);
-              newcounter.set("url", url);
-              newcounter.set("time", 1);
-              newcounter.save(null, {
-                success: function(newcounter) {
-                  var $element = $(document.getElementById(url));
-                  $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-                },
-                error: function(newcounter, error) {
-                  console.log('Failed to create');
-                }
-              });
-            
-          }
-        },
-        error: function(error) {
-          console.log('Error:' + error.code + " " + error.message);
-        }
-      });
-    }
-
-    $(function() {
-      var Counter = AV.Object.extend("Counter");
-      if ($('.leancloud_visitors').length == 1) {
-        addCount(Counter);
-      } else if ($('.post-title-link').length > 1) {
-        showTime(Counter);
-      }
-    });
-  </script>
-
-
-
-  
-
-  
-
-  
-  
-
-  
-  
-
-  
-    
-      <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      }
-    });
-</script>
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-      var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
-</script>
-<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-    
-  
-
-
-  
-  
-
-  
-
-  
-
-  
-
-  
-
-  
 
 </body>
 </html>

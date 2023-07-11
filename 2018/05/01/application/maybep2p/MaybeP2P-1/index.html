@@ -1,155 +1,59 @@
 <!DOCTYPE html>
-
-
-
-  
-
-
-<html class="theme-next gemini use-motion" lang="">
+<html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
-<meta name="theme-color" content="#222">
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.clo5de.info","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.17.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-
-
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-  <meta name="google-site-verification" content="sjYQopsdc56bjkx1IhUyZ57y44Yt893LOVYUBb41clg" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=6.1.0" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.1.0">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.1.0">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.1.0">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=6.1.0" color="#222">
-
-
-
-
-
-
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Gemini',
-    version: '6.1.0',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-  
-
-
-
-
-  <meta name="description" content="I thought i can develope my own framework. But i found out that too may people did same thing just like me. Oops…">
-<meta name="keywords" content="Linux,Python,Python2.7,Python3.5,P2P,peer-to-peer">
+    <meta name="description" content="I thought i can develope my own framework.But i found out that too may people did same thing just like me.Oops…">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MaybeP2P(1) - Begin">
 <meta property="og:url" content="https://www.clo5de.info/2018/05/01/application/maybep2p/MaybeP2P-1/index.html">
 <meta property="og:site_name" content="clooooode">
-<meta property="og:description" content="I thought i can develope my own framework. But i found out that too may people did same thing just like me. Oops…">
-<meta property="og:locale" content="default">
+<meta property="og:description" content="I thought i can develope my own framework.But i found out that too may people did same thing just like me.Oops…">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://badge.fury.io/py/MaybeP2P.svg">
 <meta property="og:image" content="https://travis-ci.org/jackey8616/MaybeP2P.svg?branch=master">
 <meta property="og:image" content="https://codecov.io/gh/jackey8616/MaybeP2P/branch/master/graph/badge.svg">
 <meta property="og:image" content="https://api.codeclimate.com/v1/badges/1a8dceae8859199d3d54/maintainability">
-<meta property="og:updated_time" content="2019-09-10T08:20:17.938Z">
+<meta property="article:published_time" content="2018-05-01T14:12:00.000Z">
+<meta property="article:modified_time" content="2023-07-11T15:01:11.248Z">
+<meta property="article:author" content="clooooode">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="Python2.7">
+<meta property="article:tag" content="Python3.5">
+<meta property="article:tag" content="P2P">
+<meta property="article:tag" content="peer-to-peer">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MaybeP2P(1) - Begin">
-<meta name="twitter:description" content="I thought i can develope my own framework. But i found out that too may people did same thing just like me. Oops…">
 <meta name="twitter:image" content="https://badge.fury.io/py/MaybeP2P.svg">
 
 
+<link rel="canonical" href="https://www.clo5de.info/2018/05/01/application/maybep2p/MaybeP2P-1/">
 
 
 
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.clo5de.info/2018/05/01/application/maybep2p/MaybeP2P-1/","path":"2018/05/01/application/maybep2p/MaybeP2P-1/","title":"MaybeP2P(1) - Begin"}</script>
 
-  <link rel="canonical" href="https://www.clo5de.info/2018/05/01/application/maybep2p/MaybeP2P-1/"/>
-
-
-
-<script type="text/javascript" id="page.configurations">
-  CONFIG.page = {
-    sidebar: "",
-  };
-</script>
-
-  <title>MaybeP2P(1) - Begin | clooooode</title>
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>MaybeP2P(1) - Begin | clooooode</title>
   
 
 
-
-
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-59633918-3"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-59633918-3');
-</script>
 
 
 
@@ -157,385 +61,187 @@
 
 
   <noscript>
-  <style type="text/css">
-    .use-motion .motion-element,
-    .use-motion .brand,
-    .use-motion .menu-item,
-    .sidebar-inner,
-    .use-motion .post-block,
-    .use-motion .pagination,
-    .use-motion .comments,
-    .use-motion .post-header,
-    .use-motion .post-body,
-    .use-motion .collection-title { opacity: initial; }
-
-    .use-motion .logo,
-    .use-motion .site-title,
-    .use-motion .site-subtitle {
-      opacity: initial;
-      top: initial;
-    }
-
-    .use-motion {
-      .logo-line-before i { left: initial; }
-      .logo-line-after i { right: initial; }
-    }
-  </style>
-</noscript>
-
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
 
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left page-post-detail">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">clooooode</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-      
-        <p class="site-subtitle">a.k.a. clo5de</p>
-      
-  </div>
-
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <button aria-label="Toggle navigation bar">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">clooooode</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">a.k.a. clo5de</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
   </div>
 </div>
 
 
 
 
-<nav class="site-nav">
+
+
+
+</header>
+        
   
-    <ul id="menu" class="menu">
-      
-        
-        
-        
-          
-          <li class="menu-item menu-item-home">
-    <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-about">
-    <a href="/about/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />About</a>
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-tags">
-    <a href="/tags/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags<span class="badge">39</span></a>
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-categories">
-    <a href="/categories/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories<span class="badge">11</span></a>
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-archives">
-    <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives<span class="badge">40</span></a>
-  </li>
+  <aside class="sidebar">
 
-      
-      
-    </ul>
-  
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
 
-  
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%87%8E%E5%BF%83"><span class="nav-number">2.</span> <span class="nav-text">野心</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8F%BE%E6%B3%81%EF%BC%882018-05-01"><span class="nav-number">3.</span> <span class="nav-text">現況（2018.05.01)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#So"><span class="nav-number">4.</span> <span class="nav-text">So?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Note-Webs"><span class="nav-number">5.</span> <span class="nav-text">Note Webs</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
 
-  
-</nav>
-
-
-
-  
-
-
-
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">clooooode</p>
+  <div class="site-description" itemprop="description"></div>
 </div>
-    </header>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">41</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">41</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
 
     
-  
-  
-  
-    
-      
-    
-    <a href="https://github.com/jackey8616" class="github-corner" target="_blank" title="Follow me on GitHub" aria-label="Follow me on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#222; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg>
-    
-      </a>
-    
+  </aside>
 
 
+    </div>
 
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-            
+    <div class="main-inner post posts-expand">
 
-          
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
-    
 
   
 
-  
+
+<div class="post-block">
   
   
 
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
     <link itemprop="mainEntityOfPage" href="https://www.clo5de.info/2018/05/01/application/maybep2p/MaybeP2P-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="clooooode">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars1.githubusercontent.com/u/12930377?s=400&u=3e932a7f6b769a0e1028806815067be598db3351&v=4">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="clooooode">
+      <meta itemprop="description" content="">
     </span>
 
-    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="MaybeP2P(1) - Begin | clooooode">
+      <meta itemprop="description" content="">
+    </span>
       <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          MaybeP2P(1) - Begin
+        </h1>
 
-        
-        
-          <h1 class="post-title" itemprop="name headline">MaybeP2P(1) - Begin
-              
-            
-          </h1>
-        
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
 
-        <div class="post-meta">
-          <span class="post-time">
+      <time title="Created: 2018-05-01 14:12:00" itemprop="dateCreated datePublished" datetime="2018-05-01T14:12:00+00:00">2018-05-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-07-11 15:01:11" itemprop="dateModified" datetime="2023-07-11T15:01:11+00:00">2023-07-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Application/" itemprop="url" rel="index"><span itemprop="name">Application</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Application/MaybeP2P/" itemprop="url" rel="index"><span itemprop="name">MaybeP2P</span></a>
+        </span>
+    </span>
 
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-05-01 14:12:00" itemprop="dateCreated datePublished" datetime="2018-05-01T14:12:00+00:00">2018-05-01</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-09-10 08:20:17" itemprop="dateModified" datetime="2019-09-10T08:20:17+00:00">2019-09-10</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Application/" itemprop="url" rel="index"><span itemprop="name">Application</span></a></span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Application/MaybeP2P/" itemprop="url" rel="index"><span itemprop="name">MaybeP2P</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/05/01/application/maybep2p/MaybeP2P-1/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/05/01/application/maybep2p/MaybeP2P-1/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/05/01/application/maybep2p/MaybeP2P-1/" class="leancloud_visitors" data-flag-title="MaybeP2P(1) - Begin">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Views: </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">1.6k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">1 mins.</span>
-              
-            </div>
-          
-
-          
+  
+</div>
 
         </div>
       </header>
-    
 
     
     
     
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <p>I thought i can develope my own framework.<br>
-But i found out that too may people did same thing just like me.<br>
-Oops…</p>
-<a id="more"></a>
-<h2 id="前言"><a class="header-anchor" href="#前言"></a>前言</h2>
-<p>MaybeP2P算是一個框架, 恩… 對, 我定位是框架, 啊哈哈哈哈…<br>
-請給我一點自我陶醉的空間XD…</p>
-<p>我們一個專案有很莫名其妙大的架構，然後考量到HA，所以決定把所有的Function都切成Multiprocessing。<br>
-切完Process了之後，當然就要塞給CPU去做分散式處理。<br>
-然後起初的架構，為了便宜行事用了Redis來做為溝通的管道。<br>
-對，沒錯，就是傳說中分散式架構然後又採中心化伺服器來管理的白痴做法…<br>
-（OS：那請問分散式要幹嘛？？？？？？）</p>
-<p>於是把每個Process獨立出來各自溝通的對等架構需求出現，<br>
-接著就蹦，是的… Maybe we need a p2p.<br>
-And that’s  MaybeP2P.</p>
-<h2 id="野心"><a class="header-anchor" href="#野心"></a>野心</h2>
-<p>既然要自造輪子，當然就要造一個爆炸複雜的輪子，然後走到哪用到哪，<br>
-最好還可以樓上招樓下，隔壁找對面，大家一起來用。<br>
-And this is why i called it a &quot; FRAMEWORK&quot;.</p>
-<p>起初的設計上是採用TCP Server來做P2P的Host，然後裏面可以跑自己寫的（or 我寫的Protocol)。<br>
-這個看起來很美好沒錯，實際上它也以我預期的方式運作著，Well… 除了Timeout的部份我還沒做以外…</p>
-<h2 id="現況-2018-05-01"><a class="header-anchor" href="#現況-2018-05-01"></a>現況（2018.05.01)</h2>
-<p>初版（0.0.1)目前實作了v1的經典（ClassicV1)協定，aka 廣播風暴版…<br>
-嚴格來講，這個不太算是對等網路裏面最一開始的協定，其實根本就連協定也稱不上吧…<br>
-第一代的對等網路是具有中心化伺服器來處理路由, 基本上Peer是做自己的事情沒錯，只不過溝通要透過中心就是。<br>
-要說是對等節點，我覺得也是可啦… 哈哈</p>
-<p>還要弄一個中心化節點去控制路由好麻煩，所以MaybeP2P採的是第二代對等網路架構，<br>
-路由處理是走全網廣播，然後大家處理一堆不關自己的事情的封包請求就飽了，<br>
-這個狀況適合&quot;小而美&quot;的LAN，在LAN當中開廣，有負擔，但是不大。<br>
-拿到大型網路當中，節點跟請求封包的數量會成指數成長。</p>
-<p>所以未來打算實作的是第三代對等網路（採用Kademlia來維護路由）的方式，<br>
-一方面用最低限度的Cost來達到定位特定節點或者資源的算法， 其實很簡單。<br>
-只要XOR就好了…<br>
-但是礙於當初Peer的TCP Server設計上沒有很詳盡的考慮到Timeout的部份，<br>
-我自己還要釐清一下思緒才有辦法改動…</p>
-<h2 id="so"><a class="header-anchor" href="#so"></a>So?</h2>
-<div class="group-picture"><div class="group-picture-container"><div class="group-picture-row"><div class="group-picture-column" style="width: 50%;"><img src="https://badge.fury.io/py/MaybeP2P.svg" alt="PyPI version"></div><div class="group-picture-column" style="width: 50%;"><img src="https://travis-ci.org/jackey8616/MaybeP2P.svg?branch=master" alt="Build Status"></div></div><div class="group-picture-row"><div class="group-picture-column" style="width: 50%;"><img src="https://codecov.io/gh/jackey8616/MaybeP2P/branch/master/graph/badge.svg" alt="codecov"></div><div class="group-picture-column" style="width: 50%;"><img src="https://api.codeclimate.com/v1/badges/1a8dceae8859199d3d54/maintainability" alt="Maintainability"></div></div></div></div>
-<p>現在pip可以下載喔… 只是我doc還沒寫好…<br>
-啊哈哈哈哈哈…</p>
-<p><code>pip install MaybeP2P</code></p>
-<pre><code class="language-sh">&gt;&gt;&gt; from peer import Peer
+    <div class="post-body" itemprop="articleBody"><p>I thought i can develope my own framework.<br>But i found out that too may people did same thing just like me.<br>Oops…</p>
+<span id="more"></span>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>MaybeP2P算是一個框架, 恩… 對, 我定位是框架, 啊哈哈哈哈…<br>請給我一點自我陶醉的空間XD…  </p>
+<p>我們一個專案有很莫名其妙大的架構，然後考量到HA，所以決定把所有的Function都切成Multiprocessing。<br>切完Process了之後，當然就要塞給CPU去做分散式處理。<br>然後起初的架構，為了便宜行事用了Redis來做為溝通的管道。<br>對，沒錯，就是傳說中分散式架構然後又採中心化伺服器來管理的白痴做法…<br>（OS：那請問分散式要幹嘛？？？？？？）</p>
+<p>於是把每個Process獨立出來各自溝通的對等架構需求出現，<br>接著就蹦，是的.. Maybe we need a p2p.<br>And that’s  MaybeP2P.  </p>
+<h2 id="野心"><a href="#野心" class="headerlink" title="野心"></a>野心</h2><p>既然要自造輪子，當然就要造一個爆炸複雜的輪子，然後走到哪用到哪，<br>最好還可以樓上招樓下，隔壁找對面，大家一起來用。<br>And this is why i called it a “ FRAMEWORK”.  </p>
+<p>起初的設計上是採用TCP Server來做P2P的Host，然後裏面可以跑自己寫的（or 我寫的Protocol)。<br>這個看起來很美好沒錯，實際上它也以我預期的方式運作著，Well.. 除了Timeout的部份我還沒做以外….  </p>
+<h2 id="現況（2018-05-01"><a href="#現況（2018-05-01" class="headerlink" title="現況（2018.05.01)"></a>現況（2018.05.01)</h2><p>初版（0.0.1)目前實作了v1的經典（ClassicV1)協定，aka 廣播風暴版…<br>嚴格來講，這個不太算是對等網路裏面最一開始的協定，其實根本就連協定也稱不上吧…<br>第一代的對等網路是具有中心化伺服器來處理路由, 基本上Peer是做自己的事情沒錯，只不過溝通要透過中心就是。<br>要說是對等節點，我覺得也是可啦… 哈哈  </p>
+<p>還要弄一個中心化節點去控制路由好麻煩，所以MaybeP2P採的是第二代對等網路架構，<br>路由處理是走全網廣播，然後大家處理一堆不關自己的事情的封包請求就飽了，<br>這個狀況適合”小而美”的LAN，在LAN當中開廣，有負擔，但是不大。<br>拿到大型網路當中，節點跟請求封包的數量會成指數成長。  </p>
+<p>所以未來打算實作的是第三代對等網路（採用Kademlia來維護路由）的方式，<br>一方面用最低限度的Cost來達到定位特定節點或者資源的算法， 其實很簡單。<br>只要XOR就好了….<br>但是礙於當初Peer的TCP Server設計上沒有很詳盡的考慮到Timeout的部份，<br>我自己還要釐清一下思緒才有辦法改動….</p>
+<h2 id="So"><a href="#So" class="headerlink" title="So?"></a>So?</h2><div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><a target="_blank" rel="noopener" href="https://badge.fury.io/py/MaybeP2P"><img src="https://badge.fury.io/py/MaybeP2P.svg" alt="PyPI version"></a></div><div class="group-picture-column"><a target="_blank" rel="noopener" href="https://travis-ci.org/jackey8616/MaybeP2P"><img src="https://travis-ci.org/jackey8616/MaybeP2P.svg?branch=master" alt="Build Status"></a></div></div><div class="group-picture-row"><div class="group-picture-column"><a target="_blank" rel="noopener" href="https://codecov.io/gh/jackey8616/MaybeP2P"><img src="https://codecov.io/gh/jackey8616/MaybeP2P/branch/master/graph/badge.svg" alt="codecov"></a></div><div class="group-picture-column"><a target="_blank" rel="noopener" href="https://codeclimate.com/github/jackey8616/MaybeP2P/maintainability"><img src="https://api.codeclimate.com/v1/badges/1a8dceae8859199d3d54/maintainability" alt="Maintainability"></a></div></div></div>
+<p>現在pip可以下載喔.. 只是我doc還沒寫好….<br>啊哈哈哈哈哈…  </p>
+<p><code>pip install MaybeP2P</code>  </p>
+<pre><code class="sh">&gt;&gt;&gt; from peer import Peer
 &gt;&gt;&gt; p = Peer()
 &gt;&gt;&gt; p._initServerSock()
 &gt;&gt;&gt; p.start()
@@ -543,433 +249,40 @@ And this is why i called it a &quot; FRAMEWORK&quot;.</p>
 &gt;&gt;&gt; p.exit()
 &gt;&gt;&gt; ctrl-D
 </code></pre>
-<h2 id="note-webs"><a class="header-anchor" href="#note-webs"></a>Note Webs</h2>
-<p><a href="http://www.yeolar.com/note/2010/03/21/kademlia/" target="_blank" rel="noopener">Kademlia协议原理简介</a><br>
-<a href="https://www.jianshu.com/p/f2c31e632f1d" target="_blank" rel="noopener">易懂分布式 | Kademlia算法</a><br>
-<a href="https://program-think.blogspot.com/2017/09/Introduction-DHT-Kademlia-Chord.html" target="_blank" rel="noopener">聊聊分布式散列表（DHT）的原理——以 Kademlia（Kad） 和 Chord 为例</a><br>
-<a href="http://www.52im.net/thread-542-1-1.html" target="_blank" rel="noopener">P2P技术详解(二)：P2P中的NAT穿越(打洞)方案详解</a><br>
-<a href="http://www.52im.net/thread-1293-1-1.html" target="_blank" rel="noopener">不为人知的网络编程(七)：如何让不可靠的UDP变的可靠？</a><br>
-<a href="https://blog.csdn.net/DDFFR/article/details/78919530" target="_blank" rel="noopener">以太坊源码P2P网络及节点发现机制</a><br>
-<a href="https://blog.csdn.net/DDFFR/article/details/78773930" target="_blank" rel="noopener">[以太坊源代码分析] VI. 基于p2p的底层通信(上篇)</a><br>
-<a href="https://blog.csdn.net/daichanglin/article/details/1751324" target="_blank" rel="noopener">TCP实现P2P通信、TCP穿越NAT的方法、TCP打洞</a><br>
-<a href="http://cs.berry.edu/~nhamid/p2p/framework-python.html" target="_blank" rel="noopener">P2P Programming Framework - Python</a></p>
+<h2 id="Note-Webs"><a href="#Note-Webs" class="headerlink" title="Note Webs"></a>Note Webs</h2><p><a target="_blank" rel="noopener" href="http://www.yeolar.com/note/2010/03/21/kademlia/">Kademlia协议原理简介</a><br><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/f2c31e632f1d">易懂分布式 | Kademlia算法</a><br><a target="_blank" rel="noopener" href="https://program-think.blogspot.com/2017/09/Introduction-DHT-Kademlia-Chord.html">聊聊分布式散列表（DHT）的原理——以 Kademlia（Kad） 和 Chord 为例</a><br><a target="_blank" rel="noopener" href="http://www.52im.net/thread-542-1-1.html">P2P技术详解(二)：P2P中的NAT穿越(打洞)方案详解</a><br><a target="_blank" rel="noopener" href="http://www.52im.net/thread-1293-1-1.html">不为人知的网络编程(七)：如何让不可靠的UDP变的可靠？</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/DDFFR/article/details/78919530">以太坊源码P2P网络及节点发现机制</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/DDFFR/article/details/78773930">[以太坊源代码分析] VI. 基于p2p的底层通信(上篇)</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/daichanglin/article/details/1751324">TCP实现P2P通信、TCP穿越NAT的方法、TCP打洞</a><br><a target="_blank" rel="noopener" href="http://cs.berry.edu/~nhamid/p2p/framework-python.html">P2P Programming Framework - Python</a>  </p>
 
-      
     </div>
 
     
-
     
-    
-    
-
-    
-
-    
-
     
 
     <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/Linux/" rel="tag"># Linux</a>
-          
-            <a href="/tags/Python/" rel="tag"># Python</a>
-          
-            <a href="/tags/Python2-7/" rel="tag"># Python2.7</a>
-          
-            <a href="/tags/Python3-5/" rel="tag"># Python3.5</a>
-          
-            <a href="/tags/P2P/" rel="tag"># P2P</a>
-          
-            <a href="/tags/peer-to-peer/" rel="tag"># peer-to-peer</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2018/04/11/life_geeking/Unix-Hole-Is-So-Deep/" rel="next" title="Unix got telents(holes).">
-                <i class="fa fa-chevron-left"></i> Unix got telents(holes).
-              </a>
-            
+          <div class="post-tags">
+              <a href="/tags/Linux/" rel="tag"># Linux</a>
+              <a href="/tags/Python/" rel="tag"># Python</a>
+              <a href="/tags/Python2-7/" rel="tag"># Python2.7</a>
+              <a href="/tags/Python3-5/" rel="tag"># Python3.5</a>
+              <a href="/tags/P2P/" rel="tag"># P2P</a>
+              <a href="/tags/peer-to-peer/" rel="tag"># peer-to-peer</a>
           </div>
 
-          <span class="post-nav-divider"></span>
+        
 
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/05/01/life_geeking/Cracking-APK/" rel="prev" title="Cracking APK">
-                Cracking APK <i class="fa fa-chevron-right"></i>
-              </a>
-            
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2018/04/11/life_geeking/Unix-Hole-Is-So-Deep/" rel="prev" title="Unix got telents(holes).">
+                  <i class="fa fa-chevron-left"></i> Unix got telents(holes).
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2018/05/01/life_geeking/Cracking-APK/" rel="next" title="Cracking APK">
+                  Cracking APK <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
           </div>
-        </div>
-      
-
-      
-      
     </footer>
-  </div>
-  
-  
-  
   </article>
-
-
-
-    <div class="post-spread">
-      
-    </div>
-  </div>
-
-
-          </div>
-          
-
-  
-    <div class="comments" id="comments">
-      <div id="disqus_thread">
-        <noscript>
-          Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-        </noscript>
-      </div>
-    </div>
-
-  
-
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
-
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <img class="site-author-image" itemprop="image"
-                src="https://avatars1.githubusercontent.com/u/12930377?s=400&u=3e932a7f6b769a0e1028806815067be598db3351&v=4"
-                alt="clooooode" />
-            
-              <p class="site-author-name" itemprop="name">clooooode</p>
-              <p class="site-description motion-element" itemprop="description"></p>
-          </div>
-
-          
-            <nav class="site-state motion-element">
-              
-                <div class="site-state-item site-state-posts">
-                
-                  <a href="/archives/">
-                
-                    <span class="site-state-item-count">40</span>
-                    <span class="site-state-item-name">posts</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-categories">
-                  <a href="/categories/index.html">
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">11</span>
-                    <span class="site-state-item-name">categories</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-tags">
-                  <a href="/tags/index.html">
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">39</span>
-                    <span class="site-state-item-name">tags</span>
-                  </a>
-                </div>
-              
-            </nav>
-          
-
-          
-
-          
-            <div class="links-of-author motion-element">
-              
-                <span class="links-of-author-item">
-                  <a href="https://github.com/jackey8616" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
-                  
-                </span>
-              
-            </div>
-          
-
-          
-          
-
-          
-          
-            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
-              <div class="links-of-blogroll-title">
-                <i class="fa  fa-fw fa-link"></i>
-                Links
-              </div>
-              <ul class="links-of-blogroll-list">
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="/milestone" title="Milestone" target="_blank">Milestone</a>
-                  </li>
-                
-              </ul>
-            </div>
-          
-
-          
-            
-          
-          
-
-        </div>
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#野心"><span class="nav-number">2.</span> <span class="nav-text">野心</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#現況-2018-05-01"><span class="nav-number">3.</span> <span class="nav-text">現況（2018.05.01)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#so"><span class="nav-number">4.</span> <span class="nav-text">So?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#note-webs"><span class="nav-number">5.</span> <span class="nav-text">Note Webs</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
-
-      
-        <div class="back-to-top">
-          <i class="fa fa-arrow-up"></i>
-          
-            <span id="scrollpercent"><span>0</span>%</span>
-          
-        </div>
-      
-
-    </div>
-  </aside>
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love" id="animate">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">clooooode</span>
-
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-    
-      <span class="post-meta-item-text">Symbols count total: </span>
-    
-    <span title="Symbols count total">104k</span>
-  
-
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-coffee"></i>
-    </span>
-    
-      <span class="post-meta-item-text">Reading time total &asymp;</span>
-    
-    <span title="Reading time total">1:34</span>
-  
-</div>
-
-
-
-
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.0</div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Gemini</a> v6.1.0</div>
-
-
-
-
-        
-<div class="busuanzi-count">
-  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-  
-    <span class="site-uv" title="Total Visitors">
-      <i class="fa fa-user"></i>
-      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
-    </span>
-  
-
-  
-    <span class="site-pv" title="Total Views">
-      <i class="fa fa-eye"></i>
-      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
-    </span>
-  
 </div>
 
 
@@ -977,156 +290,48 @@ And this is why i called it a &quot; FRAMEWORK&quot;.</p>
 
 
 
+</div>
+  </main>
 
+  <footer class="footer">
+    <div class="footer-inner">
 
-
-        
-      </div>
-    </footer>
-
-    
-
-    
-
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">clooooode</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
   </div>
 
+    </div>
+  </footer>
+
   
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
 
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
 
 
   
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
 
   
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=6.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=6.1.0"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=6.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.1.0"></script>
-
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.1.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=6.1.0"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.1.0"></script>
-
-
-
-  
-
-  
-    <script id="dsq-count-scr" src="https://clooooode.disqus.com/count.js" async></script>
-  
-
-  
-    <script type="text/javascript">
-      var disqus_config = function () {
-        this.page.url = 'https://www.clo5de.info/2018/05/01/application/maybep2p/MaybeP2P-1/';
-        this.page.identifier = '2018/05/01/application/maybep2p/MaybeP2P-1/';
-        this.page.title = 'MaybeP2P(1) - Begin';
-      };
-      function loadComments () {
-        var d = document, s = d.createElement('script');
-        s.src = 'https://clooooode.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', '' + +new Date());
-        (d.head || d.body).appendChild(s);
-      }
-      
-        $(function () {
-          var offsetTop = $('#comments').offset().top - $(window).height();
-          if (offsetTop <= 0) {
-            // load directly when there's no a scrollbar
-            loadComments();
-          } else {
-            $(window).on('scroll.disqus_scroll', function () {
-              var scrollTop = document.documentElement.scrollTop;
-              if (scrollTop >= offsetTop) {
-                $(window).off('.disqus_scroll');
-                loadComments();
-              }
-            });
-          }
-        });
-      
-    </script>
-  
-
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-
 
 
 
@@ -1138,146 +343,6 @@ And this is why i called it a &quot; FRAMEWORK&quot;.</p>
 
 
 
-
-  
-
-  
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
-  <script>AV.initialize("BS1vAn9Etrkp6F0f6AwP27RR-MdYXbMMI", "vf7X6CDE2mTM3ATStyeAYT0l");</script>
-  <script>
-    function showTime(Counter) {
-      var query = new AV.Query(Counter);
-      var entries = [];
-      var $visitors = $(".leancloud_visitors");
-
-      $visitors.each(function () {
-        entries.push( $(this).attr("id").trim() );
-      });
-
-      query.containedIn('url', entries);
-      query.find()
-        .done(function (results) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.get('url');
-            var time = item.get('time');
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for(var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if( countSpan.text() == '') {
-              countSpan.text(0);
-            }
-          }
-        })
-        .fail(function (object, error) {
-          console.log("Error: " + error.code + " " + error.message);
-        });
-    }
-
-    function addCount(Counter) {
-      var $visitors = $(".leancloud_visitors");
-      var url = $visitors.attr('id').trim();
-      var title = $visitors.attr('data-flag-title').trim();
-      var query = new AV.Query(Counter);
-
-      query.equalTo("url", url);
-      query.find({
-        success: function(results) {
-          if (results.length > 0) {
-            var counter = results[0];
-            counter.fetchWhenSave(true);
-            counter.increment("time");
-            
-            counter.save(null, {
-              success: function(counter) {
-                
-                  var $element = $(document.getElementById(url));
-                  $element.find('.leancloud-visitors-count').text(counter.get('time'));
-                
-              },
-              error: function(counter, error) {
-                console.log('Failed to save Visitor num, with error message: ' + error.message);
-              }
-            });
-          } else {
-            
-              var newcounter = new Counter();
-              /* Set ACL */
-              var acl = new AV.ACL();
-              acl.setPublicReadAccess(true);
-              acl.setPublicWriteAccess(true);
-              newcounter.setACL(acl);
-              /* End Set ACL */
-              newcounter.set("title", title);
-              newcounter.set("url", url);
-              newcounter.set("time", 1);
-              newcounter.save(null, {
-                success: function(newcounter) {
-                  var $element = $(document.getElementById(url));
-                  $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-                },
-                error: function(newcounter, error) {
-                  console.log('Failed to create');
-                }
-              });
-            
-          }
-        },
-        error: function(error) {
-          console.log('Error:' + error.code + " " + error.message);
-        }
-      });
-    }
-
-    $(function() {
-      var Counter = AV.Object.extend("Counter");
-      if ($('.leancloud_visitors').length == 1) {
-        addCount(Counter);
-      } else if ($('.post-title-link').length > 1) {
-        showTime(Counter);
-      }
-    });
-  </script>
-
-
-
-  
-
-  
-
-  
-  
-
-  
-  
-
-  
-
-
-  
-  
-
-  
-
-  
-
-  
-
-  
-
-  
 
 </body>
 </html>
