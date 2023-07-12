@@ -20,29 +20,33 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.clo5de.info","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.17.1","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="sss">
+    <meta name="description" content="在使用Amazon Linux AMI中的EC2使用EBS作為Swap。並結合Launch Template。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Use Launch Template to define Swap on EC2">
+<meta property="og:title" content="Use EBS as Swap at EC2">
 <meta property="og:url" content="https://www.clo5de.info/2023/07/11/note/AWS/EC2-Swap-With-Launch-Template/index.html">
 <meta property="og:site_name" content="clooooode">
-<meta property="og:description" content="sss">
+<meta property="og:description" content="在使用Amazon Linux AMI中的EC2使用EBS作為Swap。並結合Launch Template。">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://www.clo5de.info/images/AWS/EBS-Volume.png">
 <meta property="article:published_time" content="2023-07-11T22:48:49.000Z">
-<meta property="article:modified_time" content="2023-07-11T15:42:31.674Z">
+<meta property="article:modified_time" content="2023-07-12T00:59:33.421Z">
 <meta property="article:author" content="clooooode">
 <meta property="article:tag" content="AWS">
 <meta property="article:tag" content="ECS">
+<meta property="article:tag" content="EC2">
+<meta property="article:tag" content="EBS">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.clo5de.info/images/AWS/EBS-Volume.png">
 
 
 <link rel="canonical" href="https://www.clo5de.info/2023/07/11/note/AWS/EC2-Swap-With-Launch-Template/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.clo5de.info/2023/07/11/note/AWS/EC2-Swap-With-Launch-Template/","path":"2023/07/11/note/AWS/EC2-Swap-With-Launch-Template/","title":"Use Launch Template to define Swap on EC2"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.clo5de.info/2023/07/11/note/AWS/EC2-Swap-With-Launch-Template/","path":"2023/07/11/note/AWS/EC2-Swap-With-Launch-Template/","title":"Use EBS as Swap at EC2"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Use Launch Template to define Swap on EC2 | clooooode</title>
+<title>Use EBS as Swap at EC2 | clooooode</title>
   
 
 
@@ -102,7 +106,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -115,6 +119,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Opening"><span class="nav-number">1.</span> <span class="nav-text">Opening</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Manual"><span class="nav-number">2.</span> <span class="nav-text">Manual</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Check-Swap"><span class="nav-number">2.1.</span> <span class="nav-text">Check Swap</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#List-block-devices"><span class="nav-number">2.2.</span> <span class="nav-text">List block devices</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hint-nvme1n1"><span class="nav-number">2.2.1.</span> <span class="nav-text">Hint: nvme1n1</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mkswap"><span class="nav-number">2.3.</span> <span class="nav-text">mkswap</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fstab"><span class="nav-number">2.4.</span> <span class="nav-text">fstab</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#With-Launch-Template"><span class="nav-number">3.</span> <span class="nav-text">With Launch Template</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">4.</span> <span class="nav-text">Reference</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -140,7 +145,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">41</span>
+        <span class="site-state-item-count">43</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -185,12 +190,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="Use Launch Template to define Swap on EC2 | clooooode">
+      <meta itemprop="name" content="Use EBS as Swap at EC2 | clooooode">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Use Launch Template to define Swap on EC2
+          Use EBS as Swap at EC2
         </h1>
 
         <div class="post-meta-container">
@@ -200,9 +205,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2023-07-11 22:48:49 / Modified: 15:42:31" itemprop="dateCreated datePublished" datetime="2023-07-11T22:48:49+00:00">2023-07-11</time>
+      <time title="Created: 2023-07-11 22:48:49" itemprop="dateCreated datePublished" datetime="2023-07-11T22:48:49+00:00">2023-07-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-07-12 00:59:33" itemprop="dateModified" datetime="2023-07-12T00:59:33+00:00">2023-07-12</time>
     </span>
 
   
@@ -221,7 +232,45 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>sss</p>
+    <div class="post-body" itemprop="articleBody"><p>在使用Amazon Linux AMI中的EC2使用EBS作為Swap。<br>並結合Launch Template。</p>
+<span id="more"></span>
+
+<h1 id="Opening"><a href="#Opening" class="headerlink" title="Opening"></a>Opening</h1><p>Amazon提供的EC2 optimize Linux預設是沒有開啟Swap的，<br>所以需要手動開啟。</p>
+<h1 id="Manual"><a href="#Manual" class="headerlink" title="Manual"></a>Manual</h1><p>以手動開啟為例，首先EC2要具備連入能力。<br>這邊不多贅述，可以自行搜尋EC2以SSH連入或是SessionManager等。</p>
+<h2 id="Check-Swap"><a href="#Check-Swap" class="headerlink" title="Check Swap"></a>Check Swap</h2><p>檢查Swap是否開啟的指令。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ swapon -s</span><br><span class="line">Filename                                Type            Size    Used    Priority</span><br><span class="line">/dev/nvme1n1                            partition       10485756        5120    -2</span><br></pre></td></tr></table></figure>
+
+<h2 id="List-block-devices"><a href="#List-block-devices" class="headerlink" title="List block devices"></a>List block devices</h2><p>列出目前所有的Disk以及Partition。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ lsbsk</span><br><span class="line">NAME          MAJ:MIN RM SIZE RO TYPE MOUNTPOINT</span><br><span class="line">nvme1n1       259:0    0  10G  0 disk [SWAP]</span><br><span class="line">nvme0n1       259:1    0  30G  0 disk</span><br><span class="line">├─nvme0n1p1   259:2    0  30G  0 part /</span><br><span class="line">└─nvme0n1p128 259:3    0   1M  0 part</span><br></pre></td></tr></table></figure>
+<p>上圖為兩個EBS Volume分別為30G以及10G。<br>30G做為系統碟掛載在root，10G做為Swap磁區。</p>
+<h3 id="Hint-nvme1n1"><a href="#Hint-nvme1n1" class="headerlink" title="Hint: nvme1n1"></a>Hint: nvme1n1</h3><p>構建在Nitro System上的EC2 Instance，其中EBS的Volume會以NVMe block device的方式掛載在Instance中。<a href="#Amazon-EBS-and-NVMe-on-Linux-instances">[1]</a><br>在EBS指定的磁區名稱會被重新mapping為 <code>/dev/nvme[0-26]n1</code><br>以上段圖例，<br>我的EBS Volume其實設定為：<br><img src="/images/AWS/EBS-Volume.png"></p>
+<p>其中</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/dev/xvda -&gt; nvme0n1</span><br><span class="line">/dev/xvdz -&gt; nvme1n1</span><br></pre></td></tr></table></figure>
+
+<p>在EC2 Instance內，你可以使用指令來檢查對應nvme裝置的mapping。<br>舉例查看 <code>/dev/nvme0n1</code>的名稱：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo /sbin/ebsnvme-id /dev/nvme0n1</span><br><span class="line">Volume ID: vol-xxxxxxxx</span><br><span class="line">xvda</span><br></pre></td></tr></table></figure>
+
+<h2 id="mkswap"><a href="#mkswap" class="headerlink" title="mkswap"></a>mkswap</h2><p>以指定裝置設定Swap磁區並開啟Swap。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ sudo mkswap /dev/nvme1n1</span><br><span class="line">mkswap: /dev/nvme1n1: warning: wiping old swap signature.</span><br><span class="line">Setting up swapspace version 1, size = 10 GiB (10737414144 bytes)</span><br><span class="line">no label, UUID=62c94db1-3dfe-420d-a693-9a14d73ffdef</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo swapon /dev/nvme1n1</span><br></pre></td></tr></table></figure>
+
+<p>執行後，再次檢查會得到</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ swapon -s</span><br><span class="line">Filename                                Type            Size    Used    Priority</span><br><span class="line">/dev/nvme1n1                            partition       10485756        0       -2</span><br></pre></td></tr></table></figure>
+
+<p>以 <code>top</code> 指令可以查看使用情形：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$ top</span><br><span class="line">top - 00:48:24 up 1 day, 16:55,  0 <span class="built_in">users</span>,  load average: 0.00, 0.07, 0.12</span><br><span class="line">Tasks: 126 total,   1 running,  84 sleeping,   0 stopped,   0 zombie</span><br><span class="line">%Cpu(s):  5.0 us,  2.0 sy,  0.0 ni, 89.6 <span class="built_in">id</span>,  0.0 wa,  0.0 hi,  0.0 si,  3.5 st</span><br><span class="line">KiB Mem :  3976984 total,   368968 free,  1579896 used,  2028120 buff/cache</span><br><span class="line">KiB Swap: 10485756 total, 10485756 free,        0 used.  2168728 avail Mem</span><br><span class="line"></span><br><span class="line">  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND</span><br><span class="line"> 2924 root      20   0 1595148  47820  29364 S   0.7  1.2  21:18.03 containerd</span><br><span class="line"> 3373 root      20   0 2054812 111076  53008 S   0.7  2.8  21:00.35 dockerd</span><br><span class="line"> 4713 root      20   0  713120   9896   6480 S   0.7  0.2   7:02.12 containerd-shim</span><br><span class="line"> 4193 root      20   0  712864   9096   6092 S   0.3  0.2   0:28.93 containerd-shim</span><br><span class="line"> ...</span><br></pre></td></tr></table></figure>
+
+<h2 id="fstab"><a href="#fstab" class="headerlink" title="fstab"></a>fstab</h2><p>寫入開機自動掛載。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ echo &quot;/dev/nvme1n1 none swap sw 0 0&quot; | tee -a /etc/fstab</span><br></pre></td></tr></table></figure>
+
+<h1 id="With-Launch-Template"><a href="#With-Launch-Template" class="headerlink" title="With Launch Template"></a>With Launch Template</h1><ul>
+<li>TBD</li>
+</ul>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-store-swap-volumes.html">Instance store swap volumes</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/nvme-ebs-volumes.html">Amazon EBS and NVMe on Linux instances</a></li>
+</ul>
 
     </div>
 
@@ -233,6 +282,8 @@
           <div class="post-tags">
               <a href="/tags/AWS/" rel="tag"># AWS</a>
               <a href="/tags/ECS/" rel="tag"># ECS</a>
+              <a href="/tags/EC2/" rel="tag"># EC2</a>
+              <a href="/tags/EBS/" rel="tag"># EBS</a>
           </div>
 
         
