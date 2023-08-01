@@ -1,6 +1,7 @@
 ---
 title: Use EBS as Swap at EC2
 date: 2023-07-11 22:48:49
+categories: AWS
 tags:
   - AWS
   - ECS
