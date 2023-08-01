@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.clo5de.info","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.17.1","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="過長的Replica節點查詢，因爲Primary節點執行vacuum指令導致列版本(row version)分岔，進一步引起查詢取消。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PostgreSQL: canceling statement due to conflict with recovery">
+<meta property="og:url" content="https://www.clo5de.info/2023/08/01/note/PostgreSQL/PostgreSQL-canceling-statement-due-to-conflict-with-recovery/index.html">
+<meta property="og:site_name" content="clooooode">
+<meta property="og:description" content="過長的Replica節點查詢，因爲Primary節點執行vacuum指令導致列版本(row version)分岔，進一步引起查詢取消。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-08-01T13:29:36.000Z">
+<meta property="article:modified_time" content="2023-08-01T07:38:25.849Z">
+<meta property="article:author" content="clooooode">
+<meta property="article:tag" content="PostgreSQL">
+<meta property="article:tag" content="RDBMS">
+<meta property="article:tag" content="Vacuum">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.clo5de.info/2023/08/01/note/PostgreSQL/PostgreSQL-canceling-statement-due-to-conflict-with-recovery/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.clo5de.info/2023/08/01/note/PostgreSQL/PostgreSQL-canceling-statement-due-to-conflict-with-recovery/","path":"2023/08/01/note/PostgreSQL/PostgreSQL-canceling-statement-due-to-conflict-with-recovery/","title":"PostgreSQL: canceling statement due to conflict with recovery"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>PostgreSQL: canceling statement due to conflict with recovery | clooooode</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">clooooode</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">a.k.a. clo5de</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#TL-DR"><span class="nav-number">1.</span> <span class="nav-text">TL;DR</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#What-is-vacuum"><span class="nav-number">2.</span> <span class="nav-text">What is vacuum?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#What-happens-when-vacuum-execute-with-long-query"><span class="nav-number">3.</span> <span class="nav-text">What happens when vacuum execute with long query?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Solution%EF%BC%9Ahot-standby-feedback"><span class="nav-number">4.</span> <span class="nav-text">Solution：hot_standby_feedback</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">5.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="clooooode"
+      src="https://avatars1.githubusercontent.com/u/12930377?s=400&u=3e932a7f6b769a0e1028806815067be598db3351&v=4">
+  <p class="site-author-name" itemprop="name">clooooode</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">46</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/jackey8616" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;jackey8616" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.clo5de.info/2023/08/01/note/PostgreSQL/PostgreSQL-canceling-statement-due-to-conflict-with-recovery/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars1.githubusercontent.com/u/12930377?s=400&u=3e932a7f6b769a0e1028806815067be598db3351&v=4">
+      <meta itemprop="name" content="clooooode">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="clooooode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="PostgreSQL: canceling statement due to conflict with recovery | clooooode">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          PostgreSQL: canceling statement due to conflict with recovery
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2023-08-01 13:29:36 / Modified: 07:38:25" itemprop="dateCreated datePublished" datetime="2023-08-01T13:29:36+00:00">2023-08-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/PostgreSQL/" itemprop="url" rel="index"><span itemprop="name">PostgreSQL</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span class="firestore-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>過長的Replica節點查詢，因爲Primary節點執行<code>vacuum</code>指令導致列版本(row version)分岔，<br>進一步引起查詢取消。</p>
+<span id="more"></span>
+
+<h1 id="TL-DR"><a href="#TL-DR" class="headerlink" title="TL;DR"></a>TL;DR</h1><ul>
+<li>避免過久的查詢</li>
+<li>開啟 <code>hot_standby_feedback</code> 參數（缺點：primary node會有表膨脹的問題）</li>
+</ul>
+<h1 id="What-is-vacuum"><a href="#What-is-vacuum" class="headerlink" title="What is vacuum?"></a>What is vacuum?</h1><ul>
+<li>恢復或回收使用因更新或刪除資料列所佔用的磁碟空間。</li>
+<li>更新 PostgreSQL 查詢計劃器使用的資料統計資訊。</li>
+<li>更新可視性結構，這會增加索引限定掃描的效率。</li>
+<li>防止由於事務 ID 重覆或 multixact ID 重覆而失去非常舊的資料。<br><a target="_blank" rel="noopener" href="https://docs.postgresql.tw/server-administration/routine-database-maintenance-tasks/routine-vacuuming">Ref</a></li>
+</ul>
+<h1 id="What-happens-when-vacuum-execute-with-long-query"><a href="#What-happens-when-vacuum-execute-with-long-query" class="headerlink" title="What happens when vacuum execute with long query?"></a>What happens when vacuum execute with long query?</h1><ul>
+<li><ol>
+<li>Replica節點執行SELECT長查詢，假設其中包含Row-A。</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>Primary節點恰好在Replica節點查詢結束前執行vacuum指令，並移除Row-A。</li>
+</ol>
+<ul>
+<li>為何移除Row-A：<br>該列可能於第一項Replica節點執行查詢前，已經刪除並被標記(mark)為須回收，故vacuum會移除該行。</li>
+</ul>
+</li>
+<li><ol start="3">
+<li>Replica節點同步執行vacuum指令。</li>
+</ol>
+</li>
+<li><ol start="4">
+<li>第一項SELECT長查詢Row-A與vacuum指令的列版本(row version)發生衝突，自動取消(cancel)。</li>
+</ol>
+</li>
+</ul>
+<h1 id="Solution：hot-standby-feedback"><a href="#Solution：hot-standby-feedback" class="headerlink" title="Solution：hot_standby_feedback"></a>Solution：hot_standby_feedback</h1><p><a target="_blank" rel="noopener" href="https://www.postgresql.org/docs/current/runtime-config-replication.html#RUNTIME-CONFIG-REPLICATION-STANDBY">Ref</a><br>此參數設定於Replica節點，<br>啟用這個參數讓Replica節點在接收到查詢時，同步被查的行資訊給Primary節點，避免<code>vacuum</code>清除這些節點的資訊。<br>用於避免<code>vacuum</code>導致查詢被取消。</p>
+<p>缺點：<br>有可能會導致表膨脹(Table bloat)，因為被Replica節點查詢佔用的行資訊沒有被清除。</p>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://docs.postgresql.tw/server-administration/routine-database-maintenance-tasks/routine-vacuuming">PostgreSQL Vacuum</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.postgresql.org/docs/current/runtime-config-replication.html#RUNTIME-CONFIG-REPLICATION-STANDBY">PostgreSQL Standby Server</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/PostgreSQL/" rel="tag"># PostgreSQL</a>
+              <a href="/tags/RDBMS/" rel="tag"># RDBMS</a>
+              <a href="/tags/Vacuum/" rel="tag"># Vacuum</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/07/11/note/AWS/EC2-Swap-With-Launch-Template/" rel="prev" title="Use EBS as Swap at EC2">
+                  <i class="fa fa-chevron-left"></i> Use EBS as Swap at EC2
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2018 – 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">clooooode</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.23.0/firebase-app-compat.js" integrity="sha256-FYa4Xn7MJlI18eIkwawbRKLz7bGeUODtNpSR+bsjlHg=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.23.0/firebase-firestore-compat.js" integrity="sha256-sgbLcRGF3ph6N+ymg9zoy9kFQDWBvJlCd0GbGMKBH0c=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="firestore" type="application/json">{"enable":true,"collection":"articles","apiKey":"AIzaSyCu9-MhzikdJ0BVgPRODV__hMffyr5bgZg","projectId":"clo5de-githubpage"}</script>
+  <script src="/js/third-party/statistics/firestore.js"></script>
+
+
+
+
+</body>
+</html>
