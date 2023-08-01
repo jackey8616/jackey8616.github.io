@@ -634,10 +634,10 @@ hexo-generator-index@^3.0.0:
   dependencies:
     hexo-pagination "3.0.0"
 
-hexo-generator-slidehtml@^0.0.63:
-  version "0.0.63"
-  resolved "https://registry.npmjs.org/hexo-generator-slidehtml/-/hexo-generator-slidehtml-0.0.63.tgz#68c1d67785c57b7635df0a992aaef6e6fdb4833e"
-  integrity sha512-XTpCPzTb7mfm0P7elnriesIf0WlM4mQC/npIvZ20OJ83QohAMvdHxm1UApxFlIgY3yWRdTSeQLFsCqwisT8/4w==
+hexo-generator-slidehtml@^0.0.64:
+  version "0.0.64"
+  resolved "https://registry.npmjs.org/hexo-generator-slidehtml/-/hexo-generator-slidehtml-0.0.64.tgz#b4ce9921a82ff7eb8365a9e89165d19ada6065bb"
+  integrity sha512-ql8V/LdAnr2QWaL2Luy1GxBHTgbpZRiJZsLwjbRFT2isqUb7QjxConIpmxNLGMDPHD8SMjfJoqAbs8pGQPM7GA==
 
 hexo-generator-tag@^2.0.0:
   version "2.0.0"
