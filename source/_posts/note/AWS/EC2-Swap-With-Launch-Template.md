@@ -47,7 +47,7 @@ nvme0n1       259:1    0  30G  0 disk
 在EBS指定的磁區名稱會被重新mapping為 `/dev/nvme[0-26]n1`
 以上段圖例，
 我的EBS Volume其實設定為：
-![](/images/AWS/EBS-Volume.png)
+![](/images/note/AWS/EC2-Swap-With-Template/EBS-Volume.png)
 
 其中
 ```
