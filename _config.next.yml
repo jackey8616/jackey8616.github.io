@@ -97,7 +97,10 @@ open_graph:
 # External url should start with http:// or https://
 menu:
   home: / || fa fa-home
-  about: /about/ || fa fa-user
+  GitHub: https://github.com/jackey8616 || fab fa-github
+  E-Mail: mailto:clode@clo5de.info || fa fa-envelope
+  LinkedIn: https://www.linkedin.com/in/jacky-clode-294832118/ || fab fa-linkedin
+  #about: /about/ || fa fa-user
   #tags: /tags/ || fa fa-tags
   #categories: /categories/ || fa fa-th
   #archives: /archives/ || fa fa-archive
@@ -156,7 +159,8 @@ site_state: true
 # Value before `||` delimiter is the target permalink, value after `||` delimiter is the name of Font Awesome icon.
 social:
   GitHub: https://github.com/jackey8616 || fab fa-github
-  #E-Mail: mailto:yourname@gmail.com || fa fa-envelope
+  E-Mail: mailto:clode@clo5de.info || fa fa-envelope
+  LinkedIn: https://www.linkedin.com/in/jacky-clode-294832118/ || fab fa-linkedin
   #Weibo: https://weibo.com/yourname || fab fa-weibo
   #Twitter: https://twitter.com/yourname || fab fa-twitter
   #FB Page: https://www.facebook.com/yourname || fab fa-facebook
