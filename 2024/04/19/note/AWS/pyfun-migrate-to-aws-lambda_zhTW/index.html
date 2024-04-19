@@ -27,6 +27,7 @@
 <meta property="og:site_name" content="clooooode">
 <meta property="og:description" content="遷移一個Sanic後端從Linode VPC到AWS Lambda。">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://www.clo5de.info/images/note/AWS/pyfun-migrate-to-aws-lambda/structure.svg">
 <meta property="og:image" content="https://www.clo5de.info/images/note/AWS/pyfun-migrate-to-aws-lambda/Lambda-Override-CMD.png">
 <meta property="og:image" content="https://www.clo5de.info/images/note/AWS/pyfun-migrate-to-aws-lambda/Lambda-Test-API-Gateway-Function.png">
 <meta property="og:image" content="https://www.clo5de.info/images/note/AWS/pyfun-migrate-to-aws-lambda/API-Gateway-Lambda-Proxy-Integration.png">
@@ -38,7 +39,7 @@
 <meta property="og:image" content="https://www.clo5de.info/images/note/AWS/pyfun-migrate-to-aws-lambda/CF-CNAME.png">
 <meta property="og:image" content="https://www.clo5de.info/images/note/AWS/pyfun-migrate-to-aws-lambda/Backend-v2-Test.png">
 <meta property="article:published_time" content="2024-04-19T21:52:32.000Z">
-<meta property="article:modified_time" content="2024-04-19T13:54:26.829Z">
+<meta property="article:modified_time" content="2024-04-19T15:07:51.989Z">
 <meta property="article:author" content="clooooode">
 <meta property="article:tag" content="AWS">
 <meta property="article:tag" content="GitHub Actions">
@@ -46,7 +47,7 @@
 <meta property="article:tag" content="PyFun">
 <meta property="article:tag" content="zhTW">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://www.clo5de.info/images/note/AWS/pyfun-migrate-to-aws-lambda/Lambda-Override-CMD.png">
+<meta name="twitter:image" content="https://www.clo5de.info/images/note/AWS/pyfun-migrate-to-aws-lambda/structure.svg">
 
 
 <link rel="canonical" href="https://www.clo5de.info/2024/04/19/note/AWS/pyfun-migrate-to-aws-lambda_zhTW/">
@@ -56,7 +57,7 @@
 <script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.clo5de.info/2024/04/19/note/AWS/pyfun-migrate-to-aws-lambda_zhTW/","path":"2024/04/19/note/AWS/pyfun-migrate-to-aws-lambda_zhTW/","title":"Migrating python backend to AWS Lambda(zhTW)"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Migrating python backend to AWS Lambda(zhTW) | clooooode</title>
+<title>Migrating python backend to AWS Lambda(zhTW) | clooooode</title><meta name="robots" content="noindex">
   
 
 
@@ -144,7 +145,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">45</span>
+          <span class="site-state-item-count">44</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -155,7 +156,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">51</span>
+        <span class="site-state-item-count">50</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -223,7 +224,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2024-04-19 21:52:32 / Modified: 13:54:26" itemprop="dateCreated datePublished" datetime="2024-04-19T21:52:32+00:00">2024-04-19</time>
+      <time title="Created: 2024-04-19 21:52:32 / Modified: 15:07:51" itemprop="dateCreated datePublished" datetime="2024-04-19T21:52:32+00:00">2024-04-19</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -251,7 +252,8 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>遷移一個Sanic後端從Linode VPC到AWS Lambda。</p>
+    <div class="post-body" itemprop="articleBody"><p><img src="/images/note/AWS/pyfun-migrate-to-aws-lambda/structure.svg"></p>
+<center>遷移一個Sanic後端從Linode VPC到AWS Lambda。</center>
 <span id="more"></span>
 
 <h1 id="Opening"><a href="#Opening" class="headerlink" title="Opening"></a>Opening</h1><p>最近想要把Linode VPC收掉，雖然一個月才花5塊美金而已；<br>但是覺得越來越懶的SSH連線進去VPC去處理部署，原先專案寫的方式，其實並沒有很好的部屬設計，當時的時空背景下還沒有想到CI&#x2F;CD的部分；<br>剛好最近看到AWS Lambda有每個月1M的quota，所以就想PyFun適合這種Serverless的方式去Host，藉此機會摸一下許久未碰的AWS。</p>
@@ -315,7 +317,7 @@
 </ul>
 <!-- This is reference link, below content would not show -->
 <!-- This is reference link, above content would not show -->
-
+<!-- flag of hidden posts -->
     </div>
 
     
@@ -333,15 +335,6 @@
 
         
 
-          <div class="post-nav">
-            <div class="post-nav-item">
-                <a href="/2024/04/16/note/AWS/pyfun-migrate-to-aws-lambda/" rel="prev" title="Migrating python backend to AWS Lambda">
-                  <i class="fa fa-chevron-left"></i> Migrating python backend to AWS Lambda
-                </a>
-            </div>
-            <div class="post-nav-item">
-            </div>
-          </div>
     </footer>
   </article>
 </div>

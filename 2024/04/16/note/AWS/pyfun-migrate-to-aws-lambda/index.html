@@ -27,6 +27,7 @@
 <meta property="og:site_name" content="clooooode">
 <meta property="og:description" content="Migrating a Sanic backend from Linode VPC to AWS Lambda.">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://www.clo5de.info/images/note/AWS/pyfun-migrate-to-aws-lambda/structure.svg">
 <meta property="og:image" content="https://www.clo5de.info/images/note/AWS/pyfun-migrate-to-aws-lambda/Lambda-Override-CMD.png">
 <meta property="og:image" content="https://www.clo5de.info/images/note/AWS/pyfun-migrate-to-aws-lambda/Lambda-Test-API-Gateway-Function.png">
 <meta property="og:image" content="https://www.clo5de.info/images/note/AWS/pyfun-migrate-to-aws-lambda/API-Gateway-Lambda-Proxy-Integration.png">
@@ -38,14 +39,14 @@
 <meta property="og:image" content="https://www.clo5de.info/images/note/AWS/pyfun-migrate-to-aws-lambda/CF-CNAME.png">
 <meta property="og:image" content="https://www.clo5de.info/images/note/AWS/pyfun-migrate-to-aws-lambda/Backend-v2-Test.png">
 <meta property="article:published_time" content="2024-04-16T21:05:32.000Z">
-<meta property="article:modified_time" content="2024-04-19T13:54:26.829Z">
+<meta property="article:modified_time" content="2024-04-19T15:07:51.989Z">
 <meta property="article:author" content="clooooode">
 <meta property="article:tag" content="AWS">
 <meta property="article:tag" content="GitHub Actions">
 <meta property="article:tag" content="Lambda">
 <meta property="article:tag" content="PyFun">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://www.clo5de.info/images/note/AWS/pyfun-migrate-to-aws-lambda/Lambda-Override-CMD.png">
+<meta name="twitter:image" content="https://www.clo5de.info/images/note/AWS/pyfun-migrate-to-aws-lambda/structure.svg">
 
 
 <link rel="canonical" href="https://www.clo5de.info/2024/04/16/note/AWS/pyfun-migrate-to-aws-lambda/">
@@ -143,7 +144,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">45</span>
+          <span class="site-state-item-count">44</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -154,7 +155,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">51</span>
+        <span class="site-state-item-count">50</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -228,7 +229,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-04-19 13:54:26" itemprop="dateModified" datetime="2024-04-19T13:54:26+00:00">2024-04-19</time>
+      <time title="Modified: 2024-04-19 15:07:51" itemprop="dateModified" datetime="2024-04-19T15:07:51+00:00">2024-04-19</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -256,9 +257,11 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>Migrating a Sanic backend from Linode VPC to AWS Lambda.</p>
+    <div class="post-body" itemprop="articleBody"><p><img src="/images/note/AWS/pyfun-migrate-to-aws-lambda/structure.svg"></p>
+<center>Migrating a Sanic backend from Linode VPC to AWS Lambda.</center>
 <span id="more"></span>
 
+<p><a href="/2024/04/19/note/AWS/pyfun-migrate-to-aws-lambda_zhTW">[zhTW version]</a></p>
 <h1 id="Opening"><a href="#Opening" class="headerlink" title="Opening"></a>Opening</h1><p>Recently I want to close my Linode VPC, although it only took me 5 USD&#x2F;mo.<br>But I’m getting lazier to deal with deploying stuffs through SSH,<br>The origin design of PyFun did not doing well on deploying, at that time, I don’t even considering about CI&#x2F;CD.<br>AWS Lambda have 1M quota per month, which PyFun is very suit of this kind of way to serve service, and also let me have chances get back to AWS.</p>
 <hr>
 <h1 id="Steps"><a href="#Steps" class="headerlink" title="Steps"></a>Steps</h1><ul>
@@ -348,9 +351,6 @@
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2024/04/19/note/AWS/pyfun-migrate-to-aws-lambda_zhTW/" rel="next" title="Migrating python backend to AWS Lambda(zhTW)">
-                  Migrating python backend to AWS Lambda(zhTW) <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
