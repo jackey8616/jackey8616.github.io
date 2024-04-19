@@ -9,13 +9,14 @@ tags:
   - PyFun
 ---
 
-遷移一個Sanic後端從Linode VPC到AWS Lambda。
+Migrating a Sanic backend from Linode VPC to AWS Lambda.
 <!-- More -->
 
 # Opening
-最近想要把Linode VPC收掉，雖然一個月才花5塊美金而已；
-但是覺得越來越懶的SSH連線進去VPC去處理部署，原先專案寫的方式，其實並沒有很好的部屬設計，當時的時空背景下還沒有想到CI/CD的部分；
-剛好最近看到AWS Lambda有每個月1M的quota，所以就想PyFun適合這種Serverless的方式去Host，藉此機會摸一下許久未碰的AWS。
+Recently I want to close my Linode VPC, although it only took me 5 USD/mo.
+But I'm getting lazier to deal with deploying stuffs through SSH,
+The origin design of PyFun did not doing well on deploying, at that time, I don't even considering about CI/CD.
+AWS Lambda have 1M quota per month, which PyFun is very suit of this kind of way to serve service, and also let me have chances get back to AWS.
 
 ---
 
@@ -31,30 +32,32 @@ tags:
 ---
 
 # Refactor PyFun Backend
-PyFun原先是以Sanic的方式去pack成image推到DockerHub上面，然後再自己SSH進去手動Pull然後部署；後來其實更慘，直接在機器裡面git pull然後當場build當場up，那個Docker image完全不知道推幹嘛的。
+PyFun is wrote by Sanic, pack as image and push to DockerHub, when its time to deploy, I have to SSH into VPC then manually pull the image then run.
+Late version of PyFun is more worst, I have to `git pull` in VPC then build the image locally then up, DockerHub is become meaningless.
 
-趁著把PyFun稍微refactor的機會，順便切分了一下Sanic部分跟預期要使用的Lambda。
-> PyFun本身是一個類似online judge的東西，他的每一個Lesson都是用Python file去定義，
-> 本身並沒有使用到資料庫，直接拿GitHub存每一個Lesson，
-> 這次的Refactor是把原本用.py定義的lesson改成用.json，直接把GitHub當作NoSQL了。
+This time I decides to refactor a little bit, split to Sanic and Lambda's logics.
+> PyFun is a toy-project, which is working like some sort of online judge platform.
+> Each lesson defines in a single python file, whole service is not using any database, it takes GitHub as a store.
+> This time, I plan to refactor each `.py` file into `.json`, and treat GitHub as a NoSQL database.
 
-詳細套用Lambda的commit可以參考[這邊](https://github.com/jackey8616/PyFun-Backend/compare/b520b78...f9c8776)
+You can reference [these commits](https://github.com/jackey8616/PyFun-Backend/compare/b520b78...f9c8776) about how I apply Lambda.
 
-簡單來說就是，把lambda要用的handler切好、解析一下API Gateway給的event、包裝好API Gateway的response、ECR要用的Dockerfile跟推送的GitHub Actions寫一寫。
-大概是這樣？
+All in all, I split logics to different handler for lambda, extract the event from API Gateway, pack the response format which API Gateway needs, build and push ECR image in GitHub Actions.
+I guess?
 
 ---
 
 # Prepare Idp & IAM role
-參考<small>[[註1 Use IAM roles to connect GitHub Actions to actions in AWS]][1]</small>、<small>[[註2 Creating a role for OIDC]][2]</small>設定好Idp跟role之後，Policy的部分，因為只是要推送到ECR，所以可以參考<small>[[註3 IAM permission for pushing an image]][3]</small>。
+Check [this][1] and [this][2] out.
+After you setup your Idp and role, you can use [this][3] instructions from AWS, cuz we are just only push to ECR.
 
-建議設定Policy的時候可以去指定Arn，以最低權限原則去設定最好。
+And I suggest you can specify the ARN in order to follow the minimum permissions principle while setting Policies.
 
 ---
 
 # Prepare ECR images
 ## Dockerfile
-這邊大概簡單介紹一下Dockerfile <small>[[註4 AWS Lambda - Using an AWS base image for Python]][4]</samll>。
+Here is the simple Dockerfile, and you can check [this][4] out.
 ```dockerfile
 FROM public.ecr.aws/lambda/python:3.12
 
@@ -75,20 +78,25 @@ RUN pip install -r requirements-lambda.txt
 # Set the CMD to your handler (could also be done as a parameter override outside of the Dockerfile)
 CMD [ "lambda_app.stage_info_handler" ]
 ```
-比較重要的大概是 `CMD [ "lambda_app.stage_info_handler" ]` 這邊。
-每一個Lambda在設定，預設都會用CMD指向的<檔名>.<函式名>程式來執行。
-我這邊的用法是把所有的東西(四個方法)都包在同一個image(詳細可以自己去參考一下Repo裡面的lambda_app.py)，所以後續在Lambda的設定介面，需要手動Override CMD到對應的函式。
 
-除此之外，Lambda本身，可以有多種不同的觸發器，所以以下AWS的範例中：
+`CMD [ "lambda_app.stage_info_handler" ]` would be the critical part.
+Each lambda function will setup(or override) CMD to the handler it wants to execute.
+and the format of CMD would be `<file name>.<handler func name>`.
+
+I pack all of the four handlers into same image - you can check the file `lambda_app.py` - thus, We have to override CMD to the given function by our own. 
+
+Besides, Lambda provides various of Trigger, at the belows example:
 ```python
 import sys
 def handler(event, context):
     return 'Hello from AWS Lambda using Python' + sys.version + '!'
 ```
-event這個參數，是有各種不同的可能，自己實際在local測試的時候要注意。
-可以多多利用Lambda主控台中，預先建立一個函數(可以先用模板)，裡面的測試也有模板方便看一下參數長相。
+parameter named `event` have different possibilities, since the event is pass by different trigger.
+You can make use of the test event in Lambda console.
+By pre-creating a test event - yes, you can use template if you want to - you can check the actually structure of event parameter.
 
-context我還沒用到，估計是整個invoke chain的東西，下次有遇到再介紹。
+I have'nt use `context` yet, I think it describes the whole invoke chain from API Gateway to Lambda or something like that,
+I will introduce it next time if there is chances.
 
 ## GitHub Actions to push to ECR
 ```yml
@@ -126,94 +134,91 @@ jobs:
           docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
 ```
 
-大概要特別注意的是`permissions`，要設定好，不然會沒辦法過Credentials。
+`permissions` field should be properly setup, otherwise AWS credentials would fail.
 
 ---
 
 # Setup Lambda with proper CMD
 ## Create function
-PyFun本身有四個路由，所以我這次只是粗略的切分成四個Lambda function。
-要注意的是CMD覆寫的部分：
+PyFun have four routes, this time I just simply split these routes into four lambda function.
+Be aware that the overriding the CMD attributes:
 ![](/images/note/AWS/pyfun-migrate-to-aws-lambda/Lambda-Override-CMD.png)
-這邊標示的就是 <lambda handler 放置的檔案名>.<handler func name>。
-所以對應Repo裡面`lambda_app.py`的四個handler，看起來會像這樣。
 
-## Test function
-建立好Function之後，點進去有測試的Tab可以試打。
-因為我前面會套API Gateway，所以這邊選API Gateway的Http範本。
+## Test event
+After creating lambda function, click into it, there is a `Test` tab, you can try it.
+I will put API Gateway in front of my Lambda, so here I choose API Gateway:
 ![](/images/note/AWS/pyfun-migrate-to-aws-lambda/Lambda-Test-API-Gateway-Function.png)
 
-基本上你在寫handler function的實作的時候，
-event的結構，就可以參考這邊的test function範本。
+Basically when you are implementing handler function,
+you can take this test event's template as reference of event structure.
 
 ---
 
 # API Gateway
 ## API
 ### Type
-這邊我建立的是Rest API，為了省錢，用的是區域性的API。
-邊緣最佳化會牽扯到Cloudfront，那個是吃錢怪獸，而且PyFun流量低得可憐，用不到。
-私有雖然不用流量，但是會需要多設定Private Link，這也是錢；流量不會不見，只是變成你不喜歡的樣子。
+Here I built Regional Rest API for saving budgets.
+Edge-optimized involve Cloudfront, which is a budget monster, also PyFun is almost zero traffic.
+Private requires VPC endpoint, it also cost a lot.
 
 ### Resource
-基本上就是按照後端路由下去建立路徑資源，套用CORS等。
-小重點是要記得把`Lambda代理整合`的選項給打開，這樣子API Gateway才會把傳入的資料以事件包裝丟給Lambda的函數去工作。
+Just follows the thought of building a Backend, apply CORS, etc.
+And remember to turn on the `Lambda proxy integration`, API Gateway will transmit in coming data as event to lambda function.
 ![](/images/note/AWS/pyfun-migrate-to-aws-lambda/API-Gateway-Lambda-Proxy-Integration.png)
 
-CORS的部分，除了在`lambda_app.py`裡面，已經預設包裝好Access-Allow那一些的header回傳之外，
-POST的Preflight Request會需要仰賴API Gateway去做CORS，
-所以這一塊要到會使用到POST的路由資源底下，新增一個模擬CORS的設定：
+I've already return some `Access-Allow` cross origin headers in `lambda_app.py`.
+But POST request will send a preflight request which needs cooperate with API Gateway.
+We need to add a CORS simulates under the resource which is POST method:
 ![](/images/note/AWS/pyfun-migrate-to-aws-lambda/API-Gateway-CORS-Simulation.png)
 
 ### Stage
-因為PyFun這次搬到AWS算是v2，所以我這邊把deploy stage定為v2。
+This time I treat this API as version 2, thus the naming here I use is v2.
 ![](/images/note/AWS/pyfun-migrate-to-aws-lambda/API-Gateway-Deploy.png)
 
 
-## 自訂網域名稱
+## Custom domain names
 ### Upload Cloudflare Certificate
-因為我的CDN用Cloudflare，所以得先去建立CF的Cert拿出來匯入AWS ACM中。
+My CDN is Cloudflare, we need to create a CF cert to import into AWS ACM.
 ![](/images/note/AWS/pyfun-migrate-to-aws-lambda/CF-Create-Cert.png)
-拿到之後直接塞進去ACM就好了。
 
-### 建立網域名稱、設定API映射
-把想要用的domain設定好、ACM憑證掛上去直接建立就可以了。
+### Create domain names, API mappings
+Setup desire domain, put on ACM certs then create.
+
 ![](/images/note/AWS/pyfun-migrate-to-aws-lambda/API-Gateway-API-mapping.png)
-回到組態的地方，把`API Gateway 網域名稱`的domain複製下來，待會要去Cloudflare掛CNAME。
+
+Back to configuration, copy the `API Gateway domain name`, we will setup a CNAME at Cloudflare later.
 ![](/images/note/AWS/pyfun-migrate-to-aws-lambda/API-Gateway-Endpoint-Configuration.png)
 
 ---
 
 # Cloudflare redirect
-把CNAME掛上去，就可以直接試打看看了。
+Create a CNAME, then you can try it!
 ![](/images/note/AWS/pyfun-migrate-to-aws-lambda/CF-CNAME.png)
 
-因為回應會用base64編碼，所以解開要多一層解開。
+Response would encode with base64.
 ![](/images/note/AWS/pyfun-migrate-to-aws-lambda/Backend-v2-Test.png)
 
 ---
 
 # PyFun Frontend point to v2 backend
-這邊的Refactor就不贅述了，基本上後端改了啥，前端就是跟著改。
-可以直接對照後端的Repo，然後參考[這邊前端的變動](https://github.com/jackey8616/PyFun-Frontend/commit/8a9ff4c5d63e7d0c1f45815a4d2bc88335c0f7c0)。
+You can check [this](https://github.com/jackey8616/PyFun-Frontend/commit/8a9ff4c5d63e7d0c1f45815a4d2bc88335c0f7c0) out to see what changes in Frontend.
 
 ---
 
 # After
-未來應該還會弄一個個人的Terraform去管理這些東西，
-前面ECR push的GitHub actions其實也仰賴去手動戳，原因是我有點懶得把整個Flow都弄好，
-目前看起來是自己小練手搬到AWS Lambda的專案，暫時沒迫切完整push flow的需求。
+I might setup another repository to manage my personal AWS or something through Terraform.
+This migration is not perfect, pushing images to ECR still need to manually trigger the GitHub actions, because I want to keep it simple at the moment.
 
-後續Linode VPC上還有另外一個服務也要搬進去AWS才能完全移除掉那台機器。
-估計之後還會研究一下DynamoDB，因為那個服務有用到MongoDB。
+On the Linode VPC, there is still another service needs to migrate to AWS in order to fully remove the VPC.
+I will survey DynamoDB latter, cuz the service is using MongoDB.
 
 ---
 
 # Reference
-- [[註1 Use IAM roles to connect GitHub Actions to actions in AWS]][1]
-- [[註2 Creating a role for OIDC]][2]
-- [[註3 IAM permission for pushing an image]][3]
-- [[註4 AWS Lambda - Using an AWS base image for Python]][4]
+- [[1 - Use IAM roles to connect GitHub Actions to actions in AWS]][1]
+- [[2 - Creating a role for OIDC]][2]
+- [[3 - IAM permission for pushing an image]][3]
+- [[4 - AWS Lambda - Using an AWS base image for Python]][4]
 
 <!-- This is reference link, below content would not show -->
 [1]: <https://aws.amazon.com/tw/blogs/security/use-iam-roles-to-connect-github-actions-to-actions-in-aws/> (Use IAM roles to connect GitHub Actions to actions in AWS)
