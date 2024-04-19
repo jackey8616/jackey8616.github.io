@@ -2,6 +2,7 @@
 title: Migrating python backend to AWS Lambda(zhTW)
 date: 2024-04-19 21:52:32
 categories: AWS
+hidden: true
 tags:
   - AWS
   - GitHub Actions
@@ -10,7 +11,8 @@ tags:
   - zhTW
 ---
 
-遷移一個Sanic後端從Linode VPC到AWS Lambda。
+![](/images/note/AWS/pyfun-migrate-to-aws-lambda/structure.svg)
+<center>遷移一個Sanic後端從Linode VPC到AWS Lambda。</center>
 <!-- More -->
 
 # Opening

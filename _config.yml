@@ -65,6 +65,11 @@ index_generator:
   per_page: 10
   order_by: -date
 
+hide_posts:
+  enable: true
+  filter: hidden
+  noindex: true
+
 # Category & Tag
 default_category: uncategorized
 category_map:
