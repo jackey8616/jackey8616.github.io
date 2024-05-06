@@ -25,5 +25,8 @@
     "hexo-server": "^3.0.0",
     "hexo-theme-landscape": "^1.0.0",
     "hexo-theme-next": "^8.17.1"
+  },
+  "devDependencies": {
+    "hexo-generator-sitemap": "^3.0.1"
   }
 }
