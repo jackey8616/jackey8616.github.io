@@ -8,7 +8,7 @@ clooooode a.k.a clo5de
 
 Backend Engineer(2024)
 
-- [LinkedIn](https://www.linkedin.com/in/jacky-clode-294832118/)
+- [LinkedIn](https://www.linkedin.com/in/ko-li-mo-294832118/)
 - Experience
   - 2017
     - Yuntech Opensource Club, Minister of Education.

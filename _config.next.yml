@@ -99,7 +99,7 @@ menu:
   home: / || fa fa-home
   GitHub: https://github.com/jackey8616 || fab fa-github
   E-Mail: mailto:clode@clo5de.info || fa fa-envelope
-  LinkedIn: https://www.linkedin.com/in/jacky-clode-294832118/ || fab fa-linkedin
+  LinkedIn: https://www.linkedin.com/in/ko-li-mo-294832118/ || fab fa-linkedin
   #about: /about/ || fa fa-user
   #tags: /tags/ || fa fa-tags
   #categories: /categories/ || fa fa-th
@@ -160,7 +160,7 @@ site_state: true
 social:
   GitHub: https://github.com/jackey8616 || fab fa-github
   E-Mail: mailto:clode@clo5de.info || fa fa-envelope
-  LinkedIn: https://www.linkedin.com/in/jacky-clode-294832118/ || fab fa-linkedin
+  LinkedIn: https://www.linkedin.com/in/ko-li-mo-294832118/ || fab fa-linkedin
   #Weibo: https://weibo.com/yourname || fab fa-weibo
   #Twitter: https://twitter.com/yourname || fab fa-twitter
   #FB Page: https://www.facebook.com/yourname || fab fa-facebook
