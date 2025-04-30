@@ -27,22 +27,16 @@
 <meta property="og:site_name" content="clooooode">
 <meta property="og:description" content="PPT寫的有夠爛，有夠難讀…">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://www.clo5de.info/images/OS/ch8/base-limit.jpg">
 <meta property="og:image" content="https://www.clo5de.info/images/OS/ch8/user-process-check.jpg">
-<meta property="og:image" content="https://www.clo5de.info/images/OS/ch8/MMU.jpg">
 <meta property="og:image" content="https://www.clo5de.info/images/OS/ch8/swap-in-out.jpg">
-<meta property="og:image" content="https://www.clo5de.info/images/OS/ch8/multiple-partition-allocation.jpg">
-<meta property="og:image" content="https://www.clo5de.info/images/OS/ch8/user-view-program.jpg">
-<meta property="og:image" content="https://www.clo5de.info/images/OS/ch8/logical-view-segment.jpg">
 <meta property="og:image" content="https://www.clo5de.info/images/OS/ch8/segment-arch.jpg">
-<meta property="og:image" content="https://www.clo5de.info/images/OS/ch8/page.jpg">
 <meta property="article:published_time" content="2019-06-19T14:53:21.000Z">
-<meta property="article:modified_time" content="2025-02-10T05:18:36.248Z">
+<meta property="article:modified_time" content="2025-04-30T10:11:21.843Z">
 <meta property="article:author" content="clooooode">
 <meta property="article:tag" content="Note">
 <meta property="article:tag" content="Operating System">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://www.clo5de.info/images/OS/ch8/base-limit.jpg">
+<meta name="twitter:image" content="https://www.clo5de.info/images/OS/ch8/user-process-check.jpg">
 
 
 <link rel="canonical" href="https://www.clo5de.info/2019/06/19/note/OS/ch8/">
@@ -125,7 +119,13 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Background"><span class="nav-number">1.</span> <span class="nav-text">Background</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Base-and-Limit-Registers"><span class="nav-number">1.1.</span> <span class="nav-text">Base and Limit Registers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hardware-Address-Protection"><span class="nav-number">1.2.</span> <span class="nav-text">Hardware Address Protection</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Address-Binding"><span class="nav-number">1.3.</span> <span class="nav-text">Address Binding</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Binding-of-Instructions-and-Data-to-Memory"><span class="nav-number">1.4.</span> <span class="nav-text">Binding of Instructions and Data to Memory</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Logical-vs-Physical-Address-Space"><span class="nav-number">1.5.</span> <span class="nav-text">Logical vs. Physical Address Space</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Memory-Management-Unit-MMU"><span class="nav-number">1.6.</span> <span class="nav-text">Memory-Management Unit (MMU)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dynamic-relocation-using-a-relocation-register"><span class="nav-number">1.7.</span> <span class="nav-text">Dynamic relocation using a relocation register</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dynamic-Linking"><span class="nav-number">1.8.</span> <span class="nav-text">Dynamic Linking</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Swapping"><span class="nav-number">2.</span> <span class="nav-text">Swapping</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Context-Switch-Time-including-Swapping"><span class="nav-number">2.1.</span> <span class="nav-text">Context Switch Time including Swapping</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Swapping-on-Mobile-Systems"><span class="nav-number">2.2.</span> <span class="nav-text">Swapping on Mobile Systems</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Contiguous-Memory-Allocation"><span class="nav-number">3.</span> <span class="nav-text">Contiguous Memory Allocation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Multiple-partition-allocation"><span class="nav-number">3.1.</span> <span class="nav-text">Multiple-partition allocation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dynamic-Storage-Allocation-Problem"><span class="nav-number">3.2.</span> <span class="nav-text">Dynamic Storage-Allocation Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Fragmentation"><span class="nav-number">3.3.</span> <span class="nav-text">Fragmentation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E6%B1%BA%E6%96%B9%E6%B3%95%EF%BC%9ACompaction%EF%BC%88%E8%81%9A%E9%9B%86%EF%BC%89-%E5%B0%87%E7%A9%BA%E9%96%92%E7%9A%84Hole%E8%81%9A%E9%9B%86%E5%9C%A8%E4%B8%80%E8%B5%B7%EF%BC%8C%E5%90%88%E4%BD%B5%E6%88%90%E4%B8%80%E5%A1%8A%E5%A4%A7%E7%9A%84%E3%80%82-%E5%8F%AA%E6%9C%89%E5%9C%A8Relocation%E6%98%AF%E5%8B%95%E6%85%8B%E7%9A%84%E6%99%82%E5%80%99%EF%BC%8C%E5%8F%AF%E4%BB%A5%E5%9C%A8%E5%9F%B7%E8%A1%8C%E6%99%82%E9%96%93%E5%90%88%E4%BD%B5%E3%80%82"><span class="nav-number">4.</span> <span class="nav-text">解決方法：Compaction（聚集）  - 將空閒的Hole聚集在一起，合併成一塊大的。  - 只有在Relocation是動態的時候，可以在執行時間合併。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Segmentation"><span class="nav-number">5.</span> <span class="nav-text">Segmentation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#User%E2%80%99s-View-of-a-Program"><span class="nav-number">5.1.</span> <span class="nav-text">User’s View of a Program</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Logical-View-of-Segmentation"><span class="nav-number">5.2.</span> <span class="nav-text">Logical View of Segmentation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Segmentation-Architecture"><span class="nav-number">5.3.</span> <span class="nav-text">Segmentation Architecture</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Segmentation-Hardware"><span class="nav-number">5.4.</span> <span class="nav-text">Segmentation Hardware</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Paging"><span class="nav-number">6.</span> <span class="nav-text">Paging</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Address-Translation-Scheme"><span class="nav-number">6.1.</span> <span class="nav-text">Address Translation Scheme</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Structure-of-the-Page-Table"><span class="nav-number">7.</span> <span class="nav-text">Structure of the Page Table</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#background"><span class="nav-number">1.</span> <span class="nav-text">Background</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#base-and-limit-registers"><span class="nav-number">1.1.</span> <span class="nav-text">Base and Limit Registers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hardware-address-protection"><span class="nav-number">1.2.</span> <span class="nav-text">Hardware Address Protection</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#address-binding"><span class="nav-number">1.3.</span> <span class="nav-text">Address Binding</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#binding-of-instructions-and-data-to-memory"><span class="nav-number">1.4.</span> <span class="nav-text">Binding of
+Instructions and Data to Memory</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#logical-vs.-physical-address-space"><span class="nav-number">1.5.</span> <span class="nav-text">Logical vs. Physical Address
+Space</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#memory-management-unit-mmu"><span class="nav-number">1.6.</span> <span class="nav-text">Memory-Management Unit (MMU)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dynamic-relocation-using-a-relocation-register"><span class="nav-number">1.7.</span> <span class="nav-text">Dynamic
+relocation using a relocation register</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dynamic-linking"><span class="nav-number">1.8.</span> <span class="nav-text">Dynamic Linking</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#swapping"><span class="nav-number">2.</span> <span class="nav-text">Swapping</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#context-switch-time-including-swapping"><span class="nav-number">2.1.</span> <span class="nav-text">Context Switch Time
+including Swapping</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#swapping-on-mobile-systems"><span class="nav-number">2.2.</span> <span class="nav-text">Swapping on Mobile Systems</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#contiguous-memory-allocation"><span class="nav-number">3.</span> <span class="nav-text">Contiguous Memory Allocation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#multiple-partition-allocation"><span class="nav-number">3.1.</span> <span class="nav-text">Multiple-partition
+allocation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dynamic-storage-allocation-problem"><span class="nav-number">3.2.</span> <span class="nav-text">Dynamic Storage-Allocation
+Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fragmentation"><span class="nav-number">3.3.</span> <span class="nav-text">Fragmentation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#segmentation"><span class="nav-number">4.</span> <span class="nav-text">Segmentation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#users-view-of-a-program"><span class="nav-number">4.1.</span> <span class="nav-text">User’s View of a Program</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#logical-view-of-segmentation"><span class="nav-number">4.2.</span> <span class="nav-text">Logical View of Segmentation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#segmentation-architecture"><span class="nav-number">4.3.</span> <span class="nav-text">Segmentation Architecture</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#segmentation-hardware"><span class="nav-number">4.4.</span> <span class="nav-text">Segmentation Hardware</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#paging"><span class="nav-number">5.</span> <span class="nav-text">Paging</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#address-translation-scheme"><span class="nav-number">5.1.</span> <span class="nav-text">Address Translation Scheme</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#structure-of-the-page-table"><span class="nav-number">6.</span> <span class="nav-text">Structure of the Page Table</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -225,7 +225,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-02-10 05:18:36" itemprop="dateModified" datetime="2025-02-10T05:18:36+00:00">2025-02-10</time>
+      <time title="Modified: 2025-04-30 10:11:21" itemprop="dateModified" datetime="2025-04-30T10:11:21+00:00">2025-04-30</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -253,10 +253,9 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>PPT寫的有夠爛，有夠難讀…</p>
-<span id="more"></span>
-
-<h2 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h2><ul>
+    <div class="post-body" itemprop="articleBody"><p>PPT寫的有夠爛，有夠難讀… <span id="more"></span></p>
+<h2 id="background">Background</h2>
+<ul>
 <li>程序必須要被進主記憶體中（從硬碟中），並且放入行程中運行。</li>
 <li>主記憶體以及暫存器是CPU唯二可以直接存取的儲存空間。</li>
 <li>記憶體單元只能辨認位址流+讀取請求或寫入請求。</li>
@@ -265,129 +264,188 @@
 <li>快取被放在CPU暫存器以及主記憶體之間(L1, L2, L3 Cache)。</li>
 <li>保護主記憶體以確保正確操作。</li>
 </ul>
-<h3 id="Base-and-Limit-Registers"><a href="#Base-and-Limit-Registers" class="headerlink" title="Base and Limit Registers"></a>Base and Limit Registers</h3><ul>
-<li>一對基址（base）以及限制（limit）暫存器用來定義邏輯地址空間(Logical address space)</li>
-<li>CPU必須確認每一個來自user mode的記憶體操作，都坐落在base以及limit之間。<br><img src="/images/OS/ch8/base-limit.jpg"></li>
+<h3 id="base-and-limit-registers">Base and Limit Registers</h3>
+<ul>
+<li>一對基址（base）以及限制（limit）暫存器用來定義邏輯地址空間(Logical
+address space)</li>
+<li>CPU必須確認每一個來自user
+mode的記憶體操作，都坐落在base以及limit之間。 <img
+src="/images/OS/ch8/base-limit.jpg" /></li>
 </ul>
-<h3 id="Hardware-Address-Protection"><a href="#Hardware-Address-Protection" class="headerlink" title="Hardware Address Protection"></a>Hardware Address Protection</h3><p><img src="/images/OS/ch8/user-process-check.jpg"></p>
-<h3 id="Address-Binding"><a href="#Address-Binding" class="headerlink" title="Address Binding"></a>Address Binding</h3><ul>
-<li>程序在硬碟上需要放到主記憶體中才能夠執行，所以會有一個input queue負責處理。</li>
-<li>通常都會被載入到記憶體位置0000的區塊，但實際上不一定要使用這個位址。<br>Ex:<br>  原始程式，記憶體位址是象徵性的 -&gt; 0000<br>  經過編譯，位址會被綁定到可重定向地址(relocatable address) -&gt; ebp + 0x04<br>  Linker或Loader將可重定向地址綁定到絕對位址(absolute address) -&gt; 74014</li>
+<h3 id="hardware-address-protection">Hardware Address Protection</h3>
+<p><img src="/images/OS/ch8/user-process-check.jpg" /></p>
+<h3 id="address-binding">Address Binding</h3>
+<ul>
+<li>程序在硬碟上需要放到主記憶體中才能夠執行，所以會有一個input
+queue負責處理。</li>
+<li>通常都會被載入到記憶體位置0000的區塊，但實際上不一定要使用這個位址。
+Ex: 原始程式，記憶體位址是象徵性的 -&gt; 0000
+經過編譯，位址會被綁定到可重定向地址(relocatable address) -&gt; ebp +
+0x04 Linker或Loader將可重定向地址綁定到絕對位址(absolute address) -&gt;
+74014</li>
 <li>每一個綁定都從一個記憶體空間對應到另外一個。</li>
 </ul>
-<h3 id="Binding-of-Instructions-and-Data-to-Memory"><a href="#Binding-of-Instructions-and-Data-to-Memory" class="headerlink" title="Binding of Instructions and Data to Memory"></a>Binding of Instructions and Data to Memory</h3><ul>
-<li>記憶體位址的綁定會在3個階段:<ul>
-<li>Compile time(編譯時間)：由編譯器決定。<br>  如果記憶體位址已經知道，則生成絕對位址，但是如果起始位址改變的話，則需要重新編譯。</li>
-<li>Load time(載入時間)：由Linking loader或Linking editor決定。<br>  編譯時無法確認記憶體位址，則生成重定向地址。</li>
-<li>Execution time(執行時間)：由作業系統動態決定。<br>  如果記憶體區段要執行時被移動，連結才會被遲緩到這個時間執行。<br>  （需要硬體支援，彈性高，但是執行慢效率差）</li>
+<h3 id="binding-of-instructions-and-data-to-memory">Binding of
+Instructions and Data to Memory</h3>
+<ul>
+<li>記憶體位址的綁定會在3個階段:
+<ul>
+<li>Compile time(編譯時間)：由編譯器決定。
+如果記憶體位址已經知道，則生成絕對位址，但是如果起始位址改變的話，則需要重新編譯。</li>
+<li>Load time(載入時間)：由Linking loader或Linking editor決定。
+編譯時無法確認記憶體位址，則生成重定向地址。</li>
+<li>Execution time(執行時間)：由作業系統動態決定。
+如果記憶體區段要執行時被移動，連結才會被遲緩到這個時間執行。
+（需要硬體支援，彈性高，但是執行慢效率差）</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h3 id="Logical-vs-Physical-Address-Space"><a href="#Logical-vs-Physical-Address-Space" class="headerlink" title="Logical vs. Physical Address Space"></a>Logical vs. Physical Address Space</h3><ul>
+<h3 id="logical-vs.-physical-address-space">Logical vs. Physical Address
+Space</h3>
+<ul>
 <li>Logical address: CPU所產生的位址，又稱為Virtual address。</li>
 <li>Physical address: 記憶體所看到的位址，經過MMU處理過。</li>
 </ul>
-<h3 id="Memory-Management-Unit-MMU"><a href="#Memory-Management-Unit-MMU" class="headerlink" title="Memory-Management Unit (MMU)"></a>Memory-Management Unit (MMU)</h3><ul>
+<h3 id="memory-management-unit-mmu">Memory-Management Unit (MMU)</h3>
+<ul>
 <li>在執行階段將虛擬位址映射為實體位址的硬體裝置。</li>
-<li>Base register此時被稱為Relocation register。<br>Intel 80x86架構上的MS-DOS使用四個relocation register。</li>
-<li>使用者程序只會看到虛擬位址，不會處理到真正的硬體位址。<ul>
+<li>Base register此時被稱為Relocation register。 Intel
+80x86架構上的MS-DOS使用四個relocation register。</li>
+<li>使用者程序只會看到虛擬位址，不會處理到真正的硬體位址。
+<ul>
 <li>當引用記憶體位址時，發生Execution-time binging。</li>
 <li>Logical addressPhisical address綁定在一起。</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h3 id="Dynamic-relocation-using-a-relocation-register"><a href="#Dynamic-relocation-using-a-relocation-register" class="headerlink" title="Dynamic relocation using a relocation register"></a>Dynamic relocation using a relocation register</h3><ul>
+<h3 id="dynamic-relocation-using-a-relocation-register">Dynamic
+relocation using a relocation register</h3>
+<ul>
 <li>子程式被呼叫的時候才會被載入。</li>
 <li>記憶體空間利用率最佳化，沒有被使用的子程式永遠不會被載入。</li>
 <li>所有的子程序以可重定向的加載格式被放置在硬碟中。</li>
-<li>在大量的程式碼需要去處理不常發生的狀況時很有用。(這段原文很難理解也很難翻譯…)<br>(Useful when large amounts of code are needed to handle infrequently occurring cases)</li>
-<li>不需要作業系統特別的支援<ul>
+<li>在大量的程式碼需要去處理不常發生的狀況時很有用。(這段原文很難理解也很難翻譯…)
+(Useful when large amounts of code are needed to handle infrequently
+occurring cases)</li>
+<li>不需要作業系統特別的支援
+<ul>
 <li>透過程序設計來實作</li>
-<li>作業系統可以透過提供函式庫來實作動態載入(Dynamic loading)。<br><img src="/images/OS/ch8/MMU.jpg"></li>
+<li>作業系統可以透過提供函式庫來實作動態載入(Dynamic loading)。 <img
+src="/images/OS/ch8/MMU.jpg" /></li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h3 id="Dynamic-Linking"><a href="#Dynamic-Linking" class="headerlink" title="Dynamic Linking"></a>Dynamic Linking</h3><ul>
-<li>Static linking(靜態連結): 系統函式庫和原始碼被Loader結合在一起成二進位程序映像(Binary Program Image)<br>  (Binary Program Image: compile跟linking後的結果, OS用以實際執行該程式, 因為linking後的產物，所以不同的OS，所使用的結果都不盡相同，亦不相容。)</li>
+<h3 id="dynamic-linking">Dynamic Linking</h3>
+<ul>
+<li>Static linking(靜態連結):
+系統函式庫和原始碼被Loader結合在一起成二進位程序映像(Binary Program
+Image) (Binary Program Image: compile跟linking後的結果,
+OS用以實際執行該程式,
+因為linking後的產物，所以不同的OS，所使用的結果都不盡相同，亦不相容。)</li>
 <li>Dynamic linking(動態連結)： 連結會推遲到執行時間才處理。</li>
 <li>Stub是一小段的程式碼，用來定位適當的常駐記憶體函式庫子程式。</li>
 <li>作業系統確認子程式有沒有在行程的記憶體空間內，如果沒有的話，會加進去記憶體空間中。</li>
 <li>動態連結對於函式庫特別有用。</li>
 <li>這個系統也被稱作為共享函式庫(Shared Libraries)。</li>
-<li>考慮到修補系統函式庫(Patching system libraries)，可能需要版本控制。</li>
+<li>考慮到修補系統函式庫(Patching system
+libraries)，可能需要版本控制。</li>
 </ul>
-<h2 id="Swapping"><a href="#Swapping" class="headerlink" title="Swapping"></a>Swapping</h2><ul>
+<h2 id="swapping">Swapping</h2>
+<ul>
 <li>程式執行中，行程有時候可能會需要離開記憶體，這個動作被稱為swapping。</li>
-<li>Backing storage：獨立於file system，提供memory image直接的存取。</li>
-<li>Roll out&#x2F;Roll in：將低優先權的換出去，換一個優先權高的進記憶體。</li>
-<li>Swap出去的行程是否要Swap回原本的記憶體位址，取決於綁定方法：<ul>
+<li>Backing storage：獨立於file system，提供memory
+image直接的存取。</li>
+<li>Roll out/Roll
+in：將低優先權的換出去，換一個優先權高的進記憶體。</li>
+<li>Swap出去的行程是否要Swap回原本的記憶體位址，取決於綁定方法：
+<ul>
 <li>如果編譯以及連結階段已經完成綁定，則必須要swap回原本的記憶體位址。</li>
 <li>如果執行階段才完成綁定，則不需swap回原本的記憶體位址。</li>
+</ul></li>
+<li><img src="/images/OS/ch8/swap-in-out.jpg" /></li>
 </ul>
-</li>
-<li><img src="/images/OS/ch8/swap-in-out.jpg"></li>
-</ul>
-<h3 id="Context-Switch-Time-including-Swapping"><a href="#Context-Switch-Time-including-Swapping" class="headerlink" title="Context Switch Time including Swapping"></a>Context Switch Time including Swapping</h3><ul>
-<li>如果下一個要被載入CPU的行程目前沒有存在主記憶體中，則系統需要將一個行程swap out，再將目標行程swap in進入記憶體，接著執行context switch。<br>如此一來, context switch的時間會被大幅度的拉長。</li>
-<li>可以運用system call的方法來檢查當前記憶體空間的剩餘，來決定需不需要swap out。</li>
-<li>swapping還會有行程正在執行I&#x2F;O時移出的問題：<ul>
+<h3 id="context-switch-time-including-swapping">Context Switch Time
+including Swapping</h3>
+<ul>
+<li>如果下一個要被載入CPU的行程目前沒有存在主記憶體中，則系統需要將一個行程swap
+out，再將目標行程swap in進入記憶體，接著執行context switch。 如此一來,
+context switch的時間會被大幅度的拉長。</li>
+<li>可以運用system
+call的方法來檢查當前記憶體空間的剩餘，來決定需不需要swap out。</li>
+<li>swapping還會有行程正在執行I/O時移出的問題：
+<ul>
 <li>不執行swap out，繼續執行。</li>
-<li>直接swap out，放棄I&#x2F;O。</li>
-<li>I&#x2F;O交給Kernel再丟給I&#x2F;O裝置。但是會有Double buffering的問題，增加了負擔。</li>
-</ul>
-</li>
+<li>直接swap out，放棄I/O。</li>
+<li>I/O交給Kernel再丟給I/O裝置。但是會有Double
+buffering的問題，增加了負擔。</li>
+</ul></li>
 <li>通常swap的機制只有在實體記憶體的存量極低的時候才會觸發。</li>
 </ul>
-<h3 id="Swapping-on-Mobile-Systems"><a href="#Swapping-on-Mobile-Systems" class="headerlink" title="Swapping on Mobile Systems"></a>Swapping on Mobile Systems</h3><ul>
-<li>一般來說不支援快閃記憶體<ul>
+<h3 id="swapping-on-mobile-systems">Swapping on Mobile Systems</h3>
+<ul>
+<li>一般來說不支援快閃記憶體
+<ul>
 <li>空間太小。</li>
 <li>有限的寫入周期。</li>
 <li>快閃記憶體以及主記憶體之間吞吐量過低。</li>
-</ul>
-</li>
-<li>替代方案<ul>
-<li>iOS：詢問App主動放棄分配到的記憶體<ul>
+</ul></li>
+<li>替代方案
+<ul>
+<li>iOS：詢問App主動放棄分配到的記憶體
+<ul>
 <li>唯讀資料在需要的時候會拋出，然後從快閃記憶體中重新讀取。</li>
 <li>釋放失敗的話可能會導致終止。</li>
-</ul>
-</li>
+</ul></li>
 <li>Android：記憶體不足的話會直接終止App，但是會將App狀態寫入快閃記憶體以便下次快速重啟。</li>
 <li>這兩個系統都支援記憶體分頁(paging)。</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h2 id="Contiguous-Memory-Allocation"><a href="#Contiguous-Memory-Allocation" class="headerlink" title="Contiguous Memory Allocation"></a>Contiguous Memory Allocation</h2><ul>
-<li>主記憶體通常會有兩個分區<ul>
+<h2 id="contiguous-memory-allocation">Contiguous Memory Allocation</h2>
+<ul>
+<li>主記憶體通常會有兩個分區
+<ul>
 <li>常駐作業系統，通常會放在較低位址的記憶體區塊，帶有中斷向量。</li>
 <li>使用者行程，通常會放在比較高位址的記憶體區塊。</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h3 id="Multiple-partition-allocation"><a href="#Multiple-partition-allocation" class="headerlink" title="Multiple-partition allocation"></a>Multiple-partition allocation</h3><ul>
-<li>Fixed-partition: 固定分區大小，除非Process需求的大小剛好等於每分區大小的倍數，不然通常都會多給。</li>
+<h3 id="multiple-partition-allocation">Multiple-partition
+allocation</h3>
+<ul>
+<li>Fixed-partition:
+固定分區大小，除非Process需求的大小剛好等於每分區大小的倍數，不然通常都會多給。</li>
 <li>Variable-partition: 滿足Process的需求，要多少給多少。</li>
 <li>Hole: 一塊連續記憶體。</li>
 <li>多個大小不同的Hole，分散在記憶體之中。</li>
 <li>Process要放入記憶體中時，會被分配在大小足夠容納的Hole中。</li>
-<li>作業系統維護已分配的區域，還有尚未被分配的區域（Hole）。<br><img src="/images/OS/ch8/multiple-partition-allocation.jpg"></li>
+<li>作業系統維護已分配的區域，還有尚未被分配的區域（Hole）。 <img
+src="/images/OS/ch8/multiple-partition-allocation.jpg" /></li>
 </ul>
-<h3 id="Dynamic-Storage-Allocation-Problem"><a href="#Dynamic-Storage-Allocation-Problem" class="headerlink" title="Dynamic Storage-Allocation Problem"></a>Dynamic Storage-Allocation Problem</h3><p>如何滿足大小為n的資料進入記憶體？</p>
+<h3 id="dynamic-storage-allocation-problem">Dynamic Storage-Allocation
+Problem</h3>
+<p>如何滿足大小為n的資料進入記憶體？ -
+First-fit：分配第一個大小滿足的Hole。 - Best-fit：
+分配第一個最小剛好滿足的Hole。
+必須搜尋整個Hole的列表，除非列表已經依照大小排列。 - Wrost-fit：
+分配最大的Hole。 也必須搜尋整個Hole的列表。 -
+在速度以及空間利用率方面，first-fit跟best-fit好過於wrost-fit。</p>
+<h3 id="fragmentation">Fragmentation</h3>
 <ul>
-<li>First-fit：分配第一個大小滿足的Hole。</li>
-<li>Best-fit：<br>  分配第一個最小剛好滿足的Hole。<br>  必須搜尋整個Hole的列表，除非列表已經依照大小排列。</li>
-<li>Wrost-fit：<br>  分配最大的Hole。<br>  也必須搜尋整個Hole的列表。</li>
-<li>在速度以及空間利用率方面，first-fit跟best-fit好過於wrost-fit。</li>
+<li>External Fragmentation（外碎）：
+剩餘的記憶體空間能夠滿足需求，但是不連續，仍舊無法使用。
+<ul>
+<li>解決方法：Compaction（聚集）
+<ul>
+<li>將空閒的Hole聚集在一起，合併成一塊大的。</li>
+<li>只有在Relocation是動態的時候，可以在執行時間合併。</li>
+<li></li>
+</ul></li>
+</ul></li>
+<li>Internal Fragmentation（內碎）：
+分配到的記憶體，稍微大於需求記憶體，多餘的部份並沒有被使用。 Ex:
+我給你4KB, 你只用3KB。</li>
 </ul>
-<h3 id="Fragmentation"><a href="#Fragmentation" class="headerlink" title="Fragmentation"></a>Fragmentation</h3><ul>
-<li>External Fragmentation（外碎）：<br>  剩餘的記憶體空間能夠滿足需求，但是不連續，仍舊無法使用。<ul>
-<li><h2 id="解決方法：Compaction（聚集）-將空閒的Hole聚集在一起，合併成一塊大的。-只有在Relocation是動態的時候，可以在執行時間合併。"><a href="#解決方法：Compaction（聚集）-將空閒的Hole聚集在一起，合併成一塊大的。-只有在Relocation是動態的時候，可以在執行時間合併。" class="headerlink" title="解決方法：Compaction（聚集）  - 將空閒的Hole聚集在一起，合併成一塊大的。  - 只有在Relocation是動態的時候，可以在執行時間合併。"></a>解決方法：Compaction（聚集）<br>  - 將空閒的Hole聚集在一起，合併成一塊大的。<br>  - 只有在Relocation是動態的時候，可以在執行時間合併。</h2></li>
-</ul>
-</li>
-<li>Internal Fragmentation（內碎）：<br>  分配到的記憶體，稍微大於需求記憶體，多餘的部份並沒有被使用。<br>  Ex: 我給你4KB, 你只用3KB。</li>
-</ul>
-<h2 id="Segmentation"><a href="#Segmentation" class="headerlink" title="Segmentation"></a>Segmentation</h2><ul>
+<h2 id="segmentation">Segmentation</h2>
+<ul>
 <li>可以被使用者查看的記憶體管理方案。</li>
-<li>一個程序是由多個Segements所組成;<br>Segement是一個邏輯單元如：<ul>
+<li>一個程序是由多個Segements所組成; Segement是一個邏輯單元如：
+<ul>
 <li>main program</li>
 <li>procedure</li>
 <li>function</li>
@@ -398,39 +456,49 @@
 <li>stack</li>
 <li>symbol table</li>
 <li>arrays</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h3 id="User’s-View-of-a-Program"><a href="#User’s-View-of-a-Program" class="headerlink" title="User’s View of a Program"></a>User’s View of a Program</h3><p>其實我不知道這怎麼解釋，<br>大概應該是使用者觀點來看一支程序的話，大概長這樣子…<br><img src="/images/OS/ch8/user-view-program.jpg"></p>
-<h3 id="Logical-View-of-Segmentation"><a href="#Logical-View-of-Segmentation" class="headerlink" title="Logical View of Segmentation"></a>Logical View of Segmentation</h3><p>然後這是實際上在記憶體空間中的分佈，<br>所以可能看起來像連續，其實位址是不連續的。<br><img src="/images/OS/ch8/logical-view-segment.jpg"></p>
-<h3 id="Segmentation-Architecture"><a href="#Segmentation-Architecture" class="headerlink" title="Segmentation Architecture"></a>Segmentation Architecture</h3><ul>
-<li>Logical address:<br>  有兩個部份，segment-number跟offset：&lt;segment-number, offset&gt;</li>
-<li>Segment table(ST):<br>  映射到二維的實體位址，每一條紀錄都有：<ul>
+<h3 id="users-view-of-a-program">User’s View of a Program</h3>
+<p>其實我不知道這怎麼解釋，
+大概應該是使用者觀點來看一支程序的話，大概長這樣子… <img
+src="/images/OS/ch8/user-view-program.jpg" /></p>
+<h3 id="logical-view-of-segmentation">Logical View of Segmentation</h3>
+<p>然後這是實際上在記憶體空間中的分佈，
+所以可能看起來像連續，其實位址是不連續的。 <img
+src="/images/OS/ch8/logical-view-segment.jpg" /></p>
+<h3 id="segmentation-architecture">Segmentation Architecture</h3>
+<ul>
+<li>Logical address:
+有兩個部份，segment-number跟offset：&lt;segment-number, offset&gt;</li>
+<li>Segment table(ST): 映射到二維的實體位址，每一條紀錄都有：
+<ul>
 <li>Base: segment的起始實體位址。</li>
 <li>Limit: segment的長度。</li>
-</ul>
-</li>
+</ul></li>
 <li>Segment-table base register (STBR): 指向ST的起始實體位址。</li>
-<li>Segment-table length register (STLR):Segment的數量。<ul>
+<li>Segment-table length register (STLR):Segment的數量。
+<ul>
 <li>如果Segment的數量小於STLR，是合法的。</li>
-</ul>
-</li>
-<li>保護機制：每一個ST中的紀錄包含了：<ul>
+</ul></li>
+<li>保護機制：每一個ST中的紀錄包含了：
+<ul>
 <li>Validation bit（驗證位元）：如果是0的話，是不合法的Segment。</li>
-<li>擁有Read&#x2F;Write&#x2F;Execute特權。</li>
-</ul>
-</li>
+<li>擁有Read/Write/Execute特權。</li>
+</ul></li>
 <li>保護位元跟Segment有關; 程式共享發生在Segment層級。</li>
 <li>因為Segment長度變化，記憶體分配是一個動態儲存分配問題。</li>
 </ul>
-<h3 id="Segmentation-Hardware"><a href="#Segmentation-Hardware" class="headerlink" title="Segmentation Hardware"></a>Segmentation Hardware</h3><p><img src="/images/OS/ch8/segment-arch.jpg"></p>
-<h2 id="Paging"><a href="#Paging" class="headerlink" title="Paging"></a>Paging</h2><ul>
-<li>行程的實體位址空間可以是不相鄰，只要可以使用，就可以分配給行程使用。<ul>
+<h3 id="segmentation-hardware">Segmentation Hardware</h3>
+<p><img src="/images/OS/ch8/segment-arch.jpg" /></p>
+<h2 id="paging">Paging</h2>
+<ul>
+<li>行程的實體位址空間可以是不相鄰，只要可以使用，就可以分配給行程使用。
+<ul>
 <li>避免外碎。</li>
 <li>避免不同大小的記憶體區塊。</li>
-</ul>
-</li>
-<li>將實體記憶體分成固定大小的區塊稱為Frames：<br>  大小必須為2的冪數，介於512bytes跟16Mbytes之間。</li>
+</ul></li>
+<li>將實體記憶體分成固定大小的區塊稱為Frames：
+大小必須為2的冪數，介於512bytes跟16Mbytes之間。</li>
 <li>將邏輯記憶體分為相同大小稱為Pages。</li>
 <li>持續追蹤所有空閒的Frames。</li>
 <li>要執行一個N個Page的程序，必須先找到N個空閒的Frames來分配給程序。</li>
@@ -438,14 +506,18 @@
 <li>Backing Store也被分做Pages。</li>
 <li>仍然會有內碎的情形。</li>
 </ul>
-<h3 id="Address-Translation-Scheme"><a href="#Address-Translation-Scheme" class="headerlink" title="Address Translation Scheme"></a>Address Translation Scheme</h3><ul>
-<li>CPU產生的地址被分為：<ul>
-<li>Page number(p)：PT(Page Table)的索引，而該索引指引的Page紀錄包含了實體位址。</li>
-<li>Page offset(d):結合基址(Base)來定義送到記憶體單元的實體位址。<br><img src="/images/OS/ch8/page.jpg"></li>
+<h3 id="address-translation-scheme">Address Translation Scheme</h3>
+<ul>
+<li>CPU產生的地址被分為：
+<ul>
+<li>Page number(p)：PT(Page
+Table)的索引，而該索引指引的Page紀錄包含了實體位址。</li>
+<li>Page offset(d):結合基址(Base)來定義送到記憶體單元的實體位址。 <img
+src="/images/OS/ch8/page.jpg" /></li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h2 id="Structure-of-the-Page-Table"><a href="#Structure-of-the-Page-Table" class="headerlink" title="Structure of the Page Table"></a>Structure of the Page Table</h2>
+<h2 id="structure-of-the-page-table">Structure of the Page Table</h2>
+
     </div>
 
     
@@ -537,6 +609,12 @@
   <script class="next-config" data-name="firestore" type="application/json">{"enable":true,"collection":"articles","apiKey":"AIzaSyCu9-MhzikdJ0BVgPRODV__hMffyr5bgZg","projectId":"clo5de-githubpage"}</script>
   <script src="/js/third-party/statistics/firestore.js"></script>
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 

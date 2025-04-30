@@ -20,15 +20,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.clo5de.info","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.17.1","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="過長的Replica節點查詢，因爲Primary節點執行vacuum指令導致列版本(row version)分岔，進一步引起查詢取消。">
+    <meta name="description" content="過長的Replica節點查詢，因爲Primary節點執行vacuum指令導致列版本(row version)分岔， 進一步引起查詢取消。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PostgreSQL: canceling statement due to conflict with recovery">
 <meta property="og:url" content="https://www.clo5de.info/2023/08/01/note/PostgreSQL/PostgreSQL-canceling-statement-due-to-conflict-with-recovery/index.html">
 <meta property="og:site_name" content="clooooode">
-<meta property="og:description" content="過長的Replica節點查詢，因爲Primary節點執行vacuum指令導致列版本(row version)分岔，進一步引起查詢取消。">
+<meta property="og:description" content="過長的Replica節點查詢，因爲Primary節點執行vacuum指令導致列版本(row version)分岔， 進一步引起查詢取消。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-08-01T13:29:36.000Z">
-<meta property="article:modified_time" content="2025-02-10T05:18:36.248Z">
+<meta property="article:modified_time" content="2025-04-30T10:11:21.843Z">
 <meta property="article:author" content="clooooode">
 <meta property="article:tag" content="PostgreSQL">
 <meta property="article:tag" content="RDBMS">
@@ -116,7 +116,8 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#TL-DR"><span class="nav-number">1.</span> <span class="nav-text">TL;DR</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#What-is-vacuum"><span class="nav-number">2.</span> <span class="nav-text">What is vacuum?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#What-happens-when-vacuum-execute-with-long-query"><span class="nav-number">3.</span> <span class="nav-text">What happens when vacuum execute with long query?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Solution%EF%BC%9Ahot-standby-feedback"><span class="nav-number">4.</span> <span class="nav-text">Solution：hot_standby_feedback</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">5.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#tldr"><span class="nav-number">1.</span> <span class="nav-text">TL;DR</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#what-is-vacuum"><span class="nav-number">2.</span> <span class="nav-text">What is vacuum?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#what-happens-when-vacuum-execute-with-long-query"><span class="nav-number">3.</span> <span class="nav-text">What happens
+when vacuum execute with long query?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#solutionhot_standby_feedback"><span class="nav-number">4.</span> <span class="nav-text">Solution：hot_standby_feedback</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#reference"><span class="nav-number">5.</span> <span class="nav-text">Reference</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -216,7 +217,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-02-10 05:18:36" itemprop="dateModified" datetime="2025-02-10T05:18:36+00:00">2025-02-10</time>
+      <time title="Modified: 2025-04-30 10:11:21" itemprop="dateModified" datetime="2025-04-30T10:11:21+00:00">2025-04-30</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -244,45 +245,61 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>過長的Replica節點查詢，因爲Primary節點執行<code>vacuum</code>指令導致列版本(row version)分岔，<br>進一步引起查詢取消。</p>
+    <div class="post-body" itemprop="articleBody"><p>過長的Replica節點查詢，因爲Primary節點執行<code>vacuum</code>指令導致列版本(row
+version)分岔， 進一步引起查詢取消。</p>
 <span id="more"></span>
-
-<h1 id="TL-DR"><a href="#TL-DR" class="headerlink" title="TL;DR"></a>TL;DR</h1><ul>
+<h1 id="tldr">TL;DR</h1>
+<ul>
 <li>避免過久的查詢</li>
-<li>開啟 <code>hot_standby_feedback</code> 參數（缺點：primary node會有表膨脹的問題）</li>
+<li>開啟 <code>hot_standby_feedback</code> 參數（缺點：primary
+node會有表膨脹的問題）</li>
 </ul>
-<h1 id="What-is-vacuum"><a href="#What-is-vacuum" class="headerlink" title="What is vacuum?"></a>What is vacuum?</h1><ul>
+<h1 id="what-is-vacuum">What is vacuum?</h1>
+<ul>
 <li>恢復或回收使用因更新或刪除資料列所佔用的磁碟空間。</li>
 <li>更新 PostgreSQL 查詢計劃器使用的資料統計資訊。</li>
 <li>更新可視性結構，這會增加索引限定掃描的效率。</li>
-<li>防止由於事務 ID 重覆或 multixact ID 重覆而失去非常舊的資料。<br><a target="_blank" rel="noopener" href="https://docs.postgresql.tw/server-administration/routine-database-maintenance-tasks/routine-vacuuming">Ref</a></li>
+<li>防止由於事務 ID 重覆或 multixact ID 重覆而失去非常舊的資料。 <a
+target="_blank" rel="noopener" href="https://docs.postgresql.tw/server-administration/routine-database-maintenance-tasks/routine-vacuuming">Ref</a></li>
 </ul>
-<h1 id="What-happens-when-vacuum-execute-with-long-query"><a href="#What-happens-when-vacuum-execute-with-long-query" class="headerlink" title="What happens when vacuum execute with long query?"></a>What happens when vacuum execute with long query?</h1><ul>
-<li><ol>
+<h1 id="what-happens-when-vacuum-execute-with-long-query">What happens
+when vacuum execute with long query?</h1>
+<ul>
+<li><ol type="1">
 <li>Replica節點執行SELECT長查詢，假設其中包含Row-A。</li>
-</ol>
-</li>
-<li><ol start="2">
+</ol></li>
+<li><ol start="2" type="1">
 <li>Primary節點恰好在Replica節點查詢結束前執行vacuum指令，並移除Row-A。</li>
 </ol>
 <ul>
-<li>為何移除Row-A：<br>該列可能於第一項Replica節點執行查詢前，已經刪除並被標記(mark)為須回收，故vacuum會移除該行。</li>
-</ul>
-</li>
-<li><ol start="3">
+<li>為何移除Row-A：
+該列可能於第一項Replica節點執行查詢前，已經刪除並被標記(mark)為須回收，故vacuum會移除該行。</li>
+</ul></li>
+<li><ol start="3" type="1">
 <li>Replica節點同步執行vacuum指令。</li>
-</ol>
-</li>
-<li><ol start="4">
-<li>第一項SELECT長查詢Row-A與vacuum指令的列版本(row version)發生衝突，自動取消(cancel)。</li>
-</ol>
-</li>
+</ol></li>
+<li><ol start="4" type="1">
+<li>第一項SELECT長查詢Row-A與vacuum指令的列版本(row
+version)發生衝突，自動取消(cancel)。</li>
+</ol></li>
 </ul>
-<h1 id="Solution：hot-standby-feedback"><a href="#Solution：hot-standby-feedback" class="headerlink" title="Solution：hot_standby_feedback"></a>Solution：hot_standby_feedback</h1><p><a target="_blank" rel="noopener" href="https://www.postgresql.org/docs/current/runtime-config-replication.html#RUNTIME-CONFIG-REPLICATION-STANDBY">Ref</a><br>此參數設定於Replica節點，<br>啟用這個參數讓Replica節點在接收到查詢時，同步被查的行資訊給Primary節點，避免<code>vacuum</code>清除這些節點的資訊。<br>用於避免<code>vacuum</code>導致查詢被取消。</p>
-<p>缺點：<br>有可能會導致表膨脹(Table bloat)，因為被Replica節點查詢佔用的行資訊沒有被清除。</p>
-<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><ul>
-<li><a target="_blank" rel="noopener" href="https://docs.postgresql.tw/server-administration/routine-database-maintenance-tasks/routine-vacuuming">PostgreSQL Vacuum</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.postgresql.org/docs/current/runtime-config-replication.html#RUNTIME-CONFIG-REPLICATION-STANDBY">PostgreSQL Standby Server</a></li>
+<h1
+id="solutionhot_standby_feedback">Solution：hot_standby_feedback</h1>
+<p><a
+target="_blank" rel="noopener" href="https://www.postgresql.org/docs/current/runtime-config-replication.html#RUNTIME-CONFIG-REPLICATION-STANDBY">Ref</a><br />
+此參數設定於Replica節點，<br />
+啟用這個參數讓Replica節點在接收到查詢時，同步被查的行資訊給Primary節點，避免<code>vacuum</code>清除這些節點的資訊。
+用於避免<code>vacuum</code>導致查詢被取消。</p>
+<p>缺點： 有可能會導致表膨脹(Table
+bloat)，因為被Replica節點查詢佔用的行資訊沒有被清除。</p>
+<h1 id="reference">Reference</h1>
+<ul>
+<li><a
+target="_blank" rel="noopener" href="https://docs.postgresql.tw/server-administration/routine-database-maintenance-tasks/routine-vacuuming">PostgreSQL
+Vacuum</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://www.postgresql.org/docs/current/runtime-config-replication.html#RUNTIME-CONFIG-REPLICATION-STANDBY">PostgreSQL
+Standby Server</a></li>
 </ul>
 
     </div>
@@ -377,6 +394,12 @@
   <script class="next-config" data-name="firestore" type="application/json">{"enable":true,"collection":"articles","apiKey":"AIzaSyCu9-MhzikdJ0BVgPRODV__hMffyr5bgZg","projectId":"clo5de-githubpage"}</script>
   <script src="/js/third-party/statistics/firestore.js"></script>
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 

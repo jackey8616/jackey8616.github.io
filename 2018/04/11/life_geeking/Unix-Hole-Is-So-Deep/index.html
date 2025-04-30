@@ -28,7 +28,7 @@
 <meta property="og:description" content="紀錄一下踩過Unix系的天坑。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2018-04-11T15:08:16.000Z">
-<meta property="article:modified_time" content="2025-02-10T05:18:36.247Z">
+<meta property="article:modified_time" content="2025-04-30T10:11:21.842Z">
 <meta property="article:author" content="clooooode">
 <meta property="article:tag" content="Note">
 <meta property="article:tag" content="Linux">
@@ -116,7 +116,9 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#System"><span class="nav-number">1.</span> <span class="nav-text">System</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Software"><span class="nav-number">2.</span> <span class="nav-text">Software</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#gcin"><span class="nav-number">2.1.</span> <span class="nav-text">gcin</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%84%A1%E6%B3%95%E5%88%87%E6%8F%9B%E4%B8%AD%E6%96%87"><span class="nav-number">2.1.1.</span> <span class="nav-text">無法切換中文</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#phonetic-keyboard-is-not-valid"><span class="nav-number">2.1.2.</span> <span class="nav-text">phonetic-keyboard- is not valid</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Cannot-open-x2F-usr-x2F-share-x2F-gcin-x2F-table-x2F-X-kbm"><span class="nav-number">2.1.3.</span> <span class="nav-text">Cannot open &#x2F;usr&#x2F;share&#x2F;gcin&#x2F;table&#x2F;X@.kbm</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dummy-Ouput"><span class="nav-number">2.2.</span> <span class="nav-text">Dummy-Ouput</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#software"><span class="nav-number">1.</span> <span class="nav-text">Software</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#gcin"><span class="nav-number">1.1.</span> <span class="nav-text">gcin</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#phonetic-keyboard--is-not-valid"><span class="nav-number">1.1.1.</span> <span class="nav-text">phonetic-keyboard- is not
+valid</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cannot-open-usrsharegcintablex.kbm"><span class="nav-number">1.1.2.</span> <span class="nav-text">Cannot open
+&#x2F;usr&#x2F;share&#x2F;gcin&#x2F;table&#x2F;X@.kbm</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dummy-ouput"><span class="nav-number">1.2.</span> <span class="nav-text">Dummy-Ouput</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -216,7 +218,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-02-10 05:18:36" itemprop="dateModified" datetime="2025-02-10T05:18:36+00:00">2025-02-10</time>
+      <time title="Modified: 2025-04-30 10:11:21" itemprop="dateModified" datetime="2025-04-30T10:11:21+00:00">2025-04-30</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -244,35 +246,54 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>紀錄一下踩過Unix系的天坑。  </p>
-<span id="more"></span>
-<h2 id="System"><a href="#System" class="headerlink" title="System"></a>System</h2><ul>
-<li>Ubuntu<br>OS: Unbuntu 16.04.4 LTS X86_64<br>Kernel: 4.13.0-38.generic<br>Packages: 2230<br>Shell: fish 2.2.0<br>DE: GNOME 3.20.4  </li>
-<li>Arch<br>還沒衝動。等我換SSD哈哈哈。</li>
-</ul>
-<h2 id="Software"><a href="#Software" class="headerlink" title="Software"></a>Software</h2><h3 id="gcin"><a href="#gcin" class="headerlink" title="gcin"></a>gcin</h3><p>我一直不知道是什麼問題, 然後讓我的gcin完全沒辦法切換中文。<br>又用很莫名其妙的方法修好….</p>
-<h4 id="無法切換中文"><a href="#無法切換中文" class="headerlink" title="無法切換中文"></a>無法切換中文</h4><p>除了把自己的config檢查好以外。<br>我試過各種莫名其妙的方法去修，但是都修不好。<br>最後誤打誤撞弄好的，我還是不知道發生什麼事情…  </p>
-<pre><code class="sh"># 如果沒有gnome-language-selector  
-$ sudo apt-get install language-selector-gnome  
-# 重新安裝gcin 重裝最快了...  
-$ sudo apt-get remove --purge gcin  
-$ sudo apt-get install gcin
-# 開啟gnome-language-selector  
-$ gnome-language-selector  
-</code></pre>
+    <div class="post-body" itemprop="articleBody"><p>紀錄一下踩過Unix系的天坑。<br />
+<span id="more"></span> ## System<br />
++ Ubuntu<br />
+OS: Unbuntu 16.04.4 LTS X86_64<br />
+Kernel: 4.13.0-38.generic<br />
+Packages: 2230<br />
+Shell: fish 2.2.0<br />
+DE: GNOME 3.20.4<br />
++ Arch<br />
+還沒衝動。等我換SSD哈哈哈。</p>
+<h2 id="software">Software</h2>
+<h3 id="gcin">gcin</h3>
+<p>我一直不知道是什麼問題, 然後讓我的gcin完全沒辦法切換中文。
+又用很莫名其妙的方法修好…. #### 無法切換中文<br />
+除了把自己的config檢查好以外。<br />
+我試過各種莫名其妙的方法去修，但是都修不好。<br />
+最後誤打誤撞弄好的，我還是不知道發生什麼事情…</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 如果沒有gnome-language-selector  </span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> sudo apt-get install language-selector-gnome  </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 重新安裝gcin 重裝最快了...  </span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> sudo apt-get remove <span class="at">--purge</span> gcin  </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> sudo apt-get install gcin</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 開啟gnome-language-selector  </span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> gnome-language-selector  </span></code></pre></div>
 <p>最後在輸入法選擇gcin，關閉。</p>
-<h4 id="phonetic-keyboard-is-not-valid"><a href="#phonetic-keyboard-is-not-valid" class="headerlink" title="phonetic-keyboard- is not valid"></a>phonetic-keyboard- is not valid</h4><h4 id="Cannot-open-x2F-usr-x2F-share-x2F-gcin-x2F-table-x2F-X-kbm"><a href="#Cannot-open-x2F-usr-x2F-share-x2F-gcin-x2F-table-x2F-X-kbm" class="headerlink" title="Cannot open &#x2F;usr&#x2F;share&#x2F;gcin&#x2F;table&#x2F;X@.kbm"></a>Cannot open &#x2F;usr&#x2F;share&#x2F;gcin&#x2F;table&#x2F;X@.kbm</h4><p>在點擊gcin-tool -&gt; gcin注音&#x2F;詞音&#x2F;拼音 設定的時候會跳出。<br>兩種問題解決辦法都一樣…  </p>
-<pre><code class="sh">$ rm ~/.gcin/config/phonetic-keyboard*
-</code></pre>
-<p>Reference: <a target="_blank" rel="noopener" href="http://hyperrate.com/thread.php?tid=29563">http://hyperrate.com</a>  </p>
-<h3 id="Dummy-Ouput"><a href="#Dummy-Ouput" class="headerlink" title="Dummy-Ouput"></a>Dummy-Ouput</h3><p>安裝了一堆佈景, 有的用手裝, 有的從GitHub叉下來Make, 似乎弄壞很多東西。<br>音效卡就是其中一個。 大膽推測是因為之前在裝的過程有upgrade，所以有玩壞。<br>找了一下Sol, 後遺症就是原本電腦用Fn + Volume的時候會有調整音量的聲音，這次修好之後， 就沒有了QQQ。  </p>
-<pre><code class="sh">$ sudo apt-get remove --purge alsa-base
-$ sudo apt-get remove --purge pulseaudio
-$ sudo apt-get install alsa-base
-$ sudo apt-get install pulseaudio
-$ sudo alsa force-reload
-</code></pre>
-<p>Reference: <a target="_blank" rel="noopener" href="https://ubuntuforums.org/showthread.php?t=1316634">Ubuntu Forums</a>  </p>
+<h4 id="phonetic-keyboard--is-not-valid">phonetic-keyboard- is not
+valid</h4>
+<h4 id="cannot-open-usrsharegcintablex.kbm">Cannot open
+/usr/share/gcin/table/X@.kbm</h4>
+<p>在點擊gcin-tool -&gt; gcin注音/詞音/拼音 設定的時候會跳出。<br />
+兩種問題解決辦法都一樣…</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> rm ~/.gcin/config/phonetic-keyboard<span class="pp">*</span></span></code></pre></div>
+<p>Reference: <a
+target="_blank" rel="noopener" href="http://hyperrate.com/thread.php?tid=29563">http://hyperrate.com</a></p>
+<h3 id="dummy-ouput">Dummy-Ouput</h3>
+<p>安裝了一堆佈景, 有的用手裝, 有的從GitHub叉下來Make,
+似乎弄壞很多東西。 音效卡就是其中一個。
+大膽推測是因為之前在裝的過程有upgrade，所以有玩壞。<br />
+找了一下Sol, 後遺症就是原本電腦用Fn +
+Volume的時候會有調整音量的聲音，這次修好之後， 就沒有了QQQ。</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> sudo apt-get remove <span class="at">--purge</span> alsa-base</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> sudo apt-get remove <span class="at">--purge</span> pulseaudio</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> sudo apt-get install alsa-base</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> sudo apt-get install pulseaudio</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> sudo alsa force-reload</span></code></pre></div>
+<p>Reference: <a
+target="_blank" rel="noopener" href="https://ubuntuforums.org/showthread.php?t=1316634">Ubuntu
+Forums</a></p>
 
     </div>
 
@@ -366,6 +387,12 @@ $ sudo alsa force-reload
   <script class="next-config" data-name="firestore" type="application/json">{"enable":true,"collection":"articles","apiKey":"AIzaSyCu9-MhzikdJ0BVgPRODV__hMffyr5bgZg","projectId":"clo5de-githubpage"}</script>
   <script src="/js/third-party/statistics/firestore.js"></script>
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 

@@ -20,22 +20,19 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.clo5de.info","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.17.1","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="可撥，OS教授講話自成一種語言，滷蛋語沒人聽的懂，上課的影片備份都是滷蛋，上字幕的人上到崩潰，看來只好自己腦補PPT內容了。">
+    <meta name="description" content="可撥，OS教授講話自成一種語言，滷蛋語沒人聽的懂， 上課的影片備份都是滷蛋，上字幕的人上到崩潰， 看來只好自己腦補PPT內容了。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CH4 Multithreaded Programming">
 <meta property="og:url" content="https://www.clo5de.info/2019/04/25/note/OS/ch4/index.html">
 <meta property="og:site_name" content="clooooode">
-<meta property="og:description" content="可撥，OS教授講話自成一種語言，滷蛋語沒人聽的懂，上課的影片備份都是滷蛋，上字幕的人上到崩潰，看來只好自己腦補PPT內容了。">
+<meta property="og:description" content="可撥，OS教授講話自成一種語言，滷蛋語沒人聽的懂， 上課的影片備份都是滷蛋，上字幕的人上到崩潰， 看來只好自己腦補PPT內容了。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://user-images.githubusercontent.com/4419992/35572695-ee6275c8-05b3-11e8-8460-2c1ac7081574.jpg">
-<meta property="og:image" content="https://user-images.githubusercontent.com/4419992/35572701-f14520f6-05b3-11e8-9989-f4dcc7fc987e.jpg">
 <meta property="article:published_time" content="2019-04-25T10:17:05.000Z">
-<meta property="article:modified_time" content="2025-02-10T05:18:36.248Z">
+<meta property="article:modified_time" content="2025-04-30T10:11:21.842Z">
 <meta property="article:author" content="clooooode">
 <meta property="article:tag" content="Note">
 <meta property="article:tag" content="Operating System">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://user-images.githubusercontent.com/4419992/35572695-ee6275c8-05b3-11e8-8460-2c1ac7081574.jpg">
 
 
 <link rel="canonical" href="https://www.clo5de.info/2019/04/25/note/OS/ch4/">
@@ -118,7 +115,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Concurrency-vs-Paralleism"><span class="nav-number">1.</span> <span class="nav-text">Concurrency vs Paralleism</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Concurrency"><span class="nav-number">1.1.</span> <span class="nav-text">Concurrency</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Parallelism"><span class="nav-number">1.2.</span> <span class="nav-text">Parallelism</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Parallelism-Type"><span class="nav-number">1.3.</span> <span class="nav-text">Parallelism Type</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Amdahl%E2%80%99s-Law"><span class="nav-number">2.</span> <span class="nav-text">Amdahl’s Law</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#User-thread-vs-Kernel-thread"><span class="nav-number">3.</span> <span class="nav-text">User thread vs Kernel thread</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Multithreading-Models"><span class="nav-number">4.</span> <span class="nav-text">Multithreading Models</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Many-to-One"><span class="nav-number">4.1.</span> <span class="nav-text">Many to One</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#One-to-One"><span class="nav-number">4.2.</span> <span class="nav-text">One to One</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Many-to-Many"><span class="nav-number">4.3.</span> <span class="nav-text">Many to Many</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Two-level-Two-tier"><span class="nav-number">4.4.</span> <span class="nav-text">Two-level (Two-tier)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Conslusion"><span class="nav-number">4.5.</span> <span class="nav-text">Conslusion</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#concurrency-vs-paralleism"><span class="nav-number">1.</span> <span class="nav-text">Concurrency vs Paralleism</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#concurrency"><span class="nav-number">1.1.</span> <span class="nav-text">Concurrency</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#parallelism"><span class="nav-number">1.2.</span> <span class="nav-text">Parallelism</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#parallelism-type"><span class="nav-number">1.3.</span> <span class="nav-text">Parallelism Type</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#amdahls-law"><span class="nav-number">2.</span> <span class="nav-text">Amdahl’s Law</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#user-thread-vs-kernel-thread"><span class="nav-number">3.</span> <span class="nav-text">User thread vs Kernel thread</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#multithreading-models"><span class="nav-number">4.</span> <span class="nav-text">Multithreading Models</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#many-to-one"><span class="nav-number">4.1.</span> <span class="nav-text">Many to One</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#one-to-one"><span class="nav-number">4.2.</span> <span class="nav-text">One to One</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#many-to-many"><span class="nav-number">4.3.</span> <span class="nav-text">Many to Many</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#two-level-two-tier"><span class="nav-number">4.4.</span> <span class="nav-text">Two-level (Two-tier)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#conslusion"><span class="nav-number">4.5.</span> <span class="nav-text">Conslusion</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -218,7 +215,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-02-10 05:18:36" itemprop="dateModified" datetime="2025-02-10T05:18:36+00:00">2025-02-10</time>
+      <time title="Modified: 2025-04-30 10:11:21" itemprop="dateModified" datetime="2025-04-30T10:11:21+00:00">2025-04-30</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -246,74 +243,115 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>可撥，OS教授講話自成一種語言，滷蛋語沒人聽的懂，<br>上課的影片備份都是滷蛋，上字幕的人上到崩潰，<br>看來只好自己腦補PPT內容了。</p>
-<span id="more"></span>
-<p>隨意寫，有錯請指正。</p>
-<h2 id="Concurrency-vs-Paralleism"><a href="#Concurrency-vs-Paralleism" class="headerlink" title="Concurrency vs Paralleism"></a>Concurrency vs Paralleism</h2><p>並發 以及 並行的比較。</p>
-<h3 id="Concurrency"><a href="#Concurrency" class="headerlink" title="Concurrency"></a>Concurrency</h3><p>並發的概念即為在相同的時間間隔下完成任務。<br>任務並不一定要同時執行，但是他們可以被分成交錯執行的小任務。</p>
-<p><img src="https://user-images.githubusercontent.com/4419992/35572695-ee6275c8-05b3-11e8-8460-2c1ac7081574.jpg" alt="Concurrency"></p>
-<p>在廚房裏面有一個廚師（Process），理所當然我們知道這個廚師同時只能做一件事情。<br>反正我確定他不會左右互博，所以只能做一件事情zz。</p>
-<p>廚師接到了一個訂單需要出一份普羅旺斯嫩春雞佐地中海初榨橄欖油米蘭空運羅勒葉的套餐。<br>所以他先把普羅旺斯嫩春雞放進去烤箱（Thread_A）去烤；<br>然後再去地中海找橄欖用榨汁器（Thread_B）來榨橄欖油；<br>那麼在這個烤以及榨汁的中間，廚師每一個時間點都要確認烤雞烤好沒？油榨夠了沒？</p>
-<p>一旦烤雞烤好了，他就會中斷他現在的工作，然後去把烤雞拿出來，再接著繼續榨油，<br>直到雞好了、油也榨夠了、可以準備來炸鹹酥雞（普羅旺斯嫩春雞佐地中海初榨橄欖油米蘭空運羅勒葉）了。</p>
-<p>如果失去了並發性（不眼觀四面、耳聽八方），廚師就得先老實的把雞烤熟了，才可以去榨油。<br>否則雞丟著跑去榨油，可能雞就變炭了。</p>
-<h3 id="Parallelism"><a href="#Parallelism" class="headerlink" title="Parallelism"></a>Parallelism</h3><p>並行則為任務在相同的時間點被執行。<br>顧名思義，任務跟任務是平行的。<br><img src="https://user-images.githubusercontent.com/4419992/35572701-f14520f6-05b3-11e8-9989-f4dcc7fc987e.jpg" alt="Parallelism"></p>
-<p>同樣回到廚房內，這次我們有兩個廚師（Process A and B），這次我們就可以把雞給廚師甲去烤、<br>油給廚師乙去榨，在同一個時間點內，廚師甲跟乙都在做事情。</p>
-<h3 id="Parallelism-Type"><a href="#Parallelism-Type" class="headerlink" title="Parallelism Type"></a>Parallelism Type</h3><ul>
-<li>Data Parallelism<br>  資料被分配給不同的核心，每個核心所做的操作是一樣的。<br>  Ex: 100個加法被分散到不同的核心去執行。</li>
-<li>Task Parallelism<br>  線程被分配給不同的核心，每個核心所做的操作式不一樣的。<br>  Ex: 一台電腦有雙核心，同時玩遊戲又看網頁。</li>
+    <div class="post-body" itemprop="articleBody"><p>可撥，OS教授講話自成一種語言，滷蛋語沒人聽的懂，
+上課的影片備份都是滷蛋，上字幕的人上到崩潰， 看來只好自己腦補PPT內容了。
+<span id="more"></span> 隨意寫，有錯請指正。</p>
+<h2 id="concurrency-vs-paralleism">Concurrency vs Paralleism</h2>
+<p>並發 以及 並行的比較。</p>
+<h3 id="concurrency">Concurrency</h3>
+<p>並發的概念即為在相同的時間間隔下完成任務。
+任務並不一定要同時執行，但是他們可以被分成交錯執行的小任務。</p>
+<figure>
+<img
+src="https://user-images.githubusercontent.com/4419992/35572695-ee6275c8-05b3-11e8-8460-2c1ac7081574.jpg"
+alt="Concurrency" />
+<figcaption aria-hidden="true">Concurrency</figcaption>
+</figure>
+<p>在廚房裏面有一個廚師（Process），理所當然我們知道這個廚師同時只能做一件事情。<br />
+反正我確定他不會左右互博，所以只能做一件事情zz。</p>
+<p>廚師接到了一個訂單需要出一份普羅旺斯嫩春雞佐地中海初榨橄欖油米蘭空運羅勒葉的套餐。
+所以他先把普羅旺斯嫩春雞放進去烤箱（Thread_A）去烤；
+然後再去地中海找橄欖用榨汁器（Thread_B）來榨橄欖油；
+那麼在這個烤以及榨汁的中間，廚師每一個時間點都要確認烤雞烤好沒？油榨夠了沒？</p>
+<p>一旦烤雞烤好了，他就會中斷他現在的工作，然後去把烤雞拿出來，再接著繼續榨油，
+直到雞好了、油也榨夠了、可以準備來炸鹹酥雞（普羅旺斯嫩春雞佐地中海初榨橄欖油米蘭空運羅勒葉）了。</p>
+<p>如果失去了並發性（不眼觀四面、耳聽八方），廚師就得先老實的把雞烤熟了，才可以去榨油。
+否則雞丟著跑去榨油，可能雞就變炭了。</p>
+<h3 id="parallelism">Parallelism</h3>
+<p>並行則為任務在相同的時間點被執行。 顧名思義，任務跟任務是平行的。
+<img
+src="https://user-images.githubusercontent.com/4419992/35572701-f14520f6-05b3-11e8-9989-f4dcc7fc987e.jpg"
+alt="Parallelism" /></p>
+<p>同樣回到廚房內，這次我們有兩個廚師（Process A and
+B），這次我們就可以把雞給廚師甲去烤、
+油給廚師乙去榨，在同一個時間點內，廚師甲跟乙都在做事情。</p>
+<h3 id="parallelism-type">Parallelism Type</h3>
+<ul>
+<li>Data Parallelism
+資料被分配給不同的核心，每個核心所做的操作是一樣的。 Ex:
+100個加法被分散到不同的核心去執行。</li>
+<li>Task Parallelism
+線程被分配給不同的核心，每個核心所做的操作式不一樣的。 Ex:
+一台電腦有雙核心，同時玩遊戲又看網頁。</li>
 </ul>
-<h2 id="Amdahl’s-Law"><a href="#Amdahl’s-Law" class="headerlink" title="Amdahl’s Law"></a>Amdahl’s Law</h2><p>快，但是快多少？</p>
-<p>S代表串行的百分率<br>N則為處理的核心數<br>$SpeedUp &lt;&#x3D; \dfrac{1}{S + \dfrac{1 - S}{N}}$</p>
-<p>Ex: 一個應用程式內75%為平行方法，25%為串行方法。<br>    從單核心分散至雙核心後，則速度會提升為原本的1.6倍。</p>
-<h2 id="User-thread-vs-Kernel-thread"><a href="#User-thread-vs-Kernel-thread" class="headerlink" title="User thread vs Kernel thread"></a>User thread vs Kernel thread</h2><ul>
-<li>User thread<ul>
+<h2 id="amdahls-law">Amdahl’s Law</h2>
+<p>快，但是快多少？</p>
+<p>S代表串行的百分率 N則為處理的核心數 <span
+class="math inline">\(SpeedUp &lt;= \dfrac{1}{S + \dfrac{1 -
+S}{N}}\)</span></p>
+<p>Ex: 一個應用程式內75%為平行方法，25%為串行方法。
+從單核心分散至雙核心後，則速度會提升為原本的1.6倍。</p>
+<h2 id="user-thread-vs-kernel-thread">User thread vs Kernel thread</h2>
+<ul>
+<li>User thread
+<ul>
 <li>由user-level的threads library來管理。</li>
-<li>優點：<br>  建立、管理成本低。（OS不需介入）</li>
-<li>缺點：<br>  OS根本不知道這些線程的存在，一旦線程發生阻塞(Block)，<br>  則整個Process都會塞住。</li>
+<li>優點： 建立、管理成本低。（OS不需介入）</li>
+<li>缺點： OS根本不知道這些線程的存在，一旦線程發生阻塞(Block)，
+則整個Process都會塞住。</li>
 <li>Ex: POSIX Pthreads、Windows threads、Java threads</li>
-</ul>
-</li>
-<li>Kernel thread<ul>
+</ul></li>
+<li>Kernel thread
+<ul>
 <li>由Kernel來管理。</li>
 <li>Ex: Windows、Solaris、Linux、Tru64 UNIX、Mac OS X</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h2 id="Multithreading-Models"><a href="#Multithreading-Models" class="headerlink" title="Multithreading Models"></a>Multithreading Models</h2><h3 id="Many-to-One"><a href="#Many-to-One" class="headerlink" title="Many to One"></a>Many to One</h3><ul>
+<h2 id="multithreading-models">Multithreading Models</h2>
+<h3 id="many-to-one">Many to One</h3>
+<ul>
 <li>多個User thread被對應到單一一個Kernel thread。</li>
 <li>如果其中一個執行緒阻塞，則整個Kernel thread就塞住。</li>
-<li>在這種模型下，平行（Parallelism）是無法達成的，<br>因為只有單一個Kernel thread在運作，並沒有辦法被分散到其他核心中。</li>
+<li>在這種模型下，平行（Parallelism）是無法達成的， 因為只有單一個Kernel
+thread在運作，並沒有辦法被分散到其他核心中。</li>
 <li>Ex: Solaris Green Threads、GNU Portable Threads。</li>
 </ul>
-<h3 id="One-to-One"><a href="#One-to-One" class="headerlink" title="One to One"></a>One to One</h3><ul>
+<h3 id="one-to-one">One to One</h3>
+<ul>
 <li>每一個User thread都對應到一個Kernel thread。</li>
 <li>成本超高。</li>
 <li>因為成本超高，所以每一個行程所能建立的線程數量會被限制。</li>
-<li>Ex: Windows NT&#x2F;XP&#x2F;2000、Linux、Solaris 9 and later</li>
+<li>Ex: Windows NT/XP/2000、Linux、Solaris 9 and later</li>
 </ul>
-<h3 id="Many-to-Many"><a href="#Many-to-Many" class="headerlink" title="Many to Many"></a>Many to Many</h3><ul>
+<h3 id="many-to-many">Many to Many</h3>
+<ul>
 <li>多個User threads被對應到多個Kernel threads中。</li>
 <li>經濟實惠又環保（？）。</li>
 <li>不會因為單一的User thread阻塞而導致整個行程被塞住。</li>
-<li>Ex:<ul>
+<li>Ex:
+<ul>
 <li>Solaris prior to version 9</li>
-<li>Windows NT&#x2F;2000 with the ThreadFiber package</li>
+<li>Windows NT/2000 with the ThreadFiber package</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h3 id="Two-level-Two-tier"><a href="#Two-level-Two-tier" class="headerlink" title="Two-level (Two-tier)"></a>Two-level (Two-tier)</h3><ul>
+<h3 id="two-level-two-tier">Two-level (Two-tier)</h3>
+<ul>
 <li>融合M2M跟O2O的model。</li>
-<li>Ex:<ul>
+<li>Ex:
+<ul>
 <li>IRIX</li>
 <li>HP-UX</li>
 <li>Tru64 UNIX</li>
 <li>Solaris 8 and earlier</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h3 id="Conslusion"><a href="#Conslusion" class="headerlink" title="Conslusion"></a>Conslusion</h3><p>根據線程的類型不同，OS分配資源的結果也會不同。<br>假設在系統內有Process A及B，A當中有3個線程，B則為2個。</p>
-<p>在皆為User thread的狀況之下，<br>Kernel只知道有兩個行程，所以各自分配到的CPU Time為50% 50%。</p>
-<p>若為Kernel thread，<br>則每個thread可以得到20%(100% &#x2F; 5 threads)的CPU Time。<br>其中Process A得到60%(3 * 20%)<br>Process B得到40%(2 * 20%)</p>
+<h3 id="conslusion">Conslusion</h3>
+<p>根據線程的類型不同，OS分配資源的結果也會不同。 假設在系統內有Process
+A及B，A當中有3個線程，B則為2個。</p>
+<p>在皆為User thread的狀況之下，
+Kernel只知道有兩個行程，所以各自分配到的CPU Time為50% 50%。</p>
+<p>若為Kernel thread， 則每個thread可以得到20%(100% / 5 threads)的CPU
+Time。 其中Process A得到60%(3 * 20%) Process B得到40%(2 * 20%)</p>
 <!--# Treading Issue
 
 ### Semantics of fork() and exec()
@@ -410,6 +448,12 @@
   <script class="next-config" data-name="firestore" type="application/json">{"enable":true,"collection":"articles","apiKey":"AIzaSyCu9-MhzikdJ0BVgPRODV__hMffyr5bgZg","projectId":"clo5de-githubpage"}</script>
   <script src="/js/third-party/statistics/firestore.js"></script>
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 

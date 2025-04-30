@@ -27,15 +27,14 @@
 <meta property="og:site_name" content="clooooode">
 <meta property="og:description" content="雙二一退學保衛戰。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://1.bp.blogspot.com/-TGKEIgLdMS8/WZvUu88Ri_I/AAAAAAABVVg/BHAfw_SAXHEC3zfPy5DYu8KsWIBMPamKwCLcBGAs/s1600/critical-section-problem.png">
 <meta property="og:image" content="https://www.clo5de.info/images/OS/dining-philosopher.png">
 <meta property="article:published_time" content="2019-05-15T13:29:05.000Z">
-<meta property="article:modified_time" content="2025-02-10T05:18:36.248Z">
+<meta property="article:modified_time" content="2025-04-30T10:11:21.843Z">
 <meta property="article:author" content="clooooode">
 <meta property="article:tag" content="Note">
 <meta property="article:tag" content="Operating System">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://1.bp.blogspot.com/-TGKEIgLdMS8/WZvUu88Ri_I/AAAAAAABVVg/BHAfw_SAXHEC3zfPy5DYu8KsWIBMPamKwCLcBGAs/s1600/critical-section-problem.png">
+<meta name="twitter:image" content="https://www.clo5de.info/images/OS/dining-philosopher.png">
 
 
 <link rel="canonical" href="https://www.clo5de.info/2019/05/15/note/OS/ch6/">
@@ -118,7 +117,9 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#The-Critical-Section-Problem"><span class="nav-number">1.</span> <span class="nav-text">The Critical-Section Problem</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">1.1.</span> <span class="nav-text">Solution</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Peterson%E2%80%99s-Solution"><span class="nav-number">2.</span> <span class="nav-text">Peterson’s Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Synchronization-Hardware"><span class="nav-number">3.</span> <span class="nav-text">Synchronization Hardware</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#test-and-set-instruction"><span class="nav-number">3.1.</span> <span class="nav-text">test_and_set instruction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#compare-and-swap-instruction"><span class="nav-number">3.2.</span> <span class="nav-text">compare_and_swap instruction</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mutex-Locks"><span class="nav-number">4.</span> <span class="nav-text">Mutex Locks</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#acquire-and-release"><span class="nav-number">4.1.</span> <span class="nav-text">acquire() and release()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Semaphores"><span class="nav-number">5.</span> <span class="nav-text">Semaphores</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Usage"><span class="nav-number">5.1.</span> <span class="nav-text">Usage</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Counting-Semaphores-%E6%95%B4%E6%95%B8%E8%A8%88%E6%95%B8%E5%99%A8"><span class="nav-number">6.</span> <span class="nav-text">Counting Semaphores: 整數計數器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Semaphore-Implementation"><span class="nav-number">6.1.</span> <span class="nav-text">Semaphore Implementation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Semaphore-Implementation-with-no-Busy-waiting"><span class="nav-number">6.2.</span> <span class="nav-text">Semaphore Implementation with no Busy waiting</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deadlock-and-Starvation"><span class="nav-number">6.3.</span> <span class="nav-text">Deadlock and Starvation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Classic-Problems-of-Synchronization"><span class="nav-number">7.</span> <span class="nav-text">Classic Problems of Synchronization</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Bounded-Buffer-Problem"><span class="nav-number">7.1.</span> <span class="nav-text">Bounded-Buffer Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Readers-Writers-Problem"><span class="nav-number">7.2.</span> <span class="nav-text">Readers-Writers Problem</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Readers-Writers-Problem-Variations"><span class="nav-number">7.2.1.</span> <span class="nav-text">Readers-Writers Problem Variations</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dining-Philosophers-Problem"><span class="nav-number">7.3.</span> <span class="nav-text">Dining-Philosophers Problem</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Problem-of-this-algorithm"><span class="nav-number">7.3.1.</span> <span class="nav-text">Problem of this algorithm</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Problems-with-Semaphores"><span class="nav-number">7.4.</span> <span class="nav-text">Problems with Semaphores</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">8.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#the-critical-section-problem"><span class="nav-number">1.</span> <span class="nav-text">The Critical-Section Problem</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#solution"><span class="nav-number">1.1.</span> <span class="nav-text">Solution</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#petersons-solution"><span class="nav-number">2.</span> <span class="nav-text">Peterson’s Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#synchronization-hardware"><span class="nav-number">3.</span> <span class="nav-text">Synchronization Hardware</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#compare_and_swap-instruction"><span class="nav-number">3.1.</span> <span class="nav-text">compare_and_swap instruction</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mutex-locks"><span class="nav-number">4.</span> <span class="nav-text">Mutex Locks</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#acquire-and-release"><span class="nav-number">4.1.</span> <span class="nav-text">acquire() and release()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#semaphores"><span class="nav-number">5.</span> <span class="nav-text">Semaphores</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#usage"><span class="nav-number">5.1.</span> <span class="nav-text">Usage</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#semaphore-implementation"><span class="nav-number">5.2.</span> <span class="nav-text">Semaphore Implementation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#semaphore-implementation-with-no-busy-waiting"><span class="nav-number">5.3.</span> <span class="nav-text">Semaphore
+Implementation with no Busy waiting</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#deadlock-and-starvation"><span class="nav-number">5.4.</span> <span class="nav-text">Deadlock and Starvation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#classic-problems-of-synchronization"><span class="nav-number">6.</span> <span class="nav-text">Classic Problems of
+Synchronization</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#bounded-buffer-problem"><span class="nav-number">6.1.</span> <span class="nav-text">Bounded-Buffer Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#readers-writers-problem"><span class="nav-number">6.2.</span> <span class="nav-text">Readers-Writers Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dining-philosophers-problem"><span class="nav-number">6.3.</span> <span class="nav-text">Dining-Philosophers Problem</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#problem-of-this-algorithm"><span class="nav-number">6.3.1.</span> <span class="nav-text">Problem of this algorithm</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#problems-with-semaphores"><span class="nav-number">6.4.</span> <span class="nav-text">Problems with Semaphores</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reference"><span class="nav-number">7.</span> <span class="nav-text">Reference</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -218,7 +219,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-02-10 05:18:36" itemprop="dateModified" datetime="2025-02-10T05:18:36+00:00">2025-02-10</time>
+      <time title="Modified: 2025-04-30 10:11:21" itemprop="dateModified" datetime="2025-04-30T10:11:21+00:00">2025-04-30</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -248,204 +249,246 @@
     
     <div class="post-body" itemprop="articleBody"><p>雙二一退學保衛戰。</p>
 <span id="more"></span>
-
-<h2 id="The-Critical-Section-Problem"><a href="#The-Critical-Section-Problem" class="headerlink" title="The Critical-Section Problem"></a>The Critical-Section Problem</h2><p><img src="https://1.bp.blogspot.com/-TGKEIgLdMS8/WZvUu88Ri_I/AAAAAAABVVg/BHAfw_SAXHEC3zfPy5DYu8KsWIBMPamKwCLcBGAs/s1600/critical-section-problem.png"><br>Critical-Section:<br>    關鍵區段，指的是存取共用資源的片段程式碼。這些共用資源有無法同時被存取的特性。<br>    Ex. Memory Access, Disk IO.</p>
-<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><ul>
-<li>Mutual Exclusion(互斥):<br>  任一個時間點只允許一個行程進入他的Critical-Section。</li>
-<li>Progress:<ul>
+<h2 id="the-critical-section-problem">The Critical-Section Problem</h2>
+<p><img
+src="https://1.bp.blogspot.com/-TGKEIgLdMS8/WZvUu88Ri_I/AAAAAAABVVg/BHAfw_SAXHEC3zfPy5DYu8KsWIBMPamKwCLcBGAs/s1600/critical-section-problem.png" /><br />
+Critical-Section:
+關鍵區段，指的是存取共用資源的片段程式碼。這些共用資源有無法同時被存取的特性。<br />
+Ex. Memory Access, Disk IO.</p>
+<h3 id="solution">Solution</h3>
+<ul>
+<li>Mutual Exclusion(互斥):
+任一個時間點只允許一個行程進入他的Critical-Section。</li>
+<li>Progress:
+<ul>
 <li>不想進入Critical-Section的行程，不可參與其他行程進入Critical-Section的決策。</li>
-<li>必須在有限時間內從想進入Critical-Section的行程中挑選一個進入。<br>隱含No Deadlock。（有空位就讓<code>想進的人</code> <code>馬上</code> 進去）</li>
-</ul>
-</li>
-<li>Bounded waiting:<ul>
+<li>必須在有限時間內從想進入Critical-Section的行程中挑選一個進入。
+隱含No Deadlock。（有空位就讓<code>想進的人</code> <code>馬上</code>
+進去）</li>
+</ul></li>
+<li>Bounded waiting:
+<ul>
 <li>從一個行程提出進入Critical-Section到獲准進入之間的等待時間是有限的。</li>
-<li>如果有n個行程在等待，那麼每個行程最多等待n-1段時間即可進入Critical-Section。<br>隱含No starvation。</li>
+<li>如果有n個行程在等待，那麼每個行程最多等待n-1段時間即可進入Critical-Section。
+隱含No starvation。</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h2 id="Peterson’s-Solution"><a href="#Peterson’s-Solution" class="headerlink" title="Peterson’s Solution"></a>Peterson’s Solution</h2><ul>
+<h2 id="petersons-solution">Peterson’s Solution</h2>
+<ul>
 <li>適合兩個行程。</li>
 <li>假設<code>load</code>以及<code>store</code>兩個方法具有原子性，無法被中斷。</li>
-<li>兩個行程共享兩個變數：<ul>
+<li>兩個行程共享兩個變數：
+<ul>
 <li>int turn: 決定輪到哪個行程進入Critical-Section</li>
-<li>boolean flag[2]： 旗標代表行程是否準備進入Critical-Section<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    flag[i] = <span class="literal">true</span>;</span><br><span class="line">    turn = j;</span><br><span class="line">    <span class="keyword">while</span>(flag[j] &amp;&amp; turn == j);</span><br><span class="line">        critical section</span><br><span class="line">    flag[i] = <span class="literal">false</span>;</span><br><span class="line">        remainder section</span><br><span class="line">&#125; <span class="keyword">while</span> (<span class="literal">true</span>);</span><br></pre></td></tr></table></figure></li>
+<li>boolean flag[2]： 旗標代表行程是否準備進入Critical-Section
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    flag[i] = <span class="literal">true</span>;</span><br><span class="line">    turn = j;</span><br><span class="line">    <span class="keyword">while</span>(flag[j] &amp;&amp; turn == j);</span><br><span class="line">        critical section</span><br><span class="line">    flag[i] = <span class="literal">false</span>;</span><br><span class="line">        remainder section</span><br><span class="line">&#125; <span class="keyword">while</span> (<span class="literal">true</span>);</span><br></pre></td></tr></table></figure></li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h2 id="Synchronization-Hardware"><a href="#Synchronization-Hardware" class="headerlink" title="Synchronization Hardware"></a>Synchronization Hardware</h2><ul>
+<h2 id="synchronization-hardware">Synchronization Hardware</h2>
+<ul>
 <li>用Lock來達到保護Critical Region(關鍵區域)的目的。</li>
-<li>單處理器：可以禁用中斷。<ul>
+<li>單處理器：可以禁用中斷。
+<ul>
 <li>當前運行的程式不會被插隊（without preemption）</li>
 <li>通常在多處理器上效率太低, 作業系統不能廣泛的擴展。</li>
-</ul>
-</li>
-<li>當代的機器多提供特殊的原子性指令，意即不會被中斷。<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    acquire lock</span><br><span class="line">        ciritical section</span><br><span class="line">    release lock</span><br><span class="line">        remainder section</span><br><span class="line">&#125; <span class="keyword">while</span>(<span class="literal">true</span>);</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="test-and-set-instruction"><a href="#test-and-set-instruction" class="headerlink" title="test_and_set instruction"></a>test_and_set instruction</h3><ul>
+</ul></li>
+<li>當代的機器多提供特殊的原子性指令，意即不會被中斷。 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    acquire lock</span><br><span class="line">        ciritical section</span><br><span class="line">    release lock</span><br><span class="line">        remainder section</span><br><span class="line">&#125; <span class="keyword">while</span>(<span class="literal">true</span>);</span><br></pre></td></tr></table></figure> ###
+test_and_set instruction</li>
 <li>兩行程執行時，在前次行程釋放鎖之前，其他行程都會在<code>while</code>前阻塞。</li>
-<li>Define  <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">boolean <span class="title">test_and_set</span> <span class="params">(boolean *target)</span> </span>&#123;</span><br><span class="line">    boolean rv = *target;</span><br><span class="line">    *target = TRUE;</span><br><span class="line">    <span class="keyword">return</span> rv:</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>Usage<ul>
-<li>共享<code>lock</code>變數， 初始值為<code>False</code><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">test_and_set</span>(&amp;lock));</span><br><span class="line">        <span class="comment">/* do nothing */</span></span><br><span class="line">    <span class="comment">/* critical section */</span></span><br><span class="line">    lock = <span class="literal">false</span>;</span><br><span class="line">    <span class="comment">/* remainder section */</span></span><br><span class="line">&#125; <span class="keyword">while</span> (<span class="literal">true</span>);</span><br></pre></td></tr></table></figure></li>
+<li>Define <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">boolean <span class="title">test_and_set</span> <span class="params">(boolean *target)</span> </span>&#123;</span><br><span class="line">    boolean rv = *target;</span><br><span class="line">    *target = TRUE;</span><br><span class="line">    <span class="keyword">return</span> rv:</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Usage
+<ul>
+<li>共享<code>lock</code>變數， 初始值為<code>False</code>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">test_and_set</span>(&amp;lock));</span><br><span class="line">        <span class="comment">/* do nothing */</span></span><br><span class="line">    <span class="comment">/* critical section */</span></span><br><span class="line">    lock = <span class="literal">false</span>;</span><br><span class="line">    <span class="comment">/* remainder section */</span></span><br><span class="line">&#125; <span class="keyword">while</span> (<span class="literal">true</span>);</span><br></pre></td></tr></table></figure></li>
+</ul></li>
 </ul>
-</li>
+<h3 id="compare_and_swap-instruction">compare_and_swap instruction</h3>
+<ul>
+<li>如果鎖的狀態跟預期的<code>False</code>，行程就可以取得當次執行Critical
+Section的權力，否則就會在<code>while</code>前阻塞。</li>
+<li>Define <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">compare_and_swap</span><span class="params">(<span class="type">int</span> *value, <span class="type">int</span> expected, <span class="type">int</span> new_value)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> temp = *value;</span><br><span class="line">    <span class="keyword">if</span> (*value == expected)</span><br><span class="line">        *value = new_value;</span><br><span class="line">    <span class="keyword">return</span> temp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Usage
+<ul>
+<li>共享<code>lock</code>變數， 初始值為<code>False</code>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">compare_and_swap</span>(&amp;lock, <span class="number">0</span>, <span class="number">1</span>) != <span class="number">0</span>);</span><br><span class="line">      <span class="comment">/* do nothing */</span></span><br><span class="line">    <span class="comment">/* critical section */</span></span><br><span class="line">    lock = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">/* remainder section */</span></span><br><span class="line">&#125; <span class="keyword">while</span> (<span class="literal">true</span>);</span><br></pre></td></tr></table></figure></li>
+</ul></li>
 </ul>
-<h3 id="compare-and-swap-instruction"><a href="#compare-and-swap-instruction" class="headerlink" title="compare_and_swap instruction"></a>compare_and_swap instruction</h3><ul>
-<li>如果鎖的狀態跟預期的<code>False</code>，行程就可以取得當次執行Critical Section的權力，否則就會在<code>while</code>前阻塞。</li>
-<li>Define  <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">compare_and_swap</span><span class="params">(<span class="type">int</span> *value, <span class="type">int</span> expected, <span class="type">int</span> new_value)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> temp = *value;</span><br><span class="line">    <span class="keyword">if</span> (*value == expected)</span><br><span class="line">        *value = new_value;</span><br><span class="line">    <span class="keyword">return</span> temp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>Usage<ul>
-<li>共享<code>lock</code>變數， 初始值為<code>False</code><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">compare_and_swap</span>(&amp;lock, <span class="number">0</span>, <span class="number">1</span>) != <span class="number">0</span>);</span><br><span class="line">      <span class="comment">/* do nothing */</span></span><br><span class="line">    <span class="comment">/* critical section */</span></span><br><span class="line">    lock = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">/* remainder section */</span></span><br><span class="line">&#125; <span class="keyword">while</span> (<span class="literal">true</span>);</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ul>
-<h2 id="Mutex-Locks"><a href="#Mutex-Locks" class="headerlink" title="Mutex Locks"></a>Mutex Locks</h2><ul>
+<h2 id="mutex-locks">Mutex Locks</h2>
+<ul>
 <li>前面的方法太複雜，而且通常應用程式的Programmer沒辦法存取。</li>
 <li>OS的設計者會提供軟體工具來解決Critical-Section Problem</li>
 <li>Mutex Lock就是最簡單的作法。</li>
-<li><code>acquire</code>用來取得鎖, <code>release</code>用來釋放鎖。<ul>
+<li><code>acquire</code>用來取得鎖, <code>release</code>用來釋放鎖。
+<ul>
 <li>這兩個方法必須是原子性，才不會被打斷。</li>
 <li>通常會用硬體指令來實作。</li>
-</ul>
-</li>
-<li>但是這個解法必須使用<code>busy waiting</code>：拿到鎖之前，等到海枯石爛。<ul>
+</ul></li>
+<li>但是這個解法必須使用<code>busy waiting</code>：拿到鎖之前，等到海枯石爛。
+<ul>
 <li>這個鎖也被稱為<code>Spin Lock</code></li>
+</ul></li>
 </ul>
-</li>
+<h3 id="acquire-and-release">acquire() and release()</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">acquire</span>() &#123;</span><br><span class="line">    <span class="keyword">while</span> (!available);</span><br><span class="line">        <span class="comment">/* busy wait */</span></span><br><span class="line">    available = <span class="literal">false</span>;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">release</span>() &#123;</span><br><span class="line">    available = <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    acquire lock</span><br><span class="line">    critical section</span><br><span class="line">    release lock</span><br><span class="line">    remainder section</span><br><span class="line">&#125; <span class="keyword">while</span> (<span class="literal">true</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="semaphores">Semaphores</h2>
+<ul>
+<li>拿到鎖之前不用等到海枯石爛，但是如果沒有鎖可以拿，還是會等到海枯石爛。
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">wait</span> (S) &#123;</span><br><span class="line">  <span class="keyword">while</span> (S &lt;= <span class="number">0</span>);</span><br><span class="line">      <span class="comment">// busy wait</span></span><br><span class="line">  S--;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">signal</span> (S) &#123;</span><br><span class="line">  S++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
-<h3 id="acquire-and-release"><a href="#acquire-and-release" class="headerlink" title="acquire() and release()"></a>acquire() and release()</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">acquire</span>() &#123;</span><br><span class="line">    <span class="keyword">while</span> (!available);</span><br><span class="line">        <span class="comment">/* busy wait */</span></span><br><span class="line">    available = <span class="literal">false</span>;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">release</span>() &#123;</span><br><span class="line">    available = <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    acquire lock</span><br><span class="line">    critical section</span><br><span class="line">    release lock</span><br><span class="line">    remainder section</span><br><span class="line">&#125; <span class="keyword">while</span> (<span class="literal">true</span>);</span><br></pre></td></tr></table></figure>
-
-<h2 id="Semaphores"><a href="#Semaphores" class="headerlink" title="Semaphores"></a>Semaphores</h2><ul>
-<li>拿到鎖之前不用等到海枯石爛，但是如果沒有鎖可以拿，還是會等到海枯石爛。 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">wait</span> (S) &#123;</span><br><span class="line">  <span class="keyword">while</span> (S &lt;= <span class="number">0</span>);</span><br><span class="line">      <span class="comment">// busy wait</span></span><br><span class="line">  S--;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">signal</span> (S) &#123;</span><br><span class="line">  S++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<h3 id="usage">Usage</h3>
+<ul>
+<li>Counting Semaphores: 整數計數器
+<ul>
+<li></li>
+</ul></li>
+<li>Binary Semaphores: 二進位計數器
+<ul>
+<li>類似Mutex(邏輯上) <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">P1:</span><br><span class="line">    S1;</span><br><span class="line">    <span class="built_in">signal</span>(synch);</span><br><span class="line"></span><br><span class="line">P2:</span><br><span class="line">    <span class="built_in">wait</span>(synch);</span><br><span class="line">    S2;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
 </ul>
-<h3 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h3><ul>
-<li><h2 id="Counting-Semaphores-整數計數器"><a href="#Counting-Semaphores-整數計數器" class="headerlink" title="Counting Semaphores: 整數計數器"></a>Counting Semaphores: 整數計數器</h2></li>
-<li>Binary Semaphores: 二進位計數器<ul>
-<li>類似Mutex(邏輯上)<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">P1:</span><br><span class="line">    S1;</span><br><span class="line">    <span class="built_in">signal</span>(synch);</span><br><span class="line"></span><br><span class="line">P2:</span><br><span class="line">    <span class="built_in">wait</span>(synch);</span><br><span class="line">    S2;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ul>
-<h3 id="Semaphore-Implementation"><a href="#Semaphore-Implementation" class="headerlink" title="Semaphore Implementation"></a>Semaphore Implementation</h3><ul>
+<h3 id="semaphore-implementation">Semaphore Implementation</h3>
+<ul>
 <li>沒人懂這在講什麼鬼…</li>
 <li>必須保證同一個信號內的<code>signal</code>跟<code>wait</code>不會同時在兩個不同的行程中呼叫</li>
-<li>當<code>signal</code>跟<code>wait</code>被放在Critical Section中的時候，會變成Critical Section Problem</li>
-<li>現在多使用<code>busy waiting</code>來實作<ul>
+<li>當<code>signal</code>跟<code>wait</code>被放在Critical
+Section中的時候，會變成Critical Section Problem</li>
+<li>現在多使用<code>busy waiting</code>來實作
+<ul>
 <li>程式碼少</li>
 <li>但是效率低</li>
 <li>應用程式可能花很多時間在waiting，所以不是很好的方法。</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h3 id="Semaphore-Implementation-with-no-Busy-waiting"><a href="#Semaphore-Implementation-with-no-Busy-waiting" class="headerlink" title="Semaphore Implementation with no Busy waiting"></a>Semaphore Implementation with no Busy waiting</h3><ul>
-<li>每一個<code>semaphore</code>都有一個關聯的等待佇列（waiting queue）</li>
-<li>佇列中的每一項都包含有兩個資料元素<ul>
+<h3 id="semaphore-implementation-with-no-busy-waiting">Semaphore
+Implementation with no Busy waiting</h3>
+<ul>
+<li>每一個<code>semaphore</code>都有一個關聯的等待佇列（waiting
+queue）</li>
+<li>佇列中的每一項都包含有兩個資料元素
+<ul>
 <li>數值（integer)</li>
 <li>下一項的指標</li>
-</ul>
-</li>
-<li>兩種操作<ul>
+</ul></li>
+<li>兩種操作
+<ul>
 <li>block: 把行程放在適當的等待佇列中</li>
-<li>wakeup: 把行程從等待佇列放到就緒佇列（ready queue）中<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> &#123;</span><br><span class="line">    <span class="type">int</span> value;</span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">process</span> *list;</span><br><span class="line">&#125; semaphore;</span><br><span class="line"></span><br><span class="line"><span class="built_in">wait</span>(semaphore *S) &#123;</span><br><span class="line">    S-&gt;value--;</span><br><span class="line">    <span class="keyword">if</span> (S-&gt;value &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="comment">// add this process to S-&gt;list;</span></span><br><span class="line">        <span class="built_in">block</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">signal</span>(semaphore *S) &#123;</span><br><span class="line">    S-&gt;value++;</span><br><span class="line">    <span class="keyword">if</span> (S-&gt;value &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="comment">// remove a process P from S-&gt;list;</span></span><br><span class="line">        <span class="built_in">wakeup</span>(P);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>wakeup: 把行程從等待佇列放到就緒佇列（ready queue）中
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> &#123;</span><br><span class="line">    <span class="type">int</span> value;</span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">process</span> *list;</span><br><span class="line">&#125; semaphore;</span><br><span class="line"></span><br><span class="line"><span class="built_in">wait</span>(semaphore *S) &#123;</span><br><span class="line">    S-&gt;value--;</span><br><span class="line">    <span class="keyword">if</span> (S-&gt;value &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="comment">// add this process to S-&gt;list;</span></span><br><span class="line">        <span class="built_in">block</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">signal</span>(semaphore *S) &#123;</span><br><span class="line">    S-&gt;value++;</span><br><span class="line">    <span class="keyword">if</span> (S-&gt;value &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="comment">// remove a process P from S-&gt;list;</span></span><br><span class="line">        <span class="built_in">wakeup</span>(P);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h3 id="Deadlock-and-Starvation"><a href="#Deadlock-and-Starvation" class="headerlink" title="Deadlock and Starvation"></a>Deadlock and Starvation</h3><ul>
-<li>Deadlock<br>  兩個或更多的行程在互相等待各自的資源釋放。<br>  A等B放開鎖， B也在等A放開鎖。<br>  等到海枯石爛。</li>
-<li>Starvation: 阻塞到死。<br>  行程沒有從等待佇列被放到就緒佇列。</li>
-<li>Priority Inversion:<ul>
-<li>高優先權行程的資源被低優先權行程占住了。<br>必須要等待低優先行程釋放才能繼續。</li>
+<h3 id="deadlock-and-starvation">Deadlock and Starvation</h3>
+<ul>
+<li>Deadlock 兩個或更多的行程在互相等待各自的資源釋放。 A等B放開鎖，
+B也在等A放開鎖。 等到海枯石爛。</li>
+<li>Starvation: 阻塞到死。 行程沒有從等待佇列被放到就緒佇列。</li>
+<li>Priority Inversion:
+<ul>
+<li>高優先權行程的資源被低優先權行程占住了。
+必須要等待低優先行程釋放才能繼續。</li>
 <li>透過priority-inheritance protocol解決</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h2 id="Classic-Problems-of-Synchronization"><a href="#Classic-Problems-of-Synchronization" class="headerlink" title="Classic Problems of Synchronization"></a>Classic Problems of Synchronization</h2><h3 id="Bounded-Buffer-Problem"><a href="#Bounded-Buffer-Problem" class="headerlink" title="Bounded-Buffer Problem"></a>Bounded-Buffer Problem</h3><ul>
-<li>Variable<ul>
+<h2 id="classic-problems-of-synchronization">Classic Problems of
+Synchronization</h2>
+<h3 id="bounded-buffer-problem">Bounded-Buffer Problem</h3>
+<ul>
+<li>Variable
+<ul>
 <li>n個Buffer, 每個可以放一個元素</li>
-<li>Semaphore mutex, 初始值為<code>1</code>: 控制生產者跟消費者存取Buffer</li>
-<li>Semaphore full, 初始值為<code>0</code><ul>
+<li>Semaphore mutex, 初始值為<code>1</code>:
+控制生產者跟消費者存取Buffer</li>
+<li>Semaphore full, 初始值為<code>0</code>
+<ul>
 <li>表示目前Buffer有多少空間被使用</li>
 <li>0表示Buffer是空的，消費者要等待</li>
-</ul>
-</li>
-<li>Semaphore empty, 初始值為<code>n</code><ul>
+</ul></li>
+<li>Semaphore empty, 初始值為<code>n</code>
+<ul>
 <li>表示目前Buffer還有多少空間</li>
-<li>&lt;&#x3D;0表示Buffer是滿的, 生產者要等待</li>
+<li>&lt;=0表示Buffer是滿的, 生產者要等待</li>
+</ul></li>
+</ul></li>
+<li>生產者（Producer）行程 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="comment">/* produce an item in next_produced */</span></span><br><span class="line">    ...</span><br><span class="line">    <span class="built_in">wait</span>(empty);</span><br><span class="line">    <span class="built_in">wait</span>(mutex);</span><br><span class="line">    ...</span><br><span class="line">    <span class="comment">/* add next produced to the buffer */</span></span><br><span class="line">    ...</span><br><span class="line">    <span class="built_in">signal</span>(mutex);</span><br><span class="line">    <span class="built_in">signal</span>(full);</span><br><span class="line">&#125; <span class="keyword">while</span> (<span class="literal">true</span>);</span><br></pre></td></tr></table></figure></li>
+<li>消費者（Consumer）行程 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    <span class="built_in">wait</span>(full);</span><br><span class="line">    <span class="built_in">wait</span>(mutex);</span><br><span class="line">    ...</span><br><span class="line">    <span class="comment">/* remove an item from buffer to next_consumed */</span></span><br><span class="line">    ...</span><br><span class="line">    <span class="built_in">signal</span>(mutex);</span><br><span class="line">    <span class="built_in">signal</span>(empty);</span><br><span class="line">    ...</span><br><span class="line">    <span class="comment">/* consume the item in next consumed */</span></span><br><span class="line">    ...</span><br><span class="line">&#125; <span class="keyword">while</span> (<span class="literal">true</span>);</span><br></pre></td></tr></table></figure></li>
 </ul>
-</li>
-</ul>
-</li>
-<li>生產者（Producer）行程  <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="comment">/* produce an item in next_produced */</span></span><br><span class="line">    ...</span><br><span class="line">    <span class="built_in">wait</span>(empty);</span><br><span class="line">    <span class="built_in">wait</span>(mutex);</span><br><span class="line">    ...</span><br><span class="line">    <span class="comment">/* add next produced to the buffer */</span></span><br><span class="line">    ...</span><br><span class="line">    <span class="built_in">signal</span>(mutex);</span><br><span class="line">    <span class="built_in">signal</span>(full);</span><br><span class="line">&#125; <span class="keyword">while</span> (<span class="literal">true</span>);</span><br></pre></td></tr></table></figure></li>
-<li>消費者（Consumer）行程  <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    <span class="built_in">wait</span>(full);</span><br><span class="line">    <span class="built_in">wait</span>(mutex);</span><br><span class="line">    ...</span><br><span class="line">    <span class="comment">/* remove an item from buffer to next_consumed */</span></span><br><span class="line">    ...</span><br><span class="line">    <span class="built_in">signal</span>(mutex);</span><br><span class="line">    <span class="built_in">signal</span>(empty);</span><br><span class="line">    ...</span><br><span class="line">    <span class="comment">/* consume the item in next consumed */</span></span><br><span class="line">    ...</span><br><span class="line">&#125; <span class="keyword">while</span> (<span class="literal">true</span>);</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="Readers-Writers-Problem"><a href="#Readers-Writers-Problem" class="headerlink" title="Readers-Writers Problem"></a>Readers-Writers Problem</h3><ul>
-<li>數個同時執行的行程，共享資料集合<ul>
+<h3 id="readers-writers-problem">Readers-Writers Problem</h3>
+<ul>
+<li>數個同時執行的行程，共享資料集合
+<ul>
 <li>Readers: 只讀取資料, 不會對資料做任何更動。</li>
 <li>Writers: 同時可以讀寫。</li>
-</ul>
-</li>
-<li>問題：允許數個Reader同時讀取資料。<br>  只有單一個Writer可以讀寫資料。</li>
+</ul></li>
+<li>問題：允許數個Reader同時讀取資料。
+只有單一個Writer可以讀寫資料。</li>
 <li>Reader跟Writer的數種變化取決於優先權(Priority)</li>
-<li>共享資料<ul>
+<li>共享資料
+<ul>
 <li>資料集合</li>
-<li>Semaphore rw_mutex, 初始值為<code>1</code><ul>
-<li>控制Reader&#x2F;Writer進入文件的信號</li>
+<li>Semaphore rw_mutex, 初始值為<code>1</code>
+<ul>
+<li>控制Reader/Writer進入文件的信號</li>
 <li>0代表有人正在存取文件， 需要等待</li>
-</ul>
-</li>
-<li>Semaphore mutex, 初始值為<code>1</code><ul>
+</ul></li>
+<li>Semaphore mutex, 初始值為<code>1</code>
+<ul>
 <li>控制reader_count增減的信號</li>
 <li>0代表reader_count正在變動，需要等待</li>
+</ul></li>
+<li>整數reader_count,
+初始值為<code>0</code>：用來計算現在有幾個Reader</li>
+</ul></li>
+<li>Writer行程 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    <span class="built_in">wait</span>(rw_mutex);</span><br><span class="line">    ...</span><br><span class="line">    <span class="comment">/* writing is performed */</span></span><br><span class="line">    ...</span><br><span class="line">    <span class="built_in">signal</span>(rw_mutex);</span><br><span class="line">&#125; <span class="keyword">while</span> (<span class="literal">true</span>);</span><br></pre></td></tr></table></figure></li>
+<li>Reader行程 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    <span class="built_in">wait</span>(mutex);</span><br><span class="line">    read_count++;</span><br><span class="line">    <span class="keyword">if</span> (read_count == <span class="number">1</span>)</span><br><span class="line">        <span class="built_in">wait</span>(rw_mutex);</span><br><span class="line">    <span class="built_in">signal</span>(mutex);</span><br><span class="line">    ...</span><br><span class="line">    <span class="comment">/* reading is performed */</span></span><br><span class="line">    ...</span><br><span class="line">    <span class="built_in">wait</span>(mutex);</span><br><span class="line">    read_count--;</span><br><span class="line">    <span class="keyword">if</span> (read_count == <span class="number">0</span>)</span><br><span class="line">        <span class="built_in">signal</span>(rw_mutex);</span><br><span class="line">    <span class="built_in">signal</span>(mutex);</span><br><span class="line">&#125; <span class="keyword">while</span> (<span class="literal">true</span>);</span><br></pre></td></tr></table></figure> #### Readers-Writers Problem
+Variations</li>
+<li>Variation 1
+如果有無限個Reader在讀取，Writer會餓死(Starvation)。</li>
+<li>Variation 2 Writer準備好之後就馬上開始讀寫，Reader會餓死</li>
+<li>某些系統為了解決這些問題， 會由Kernel提供讀寫鎖(Reader-Writer
+Lock)</li>
 </ul>
-</li>
-<li>整數reader_count, 初始值為<code>0</code>：用來計算現在有幾個Reader</li>
-</ul>
-</li>
-<li>Writer行程  <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    <span class="built_in">wait</span>(rw_mutex);</span><br><span class="line">    ...</span><br><span class="line">    <span class="comment">/* writing is performed */</span></span><br><span class="line">    ...</span><br><span class="line">    <span class="built_in">signal</span>(rw_mutex);</span><br><span class="line">&#125; <span class="keyword">while</span> (<span class="literal">true</span>);</span><br></pre></td></tr></table></figure></li>
-<li>Reader行程  <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    <span class="built_in">wait</span>(mutex);</span><br><span class="line">    read_count++;</span><br><span class="line">    <span class="keyword">if</span> (read_count == <span class="number">1</span>)</span><br><span class="line">        <span class="built_in">wait</span>(rw_mutex);</span><br><span class="line">    <span class="built_in">signal</span>(mutex);</span><br><span class="line">    ...</span><br><span class="line">    <span class="comment">/* reading is performed */</span></span><br><span class="line">    ...</span><br><span class="line">    <span class="built_in">wait</span>(mutex);</span><br><span class="line">    read_count--;</span><br><span class="line">    <span class="keyword">if</span> (read_count == <span class="number">0</span>)</span><br><span class="line">        <span class="built_in">signal</span>(rw_mutex);</span><br><span class="line">    <span class="built_in">signal</span>(mutex);</span><br><span class="line">&#125; <span class="keyword">while</span> (<span class="literal">true</span>);</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h4 id="Readers-Writers-Problem-Variations"><a href="#Readers-Writers-Problem-Variations" class="headerlink" title="Readers-Writers Problem Variations"></a>Readers-Writers Problem Variations</h4><ul>
-<li>Variation 1<br>  如果有無限個Reader在讀取，Writer會餓死(Starvation)。 </li>
-<li>Variation 2<br>  Writer準備好之後就馬上開始讀寫，Reader會餓死</li>
-<li>某些系統為了解決這些問題， 會由Kernel提供讀寫鎖(Reader-Writer Lock)</li>
-</ul>
-<h3 id="Dining-Philosophers-Problem"><a href="#Dining-Philosophers-Problem" class="headerlink" title="Dining-Philosophers Problem"></a>Dining-Philosophers Problem</h3><p><img src="/images/OS/dining-philosopher.png">  </p>
+<h3 id="dining-philosophers-problem">Dining-Philosophers Problem</h3>
+<p><img src="/images/OS/dining-philosopher.png" /><br />
+- 哲學家只能思考（Wait）或吃飯（Do），他們之間不能交流，
+每次吃飯都需要同時拿左邊跟右邊的筷子，吃完就會把筷子放回去。 - 問題： -
+哲學家想吃飯的時候，但是左邊或右邊的任一支筷子被拿走了，需要等待。 -
+共享資料： - 飯（資料集合） - Semaphores 筷子[5],
+初始值是<code>1</code>： 0代表有人在用 - 行程 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    <span class="built_in">wait</span> ( chopstick[i] );</span><br><span class="line">    <span class="built_in">wait</span> ( chopStick[ (i + <span class="number">1</span>) % <span class="number">5</span>] );</span><br><span class="line">    <span class="comment">// eat</span></span><br><span class="line">    <span class="built_in">signal</span> ( chopstick[i] );</span><br><span class="line">    <span class="built_in">signal</span> (chopstick[ (i + <span class="number">1</span>) % <span class="number">5</span>] );</span><br><span class="line">    <span class="comment">// think</span></span><br><span class="line">&#125; <span class="keyword">while</span> (TRUE);</span><br></pre></td></tr></table></figure></p>
+<h4 id="problem-of-this-algorithm">Problem of this algorithm</h4>
 <ul>
-<li>哲學家只能思考（Wait）或吃飯（Do），他們之間不能交流，<br>每次吃飯都需要同時拿左邊跟右邊的筷子，吃完就會把筷子放回去。</li>
-<li>問題：<ul>
-<li>哲學家想吃飯的時候，但是左邊或右邊的任一支筷子被拿走了，需要等待。</li>
-<li>共享資料：<ul>
-<li>飯（資料集合）</li>
-<li>Semaphores 筷子[5], 初始值是<code>1</code>： 0代表有人在用</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>行程  <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    <span class="built_in">wait</span> ( chopstick[i] );</span><br><span class="line">    <span class="built_in">wait</span> ( chopStick[ (i + <span class="number">1</span>) % <span class="number">5</span>] );</span><br><span class="line">    <span class="comment">// eat</span></span><br><span class="line">    <span class="built_in">signal</span> ( chopstick[i] );</span><br><span class="line">    <span class="built_in">signal</span> (chopstick[ (i + <span class="number">1</span>) % <span class="number">5</span>] );</span><br><span class="line">    <span class="comment">// think</span></span><br><span class="line">&#125; <span class="keyword">while</span> (TRUE);</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h4 id="Problem-of-this-algorithm"><a href="#Problem-of-this-algorithm" class="headerlink" title="Problem of this algorithm"></a>Problem of this algorithm</h4><ul>
-<li>會產生死鎖（Deadlock）:要等其他人放下筷子， 才能拿筷子。<ul>
-<li>大家都先拿右邊的筷子， 全部的人都在等左邊的筷子，<br>可是左邊筷子已經被左邊的人先拿走了。</li>
+<li>會產生死鎖（Deadlock）:要等其他人放下筷子， 才能拿筷子。
+<ul>
+<li>大家都先拿右邊的筷子， 全部的人都在等左邊的筷子，
+可是左邊筷子已經被左邊的人先拿走了。</li>
 <li>如果哲學家1, 3一直拿著筷子， 哲學家2就會等到死。</li>
-</ul>
-</li>
-<li>解法<ul>
+</ul></li>
+<li>解法
+<ul>
 <li>最多限制(n - 1)個吃，可以解決死鎖，但是會有人餓死。</li>
-<li>除非可以拿到左右筷子，不然就不准吃。<br>可以打破Hold-and-Wait（死鎖），但是也是會有人餓死。</li>
-<li>奇數者先拿左邊再拿右邊，偶數者則相反，<br>可以打破Circular Waiting（環狀等待）, 還是會有人餓死。</li>
-<li>Chandy&#x2F;Misra Solution：<br>  先把筷子湊成對， 要吃的領筷子券, 吃完再釋放<br>  搶奪筷子券，沒有錯，還是會有人餓死。</li>
-</ul>
-</li>
+<li>除非可以拿到左右筷子，不然就不准吃。
+可以打破Hold-and-Wait（死鎖），但是也是會有人餓死。</li>
+<li>奇數者先拿左邊再拿右邊，偶數者則相反， 可以打破Circular
+Waiting（環狀等待）, 還是會有人餓死。</li>
+<li>Chandy/Misra Solution： 先把筷子湊成對， 要吃的領筷子券, 吃完再釋放
+搶奪筷子券，沒有錯，還是會有人餓死。</li>
+</ul></li>
 <li>所以你們就餓死吧…</li>
 </ul>
-<h3 id="Problems-with-Semaphores"><a href="#Problems-with-Semaphores" class="headerlink" title="Problems with Semaphores"></a>Problems with Semaphores</h3><ul>
-<li>Semaphore的不正確操作<ul>
-<li>signal() 再 wait()<br>  先加信號再等待信號？？？… 怪怪的</li>
-<li>wait() 又 wait()<br>  等一個信號 然後又等一個信號？？？ … 等一個人咖啡館？？？</li>
-<li>省略了signal或wait或兩個都省略了<br>  不等了， 或者不把信號還回去， 直接出車禍.</li>
-</ul>
-</li>
+<h3 id="problems-with-semaphores">Problems with Semaphores</h3>
+<ul>
+<li>Semaphore的不正確操作
+<ul>
+<li>signal() 再 wait() 先加信號再等待信號？？？… 怪怪的</li>
+<li>wait() 又 wait() 等一個信號 然後又等一個信號？？？ …
+等一個人咖啡館？？？</li>
+<li>省略了signal或wait或兩個都省略了 不等了， 或者不把信號還回去，
+直接出車禍.</li>
+</ul></li>
 <li>死鎖(Deadlock)跟餓死(Starvation)</li>
 </ul>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://www.slideshare.net/JenWeiCheng/os20170518">[1]OS讀書會20170518 </a></li>
+<h2 id="reference">Reference</h2>
+<ul>
+<li><a
+target="_blank" rel="noopener" href="https://www.slideshare.net/JenWeiCheng/os20170518">[1]OS讀書會20170518</a></li>
 </ul>
 
     </div>
@@ -539,6 +582,12 @@
   <script class="next-config" data-name="firestore" type="application/json">{"enable":true,"collection":"articles","apiKey":"AIzaSyCu9-MhzikdJ0BVgPRODV__hMffyr5bgZg","projectId":"clo5de-githubpage"}</script>
   <script src="/js/third-party/statistics/firestore.js"></script>
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 

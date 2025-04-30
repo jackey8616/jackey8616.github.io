@@ -20,15 +20,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.clo5de.info","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.17.1","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="PHP weak typeIf string is process as a number, When the string doesn’t contain ‘.’, ‘e’ or ‘E’ and in the range of integer, it will process as integer.otherwise, process as float, and the begin of str">
+    <meta name="description" content="PHP weak type If string is process as a number, When the string doesn’t contain ‘.’, ‘e’ or ‘E’ and in the range of integer, it will process as integer. otherwise, process as float, and the begin of s">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CTF Note">
 <meta property="og:url" content="https://www.clo5de.info/2018/05/22/CTF/CTF-note/index.html">
 <meta property="og:site_name" content="clooooode">
-<meta property="og:description" content="PHP weak typeIf string is process as a number, When the string doesn’t contain ‘.’, ‘e’ or ‘E’ and in the range of integer, it will process as integer.otherwise, process as float, and the begin of str">
+<meta property="og:description" content="PHP weak type If string is process as a number, When the string doesn’t contain ‘.’, ‘e’ or ‘E’ and in the range of integer, it will process as integer. otherwise, process as float, and the begin of s">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2018-05-22T19:55:03.000Z">
-<meta property="article:modified_time" content="2025-02-10T05:18:36.246Z">
+<meta property="article:modified_time" content="2025-04-30T10:11:21.841Z">
 <meta property="article:author" content="clooooode">
 <meta property="article:tag" content="CTF">
 <meta property="article:tag" content="Note">
@@ -116,7 +116,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#PHP-weak-type"><span class="nav-number">1.</span> <span class="nav-text">PHP weak type</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#php-weak-type"><span class="nav-number">1.</span> <span class="nav-text">PHP weak type</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -216,7 +216,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-02-10 05:18:36" itemprop="dateModified" datetime="2025-02-10T05:18:36+00:00">2025-02-10</time>
+      <time title="Modified: 2025-04-30 10:11:21" itemprop="dateModified" datetime="2025-04-30T10:11:21+00:00">2025-04-30</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -244,7 +244,15 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h2 id="PHP-weak-type"><a href="#PHP-weak-type" class="headerlink" title="PHP weak type"></a>PHP weak type</h2><p>If string is process as a number, When the string doesn’t contain ‘.’, ‘e’ or ‘E’ and in the range of integer, it will process as integer.<br>otherwise, process as float, and the begin of string decide it value, or it will be 0.<br><a target="_blank" rel="noopener" href="https://www.whaledu.com/article/21">PHP Weak Type</a><br><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/a01e4b3fde5e">CTF PHP-WEAK-TYPE Writeup</a></p>
+    <div class="post-body" itemprop="articleBody"><h2 id="php-weak-type">PHP weak type</h2>
+<p>If string is process as a number, When the string doesn’t contain
+‘.’, ‘e’ or ‘E’ and in the range of integer, it will process as
+integer.<br />
+otherwise, process as float, and the begin of string decide it value, or
+it will be 0.<br />
+<a target="_blank" rel="noopener" href="https://www.whaledu.com/article/21">PHP Weak Type</a><br />
+<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/a01e4b3fde5e">CTF PHP-WEAK-TYPE
+Writeup</a></p>
 
     </div>
 
@@ -338,6 +346,12 @@
   <script class="next-config" data-name="firestore" type="application/json">{"enable":true,"collection":"articles","apiKey":"AIzaSyCu9-MhzikdJ0BVgPRODV__hMffyr5bgZg","projectId":"clo5de-githubpage"}</script>
   <script src="/js/third-party/statistics/firestore.js"></script>
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 

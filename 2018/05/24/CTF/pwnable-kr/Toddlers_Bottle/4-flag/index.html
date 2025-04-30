@@ -20,16 +20,16 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.clo5de.info","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.17.1","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="ProblemPoints: 7 pt   12345Papa brought me a packed present! let&amp;#x27;s open it.Download : http:&#x2F;&#x2F;pwnable.kr&#x2F;bin&#x2F;flagThis is reversing task. all you need is binary Link">
+    <meta name="description" content="## Problem Points: 7 pt 12345Papa brought me a packed present! let&amp;#x27;s open it.Download : http:&#x2F;&#x2F;pwnable.kr&#x2F;bin&#x2F;flagThis is reversing task. all you need is binary Link">
 <meta property="og:type" content="article">
 <meta property="og:title" content="pwnable.kr(4) - flag">
 <meta property="og:url" content="https://www.clo5de.info/2018/05/24/CTF/pwnable-kr/Toddlers_Bottle/4-flag/index.html">
 <meta property="og:site_name" content="clooooode">
-<meta property="og:description" content="ProblemPoints: 7 pt   12345Papa brought me a packed present! let&amp;#x27;s open it.Download : http:&#x2F;&#x2F;pwnable.kr&#x2F;bin&#x2F;flagThis is reversing task. all you need is binary Link">
+<meta property="og:description" content="## Problem Points: 7 pt 12345Papa brought me a packed present! let&amp;#x27;s open it.Download : http:&#x2F;&#x2F;pwnable.kr&#x2F;bin&#x2F;flagThis is reversing task. all you need is binary Link">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://www.clo5de.info/images/pwnable-kr/flag.png">
 <meta property="article:published_time" content="2018-05-24T23:46:51.000Z">
-<meta property="article:modified_time" content="2025-02-10T05:18:36.246Z">
+<meta property="article:modified_time" content="2025-04-30T10:11:21.841Z">
 <meta property="article:author" content="clooooode">
 <meta property="article:tag" content="CTF">
 <meta property="article:tag" content="PWN">
@@ -120,7 +120,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Thinking"><span class="nav-number">2.</span> <span class="nav-text">Thinking</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code"><span class="nav-number">3.</span> <span class="nav-text">Code</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution"><span class="nav-number">4.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Prepare"><span class="nav-number">5.</span> <span class="nav-text">Prepare</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Register"><span class="nav-number">5.1.</span> <span class="nav-text">Register</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UPX"><span class="nav-number">5.2.</span> <span class="nav-text">UPX</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">6.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#thinking"><span class="nav-number">1.</span> <span class="nav-text">Thinking</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#code"><span class="nav-number">2.</span> <span class="nav-text">Code</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#solution"><span class="nav-number">3.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#prepare"><span class="nav-number">4.</span> <span class="nav-text">Prepare</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#register"><span class="nav-number">4.1.</span> <span class="nav-text">Register</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#upx"><span class="nav-number">4.2.</span> <span class="nav-text">UPX</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reference"><span class="nav-number">5.</span> <span class="nav-text">Reference</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -220,7 +220,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-02-10 05:18:36" itemprop="dateModified" datetime="2025-02-10T05:18:36+00:00">2025-02-10</time>
+      <time title="Modified: 2025-04-30 10:11:21" itemprop="dateModified" datetime="2025-04-30T10:11:21+00:00">2025-04-30</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -256,38 +256,49 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p><img src="/images/pwnable-kr/flag.png"></p>
-<h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><p>Points: 7 pt  </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Papa brought me a packed present! let&#x27;s open it.</span><br><span class="line"></span><br><span class="line">Download : http://pwnable.kr/bin/flag</span><br><span class="line"></span><br><span class="line">This is reversing task. all you need is binary</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="http://pwnable.kr/play.php">Link</a></p>
-<span id="more"></span>
-
-<h2 id="Thinking"><a href="#Thinking" class="headerlink" title="Thinking"></a>Thinking</h2><p>程式沒有辦法直接使用<code>objdump</code>或者是<code>gdb</code>來反組譯。<br>透過 <code>hexdump -C &lt;filename&gt; | grep -C 1 UPX</code> 檢查是不是有加殼。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">000000a0  00 00 00 00 00 00 00 00  00 00 20 00 00 00 00 00  |.......... .....|</span><br><span class="line">000000b0  <span class="built_in">fc</span> ac e0 a1 55 50 58 21  1c 08 0d 16 00 00 00 00  |....UPX!........|</span><br><span class="line">000000c0  21 7c 0d 00 21 7c 0d 00  90 01 00 00 92 00 00 00  |!|..!|..........|</span><br></pre></td></tr></table></figure>
-<p>結果顯示是有經過<code>UPX</code>加殼，於是<code>upx -d &lt;filename&gt;</code>脫殼。<br>脫殼之後就可以用<code>gdb</code>或者是<code>objdump</code>反組譯。  </p>
-<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight x86asm"><figcaption><span>main</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0x0000000000401164</span> &lt;+<span class="number">0</span>&gt;:     <span class="keyword">push</span>   <span class="built_in">rbp</span></span><br><span class="line"><span class="number">0x0000000000401165</span> &lt;+<span class="number">1</span>&gt;:     <span class="keyword">mov</span>    <span class="built_in">rbp</span>,<span class="built_in">rsp</span></span><br><span class="line"><span class="number">0x0000000000401168</span> &lt;+<span class="number">4</span>&gt;:     <span class="keyword">sub</span>    <span class="built_in">rsp</span>,<span class="number">0x10</span></span><br><span class="line"><span class="number">0x000000000040116c</span> &lt;+<span class="number">8</span>&gt;:     <span class="keyword">mov</span>    <span class="built_in">edi</span>,<span class="number">0x496658</span></span><br><span class="line"><span class="number">0x0000000000401171</span> &lt;+<span class="number">13</span>&gt;:    <span class="keyword">call</span>   <span class="number">0x402080</span> &lt;puts&gt;</span><br><span class="line"><span class="number">0x0000000000401176</span> &lt;+<span class="number">18</span>&gt;:    <span class="keyword">mov</span>    <span class="built_in">edi</span>,<span class="number">0x64</span></span><br><span class="line"><span class="number">0x000000000040117b</span> &lt;+<span class="number">23</span>&gt;:    <span class="keyword">call</span>   <span class="number">0x4099d0</span> &lt;malloc&gt;</span><br><span class="line"><span class="number">0x0000000000401180</span> &lt;+<span class="number">28</span>&gt;:    <span class="keyword">mov</span>    <span class="built_in">QWORD</span> <span class="built_in">PTR</span> [<span class="built_in">rbp</span>-<span class="number">0x8</span>],<span class="built_in">rax</span></span><br><span class="line"><span class="number">0x0000000000401184</span> &lt;+<span class="number">32</span>&gt;:    <span class="keyword">mov</span>    <span class="built_in">rdx</span>,<span class="built_in">QWORD</span> <span class="built_in">PTR</span> [<span class="built_in">rip</span>+<span class="number">0x2c0ee5</span>]        # <span class="number">0x6c2070</span> &lt;flag&gt;</span><br><span class="line"><span class="number">0x000000000040118b</span> &lt;+<span class="number">39</span>&gt;:    <span class="keyword">mov</span>    <span class="built_in">rax</span>,<span class="built_in">QWORD</span> <span class="built_in">PTR</span> [<span class="built_in">rbp</span>-<span class="number">0x8</span>]</span><br><span class="line"><span class="number">0x000000000040118f</span> &lt;+<span class="number">43</span>&gt;:    <span class="keyword">mov</span>    <span class="built_in">rsi</span>,<span class="built_in">rdx</span></span><br><span class="line"><span class="number">0x0000000000401192</span> &lt;+<span class="number">46</span>&gt;:    <span class="keyword">mov</span>    <span class="built_in">rdi</span>,<span class="built_in">rax</span></span><br><span class="line"><span class="number">0x0000000000401195</span> &lt;+<span class="number">49</span>&gt;:    <span class="keyword">call</span>   <span class="number">0x400320</span></span><br><span class="line"><span class="number">0x000000000040119a</span> &lt;+<span class="number">54</span>&gt;:    <span class="keyword">mov</span>    <span class="built_in">eax</span>,<span class="number">0x0</span></span><br><span class="line"><span class="number">0x000000000040119f</span> &lt;+<span class="number">59</span>&gt;:    <span class="keyword">leave</span>  </span><br><span class="line"><span class="number">0x00000000004011a0</span> &lt;+<span class="number">60</span>&gt;:    <span class="keyword">ret</span>    </span><br></pre></td></tr></table></figure>
-
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>程式當中+32特別強調了flag。<br>直接單步執行到+39行。<br>接著查看<code>rdx</code>裏面放了什麼。  </p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gdb-peda$ x /s <span class="variable">$rdx</span></span><br><span class="line">0x496628:       <span class="string">&quot;UPX...? sounds like a delivery service :)&quot;</span></span><br><span class="line">gdb-peda$ </span><br></pre></td></tr></table></figure>
-
-<p>GET flag!  </p>
-<h2 id="Prepare"><a href="#Prepare" class="headerlink" title="Prepare"></a>Prepare</h2><h3 id="Register"><a href="#Register" class="headerlink" title="Register"></a>Register</h3><table>
+    <div class="post-body" itemprop="articleBody"><p><img src="/images/pwnable-kr/flag.png" /> ## Problem<br />
+Points: 7 pt<br />
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Papa brought me a packed present! let&#x27;s open it.</span><br><span class="line"></span><br><span class="line">Download : http://pwnable.kr/bin/flag</span><br><span class="line"></span><br><span class="line">This is reversing task. all you need is binary</span><br></pre></td></tr></table></figure> <a target="_blank" rel="noopener" href="http://pwnable.kr/play.php">Link</a>
+<span id="more"></span></p>
+<h2 id="thinking">Thinking</h2>
+<p>程式沒有辦法直接使用<code>objdump</code>或者是<code>gdb</code>來反組譯。<br />
+透過 <code>hexdump -C &lt;filename&gt; | grep -C 1 UPX</code>
+檢查是不是有加殼。 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">000000a0  00 00 00 00 00 00 00 00  00 00 20 00 00 00 00 00  |.......... .....|</span><br><span class="line">000000b0  <span class="built_in">fc</span> ac e0 a1 55 50 58 21  1c 08 0d 16 00 00 00 00  |....UPX!........|</span><br><span class="line">000000c0  21 7c 0d 00 21 7c 0d 00  90 01 00 00 92 00 00 00  |!|..!|..........|</span><br></pre></td></tr></table></figure>
+結果顯示是有經過<code>UPX</code>加殼，於是<code>upx -d &lt;filename&gt;</code>脫殼。<br />
+脫殼之後就可以用<code>gdb</code>或者是<code>objdump</code>反組譯。</p>
+<h2 id="code">Code</h2>
+<figure class="highlight x86asm"><figcaption><span>main</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0x0000000000401164</span> &lt;+<span class="number">0</span>&gt;:     <span class="keyword">push</span>   <span class="built_in">rbp</span></span><br><span class="line"><span class="number">0x0000000000401165</span> &lt;+<span class="number">1</span>&gt;:     <span class="keyword">mov</span>    <span class="built_in">rbp</span>,<span class="built_in">rsp</span></span><br><span class="line"><span class="number">0x0000000000401168</span> &lt;+<span class="number">4</span>&gt;:     <span class="keyword">sub</span>    <span class="built_in">rsp</span>,<span class="number">0x10</span></span><br><span class="line"><span class="number">0x000000000040116c</span> &lt;+<span class="number">8</span>&gt;:     <span class="keyword">mov</span>    <span class="built_in">edi</span>,<span class="number">0x496658</span></span><br><span class="line"><span class="number">0x0000000000401171</span> &lt;+<span class="number">13</span>&gt;:    <span class="keyword">call</span>   <span class="number">0x402080</span> &lt;puts&gt;</span><br><span class="line"><span class="number">0x0000000000401176</span> &lt;+<span class="number">18</span>&gt;:    <span class="keyword">mov</span>    <span class="built_in">edi</span>,<span class="number">0x64</span></span><br><span class="line"><span class="number">0x000000000040117b</span> &lt;+<span class="number">23</span>&gt;:    <span class="keyword">call</span>   <span class="number">0x4099d0</span> &lt;malloc&gt;</span><br><span class="line"><span class="number">0x0000000000401180</span> &lt;+<span class="number">28</span>&gt;:    <span class="keyword">mov</span>    <span class="built_in">QWORD</span> <span class="built_in">PTR</span> [<span class="built_in">rbp</span>-<span class="number">0x8</span>],<span class="built_in">rax</span></span><br><span class="line"><span class="number">0x0000000000401184</span> &lt;+<span class="number">32</span>&gt;:    <span class="keyword">mov</span>    <span class="built_in">rdx</span>,<span class="built_in">QWORD</span> <span class="built_in">PTR</span> [<span class="built_in">rip</span>+<span class="number">0x2c0ee5</span>]        # <span class="number">0x6c2070</span> &lt;flag&gt;</span><br><span class="line"><span class="number">0x000000000040118b</span> &lt;+<span class="number">39</span>&gt;:    <span class="keyword">mov</span>    <span class="built_in">rax</span>,<span class="built_in">QWORD</span> <span class="built_in">PTR</span> [<span class="built_in">rbp</span>-<span class="number">0x8</span>]</span><br><span class="line"><span class="number">0x000000000040118f</span> &lt;+<span class="number">43</span>&gt;:    <span class="keyword">mov</span>    <span class="built_in">rsi</span>,<span class="built_in">rdx</span></span><br><span class="line"><span class="number">0x0000000000401192</span> &lt;+<span class="number">46</span>&gt;:    <span class="keyword">mov</span>    <span class="built_in">rdi</span>,<span class="built_in">rax</span></span><br><span class="line"><span class="number">0x0000000000401195</span> &lt;+<span class="number">49</span>&gt;:    <span class="keyword">call</span>   <span class="number">0x400320</span></span><br><span class="line"><span class="number">0x000000000040119a</span> &lt;+<span class="number">54</span>&gt;:    <span class="keyword">mov</span>    <span class="built_in">eax</span>,<span class="number">0x0</span></span><br><span class="line"><span class="number">0x000000000040119f</span> &lt;+<span class="number">59</span>&gt;:    <span class="keyword">leave</span>  </span><br><span class="line"><span class="number">0x00000000004011a0</span> &lt;+<span class="number">60</span>&gt;:    <span class="keyword">ret</span>    </span><br></pre></td></tr></table></figure>
+<h2 id="solution">Solution</h2>
+<p>程式當中+32特別強調了flag。<br />
+直接單步執行到+39行。<br />
+接著查看<code>rdx</code>裏面放了什麼。<br />
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gdb-peda$ x /s <span class="variable">$rdx</span></span><br><span class="line">0x496628:       <span class="string">&quot;UPX...? sounds like a delivery service :)&quot;</span></span><br><span class="line">gdb-peda$ </span><br></pre></td></tr></table></figure></p>
+<p>GET flag!</p>
+<h2 id="prepare">Prepare</h2>
+<h3 id="register">Register</h3>
+<table>
 <thead>
 <tr>
-<th align="center">Name</th>
-<th align="center">16bit</th>
-<th align="center">32bit</th>
-<th align="center">64bit</th>
+<th style="text-align: center;">Name</th>
+<th style="text-align: center;">16bit</th>
+<th style="text-align: center;">32bit</th>
+<th style="text-align: center;">64bit</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">Data</td>
-<td align="center">DX</td>
-<td align="center">EDX</td>
-<td align="center">RDX</td>
+<tbody>
+<tr>
+<td style="text-align: center;">Data</td>
+<td style="text-align: center;">DX</td>
+<td style="text-align: center;">EDX</td>
+<td style="text-align: center;">RDX</td>
 </tr>
-</tbody></table>
-<h3 id="UPX"><a href="#UPX" class="headerlink" title="UPX"></a>UPX</h3><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a target="_blank" rel="noopener" href="https://www.tutorialspoint.com/assembly_programming/assembly_registers.htm">Assembly - Registers</a></p>
+</tbody>
+</table>
+<h3 id="upx">UPX</h3>
+<h2 id="reference">Reference</h2>
+<p><a
+target="_blank" rel="noopener" href="https://www.tutorialspoint.com/assembly_programming/assembly_registers.htm">Assembly
+- Registers</a></p>
 
     </div>
 
@@ -383,6 +394,12 @@
   <script class="next-config" data-name="firestore" type="application/json">{"enable":true,"collection":"articles","apiKey":"AIzaSyCu9-MhzikdJ0BVgPRODV__hMffyr5bgZg","projectId":"clo5de-githubpage"}</script>
   <script src="/js/third-party/statistics/firestore.js"></script>
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 

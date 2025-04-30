@@ -20,15 +20,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.clo5de.info","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.17.1","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="這裏面放了一些石破天驚之類的想法，然後搜尋之後得到的解答。可能還會有很多奇怪小伙伴的垃圾話。">
+    <meta name="description" content="這裏面放了一些石破天驚之類的想法，然後搜尋之後得到的解答。 可能還會有很多奇怪小伙伴的垃圾話。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Magic C &amp; C++">
 <meta property="og:url" content="https://www.clo5de.info/2018/04/10/note/C-C++/index.html">
 <meta property="og:site_name" content="clooooode">
-<meta property="og:description" content="這裏面放了一些石破天驚之類的想法，然後搜尋之後得到的解答。可能還會有很多奇怪小伙伴的垃圾話。">
+<meta property="og:description" content="這裏面放了一些石破天驚之類的想法，然後搜尋之後得到的解答。 可能還會有很多奇怪小伙伴的垃圾話。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2018-04-10T11:15:00.000Z">
-<meta property="article:modified_time" content="2025-02-10T05:18:36.247Z">
+<meta property="article:modified_time" content="2025-04-30T10:11:21.842Z">
 <meta property="article:author" content="clooooode">
 <meta property="article:tag" content="Note">
 <meta property="article:tag" content="C">
@@ -117,7 +117,8 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Why-pointer-declartion-needs-a-datatype"><span class="nav-number">1.</span> <span class="nav-text">Why pointer declartion needs a datatype?</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#why-pointer-declartion-needs-a-datatype"><span class="nav-number">1.</span> <span class="nav-text">Why pointer declartion
+needs a datatype?</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -217,7 +218,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-02-10 05:18:36" itemprop="dateModified" datetime="2025-02-10T05:18:36+00:00">2025-02-10</time>
+      <time title="Modified: 2025-04-30 10:11:21" itemprop="dateModified" datetime="2025-04-30T10:11:21+00:00">2025-04-30</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -245,10 +246,17 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>這裏面放了一些石破天驚之類的想法，然後搜尋之後得到的解答。<br>可能還會有很多奇怪小伙伴的垃圾話。  </p>
-<span id="more"></span>  
-<h3 id="Why-pointer-declartion-needs-a-datatype"><a href="#Why-pointer-declartion-needs-a-datatype" class="headerlink" title="Why pointer declartion needs a datatype?"></a>Why pointer declartion needs a datatype?</h3><p>今天上課上到一半，鄰座的同學君突然問我為什麼Pointer要有型態。<br>同樣都是存記憶體位置，int* 跟float*的指標並不會不一樣。</p>
-<p>後來查了之後才知道, 因為datatype所佔的記憶體大小各自不一，<br>compiler除了要知道記憶體起始位置以外，還需要知道所佔的長度，才可以取值。<br>Reference: <a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/9802585/why-data-type-is-needed-in-pointer-declaration">StackOverFlow</a>  </p>
+    <div class="post-body" itemprop="articleBody"><p>這裏面放了一些石破天驚之類的想法，然後搜尋之後得到的解答。<br />
+可能還會有很多奇怪小伙伴的垃圾話。<br />
+<span id="more"></span></p>
+<h3 id="why-pointer-declartion-needs-a-datatype">Why pointer declartion
+needs a datatype?</h3>
+<p>今天上課上到一半，鄰座的同學君突然問我為什麼Pointer要有型態。<br />
+同樣都是存記憶體位置，int* 跟float*的指標並不會不一樣。</p>
+<p>後來查了之後才知道, 因為datatype所佔的記憶體大小各自不一，
+compiler除了要知道記憶體起始位置以外，還需要知道所佔的長度，才可以取值。
+Reference: <a
+target="_blank" rel="noopener" href="https://stackoverflow.com/questions/9802585/why-data-type-is-needed-in-pointer-declaration">StackOverFlow</a></p>
 
     </div>
 
@@ -343,6 +351,12 @@
   <script class="next-config" data-name="firestore" type="application/json">{"enable":true,"collection":"articles","apiKey":"AIzaSyCu9-MhzikdJ0BVgPRODV__hMffyr5bgZg","projectId":"clo5de-githubpage"}</script>
   <script src="/js/third-party/statistics/firestore.js"></script>
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 

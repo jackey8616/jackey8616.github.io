@@ -28,7 +28,7 @@
 <meta property="og:description" content="謹紀錄在做專題的時候，踩過的SNMP設定小坑。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2018-11-03T23:34:26.000Z">
-<meta property="article:modified_time" content="2025-02-10T05:18:36.248Z">
+<meta property="article:modified_time" content="2025-04-30T10:11:21.843Z">
 <meta property="article:author" content="clooooode">
 <meta property="article:tag" content="Note">
 <meta property="article:tag" content="Cisco">
@@ -118,7 +118,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Check-setup-in-switch"><span class="nav-number">1.</span> <span class="nav-text">Check setup in switch</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Setups"><span class="nav-number">2.</span> <span class="nav-text">Setups</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Group"><span class="nav-number">2.1.</span> <span class="nav-text">Group</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#User"><span class="nav-number">2.2.</span> <span class="nav-text">User</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#View"><span class="nav-number">2.3.</span> <span class="nav-text">View</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Traps"><span class="nav-number">3.</span> <span class="nav-text">Traps</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Debugging"><span class="nav-number">3.1.</span> <span class="nav-text">Debugging</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">4.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#check-setup-in-switch"><span class="nav-number">1.</span> <span class="nav-text">Check setup in switch</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#setups"><span class="nav-number">2.</span> <span class="nav-text">Setups</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#group"><span class="nav-number">2.1.</span> <span class="nav-text">Group</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#user"><span class="nav-number">2.2.</span> <span class="nav-text">User</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#view"><span class="nav-number">2.3.</span> <span class="nav-text">View</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#traps"><span class="nav-number">3.</span> <span class="nav-text">Traps</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#debugging"><span class="nav-number">3.1.</span> <span class="nav-text">Debugging</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#reference"><span class="nav-number">4.</span> <span class="nav-text">Reference</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -218,7 +218,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-02-10 05:18:36" itemprop="dateModified" datetime="2025-02-10T05:18:36+00:00">2025-02-10</time>
+      <time title="Modified: 2025-04-30 10:11:21" itemprop="dateModified" datetime="2025-04-30T10:11:21+00:00">2025-04-30</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -246,24 +246,35 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>謹紀錄在做專題的時候，踩過的SNMP設定小坑。</p>
-<span id="more"></span>
-
-<h1 id="Check-setup-in-switch"><a href="#Check-setup-in-switch" class="headerlink" title="Check setup in switch"></a>Check setup in switch</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Switch# show snmp ?</span><br></pre></td></tr></table></figure>
+    <div class="post-body" itemprop="articleBody"><p>謹紀錄在做專題的時候，踩過的SNMP設定小坑。 <span id="more"></span></p>
+<h1 id="check-setup-in-switch">Check setup in switch</h1>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Switch# show snmp ?</span><br></pre></td></tr></table></figure>
 <p>Any command with <code>no</code> to remove it.</p>
-<h1 id="Setups"><a href="#Setups" class="headerlink" title="Setups"></a>Setups</h1><h2 id="Group"><a href="#Group" class="headerlink" title="Group"></a>Group</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Switch(config)# snmp-server group [groupName] v3 [auth | noauth | priv] [read read-view] [write write-view] [notify notify-view] [access access-list] </span><br></pre></td></tr></table></figure>
-
-<h2 id="User"><a href="#User" class="headerlink" title="User"></a>User</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">authNoPriv</span><br><span class="line">Switch(config)# snmp-server user [userName] [groupName] [remote ip-address [udp-port port]] [encrypted] v3 [auth &#123;md5 | sha&#125;]</span><br><span class="line">authPriv</span><br><span class="line">Switch(config)# snmp-server user [userName] [groupName] [remote ip-address [udp-port port]] [encrypted] v3 [auth &#123;md5 | sha&#125; auth-password] [priv &#123;3des|aes 128|aes 192|aes 256|des&#125; pass]</span><br></pre></td></tr></table></figure>
-
-<h2 id="View"><a href="#View" class="headerlink" title="View"></a>View</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Switch(config)# snmp-server view view-name oid-tree &#123;included|excluded&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="Traps"><a href="#Traps" class="headerlink" title="Traps"></a>Traps</h1><p>先依序設定好Group跟User。  </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 設定接收Notification的Server位置</span><br><span class="line"># 如果最後面Trap Type留空，預設所有的Trap都會發送。</span><br><span class="line">Switch(config)# snmp-server host [ip or domain] version 3 priv [user name] [trap type]</span><br></pre></td></tr></table></figure>
-
-<h2 id="Debugging"><a href="#Debugging" class="headerlink" title="Debugging"></a>Debugging</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Switch# debug snmp packets</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="http://docwiki.cisco.com/wiki/Snmp_v3_configurations">Cisco Wiki SNMPv3</a><br><a target="_blank" rel="noopener" href="https://www.cisco.com/c/en/us/support/docs/ip/simple-network-management-protocol-snmp/20370-snmpsecurity-20370.html">SNMPSecurity</a><br><a target="_blank" rel="noopener" href="https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/snmp/configuration/xe-3se/3850/snmp-xe-3se-3850-book/nm-snmp-snmpv3.html">SNMP XE 3SE (Catalyst 3850)</a><br><a target="_blank" rel="noopener" href="https://www.cisco.com/c/en/us/td/docs/security/nac/appliance/configuration_guide/49x/cas/49xcas-book/s_apx_mib.html">Clean Access Server Configuration Guide, Release 4.9(x)</a><br><a target="_blank" rel="noopener" href="https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst2950/software/release/12-1_11_yj4/configuration/guide/lrescg.html">Catalyst 2950 Desktop Switch Software Configuration Guide, 12.1(11)YJ4</a><br><a target="_blank" rel="noopener" href="http://www.zhetao.com/content89">Cisco设备SNMP配置(思科SNMP配置)</a><br><a target="_blank" rel="noopener" href="http://mibs.snmplabs.com/asn1/">SNMP MIBs</a></p>
+<h1 id="setups">Setups</h1>
+<h2 id="group">Group</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Switch(config)# snmp-server group [groupName] v3 [auth | noauth | priv] [read read-view] [write write-view] [notify notify-view] [access access-list] </span><br></pre></td></tr></table></figure>
+<h2 id="user">User</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">authNoPriv</span><br><span class="line">Switch(config)# snmp-server user [userName] [groupName] [remote ip-address [udp-port port]] [encrypted] v3 [auth &#123;md5 | sha&#125;]</span><br><span class="line">authPriv</span><br><span class="line">Switch(config)# snmp-server user [userName] [groupName] [remote ip-address [udp-port port]] [encrypted] v3 [auth &#123;md5 | sha&#125; auth-password] [priv &#123;3des|aes 128|aes 192|aes 256|des&#125; pass]</span><br></pre></td></tr></table></figure>
+<h2 id="view">View</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Switch(config)# snmp-server view view-name oid-tree &#123;included|excluded&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="traps">Traps</h1>
+<p>先依序設定好Group跟User。<br />
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 設定接收Notification的Server位置</span><br><span class="line"># 如果最後面Trap Type留空，預設所有的Trap都會發送。</span><br><span class="line">Switch(config)# snmp-server host [ip or domain] version 3 priv [user name] [trap type]</span><br></pre></td></tr></table></figure></p>
+<h2 id="debugging">Debugging</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Switch# debug snmp packets</span><br></pre></td></tr></table></figure>
+<h1 id="reference">Reference</h1>
+<p><a target="_blank" rel="noopener" href="http://docwiki.cisco.com/wiki/Snmp_v3_configurations">Cisco
+Wiki SNMPv3</a> <a
+target="_blank" rel="noopener" href="https://www.cisco.com/c/en/us/support/docs/ip/simple-network-management-protocol-snmp/20370-snmpsecurity-20370.html">SNMPSecurity</a>
+<a
+target="_blank" rel="noopener" href="https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/snmp/configuration/xe-3se/3850/snmp-xe-3se-3850-book/nm-snmp-snmpv3.html">SNMP
+XE 3SE (Catalyst 3850)</a> <a
+target="_blank" rel="noopener" href="https://www.cisco.com/c/en/us/td/docs/security/nac/appliance/configuration_guide/49x/cas/49xcas-book/s_apx_mib.html">Clean
+Access Server Configuration Guide, Release 4.9(x)</a> <a
+target="_blank" rel="noopener" href="https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst2950/software/release/12-1_11_yj4/configuration/guide/lrescg.html">Catalyst
+2950 Desktop Switch Software Configuration Guide, 12.1(11)YJ4</a> <a
+target="_blank" rel="noopener" href="http://www.zhetao.com/content89">Cisco设备SNMP配置(思科SNMP配置)</a>
+<a target="_blank" rel="noopener" href="http://mibs.snmplabs.com/asn1/">SNMP MIBs</a></p>
 
     </div>
 
@@ -359,6 +370,12 @@
   <script class="next-config" data-name="firestore" type="application/json">{"enable":true,"collection":"articles","apiKey":"AIzaSyCu9-MhzikdJ0BVgPRODV__hMffyr5bgZg","projectId":"clo5de-githubpage"}</script>
   <script src="/js/third-party/statistics/firestore.js"></script>
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 

@@ -20,23 +20,21 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.clo5de.info","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.17.1","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="教授真的是一種不討喜的生物。今天上課的內容最讓人印象深刻的就是：">
+    <meta name="description" content="教授真的是一種不討喜的生物。 今天上課的內容最讓人印象深刻的就是：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CH5 Process Scheduling">
 <meta property="og:url" content="https://www.clo5de.info/2019/04/25/note/OS/ch5/index.html">
 <meta property="og:site_name" content="clooooode">
-<meta property="og:description" content="教授真的是一種不討喜的生物。今天上課的內容最讓人印象深刻的就是：">
+<meta property="og:description" content="教授真的是一種不討喜的生物。 今天上課的內容最讓人印象深刻的就是：">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://contribute.geeksforgeeks.org/wp-content/uploads/multilevel-queue-schedueling-1-300x217.png">
-<meta property="og:image" content="https://contribute.geeksforgeeks.org/wp-content/uploads/Multilevel-Feedback-Queue-Scheduling-300x269.png">
-<meta property="og:image" content="https://www.clo5de.info/images/OS/Multithread-memory-stall.jpg">
+<meta property="og:image" content="https://www.clo5de.info/images/OS/CPU-Cycle.jpg%20=600x">
 <meta property="article:published_time" content="2019-04-25T14:42:05.000Z">
-<meta property="article:modified_time" content="2025-02-10T05:18:36.248Z">
+<meta property="article:modified_time" content="2025-04-30T10:11:21.842Z">
 <meta property="article:author" content="clooooode">
 <meta property="article:tag" content="Note">
 <meta property="article:tag" content="Operating System">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://contribute.geeksforgeeks.org/wp-content/uploads/multilevel-queue-schedueling-1-300x217.png">
+<meta name="twitter:image" content="https://www.clo5de.info/images/OS/CPU-Cycle.jpg%20=600x">
 
 
 <link rel="canonical" href="https://www.clo5de.info/2019/04/25/note/OS/ch5/">
@@ -119,7 +117,8 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Basic-Concepts"><span class="nav-number">1.</span> <span class="nav-text">Basic Concepts</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CPU-Scheduler"><span class="nav-number">2.</span> <span class="nav-text">CPU Scheduler</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Dispatcher-%E5%88%86%E9%85%8D%E5%99%A8"><span class="nav-number">3.</span> <span class="nav-text">Dispatcher(分配器)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Scheduling-Criteria-%E6%8E%92%E7%A8%8B%E6%BA%96%E5%89%87"><span class="nav-number">4.</span> <span class="nav-text">Scheduling Criteria(排程準則)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Priority-Scheduling"><span class="nav-number">5.</span> <span class="nav-text">Priority Scheduling</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Round-Robin-RR"><span class="nav-number">6.</span> <span class="nav-text">Round Robin(RR)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Multilevel-Queue"><span class="nav-number">7.</span> <span class="nav-text">Multilevel Queue</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Multilevel-Feedback-Queue"><span class="nav-number">8.</span> <span class="nav-text">Multilevel Feedback Queue</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Thread-Scheduling"><span class="nav-number">9.</span> <span class="nav-text">Thread Scheduling</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pthread-Scheduling"><span class="nav-number">10.</span> <span class="nav-text">Pthread Scheduling</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Multiple-Processor-Scheduling"><span class="nav-number">11.</span> <span class="nav-text">Multiple-Processor Scheduling</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Load-Balancing"><span class="nav-number">11.1.</span> <span class="nav-text">Load Balancing</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Multicore-Processors"><span class="nav-number">12.</span> <span class="nav-text">Multicore Processors</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Windows-Scheduling"><span class="nav-number">13.</span> <span class="nav-text">Windows Scheduling</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Windows-Priority-Classes"><span class="nav-number">14.</span> <span class="nav-text">Windows Priority Classes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Algorithm-Evaluation"><span class="nav-number">15.</span> <span class="nav-text">Algorithm Evaluation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Little%E2%80%99s-Formula"><span class="nav-number">16.</span> <span class="nav-text">Little’s Formula</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">17.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#basic-concepts"><span class="nav-number">1.</span> <span class="nav-text">Basic Concepts</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cpu-scheduler"><span class="nav-number">2.</span> <span class="nav-text">CPU Scheduler</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dispatcher%E5%88%86%E9%85%8D%E5%99%A8"><span class="nav-number">3.</span> <span class="nav-text">Dispatcher(分配器)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#scheduling-criteria%E6%8E%92%E7%A8%8B%E6%BA%96%E5%89%87"><span class="nav-number">4.</span> <span class="nav-text">Scheduling Criteria(排程準則)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#priority-scheduling"><span class="nav-number">5.</span> <span class="nav-text">Priority Scheduling</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#round-robinrr"><span class="nav-number">6.</span> <span class="nav-text">Round Robin(RR)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#multilevel-queue"><span class="nav-number">7.</span> <span class="nav-text">Multilevel Queue</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#multilevel-feedback-queue"><span class="nav-number">8.</span> <span class="nav-text">Multilevel Feedback Queue</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#thread-scheduling"><span class="nav-number">9.</span> <span class="nav-text">Thread Scheduling</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pthread-scheduling"><span class="nav-number">10.</span> <span class="nav-text">Pthread Scheduling</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#multiple-processor-scheduling"><span class="nav-number">11.</span> <span class="nav-text">Multiple-Processor
+Scheduling</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#load-balancing"><span class="nav-number">11.1.</span> <span class="nav-text">Load Balancing</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#multicore-processors"><span class="nav-number">12.</span> <span class="nav-text">Multicore Processors</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#windows-scheduling"><span class="nav-number">13.</span> <span class="nav-text">Windows Scheduling</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#windows-priority-classes"><span class="nav-number">14.</span> <span class="nav-text">Windows Priority Classes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#algorithm-evaluation"><span class="nav-number">15.</span> <span class="nav-text">Algorithm Evaluation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#littles-formula"><span class="nav-number">16.</span> <span class="nav-text">Little’s Formula</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reference"><span class="nav-number">17.</span> <span class="nav-text">Reference</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -219,7 +218,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-02-10 05:18:36" itemprop="dateModified" datetime="2025-02-10T05:18:36+00:00">2025-02-10</time>
+      <time title="Modified: 2025-04-30 10:11:21" itemprop="dateModified" datetime="2025-04-30T10:11:21+00:00">2025-04-30</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -247,181 +246,182 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>教授真的是一種不討喜的生物。<br>今天上課的內容最讓人印象深刻的就是：</p>
-<span id="more"></span> 
-<p>用印度的種姓制度來比喻Multilevel Queue跟<br>伊莉看鋼鐵人好爽。</p>
-<p>這教授完全不行啊。<br>結論：教授講的都是垃圾…</p>
-<h2 id="Basic-Concepts"><a href="#Basic-Concepts" class="headerlink" title="Basic Concepts"></a>Basic Concepts</h2><ul>
-<li>利用Multiprogramming去儘可能的最大化CPU使用率。</li>
-<li>CPU-I&#x2F;O Busrt Cycle<ul>
-<li>CPU Burst以及I&#x2F;O Burst所組成。</li>
-<li>CPU Burst在I&#x2F;O Burst之前。</li>
-</ul>
-</li>
-</ul>
-<h2 id="CPU-Scheduler"><a href="#CPU-Scheduler" class="headerlink" title="CPU Scheduler"></a>CPU Scheduler</h2><p>![](&#x2F;images&#x2F;OS&#x2F;CPU-Cycle.jpg &#x3D;600x)  </p>
+    <div class="post-body" itemprop="articleBody"><p>教授真的是一種不討喜的生物。 今天上課的內容最讓人印象深刻的就是：
+<span id="more"></span> 用印度的種姓制度來比喻Multilevel Queue跟
+伊莉看鋼鐵人好爽。</p>
+<p>這教授完全不行啊。 結論：教授講的都是垃圾…</p>
+<h2 id="basic-concepts">Basic Concepts</h2>
 <ul>
-<li>Short-term shceduler<ul>
-<li>從ready queue中選擇並分配給其中一個核心。</li>
+<li>利用Multiprogramming去儘可能的最大化CPU使用率。</li>
+<li>CPU-I/O Busrt Cycle
+<ul>
+<li>CPU Burst以及I/O Burst所組成。</li>
+<li>CPU Burst在I/O Burst之前。</li>
+</ul></li>
 </ul>
-</li>
-<li>CPU Scheduling會在下列四個行程狀態的變更中做出決策：<ul>
-<li>running到waiting(非搶佔式): I&#x2F;O或event wait</li>
-<li>running到ready(搶佔式): interrupt</li>
-<li>waiting到ready(搶佔式): I&#x2F;O或event completion</li>
-<li>terminates(非搶佔式)</li>
-</ul>
-</li>
-<li>Consideration of preemptive<ul>
-<li>資料分享（Shared Data）</li>
-<li>Kernel Mode與否</li>
-<li>關鍵的作業系統活動時是否會有中斷觸發</li>
-</ul>
-</li>
-</ul>
-<h2 id="Dispatcher-分配器"><a href="#Dispatcher-分配器" class="headerlink" title="Dispatcher(分配器)"></a>Dispatcher(分配器)</h2><ul>
+<h2 id="cpu-scheduler">CPU Scheduler</h2>
+<p><img src="/images/OS/CPU-Cycle.jpg%20=600x" /><br />
+- Short-term shceduler - 從ready queue中選擇並分配給其中一個核心。 - CPU
+Scheduling會在下列四個行程狀態的變更中做出決策： -
+running到waiting(非搶佔式): I/O或event wait - running到ready(搶佔式):
+interrupt - waiting到ready(搶佔式): I/O或event completion -
+terminates(非搶佔式) - Consideration of preemptive - 資料分享（Shared
+Data） - Kernel Mode與否 - 關鍵的作業系統活動時是否會有中斷觸發</p>
+<h2 id="dispatcher分配器">Dispatcher(分配器)</h2>
+<ul>
 <li>Short-term scheduler選出來的行程給予CPU控制權。</li>
-<li>會調用：<ul>
+<li>會調用：
+<ul>
 <li>Context switch</li>
 <li>User mode切換</li>
-</ul>
-</li>
+</ul></li>
 <li>Dispatch latency：從一個行程停止到啟動另外一個行程的時間差。</li>
 </ul>
-<h2 id="Scheduling-Criteria-排程準則"><a href="#Scheduling-Criteria-排程準則" class="headerlink" title="Scheduling Criteria(排程準則)"></a>Scheduling Criteria(排程準則)</h2><ul>
+<h2 id="scheduling-criteria排程準則">Scheduling Criteria(排程準則)</h2>
+<ul>
 <li>CPU utilization：讓CPU保持忙碌，愈高愈好。</li>
 <li>Throughput（吞吐量）：每時間單位所完成的執行量，愈高愈好。</li>
 <li>Turnaround time：執行特定行程所需的時間，愈低愈好。</li>
 <li>Waiting time：行程在Ready Queue中的等待時間，愈低愈好。</li>
-<li>Response time：發出請求時的第一個回應時間差，非指輸出。（Ex:網路IO）愈低愈好。</li>
+<li>Response
+time：發出請求時的第一個回應時間差，非指輸出。（Ex:網路IO）愈低愈好。</li>
 </ul>
-<h2 id="Priority-Scheduling"><a href="#Priority-Scheduling" class="headerlink" title="Priority Scheduling"></a>Priority Scheduling</h2><ul>
+<h2 id="priority-scheduling">Priority Scheduling</h2>
+<ul>
 <li>缺點： 可能會有可撥仔優先度太低，永遠等不到。</li>
 <li>解決方法：Aging，放愈久，讓行程優先度愈高。</li>
 </ul>
-<h2 id="Round-Robin-RR"><a href="#Round-Robin-RR" class="headerlink" title="Round Robin(RR)"></a>Round Robin(RR)</h2><ul>
-<li>Q（time quantum）<ul>
+<h2 id="round-robinrr">Round Robin(RR)</h2>
+<ul>
+<li>Q（time quantum）
+<ul>
 <li>太大 -&gt; FIFO，因為時間夠多，所以進去的一下子就被做完了。</li>
-<li>太小<ul>
+<li>太小
+<ul>
 <li>必須大於Context switch time.</li>
-<li>如果小於Context switch time，<br>就會導致沒做到什麼，就要context switching了。</li>
+<li>如果小於Context switch time， 就會導致沒做到什麼，就要context
+switching了。</li>
+</ul></li>
+</ul></li>
 </ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="Multilevel-Queue"><a href="#Multilevel-Queue" class="headerlink" title="Multilevel Queue"></a>Multilevel Queue</h2><p><img src="https://contribute.geeksforgeeks.org/wp-content/uploads/multilevel-queue-schedueling-1-300x217.png"></p>
+<h2 id="multilevel-queue">Multilevel Queue</h2>
+<p><img
+src="https://contribute.geeksforgeeks.org/wp-content/uploads/multilevel-queue-schedueling-1-300x217.png" />
+- Ready Queue內部被分做兩個Queue： - Foreground(前景)：互動式、RR。 -
+Background(背景)：批次、FCFS。 - 必須在佇列間的調度 -
+固定優先權調度（Fixed Priority Scheduling） -
+先處理優先度高的佇列（Ex：前景先，再背景） -
+如果前景佇列有源源不絕的東西可以處理，非常有可能就會餓死（Starvation)。
+- 時間切片（Time Slice) -
+每個佇列會給定特定的CPU時間來給其中的行程來處理。 - 80% 前景 RR, 20%
+背景 FCFS - <a
+target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/operating-system-multilevel-queue-scheduling/">Reference</a></p>
+<h2 id="multilevel-feedback-queue">Multilevel Feedback Queue</h2>
+<p><img
+src="https://contribute.geeksforgeeks.org/wp-content/uploads/Multilevel-Feedback-Queue-Scheduling-300x269.png" />
+- 行程可以被移到到各種不同的佇列中。Aging可以用這種方式來實現。 - 特點 -
+搶佔式（可以插隊） - 不公平 - 不會餓死 - 設計複雜 -
+根據以下幾個參數來定義MFQ: - 安排的數量 - 每一個佇列的演算法 -
+升級/降級一個行程的方法 -
+決定當一個行程需要被服務的時候該進入哪一個佇列的方法 -
+有做完的就做完，沒做完的，就被移到下一級優先度的佇列，
+確保不會有一直是最高優先的被處理。
+同時，優先度較低的佇列通常會擁有比較高的Time Quantum。 - <a
+target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/multilevel-feedback-queue-scheduling/">Reference</a></p>
+<h2 id="thread-scheduling">Thread Scheduling</h2>
 <ul>
-<li>Ready Queue內部被分做兩個Queue：<ul>
-<li>Foreground(前景)：互動式、RR。</li>
-<li>Background(背景)：批次、FCFS。</li>
-</ul>
-</li>
-<li>必須在佇列間的調度<ul>
-<li>固定優先權調度（Fixed Priority Scheduling）<ul>
-<li>先處理優先度高的佇列（Ex：前景先，再背景）</li>
-<li>如果前景佇列有源源不絕的東西可以處理，非常有可能就會餓死（Starvation)。</li>
-</ul>
-</li>
-<li>時間切片（Time Slice)<ul>
-<li>每個佇列會給定特定的CPU時間來給其中的行程來處理。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>80% 前景 RR, 20% 背景 FCFS</li>
-<li><a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/operating-system-multilevel-queue-scheduling/">Reference</a></li>
-</ul>
-<h2 id="Multilevel-Feedback-Queue"><a href="#Multilevel-Feedback-Queue" class="headerlink" title="Multilevel Feedback Queue"></a>Multilevel Feedback Queue</h2><p><img src="https://contribute.geeksforgeeks.org/wp-content/uploads/Multilevel-Feedback-Queue-Scheduling-300x269.png"></p>
-<ul>
-<li>行程可以被移到到各種不同的佇列中。Aging可以用這種方式來實現。</li>
-<li>特點<ul>
-<li>搶佔式（可以插隊）</li>
-<li>不公平</li>
-<li>不會餓死</li>
-<li>設計複雜</li>
-</ul>
-</li>
-<li>根據以下幾個參數來定義MFQ:<ul>
-<li>安排的數量</li>
-<li>每一個佇列的演算法</li>
-<li>升級&#x2F;降級一個行程的方法</li>
-<li>決定當一個行程需要被服務的時候該進入哪一個佇列的方法</li>
-</ul>
-</li>
-<li>有做完的就做完，沒做完的，就被移到下一級優先度的佇列，<br>確保不會有一直是最高優先的被處理。<br>同時，優先度較低的佇列通常會擁有比較高的Time Quantum。</li>
-<li><a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/multilevel-feedback-queue-scheduling/">Reference</a></li>
-</ul>
-<h2 id="Thread-Scheduling"><a href="#Thread-Scheduling" class="headerlink" title="Thread Scheduling"></a>Thread Scheduling</h2><ul>
 <li>User thread跟Kernel thread有不同的分別。</li>
 <li>如果有多個線程，則這些線程會被調度，而不是行程。</li>
-<li><a href="/2019/04/25/note/OS/ch4/#many-to-one">M2O</a>跟<a href="/2019/04/25/note/OS/ch4/#many-to-many">M2M</a>模型下，Thread Library會去調度User-level threads在LWP(LightweightProcess)上執行。<ul>
+<li><a href="/2019/04/25/note/OS/ch4/#many-to-one">M2O</a>跟<a
+href="/2019/04/25/note/OS/ch4/#many-to-many">M2M</a>模型下，Thread
+Library會去調度User-level threads在LWP(LightweightProcess)上執行。
+<ul>
 <li>也被稱為PCS，因為競爭是在一個行程內。</li>
 <li>一般會由Programmer來透過優先度集合(Priority Set)來完成。</li>
+</ul></li>
+<li>PCS(Process-Contention Scope):
+多個線程在同一個行程內競爭CPU時間。</li>
+<li>SCS(System-Contention Scope):
+線程直接跟系統範圍內的其他線程競爭。</li>
 </ul>
-</li>
-<li>PCS(Process-Contention Scope): 多個線程在同一個行程內競爭CPU時間。</li>
-<li>SCS(System-Contention Scope): 線程直接跟系統範圍內的其他線程競爭。</li>
-</ul>
-<h2 id="Pthread-Scheduling"><a href="#Pthread-Scheduling" class="headerlink" title="Pthread Scheduling"></a>Pthread Scheduling</h2><ul>
+<h2 id="pthread-scheduling">Pthread Scheduling</h2>
+<ul>
 <li>API可以在線程建立的時候指定PCS或者SCS</li>
 </ul>
-<h2 id="Multiple-Processor-Scheduling"><a href="#Multiple-Processor-Scheduling" class="headerlink" title="Multiple-Processor Scheduling"></a>Multiple-Processor Scheduling</h2><ul>
+<h2 id="multiple-processor-scheduling">Multiple-Processor
+Scheduling</h2>
+<ul>
 <li>Homogeneous（同質）: CPU長一樣。</li>
-<li>Asymmetric（AMP, 非對稱）:<br>  把系統要處理的工作進行高度的切割，分配交給專門的處理器執行，<br>  所以就可以避免重疊的資源存取。<br>  需要特殊的編譯器與作業系統配合。</li>
-<li>Symmetric multiprocessing(SMP, 對稱)：<br>  使用排程的機制，平均的將工作分配給任一個空閒的處理器執行。<br>  目前常見。</li>
-<li>Processor affinity(親和性):<br>  每次處理器執行完行程工作之後，會殘留資料在處理器中。<br>  如果下一次的排程將同樣一個行程分配到該處理器上，可以提高執行的效率（減少快取失誤的成本）</li>
+<li>Asymmetric（AMP, 非對稱）:
+把系統要處理的工作進行高度的切割，分配交給專門的處理器執行，
+所以就可以避免重疊的資源存取。 需要特殊的編譯器與作業系統配合。</li>
+<li>Symmetric multiprocessing(SMP, 對稱)：
+使用排程的機制，平均的將工作分配給任一個空閒的處理器執行。
+目前常見。</li>
+<li>Processor affinity(親和性):
+每次處理器執行完行程工作之後，會殘留資料在處理器中。<br />
+如果下一次的排程將同樣一個行程分配到該處理器上，可以提高執行的效率（減少快取失誤的成本）</li>
 </ul>
-<h3 id="Load-Balancing"><a href="#Load-Balancing" class="headerlink" title="Load Balancing"></a>Load Balancing</h3><ul>
+<h3 id="load-balancing">Load Balancing</h3>
+<ul>
 <li>在SMP之下達到高效率的前提，儘量保持所有的處理器載入。</li>
 <li>Load Balancing(負載平衡)：儘量保持負載均勻分佈。</li>
 <li>Push migration：定期檢查把過載處理器的工作推送到其他處理器。</li>
-<li>Pull migration：閒置的處理器會去拉其他忙碌處理器中等待執行的工作。</li>
+<li>Pull
+migration：閒置的處理器會去拉其他忙碌處理器中等待執行的工作。</li>
 </ul>
-<h2 id="Multicore-Processors"><a href="#Multicore-Processors" class="headerlink" title="Multicore Processors"></a>Multicore Processors</h2><ul>
+<h2 id="multicore-processors">Multicore Processors</h2>
+<ul>
 <li>最近把多個處理器塞到同一個物理晶片上愈來愈潮。</li>
 <li>更快，更少的電力。</li>
-<li>單個核心可運行的線程數量上升。<ul>
-<li>Memory Stall發生的時候，可以把時間拿去執行其他線程。<br>真是太機智了呢！</li>
+<li>單個核心可運行的線程數量上升。
+<ul>
+<li>Memory Stall發生的時候，可以把時間拿去執行其他線程。
+真是太機智了呢！ <img
+src="/images/OS/Multithread-memory-stall.jpg" /></li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<p><img src="/images/OS/Multithread-memory-stall.jpg">  </p>
-<h2 id="Windows-Scheduling"><a href="#Windows-Scheduling" class="headerlink" title="Windows Scheduling"></a>Windows Scheduling</h2><ul>
+<h2 id="windows-scheduling">Windows Scheduling</h2>
+<ul>
 <li>Windows使用基於優先度的搶佔式調度</li>
 <li>最高優先的線程會下一個執行</li>
 <li>分配器就是調度器</li>
 <li>…</li>
 </ul>
-<h2 id="Windows-Priority-Classes"><a href="#Windows-Priority-Classes" class="headerlink" title="Windows Priority Classes"></a>Windows Priority Classes</h2><p>不知道在上什麼鬼 &#x3D; &#x3D;..</p>
+<h2 id="windows-priority-classes">Windows Priority Classes</h2>
+<p>不知道在上什麼鬼 = =.. - Default priority is NORMAL - Fixed priority
+is for REALTIME_PRIORITY_CLASS - Quantum expired -&gt; priority lowered,
+but never lower than base. - wait occurr -&gt; priority highered</p>
+<h2 id="algorithm-evaluation">Algorithm Evaluation</h2>
 <ul>
-<li>Default priority is NORMAL</li>
-<li>Fixed priority is for REALTIME_PRIORITY_CLASS</li>
-<li>Quantum expired -&gt; priority lowered, but never lower than base.</li>
-<li>wait occurr -&gt; priority highered</li>
-</ul>
-<h2 id="Algorithm-Evaluation"><a href="#Algorithm-Evaluation" class="headerlink" title="Algorithm Evaluation"></a>Algorithm Evaluation</h2><ul>
-<li>Deterministic modeling<ul>
+<li>Deterministic modeling
+<ul>
 <li>分析型評估</li>
 <li>針對固定的負載去比較各種演算法的表現</li>
-</ul>
-</li>
-<li>Queueing model<ul>
-<li>描述行程, CPU和I&#x2F;O的Burst Time的機率<ul>
+</ul></li>
+<li>Queueing model
+<ul>
+<li>描述行程, CPU和I/O的Burst Time的機率
+<ul>
 <li>通常式指數性，以均值來描述</li>
 <li>計算平均的吞吐量, 利用率, 等待時間等</li>
-</ul>
-</li>
-<li>電腦系統被描述為伺服器構成的網路，每一個都有存放等待行程的佇列<ul>
+</ul></li>
+<li>電腦系統被描述為伺服器構成的網路，每一個都有存放等待行程的佇列
+<ul>
 <li>了解到達率和服務率</li>
 <li>計算利用率, 平均佇列長度, 平均等待時間等</li>
+</ul></li>
+</ul></li>
 </ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="Little’s-Formula"><a href="#Little’s-Formula" class="headerlink" title="Little’s Formula"></a>Little’s Formula</h2><p>$<br>n: 平均佇列長度\\<br>W: 平均佇列等待時間\\<br>\lambda: 平均佇列到達率\\<br>n &#x3D; \lambda \times W<br>$</p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a target="_blank" rel="noopener" href="https://www.slideshare.net/JenWeiCheng/os20170504-75680132">[1] OS讀書會20170504</a><br><a target="_blank" rel="noopener" href="http://yhhsutw.blogspot.com/2015/12/ch5-cpu-schedling.html">[2] Operating Systems - CH5 CPU Schedling</a></p>
+<h2 id="littles-formula">Little’s Formula</h2>
+<p>$ n: 平均佇列長度\\ W: 平均佇列等待時間\\<br />
+: 平均佇列到達率\\ n = W $</p>
+<h2 id="reference">Reference</h2>
+<p><a
+target="_blank" rel="noopener" href="https://www.slideshare.net/JenWeiCheng/os20170504-75680132">[1]
+OS讀書會20170504</a> <a
+target="_blank" rel="noopener" href="http://yhhsutw.blogspot.com/2015/12/ch5-cpu-schedling.html">[2]
+Operating Systems - CH5 CPU Schedling</a></p>
 
     </div>
 
@@ -514,6 +514,12 @@
   <script class="next-config" data-name="firestore" type="application/json">{"enable":true,"collection":"articles","apiKey":"AIzaSyCu9-MhzikdJ0BVgPRODV__hMffyr5bgZg","projectId":"clo5de-githubpage"}</script>
   <script src="/js/third-party/statistics/firestore.js"></script>
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 

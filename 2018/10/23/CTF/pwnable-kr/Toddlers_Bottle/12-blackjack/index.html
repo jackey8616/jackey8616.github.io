@@ -20,16 +20,16 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.clo5de.info","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.17.1","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="ProblemPoints: 1pt 123456789Hey! check out this C implementation of blackjack game!I found it online* http:&#x2F;&#x2F;cboard.cprogramming.com&#x2F;c-programming&#x2F;114023-simple-blackjack-program.htmlI like to give m">
+    <meta name="description" content="## Problem Points: 1pt 123456789Hey! check out this C implementation of blackjack game!I found it online* http:&#x2F;&#x2F;cboard.cprogramming.com&#x2F;c-programming&#x2F;114023-simple-blackjack-program.htmlI like to gi">
 <meta property="og:type" content="article">
 <meta property="og:title" content="pwnable.kr(12) - blackjack">
 <meta property="og:url" content="https://www.clo5de.info/2018/10/23/CTF/pwnable-kr/Toddlers_Bottle/12-blackjack/index.html">
 <meta property="og:site_name" content="clooooode">
-<meta property="og:description" content="ProblemPoints: 1pt 123456789Hey! check out this C implementation of blackjack game!I found it online* http:&#x2F;&#x2F;cboard.cprogramming.com&#x2F;c-programming&#x2F;114023-simple-blackjack-program.htmlI like to give m">
+<meta property="og:description" content="## Problem Points: 1pt 123456789Hey! check out this C implementation of blackjack game!I found it online* http:&#x2F;&#x2F;cboard.cprogramming.com&#x2F;c-programming&#x2F;114023-simple-blackjack-program.htmlI like to gi">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://www.clo5de.info/images/pwnable-kr/blackjack.png">
 <meta property="article:published_time" content="2018-10-23T14:06:24.000Z">
-<meta property="article:modified_time" content="2025-02-10T05:18:36.246Z">
+<meta property="article:modified_time" content="2025-04-30T10:11:21.841Z">
 <meta property="article:author" content="clooooode">
 <meta property="article:tag" content="CTF">
 <meta property="article:tag" content="PWN">
@@ -120,7 +120,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code"><span class="nav-number">2.</span> <span class="nav-text">Code</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Thinking"><span class="nav-number">3.</span> <span class="nav-text">Thinking</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution"><span class="nav-number">4.</span> <span class="nav-text">Solution</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#code"><span class="nav-number">1.</span> <span class="nav-text">Code</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#thinking"><span class="nav-number">2.</span> <span class="nav-text">Thinking</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#solution"><span class="nav-number">3.</span> <span class="nav-text">Solution</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -220,7 +220,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-02-10 05:18:36" itemprop="dateModified" datetime="2025-02-10T05:18:36+00:00">2025-02-10</time>
+      <time title="Modified: 2025-04-30 10:11:21" itemprop="dateModified" datetime="2025-04-30T10:11:21+00:00">2025-04-30</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -256,18 +256,24 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p><img src="/images/pwnable-kr/blackjack.png"></p>
-<h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><p>Points: 1pt</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Hey! check out this C implementation of blackjack game!</span><br><span class="line">I found it online</span><br><span class="line">* http://cboard.cprogramming.com/c-programming/114023-simple-blackjack-program.html</span><br><span class="line"></span><br><span class="line">I like to give my flags to millionares.</span><br><span class="line">how much money you got?</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Running at : nc pwnable.kr 9009</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="http://pwnable.kr/play.php">Link</a></p>
-<span id="more"></span>
-
-<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><p>Code is at <a target="_blank" rel="noopener" href="http://cboard.cprogramming.com/c-programming/114023-simple-blackjack-program.html">here</a></p>
-<h2 id="Thinking"><a href="#Thinking" class="headerlink" title="Thinking"></a>Thinking</h2><p>The code seems no big exploit point.<br>But seek the <code>input(scanf)</code> line first.<br>Specially lines invlove with money.</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">play</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    ...</span><br><span class="line">    betting(); <span class="comment">//Prompts user to enter bet amount</span></span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>The bet is given by <code>betting()</code> function in <code>player()</code>.</p>
+    <div class="post-body" itemprop="articleBody"><p><img src="/images/pwnable-kr/blackjack.png" /> ## Problem Points: 1pt
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Hey! check out this C implementation of blackjack game!</span><br><span class="line">I found it online</span><br><span class="line">* http://cboard.cprogramming.com/c-programming/114023-simple-blackjack-program.html</span><br><span class="line"></span><br><span class="line">I like to give my flags to millionares.</span><br><span class="line">how much money you got?</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Running at : nc pwnable.kr 9009</span><br></pre></td></tr></table></figure> <a target="_blank" rel="noopener" href="http://pwnable.kr/play.php">Link</a>
+<span id="more"></span></p>
+<h2 id="code">Code</h2>
+<p>Code is at <a
+target="_blank" rel="noopener" href="http://cboard.cprogramming.com/c-programming/114023-simple-blackjack-program.html">here</a></p>
+<h2 id="thinking">Thinking</h2>
+<p>The code seems no big exploit point. But seek the
+<code>input(scanf)</code> line first. Specially lines invlove with
+money.</p>
+<h2 id="solution">Solution</h2>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">play</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    ...</span><br><span class="line">    betting(); <span class="comment">//Prompts user to enter bet amount</span></span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>The bet is given by <code>betting()</code> function in
+<code>player()</code>.</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">betting</span><span class="params">()</span> <span class="comment">//Asks user amount to bet</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\n\nEnter Bet: $&quot;</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;bet);</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">if</span> (bet &gt; cash) <span class="comment">//If player tries to bet more money than player has</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;\nYou cannot bet more money than you have.&quot;</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;\nEnter Bet: &quot;</span>);</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;bet);</span><br><span class="line">        <span class="keyword">return</span> bet;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> bet;</span><br><span class="line">&#125; <span class="comment">// End Function</span></span><br></pre></td></tr></table></figure>
-<p>The code seems no exploit point to let us change the flow.<br>But I’m curious about why this condition check is not a while loop,<br>infinitely check until player’s bet is legal?</p>
+<p>The code seems no exploit point to let us change the flow. But I’m
+curious about why this condition check is not a while loop, infinitely
+check until player’s bet is legal?</p>
 
     </div>
 
@@ -363,6 +369,12 @@
   <script class="next-config" data-name="firestore" type="application/json">{"enable":true,"collection":"articles","apiKey":"AIzaSyCu9-MhzikdJ0BVgPRODV__hMffyr5bgZg","projectId":"clo5de-githubpage"}</script>
   <script src="/js/third-party/statistics/firestore.js"></script>
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 
