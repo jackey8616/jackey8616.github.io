@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.clo5de.info","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.17.1","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="記錄一下今天面試的問題，發現沒有搞清楚矩陣以及行列(欄列)的定義。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MatMul: Matrix Multiplication">
+<meta property="og:url" content="https://www.clo5de.info/2025/04/30/note/MatMul_zhTW/index.html">
+<meta property="og:site_name" content="clooooode">
+<meta property="og:description" content="記錄一下今天面試的問題，發現沒有搞清楚矩陣以及行列(欄列)的定義。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-04-30T18:02:00.000Z">
+<meta property="article:modified_time" content="2025-04-30T10:13:10.672Z">
+<meta property="article:author" content="clooooode">
+<meta property="article:tag" content="Note">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.clo5de.info/2025/04/30/note/MatMul_zhTW/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.clo5de.info/2025/04/30/note/MatMul_zhTW/","path":"2025/04/30/note/MatMul_zhTW/","title":"MatMul: Matrix Multiplication"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>MatMul: Matrix Multiplication | clooooode</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">clooooode</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">a.k.a. clo5de</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-github"><a href="https://github.com/jackey8616" rel="section" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a></li><li class="menu-item menu-item-e-mail"><a href="mailto:clode@clo5de.info" rel="section" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a></li><li class="menu-item menu-item-linkedin"><a href="https://www.linkedin.com/in/ko-li-mo-294832118/" rel="section" target="_blank"><i class="fab fa-linkedin fa-fw"></i>LinkedIn</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#q"><span class="nav-number">1.</span> <span class="nav-text">Q</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B4%E8%A1%8C%E6%A9%AB%E5%88%97%E7%9B%B4%E6%AC%84%E6%A9%AB%E5%88%97"><span class="nav-number">2.</span> <span class="nav-text">直行橫列(直欄橫列)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#what-is-matrix"><span class="nav-number">3.</span> <span class="nav-text">What is Matrix?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#matmulmatrix-multiplication"><span class="nav-number">4.</span> <span class="nav-text">MatMul(Matrix Multiplication)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#python"><span class="nav-number">5.</span> <span class="nav-text">Python</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="clooooode"
+      src="https://avatars1.githubusercontent.com/u/12930377?s=400&u=3e932a7f6b769a0e1028806815067be598db3351&v=4">
+  <p class="site-author-name" itemprop="name">clooooode</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">45</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">50</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/jackey8616" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;jackey8616" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:clode@clo5de.info" title="E-Mail → mailto:clode@clo5de.info" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.linkedin.com/in/ko-li-mo-294832118/" title="LinkedIn → https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;ko-li-mo-294832118&#x2F;" rel="noopener me" target="_blank"><i class="fab fa-linkedin fa-fw"></i></a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.clo5de.info/2025/04/30/note/MatMul_zhTW/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars1.githubusercontent.com/u/12930377?s=400&u=3e932a7f6b769a0e1028806815067be598db3351&v=4">
+      <meta itemprop="name" content="clooooode">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="clooooode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="MatMul: Matrix Multiplication | clooooode">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          MatMul: Matrix Multiplication
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2025-04-30 18:02:00 / Modified: 10:13:10" itemprop="dateCreated datePublished" datetime="2025-04-30T18:02:00+00:00">2025-04-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Note/" itemprop="url" rel="index"><span itemprop="name">Note</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span class="firestore-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>記錄一下今天面試的問題，發現沒有搞清楚矩陣以及行列(欄列)的定義。</p>
+<span id="more"></span>
+<h2 id="q">Q</h2>
+<blockquote>
+<p>給定兩個矩陣，不定長度，請寫出矩陣相乘的程式碼。</p>
+</blockquote>
+<h2 id="直行橫列直欄橫列">直行橫列(直欄橫列)</h2>
+<p>Excel中為欄名列號(A欄、B欄；1列、2列)<br />
+台灣與中國，行與列的稱呼法互為相反，所以多用row &amp;
+column來統一表示較為易懂避免認知落差。</p>
+<h2 id="what-is-matrix">What is Matrix?</h2>
+<p>矩陣大小表示法為m * n, m rows, n columns。<br />
+如圖是一個2 * 3大小的矩陣，其中列(row)為2、行(column)為3。<br />
+<span class="math display">\[
+A=
+\begin{bmatrix}
+  1 &amp; 2 &amp; 3 \\
+  4 &amp; 5 &amp; 6 \\
+\end{bmatrix}
+\]</span></p>
+<h2 id="matmulmatrix-multiplication">MatMul(Matrix Multiplication)</h2>
+<p>設A爲n * m的矩陣、B爲m * p的矩陣。<br />
+則A以及B可以進行矩陣相乘得到一個n * p大小的矩陣積。</p>
+<p><span class="math display">\[
+A=
+\begin{bmatrix}
+  1 &amp; 2 &amp; 3 \\
+  4 &amp; 5 &amp; 6 \\
+\end{bmatrix}
+\]</span> <span class="math display">\[
+B=
+\begin{bmatrix}
+  7 &amp; 8 \\
+  9 &amp; 10 \\
+  11 &amp; 12 \\
+\end{bmatrix}
+\]</span> <span class="math display">\[
+Result=
+\begin{bmatrix}
+  [(1 * 7) + (2 * 9) + (3 * 11)] &amp; [(1 * 8) + (2 * 10) + (3 * 12)]
+\\
+  [(4 * 7) + (5 * 9) + (6 * 11)] &amp; [(4 * 8) + (5 * 10) + (6 * 12)]
+\\
+\end{bmatrix}
+=
+\begin{bmatrix}
+  58 &amp; 64 \\
+  139 &amp; 154 \\
+\end{bmatrix}
+\]</span></p>
+<h2 id="python">Python</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">multiple</span>(<span class="params">a: <span class="built_in">list</span>[<span class="built_in">list</span>[<span class="built_in">int</span>]], b: <span class="built_in">list</span>[<span class="built_in">list</span>[<span class="built_in">int</span>]]</span>):</span><br><span class="line">    a_row_len = <span class="built_in">len</span>(a)</span><br><span class="line">    a_column_len = <span class="built_in">len</span>(a[<span class="number">0</span>])</span><br><span class="line">    b_row_len = <span class="built_in">len</span>(b)</span><br><span class="line">    b_column_len = <span class="built_in">len</span>(b[<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> a_column_len != b_row_len:</span><br><span class="line">        <span class="keyword">raise</span> ValueError(<span class="string">&quot;Unable to multiple&quot;</span>)</span><br><span class="line"></span><br><span class="line">    result_matrix = [</span><br><span class="line">        [<span class="number">0</span> <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(b_column_len)]</span><br><span class="line">        <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(a_row_len)</span><br><span class="line">    ]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(a_row_len):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(b_column_len):</span><br><span class="line">            summation = <span class="number">0</span></span><br><span class="line">            <span class="keyword">for</span> k <span class="keyword">in</span> <span class="built_in">range</span>(b_row_len):</span><br><span class="line">                summation += a[i][k] * b[k][j]</span><br><span class="line">            result_matrix[i][j] = summation</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result_matrix</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Note/" rel="tag"># Note</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/04/16/note/AWS/pyfun-migrate-to-aws-lambda/" rel="prev" title="Migrating python backend to AWS Lambda">
+                  <i class="fa fa-chevron-left"></i> Migrating python backend to AWS Lambda
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2018 – 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">clooooode</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.23.0/firebase-app-compat.js" integrity="sha256-FYa4Xn7MJlI18eIkwawbRKLz7bGeUODtNpSR+bsjlHg=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.23.0/firebase-firestore-compat.js" integrity="sha256-sgbLcRGF3ph6N+ymg9zoy9kFQDWBvJlCd0GbGMKBH0c=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="firestore" type="application/json">{"enable":true,"collection":"articles","apiKey":"AIzaSyCu9-MhzikdJ0BVgPRODV__hMffyr5bgZg","projectId":"clo5de-githubpage"}</script>
+  <script src="/js/third-party/statistics/firestore.js"></script>
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

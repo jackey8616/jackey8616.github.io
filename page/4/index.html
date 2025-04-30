@@ -123,7 +123,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">44</span>
+          <span class="site-state-item-count">45</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -171,6 +171,158 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.clo5de.info/2018/05/24/CTF/x86-64-Register/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars1.githubusercontent.com/u/12930377?s=400&u=3e932a7f6b769a0e1028806815067be598db3351&v=4">
+      <meta itemprop="name" content="clooooode">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="clooooode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | clooooode">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2018/05/24/CTF/x86-64-Register/" class="post-title-link" itemprop="url">x86_64 Register</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2018-05-24 14:12:06" itemprop="dateCreated datePublished" datetime="2018-05-24T14:12:06+00:00">2018-05-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2025-04-30 10:13:10" itemprop="dateModified" datetime="2025-04-30T10:13:10+00:00">2025-04-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CTF/" itemprop="url" rel="index"><span itemprop="name">CTF</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span class="firestore-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="register">Register</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Register Name</th>
+<th style="text-align: center;">16bit</th>
+<th style="text-align: center;">32bit</th>
+<th style="text-align: center;">64bit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">Accumulator</td>
+<td style="text-align: center;">AX</td>
+<td style="text-align: center;">EAX</td>
+<td style="text-align: center;">RAX</td>
+</tr>
+<tr>
+<td style="text-align: center;">Base</td>
+<td style="text-align: center;">BX</td>
+<td style="text-align: center;">EBX</td>
+<td style="text-align: center;">RBX</td>
+</tr>
+<tr>
+<td style="text-align: center;">Counter</td>
+<td style="text-align: center;">CX</td>
+<td style="text-align: center;">ECX</td>
+<td style="text-align: center;">RCX</td>
+</tr>
+<tr>
+<td style="text-align: center;">Data</td>
+<td style="text-align: center;">DX</td>
+<td style="text-align: center;">EDX</td>
+<td style="text-align: center;">RDX</td>
+</tr>
+<tr>
+<td style="text-align: center;">Instruction Pointer</td>
+<td style="text-align: center;">IP</td>
+<td style="text-align: center;">EIP</td>
+<td style="text-align: center;">RIP</td>
+</tr>
+<tr>
+<td style="text-align: center;">Source Pointer</td>
+<td style="text-align: center;">SP</td>
+<td style="text-align: center;">ESP</td>
+<td style="text-align: center;">RSP</td>
+</tr>
+<tr>
+<td style="text-align: center;">Base Pointer</td>
+<td style="text-align: center;">BP</td>
+<td style="text-align: center;">EBP</td>
+<td style="text-align: center;">RBP</td>
+</tr>
+<tr>
+<td style="text-align: center;">Source Index</td>
+<td style="text-align: center;">SI</td>
+<td style="text-align: center;">ESI</td>
+<td style="text-align: center;">RSI</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://www.clo5de.info/2018/05/24/CTF/pwnable-kr/Toddlers_Bottle/3-bof/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -207,7 +359,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-04-30 10:11:21" itemprop="dateModified" datetime="2025-04-30T10:11:21+00:00">2025-04-30</time>
+      <time title="Modified: 2025-04-30 10:13:10" itemprop="dateModified" datetime="2025-04-30T10:13:10+00:00">2025-04-30</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -316,7 +468,7 @@ Points: 5 pt<br />
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-04-30 10:11:21" itemprop="dateModified" datetime="2025-04-30T10:11:21+00:00">2025-04-30</time>
+      <time title="Modified: 2025-04-30 10:13:10" itemprop="dateModified" datetime="2025-04-30T10:13:10+00:00">2025-04-30</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -425,7 +577,7 @@ Points: 3 pt<br />
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-04-30 10:11:21" itemprop="dateModified" datetime="2025-04-30T10:11:21+00:00">2025-04-30</time>
+      <time title="Modified: 2025-04-30 10:13:10" itemprop="dateModified" datetime="2025-04-30T10:13:10+00:00">2025-04-30</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -534,7 +686,7 @@ Points: 1 pt<br />
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-04-30 10:11:21" itemprop="dateModified" datetime="2025-04-30T10:11:21+00:00">2025-04-30</time>
+      <time title="Modified: 2025-04-30 10:13:10" itemprop="dateModified" datetime="2025-04-30T10:13:10+00:00">2025-04-30</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -634,7 +786,7 @@ Writeup</a></p>
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-04-30 10:11:21" itemprop="dateModified" datetime="2025-04-30T10:11:21+00:00">2025-04-30</time>
+      <time title="Modified: 2025-04-30 10:13:10" itemprop="dateModified" datetime="2025-04-30T10:13:10+00:00">2025-04-30</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -733,7 +885,7 @@ Writeup</a></p>
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-04-30 10:11:21" itemprop="dateModified" datetime="2025-04-30T10:11:21+00:00">2025-04-30</time>
+      <time title="Modified: 2025-04-30 10:13:10" itemprop="dateModified" datetime="2025-04-30T10:13:10+00:00">2025-04-30</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -838,7 +990,7 @@ Oops…
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-04-30 10:11:21" itemprop="dateModified" datetime="2025-04-30T10:11:21+00:00">2025-04-30</time>
+      <time title="Modified: 2025-04-30 10:13:10" itemprop="dateModified" datetime="2025-04-30T10:13:10+00:00">2025-04-30</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -937,7 +1089,7 @@ Oops…
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-04-30 10:11:21" itemprop="dateModified" datetime="2025-04-30T10:11:21+00:00">2025-04-30</time>
+      <time title="Modified: 2025-04-30 10:13:10" itemprop="dateModified" datetime="2025-04-30T10:13:10+00:00">2025-04-30</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1036,7 +1188,7 @@ Oops…
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-04-30 10:11:21" itemprop="dateModified" datetime="2025-04-30T10:11:21+00:00">2025-04-30</time>
+      <time title="Modified: 2025-04-30 10:13:10" itemprop="dateModified" datetime="2025-04-30T10:13:10+00:00">2025-04-30</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1073,105 +1225,6 @@ target="_blank" rel="noopener" href="https://jackey8616.gitbooks.io/django/conte
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2018/04/10/tutorial/Django/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.clo5de.info/2018/04/10/note/OOP/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars1.githubusercontent.com/u/12930377?s=400&u=3e932a7f6b769a0e1028806815067be598db3351&v=4">
-      <meta itemprop="name" content="clooooode">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="clooooode">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | clooooode">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2018/04/10/note/OOP/" class="post-title-link" itemprop="url">(C++OOP) Why BJ is always making people annoying?</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2018-04-10 19:33:48" itemprop="dateCreated datePublished" datetime="2018-04-10T19:33:48+00:00">2018-04-10</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-04-30 10:11:21" itemprop="dateModified" datetime="2025-04-30T10:11:21+00:00">2025-04-30</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Note/" itemprop="url" rel="index"><span itemprop="name">Note</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-item" title="Views">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">Views: </span>
-      <span class="firestore-visitors-count"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>放點筆記，謹記念不專心上課的OOP。<br />
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2018/04/10/note/OOP/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
