@@ -29,6 +29,10 @@ jobs:
             ${{ runner.OS }}-npm-cache
       - name: Install Dependencies
         run: npm install
+      - name: Install Pandoc
+        uses: pandoc/actions/setup@v1
+        with:
+          version: 3.6.4
       - name: Build
         run: npm run build
       - name: Deploy

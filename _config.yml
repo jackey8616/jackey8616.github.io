@@ -112,3 +112,9 @@ deploy:
 # Sitemap
 sitemap:
   path: sitemap.xml
+
+# config of hexo-renderer-pandoc
+pandoc:
+  args:
+    - --mathjax
+    
