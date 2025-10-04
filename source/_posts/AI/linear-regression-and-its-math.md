@@ -227,11 +227,16 @@ $$
 
 ### Gradient Descent(梯度下降)
 梯度的本質就是函數的導數(Derivative)，它指向了當前位置增長最快的方向(上坡最陡峭)；  
-為了方便討論，接下來我會把預測函數 $\hat{y}_i$ 簡化，以單特徵的方式探討梯度下降的數學原理。
+為了方便討論，接下來我會把預測函數 $\hat{y}_i$ 簡化，以單特徵的方式探討梯度下降的數學原理。  
+
+> 令 $b = 0$ 的做法，在此只是方便我們以單特徵的方式探討，實務上幾乎不會有這麼理想的狀況。
+> $b != 0$ 在此會讓梯度下降的公式需要針對兩個特徵進行偏微分，會讓整篇文章過於複雜，所以在此簡略帶過。
+
 $$
 \begin{align*}
-Before&: \hat{y}_i = wx + b \\
-After&: \hat{y}_i = wx
+\because Let\space b &= 0 \\
+\therefore \hat{y}_i &= wx + 0 \\
+&= wx
 \end{align*}
 $$
 這樣子就只需要討論特徵 $w$ 即可。  
@@ -298,7 +303,7 @@ $$
 在數學上，這個找函數最小值的方法，跟斜率有關係。  
 
 #### 斜率 & 微分
-透過計算曲線上的兩個點之間，Y座標的偏移量，可以得出兩點之間的斜率(趨勢)。  
+透過計算曲線上的兩個點之間，y座標的偏移量，可以得出兩點之間的斜率(趨勢)。  
 以 $w_{best}$ 為例，$J(w)$最趨近於0(或是整個圖形的最小值)的 $w$ 即為 $w_{best}$：
 $$
 \begin{align*}
@@ -316,24 +321,24 @@ $$
 在數學上，針對一個平滑的函數圖形，找出任意點的斜率，我們會使用微分。  
 $$
 \begin{align*}
-Let\space u &= (Y_i - wX_i), f(u) = u ^ 2 \\
+Let\space u &= (y_i - wx_i), f(u) = u ^ 2 \\
 J(w) &= \frac{1}{m}\sum_{i=1}^{m}f(u) \\
 \dfrac{dJ}{dw} &= \frac{1}{m}\sum_{i=1}^{m}\dfrac{df}{dw} \\
 \because \dfrac{df}{dw} &= \dfrac{df}{du} \times \dfrac{du}{dw} \\
-&= 2u \times \dfrac{d}{dw}(Y_i - wX_i) \\
-&= 2u \times (0 - X_i) \\
-&= 2(Y_i - wX_i) \times -X_i \\
-\therefore \dfrac{dJ}{dw} &= \frac{1}{m}\sum_{i=1}^{m}2(Y_i - wX_i)(-X_i) \\
-&= \frac{2}{m}\sum_{i=1}^{m}(- Y_i + wX_i)(X_i) \\
-&= \frac{2}{m}\sum_{i=1}^{m}(wX_i - Y_i)(X_i) \\
-\because \hat{Y}_i &= wX_i \\
-\therefore \dfrac{dJ}{dw} &= \frac{2}{m}\sum_{i=1}^{m}(\hat{Y}_i - Y_i)X_i \\
+&= 2u \times \dfrac{d}{dw}(y_i - wx_i) \\
+&= 2u \times (0 - x_i) \\
+&= 2(y_i - wx_i) \times -x_i \\
+\therefore \dfrac{dJ}{dw} &= \frac{1}{m}\sum_{i=1}^{m}2(y_i - wx_i)(-x_i) \\
+&= \frac{2}{m}\sum_{i=1}^{m}(- y_i + wx_i)(x_i) \\
+&= \frac{2}{m}\sum_{i=1}^{m}(wx_i - y_i)(x_i) \\
+\because \hat{y}_i &= wx_i \\
+\therefore \dfrac{dJ}{dw} &= \frac{2}{m}\sum_{i=1}^{m}(\hat{y}_i - y_i)x_i \\
 \end{align*} 
 $$
 至此，我們找到了Loss Function所能夠為我們進行 $w$ 參數修正的依據工具：梯度公式。  
 
 #### 最佳化迭代規則
-透過梯度公式：$\dfrac{dJ}{dw} = \frac{2}{m}\sum_{i=1}^{m}(\hat{Y}_i - Y_i)X_i$  
+透過梯度公式：$\dfrac{dJ}{dw} = \frac{2}{m}\sum_{i=1}^{m}(\hat{y}_i - y_i)x_i$  
 我們可以得到最佳化器的迭代規則：$w_{new} = w_{old} - \alpha \cdot \dfrac{dJ}{dw}$  
 
 其中 $\alpha$ 是一個放大參數，可以控制學習速度以及收斂(convergence)的穩定性。  
@@ -343,7 +348,8 @@ $$
 - $\alpha$ 過小：Slow Convergence:  
     Optimizer會以極慢的速度逐步找到最佳的 $w$ ，但是這個過程會花較長的訓練時間。  
 
-在實際的訓練當中， $\alpha$ 被稱為 超參數(Hyperparameter)，在模型開始訓練前手動設定以及提整。
+在實際的訓練當中， $\alpha$ 被稱為 超參數(Hyperparameter)，在模型開始訓練前手動設定以及調整。  
+我們不會在這裡多講 $\alpha$ ，因為涉及了更深入的理論，在此處暫時不提。  
 
 最佳化器在無數次的訓練中(我們稱爲epochs)， $w$ 會隨著曲面下降最快的方向移動。  
 最終會讓 $J(w)$ 的值趨於穩定，我們稱為收斂(Convergence)，此時的 $w$ 即為 $w_{best}$。  
