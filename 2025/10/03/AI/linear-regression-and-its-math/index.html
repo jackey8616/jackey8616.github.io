@@ -28,7 +28,7 @@
 <meta property="og:description" content="簡單紀錄一下線性回歸跟一些數學。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-10-03T21:21:56.000Z">
-<meta property="article:modified_time" content="2025-10-04T03:16:28.672Z">
+<meta property="article:modified_time" content="2025-10-04T03:26:48.424Z">
 <meta property="article:author" content="clooooode">
 <meta property="article:tag" content="AI">
 <meta property="article:tag" content="Machine Learning">
@@ -216,7 +216,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-10-04 03:16:28" itemprop="dateModified" datetime="2025-10-04T03:16:28+00:00">2025-10-04</time>
+      <time title="Modified: 2025-10-04 03:26:48" itemprop="dateModified" datetime="2025-10-04T03:26:48+00:00">2025-10-04</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -260,10 +260,15 @@
 <h2 id="如何建模">如何建模</h2>
 <ol type="1">
 <li><p>數學假設:建模的目的就是盡可能找出能夠貼近趨勢的方程式。<br />
-以單一特徵的線性回歸為例：<span class="math inline">\(\mathbf{h}(x) = w
-x + b\)</span><br />
+以單一特徵的線性回歸為例：<br />
+<span class="math display">\[
+h(x) = w x + b
+\]</span> 我們還可以簡寫成:<br />
+<span class="math display">\[
+\hat{y} = w x + b
+\]</span><br />
 其中 <span class="math inline">\(x\)</span> 是變數(例如廣告支出)， <span
-class="math inline">\(\mathbf{h}(x)\)</span>
+class="math inline">\(\hat{y}\)</span>
 是預測值(預測會有多少銷售額)，<br />
 而 <span class="math inline">\(w_1\)</span>(權重)以及 <span
 class="math inline">\(b\)</span>(偏置項)則是模型需要學習並且最佳化的參數。</p>
@@ -273,9 +278,8 @@ class="math inline">\(b\)</span>(偏置項)則是模型需要學習並且最佳�
 根據這個誤差，可以調整模型訓練(調整權重還有偏置項)的方向。<br />
 例如訓練資料中, <span class="math inline">\(x = 1 時，y =
 9\)</span>，<br />
-但是實際訓練出來的結果是<span class="math inline">\(x = 1
-時，\mathbf{h}(x) = 7\)</span>，其中的 <span
-class="math inline">\(2\)</span> 就是誤差。</p>
+但是實際訓練出來的結果是<span class="math inline">\(x = 1 時，\hat{y} =
+7\)</span>，其中的 <span class="math inline">\(2\)</span> 就是誤差。</p>
 <blockquote>
 <p>誤差 = 實際值 - 預測值<br />
 所以這邊的計算是 9 (Actual Value) - 7(Predicted Value) = Residual</p>
@@ -289,18 +293,9 @@ Strategy，以達到下次迭代改變參數的目的，<br />
 進一步得到最理想並且符合訓練資料的參數，作為模型的最終樣態。</p></li>
 </ol>
 <h2 id="loss-function損失函數">Loss Function(損失函數)</h2>
-<p>MSE(Mean Square Error，均方差)： <span class="math display">\[
-\begin{align*}
-J_\mathbf{MSE} &amp;= \frac1{\mathbf{m}}\sum_{\mathbf{i}=1}^{\mathbf{m}}
-(y_{\mathbf{i}} - \mathbf{h}(x_{\mathbf{i}})) ^ 2 \\
-一般記作 \\
-J_\mathbf{MSE} &amp;= \frac1{\mathbf{m}}\sum_{\mathbf{i}=1}^{\mathbf{m}}
-(y_{\mathbf{i}} - \hat{y}_{\mathbf{i}}) ^ 2
-\end{align*}
-\]</span></p>
-<p>以下所有的預測值 <span
-class="math inline">\(\mathbf{h}(x_\mathbf{i})\)</span> 後續我們都用
-<span class="math inline">\(\hat{y}_{\mathbf{i}}\)</span> 來代替。</p>
+<p>MSE(Mean Square Error，均方差)：<br />
+<span class="math inline">\(J_\mathbf{MSE} = \frac1{m}\sum_{i=1}^{m}
+(y_{i} - \hat{y}_{i}) ^ 2\)</span></p>
 <p>Q: 為什麼MSE可以用來作為損失函數？</p>
 <blockquote>
 <p>我們希望可以找到一個函數，他可以計算整個訓練過程中的誤差，盡可能的讓誤差趨近於零，代表幾乎沒有錯誤。</p>
@@ -430,26 +425,26 @@ class="math inline">\(\mathbf{h}(x_\mathbf{i})\)</span> 後續我們都用
   });
 </script>
 <p>在圖表中可以看到：紅色線為某次訓練出的趨勢線，藍點表示實際資料( <span
-class="math inline">\(x_\mathbf{i}, y_\mathbf{i}\)</span>
+class="math inline">\(x_i, y_i\)</span>
 )，以x軸為變數，紅線上的每一個點就是該變數下的預測值( <span
-class="math inline">\(\mathbf{h}(x_\mathbf{i})\)</span> )。<br />
+class="math inline">\(\hat{y}\)</span> )。<br />
 這個例子我們有一些正誤差以及負誤差，訓練的目的是盡可能的減少這些誤差。<br />
 其中 <span class="math inline">\(\hat{y}_6\)</span>
 (預測值)跟實際數據的誤差巨大，我們稱之為離群值(Outlier)，會對於回歸線的訓練產生衝擊。</p>
 <p>以圖表為例由左至右，我們的誤差為： <span class="math display">\[
 \begin{align*}
-\mathbf{E}_\mathbf{i} &amp;= y_\mathbf{i} - \hat{y}_{\mathbf{i}} \\
-\mathbf{E}_1 &amp;= 50 - 45 = 5 \\
-\mathbf{E}_2 &amp;= 65 - 55 = 10 \\
-\mathbf{E}_3 &amp;= 50 - 65 = -15 \\
-\mathbf{E}_4 &amp;= 90 - 75 = 25 \\
-\mathbf{E}_5 &amp;= 75 - 85 = -10 \\
-\mathbf{E}_6 &amp;= 160 - 95 = 65
+E_i &amp;= y_i - \hat{y}_{i} \\
+E_1 &amp;= 50 - 45 = 5 \\
+E_2 &amp;= 65 - 55 = 10 \\
+E_3 &amp;= 50 - 65 = -15 \\
+E_4 &amp;= 90 - 75 = 25 \\
+E_5 &amp;= 75 - 85 = -10 \\
+E_6 &amp;= 160 - 95 = 65
 \end{align*}
 \]</span>
 如果要計算平均誤差的話，一般做法是總和取平均(算術平均數):<br />
 <span class="math display">\[
-\frac{1}{\mathbf{m}}\sum_{\mathbf{m}=1}^{\mathbf{m}} E_{\mathbf{i}}
+\frac{1}{m}\sum_{m=1}^{m} E_{i}
 \]</span><br />
 但是這個做法會有一個問題：<br />
 正負誤差會相互抵銷，所以我們必須想辦法避免掉這個抵銷。</p>
@@ -457,31 +452,28 @@ class="math inline">\(\mathbf{h}(x_\mathbf{i})\)</span> )。<br />
 <p>在數學上，消除負號的方式不外乎兩種：取絕對值(Absolute)或者是平方(Square)。
 <span class="math display">\[
 \begin{align*}
-Mean Absolute Error, MAE &amp;=
-\frac{1}{\mathbf{m}}\sum_{\mathbf{m}=1}^{\mathbf{m}}
-\big|E_{\mathbf{i}}\big| \\
-Mean Square Error, MSE &amp;=
-\frac{1}{\mathbf{m}}\sum_{\mathbf{m}=1}^{\mathbf{m}} {E_{\mathbf{i}}}^2
+Mean Absolute Error, MAE &amp;= \frac{1}{m}\sum_{m=1}^{m}
+\big|E_{i}\big| \\
+Mean Square Error, MSE &amp;= \frac{1}{m}\sum_{m=1}^{m} {E_{i}}^2
 \end{align*}
 \]</span> 兩種方法，應該要用哪一種？<br />
 這個問題我們先保留，後續再回答。<br />
 在機器學習的應用數學上，沒有絕對的解，更多的是Trade-off。</p>
 <h2 id="optimizer最佳化器">Optimizer(最佳化器)</h2>
-<p>最佳化的目的是在於逐步改變 <span
-class="math inline">\(\mathbf{w}\)</span> 的數值，讓Loss
-Function的誤差越來越小，最好趨近於零。<br />
+<p>最佳化的目的是在於逐步改變 <span class="math inline">\(w\)</span>
+的數值，讓Loss Function的誤差越來越小，最好趨近於零。<br />
 在機器學習的領域裡面，通常最佳化器指的會是梯度最佳化器(Gradient-based
 optimizers)，<br />
 還有其他的最佳化策略，但是在這邊我們先不談論。</p>
 <h3 id="gradient-descent梯度下降">Gradient Descent(梯度下降)</h3>
 <p>梯度的本質就是函數的導數(Derivative)，它指向了當前位置增長最快的方向(上坡最陡峭)；<br />
 為了方便討論，接下來我會把預測函數 <span
-class="math inline">\(\hat{\mathbf{y}}_i\)</span>
+class="math inline">\(\hat{y}_i\)</span>
 簡化，以單特徵的方式探討梯度下降的數學原理。 <span
 class="math display">\[
 \begin{align*}
-Before&amp;: \hat{\mathbf{y}}_i = wx + b \\
-After&amp;: \hat{\mathbf{y}}_i = wx
+Before&amp;: \hat{y}_i = wx + b \\
+After&amp;: \hat{y}_i = wx
 \end{align*}
 \]</span> 這樣子就只需要討論特徵 <span class="math inline">\(w\)</span>
 即可。</p>
