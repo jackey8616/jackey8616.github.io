@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://www.clo5de.info/tags/index.html</loc>
+    <loc>https://www.clo5de.info/milestone/index.html</loc>
     
     <lastmod>2025-10-04</lastmod>
     
@@ -11,7 +11,7 @@
   </url>
   
   <url>
-    <loc>https://www.clo5de.info/milestone/index.html</loc>
+    <loc>https://www.clo5de.info/tags/index.html</loc>
     
     <lastmod>2025-10-04</lastmod>
     
@@ -39,24 +39,6 @@
   
   <url>
     <loc>https://www.clo5de.info/2018/04/10/tutorial/Django/</loc>
-    
-    <lastmod>2025-10-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.clo5de.info/2019/05/15/note/OS/ch6/</loc>
-    
-    <lastmod>2025-10-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.clo5de.info/2019/06/15/note/OS/ch7/</loc>
     
     <lastmod>2025-10-04</lastmod>
     
@@ -102,24 +84,6 @@
   
   <url>
     <loc>https://www.clo5de.info/categories/index.html</loc>
-    
-    <lastmod>2025-10-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.clo5de.info/2018/05/24/CTF/x86-64-Register/</loc>
-    
-    <lastmod>2025-10-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.clo5de.info/2018/04/10/application/Hexo-Gitpage-TravisCI/</loc>
     
     <lastmod>2025-10-04</lastmod>
     
@@ -254,7 +218,16 @@
   </url>
   
   <url>
-    <loc>https://www.clo5de.info/2018/10/23/CTF/pwnable-kr/Toddlers_Bottle/9-mistake/</loc>
+    <loc>https://www.clo5de.info/2019/05/15/note/OS/ch6/</loc>
+    
+    <lastmod>2025-10-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.clo5de.info/2019/06/15/note/OS/ch7/</loc>
     
     <lastmod>2025-10-04</lastmod>
     
@@ -290,6 +263,24 @@
   </url>
   
   <url>
+    <loc>https://www.clo5de.info/2018/05/24/CTF/x86-64-Register/</loc>
+    
+    <lastmod>2025-10-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.clo5de.info/2018/04/10/application/Hexo-Gitpage-TravisCI/</loc>
+    
+    <lastmod>2025-10-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.clo5de.info/2018/05/23/CTF/pwnable-kr/Toddlers_Bottle/1-fd/</loc>
     
     <lastmod>2025-10-04</lastmod>
@@ -299,7 +290,7 @@
   </url>
   
   <url>
-    <loc>https://www.clo5de.info/2018/10/23/CTF/pwnable-kr/Toddlers_Bottle/10-shellshock/</loc>
+    <loc>https://www.clo5de.info/2018/10/24/CTF/pwnable-kr/Toddlers_Bottle/11-coin1/</loc>
     
     <lastmod>2025-10-04</lastmod>
     
@@ -308,7 +299,7 @@
   </url>
   
   <url>
-    <loc>https://www.clo5de.info/2018/10/24/CTF/pwnable-kr/Toddlers_Bottle/11-coin1/</loc>
+    <loc>https://www.clo5de.info/2018/10/23/CTF/pwnable-kr/Toddlers_Bottle/10-shellshock/</loc>
     
     <lastmod>2025-10-04</lastmod>
     
@@ -389,16 +380,7 @@
   </url>
   
   <url>
-    <loc>https://www.clo5de.info/2018/06/03/CTF/AIS3/2018/pre_exam/AIS3-2018-First-Try/</loc>
-    
-    <lastmod>2025-10-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.clo5de.info/2018/08/01/CTF/AIS3/2018/pre_exam/crypto/</loc>
+    <loc>https://www.clo5de.info/2018/10/23/CTF/pwnable-kr/Toddlers_Bottle/9-mistake/</loc>
     
     <lastmod>2025-10-04</lastmod>
     
@@ -444,6 +426,24 @@
   
   <url>
     <loc>https://www.clo5de.info/2023/08/01/COSCUP/coscup-2023/</loc>
+    
+    <lastmod>2025-10-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.clo5de.info/2018/06/03/CTF/AIS3/2018/pre_exam/AIS3-2018-First-Try/</loc>
+    
+    <lastmod>2025-10-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.clo5de.info/2018/08/01/CTF/AIS3/2018/pre_exam/crypto/</loc>
     
     <lastmod>2025-10-04</lastmod>
     
