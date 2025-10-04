@@ -18,17 +18,17 @@ Simply recording something about linear regression and its mathematics.
 ## Linear Regression
 TL;DR: with a batch of data, find the trend, use the trend to predict, this is linear regression analysis.  
 
-> For example: 10,000 of data in relationship between advertising budget and sales revenue.  
+> For example: 10,000 pieces of data showing the relationship between advertising budget and sales revenue.  
 
 The essence of regression analysis is model building and inference(or prediction).  
-Take above example, model can tell us what effect it has on revenue for every dollar increase in advertising.  
+Take above example, the model can tell us what effect it has on revenue for every dollar increase in advertising.  
 I will use the simplest linear regression to explain.  
     
 > In order for the model to work properly, we will assume there is some kind of linear relationship between advertising budget and revenue.  
 > Which means, if you spend more money on advertising, revenue will roughly increases.(Not exactly correct, but we assume this trend works)  
-> Besides, we also assume each data point is independent(the sales revenue would not be effected by previous weeks), and model's predict error would not get bigger or smaller based on advertising budget.  
+> Besides, we also assume each data point is independent(the sales revenue would not be effected by previous weeks), and model's prediction error would not get bigger or smaller based on advertising budget.  
 > 
-> These assumptions helps us to use simple way to learn how a effective model works.  
+> These assumptions help us to use a simple way to learn how an effective model works.  
 > Of course, reality work would not always follow these assumptions, but we can understand the foundations of a model.  
   
 ## How to build model
@@ -327,7 +327,7 @@ Here, $\alpha$ is a learning rate, works like an amplifying parameter, which con
 - $\alpha$ too big: Over-shooting:  
     It causes training to jump back and forth near the bottom of the curve, eventually cannot converge  
 - $\alpha$ too small: Slow Convergence:  
-    Optimizer will learn in a very slow speed to find the best $w$ ,but it will be time-consuming.  
+    The optimizer will learn in a very slow speed to find the best $w$ ,but it will be time-consuming.  
 
 In actual training $\alpha$ is called a hyperparameter, it should be setup and manually tuning before training.  
 We won't talk about $\alpha$ here, becuz is comes with much more deep dive, we will skip this part here.  
@@ -411,4 +411,4 @@ In practice there is something more to do with optimizer, we will skip this part
 
 ## Last
 This article discusses the simplest linear regression with MSE in machine learning field and its mathematic theory.  
-Its broad-wide out there of machine learning, by the change preparing AWS AI Practitioner(AIF-C01), just write this article to figure out some part I didn't understand much before, and also helped me to brush up on my Calculus(or rescue my falling Calculus)...  
+The field of machine learning is vast. I wrote this article as a way to prepare for the AWS AI Practitioner(AIF-C01) and to figure out some parts I didn't fully  understand before. It also helped me to brush up on my Calculus(or rescue my falling Calculus knowledge)...  
