@@ -28,7 +28,7 @@
 <meta property="og:description" content="簡單紀錄一下線性回歸跟一些數學。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-10-03T21:21:56.000Z">
-<meta property="article:modified_time" content="2025-10-04T04:46:14.482Z">
+<meta property="article:modified_time" content="2025-10-04T05:51:45.050Z">
 <meta property="article:author" content="clooooode">
 <meta property="article:tag" content="AI">
 <meta property="article:tag" content="Machine Learning">
@@ -217,7 +217,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-10-04 04:46:14" itemprop="dateModified" datetime="2025-10-04T04:46:14+00:00">2025-10-04</time>
+      <time title="Modified: 2025-10-04 05:51:45" itemprop="dateModified" datetime="2025-10-04T05:51:45+00:00">2025-10-04</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -258,6 +258,13 @@
 <p>回歸分析本質上是「建模(歸納出趨勢)」、「推論(使用趨勢來預測)」。<br />
 以剛才的例子來看，模型可以告訴我們，每增加一塊錢，可以帶來多少銷售額的影響。<br />
 下面會用最簡單的線性回歸來進行解釋。</p>
+<blockquote>
+<p>為了讓這個模型能正確運作，我們會先假設「廣告費用和銷售額之間是某種線性的關係」。<br />
+也就是說，如果你多花一點錢打廣告，銷售大致會跟著提高——不一定完全準確，但我們假設這個趨勢大致成立。<br />
+除了這個，我們還假設每一筆資料都是獨立的（例如一週的銷售不會被前一週直接影響），而且模型的預測誤差不會因為廣告花得多就變大或變小。</p>
+<p>這些假設幫助我們用簡單的方法學到一個有效的模型。<br />
+當然，現實世界常常不會完全符合這些條件，但從這裡出發可以幫助我們先理解整個建模的基礎。</p>
+</blockquote>
 <h2 id="如何建模">如何建模</h2>
 <ol type="1">
 <li><p>數學假設:建模的目的就是盡可能找出能夠貼近趨勢的方程式。<br />
@@ -272,9 +279,7 @@ h(x) = w x + b
 class="math inline">\(\hat{y}\)</span>
 是預測值(預測會有多少銷售額)，<br />
 而 <span class="math inline">\(w_1\)</span>(權重)以及 <span
-class="math inline">\(b\)</span>(偏置項)則是模型需要學習並且最佳化的參數。</p>
-<p>這個建模的前提是，廣告支出與銷售額之間「的確」具備線性關係。<br />
-如此一來，建模才有成功的可能。</p></li>
+class="math inline">\(b\)</span>(偏置項)則是模型需要學習並且最佳化的參數。</p></li>
 <li><p>損失函數(Loss Function):損失函數用來量化訓練過程中的誤差。<br />
 根據這個誤差，可以調整模型訓練(調整權重還有偏置項)的方向。<br />
 例如訓練資料中, <span class="math inline">\(x = 1 時，y =

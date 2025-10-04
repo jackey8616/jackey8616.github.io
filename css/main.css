@@ -2487,7 +2487,7 @@ header.header {
   transition: all 0.2s ease-in-out;
 }
 .links-of-author a::before {
-  background: #c9d5b3;
+  background: #4d30e0;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
