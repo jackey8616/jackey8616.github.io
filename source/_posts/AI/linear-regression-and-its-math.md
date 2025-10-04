@@ -359,6 +359,61 @@ $$
 \hat{y} = w_{best}x
 $$
 
+### !大量算式! 同場加映：雙參數梯度下降
+在上面，我們令 $b = 0$ 使得 $\hat{y}$ 變為單特徵，這方便了我們寫出較為簡單的推導過程。  
+現在我們把 $b$ 放回去： $\hat{y} = wx + b$  
+則我們需要針對 $w$ 以及 $b$ 進行偏微分：  
+$$
+\begin{align*}
+定義：\\
+\hat{y} &= wx + b \\
+J(w,b) &= \frac{1}{m}\sum_{i=1}^{m}(y_i - \hat{y}_i) ^ 2 \\
+&= \frac{1}{m}\sum_{i=1}^{m}(y_i - (wx_i + b)) ^ 2 \\
+Let:\\
+u &= (y_i - \hat{y}_i) \\
+f(u) &= u ^ 2 \\
+\end{align*}
+$$
+Then for $\dfrac{dJ}{dw}$:  
+$$
+\begin{align*}
+\dfrac{dJ}{dw} &= \frac{1}{m}\sum_{i=1}^{m}\dfrac{df}{dw} \\
+\because \dfrac{df}{dw} &= \dfrac{df}{du} \times \dfrac{du}{dw} \\
+&= 2u \times \dfrac{d}{dw}(y_i - (wx_i + b)) \\
+&= 2u \times (0 - x_i - 0) \\
+&= 2u \times - x_i \\
+\therefore \dfrac{dJ}{dw} &= \frac{1}{m}\sum_{i=1}^{m} (2u \times - x_i) \\
+&= \frac{1}{m}\sum_{i=1}^{m}(2(y_i - \hat{y}_i) \times - x_i) \\
+&= \frac{2}{m}\sum_{i=1}^{m}(\hat{y}_i - y_i)x_i \\
+\end{align*}
+$$
+for $\dfrac{dJ}{db}$:  
+$$
+\begin{align*}
+\dfrac{dJ}{db} &= \frac{1}{m}\sum_{i=1}^{m}\dfrac{df}{db} \\
+\because \dfrac{df}{db} &= \dfrac{df}{du} \times \dfrac{du}{db} \\
+&= 2u \times \dfrac{d}{db}(y_i - (wx_i + b)) \\
+&= 2u \times (0 - 0 - 1) \\
+&= 2u \times -1 \\
+\therefore \dfrac{dJ}{db} &= \frac{1}{m}\sum_{i=1}^{m}(-2u) \\
+&= \frac{1}{m}\sum_{i=1}^{m}(-2(y_i - \hat{y}_i)) \\
+&= \frac{2}{m}\sum_{i=1}^{m}(\hat{y}_i - y_i) \\
+\end{align*}
+$$
+Eventually:  
+$$
+\begin{align*}
+w_{new} &= w_{old} - \alpha \cdot \dfrac{dJ}{dw} \\
+&= w_{old} - \alpha \cdot \frac{2}{m}\sum_{i=1}^{m}(\hat{y}_i - y_i)x_i \\
+b_{new} &= b_{old} - \alpha \cdot \dfrac{dJ}{db} \\
+&= b_{old} - \alpha \cdot \frac{2}{m}\sum_{i=1}^{m}(\hat{y}_i - y_i) \\
+\end{align*}
+$$
+最後我們可以得出一個簡單的結論：  
+
+> $w$ 的修正受到 $x_i$ 的影響，整體測試資料的輸入會影響到修正方向  
+> 而 $b$ 修正只受到整體誤差的平均， $b$ 只單純影響整體回歸方程式的垂直位置。
+
 ### 除了梯度下降？
 在數學上還有可以透過正則方程(Normal Equation)一次性計算出 $w_{best}$ 的閉式解，  
 像是OLS(Ordinary least squares)，但是在機器學習領域，如此理想的環境幾乎不存在，  
