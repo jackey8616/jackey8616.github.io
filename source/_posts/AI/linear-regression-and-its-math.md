@@ -25,8 +25,15 @@ TL;DR：以一批資料，歸納出趨勢，使用這個趨勢用來預測，就
 
 ## 如何建模
 1) 數學假設:建模的目的就是盡可能找出能夠貼近趨勢的方程式。  
-    以單一特徵的線性回歸為例：$\mathbf{h}(x) = w x + b$  
-    其中 $x$ 是變數(例如廣告支出)， $\mathbf{h}(x)$ 是預測值(預測會有多少銷售額)，  
+    以單一特徵的線性回歸為例：  
+    $$
+    h(x) = w x + b
+    $$
+    我們還可以簡寫成:  
+    $$
+    \hat{y} = w x + b
+    $$  
+    其中 $x$ 是變數(例如廣告支出)， $\hat{y}$ 是預測值(預測會有多少銷售額)，  
     而 $w_1$(權重)以及 $b$(偏置項)則是模型需要學習並且最佳化的參數。
   
     這個建模的前提是，廣告支出與銷售額之間「的確」具備線性關係。  
@@ -35,7 +42,7 @@ TL;DR：以一批資料，歸納出趨勢，使用這個趨勢用來預測，就
 2) 損失函數(Loss Function):損失函數用來量化訓練過程中的誤差。  
     根據這個誤差，可以調整模型訓練(調整權重還有偏置項)的方向。  
     例如訓練資料中, $x = 1 時，y = 9$，  
-    但是實際訓練出來的結果是$x = 1 時，\mathbf{h}(x) = 7$，其中的 $2$ 就是誤差。  
+    但是實際訓練出來的結果是$x = 1 時，\hat{y} = 7$，其中的 $2$ 就是誤差。  
   
     > 誤差 = 實際值 - 預測值  
     > 所以這邊的計算是 9 (Actual Value) - 7(Predicted Value) = Residual
@@ -47,16 +54,8 @@ TL;DR：以一批資料，歸納出趨勢，使用這個趨勢用來預測，就
     進一步得到最理想並且符合訓練資料的參數，作為模型的最終樣態。  
 
 ## Loss Function(損失函數)
-MSE(Mean Square Error，均方差)：
-$$
-\begin{align*}
-J_\mathbf{MSE} &= \frac1{\mathbf{m}}\sum_{\mathbf{i}=1}^{\mathbf{m}} (y_{\mathbf{i}} - \mathbf{h}(x_{\mathbf{i}})) ^ 2 \\
-一般記作 \\
-J_\mathbf{MSE} &= \frac1{\mathbf{m}}\sum_{\mathbf{i}=1}^{\mathbf{m}} (y_{\mathbf{i}} - \hat{y}_{\mathbf{i}}) ^ 2
-\end{align*}
-$$
-
-以下所有的預測值 $\mathbf{h}(x_\mathbf{i})$ 後續我們都用 $\hat{y}_{\mathbf{i}}$ 來代替。  
+MSE(Mean Square Error，均方差)：  
+$J_\mathbf{MSE} = \frac1{m}\sum_{i=1}^{m} (y_{i} - \hat{y}_{i}) ^ 2$
 
 Q: 為什麼MSE可以用來作為損失函數？  
 
@@ -186,25 +185,25 @@ Q: 為什麼MSE可以用來作為損失函數？
   });
 </script>
 
-在圖表中可以看到：紅色線為某次訓練出的趨勢線，藍點表示實際資料( $x_\mathbf{i}, y_\mathbf{i}$ )，以x軸為變數，紅線上的每一個點就是該變數下的預測值( $\mathbf{h}(x_\mathbf{i})$ )。  
+在圖表中可以看到：紅色線為某次訓練出的趨勢線，藍點表示實際資料( $x_i, y_i$ )，以x軸為變數，紅線上的每一個點就是該變數下的預測值( $\hat{y}$ )。  
 這個例子我們有一些正誤差以及負誤差，訓練的目的是盡可能的減少這些誤差。  
 其中 $\hat{y}_6$ (預測值)跟實際數據的誤差巨大，我們稱之為離群值(Outlier)，會對於回歸線的訓練產生衝擊。
   
 以圖表為例由左至右，我們的誤差為：
 $$
 \begin{align*}
-\mathbf{E}_\mathbf{i} &= y_\mathbf{i} - \hat{y}_{\mathbf{i}} \\
-\mathbf{E}_1 &= 50 - 45 = 5 \\
-\mathbf{E}_2 &= 65 - 55 = 10 \\
-\mathbf{E}_3 &= 50 - 65 = -15 \\
-\mathbf{E}_4 &= 90 - 75 = 25 \\
-\mathbf{E}_5 &= 75 - 85 = -10 \\
-\mathbf{E}_6 &= 160 - 95 = 65
+E_i &= y_i - \hat{y}_{i} \\
+E_1 &= 50 - 45 = 5 \\
+E_2 &= 65 - 55 = 10 \\
+E_3 &= 50 - 65 = -15 \\
+E_4 &= 90 - 75 = 25 \\
+E_5 &= 75 - 85 = -10 \\
+E_6 &= 160 - 95 = 65
 \end{align*}
 $$
 如果要計算平均誤差的話，一般做法是總和取平均(算術平均數):  
 $$
-\frac{1}{\mathbf{m}}\sum_{\mathbf{m}=1}^{\mathbf{m}} E_{\mathbf{i}}
+\frac{1}{m}\sum_{m=1}^{m} E_{i}
 $$  
 但是這個做法會有一個問題：  
 正負誤差會相互抵銷，所以我們必須想辦法避免掉這個抵銷。  
@@ -213,8 +212,8 @@ $$
 在數學上，消除負號的方式不外乎兩種：取絕對值(Absolute)或者是平方(Square)。
 $$
 \begin{align*}
-Mean Absolute Error, MAE &= \frac{1}{\mathbf{m}}\sum_{\mathbf{m}=1}^{\mathbf{m}} \big|E_{\mathbf{i}}\big| \\
-Mean Square Error, MSE &= \frac{1}{\mathbf{m}}\sum_{\mathbf{m}=1}^{\mathbf{m}} {E_{\mathbf{i}}}^2
+Mean Absolute Error, MAE &= \frac{1}{m}\sum_{m=1}^{m} \big|E_{i}\big| \\
+Mean Square Error, MSE &= \frac{1}{m}\sum_{m=1}^{m} {E_{i}}^2
 \end{align*}
 $$
 兩種方法，應該要用哪一種？  
@@ -222,17 +221,17 @@ $$
 在機器學習的應用數學上，沒有絕對的解，更多的是Trade-off。
 
 ## Optimizer(最佳化器)
-最佳化的目的是在於逐步改變 $\mathbf{w}$ 的數值，讓Loss Function的誤差越來越小，最好趨近於零。  
+最佳化的目的是在於逐步改變 $w$ 的數值，讓Loss Function的誤差越來越小，最好趨近於零。  
 在機器學習的領域裡面，通常最佳化器指的會是梯度最佳化器(Gradient-based optimizers)，  
 還有其他的最佳化策略，但是在這邊我們先不談論。  
 
 ### Gradient Descent(梯度下降)
 梯度的本質就是函數的導數(Derivative)，它指向了當前位置增長最快的方向(上坡最陡峭)；  
-為了方便討論，接下來我會把預測函數 $\hat{\mathbf{y}}_i$ 簡化，以單特徵的方式探討梯度下降的數學原理。
+為了方便討論，接下來我會把預測函數 $\hat{y}_i$ 簡化，以單特徵的方式探討梯度下降的數學原理。
 $$
 \begin{align*}
-Before&: \hat{\mathbf{y}}_i = wx + b \\
-After&: \hat{\mathbf{y}}_i = wx
+Before&: \hat{y}_i = wx + b \\
+After&: \hat{y}_i = wx
 \end{align*}
 $$
 這樣子就只需要討論特徵 $w$ 即可。  
