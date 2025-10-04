@@ -11,27 +11,27 @@ categories:
 mathjax: true
 ---
 
-Simply records something about linear regression and its mathematics.  
+Simply recording something about linear regression and its mathematics.  
 [[zhTW version]](/2025/10/03/AI/linear-regression-and-its-math_zhTW)
 <!-- More -->
 
 ## Linear Regression
 TL;DR: with a batch of data, find the trend, use the trend to predict, this is linear regression analysis.  
 
-> For example: 10k of data in relationship b/w advertising budget and sales revenue.  
+> For example: 10,000 of data in relationship between advertising budget and sales revenue.  
 
-Essence of regression analysis is modeling and predicting.  
-Take above example, model can tell us, each time we increases a dollar in advertising, can brings how much impact to the revenue.  
+The essence of regression analysis is model building and inference(or prediction).  
+Take above example, model can tell us what effect it has on revenue for every dollar increase in advertising.  
 I will use the simplest linear regression to explain.  
     
-> In order to let model work properly, we will assume there is some kind of linear relationship b/w advertising budge and revenue.  
-> Which means, if you spend more money on advertising, revenue will roughly increases.(Not exactly correct, but we assume this trends works)  
-> Besides, we also assume each data is independents(the sales revenue would not effected by previous weeks), and model's predict error would not getting bigger or smaller base on advertising budget.  
+> In order for the model to work properly, we will assume there is some kind of linear relationship between advertising budget and revenue.  
+> Which means, if you spend more money on advertising, revenue will roughly increases.(Not exactly correct, but we assume this trend works)  
+> Besides, we also assume each data point is independent(the sales revenue would not be effected by previous weeks), and model's predict error would not get bigger or smaller based on advertising budget.  
 > 
 > These assumptions helps us to use simple way to learn how a effective model works.  
 > Of course, reality work would not always follow these assumptions, but we can understand the foundations of a model.  
   
-## How to modeling
+## How to build model
 1) Mathematic assumption: the purpose of modeling is to find out a formula as close as possible to the trend.  
     Take single feature linear regression as example:  
     $$
@@ -45,17 +45,17 @@ I will use the simplest linear regression to explain.
     And $w_1$(weight) $b$(bias) is the parameters model needs to learn and optimize.  
 
 2) Loss Function: measure the error during the training process.  
-    Base on the error, we can tune the training direction(by changing weight and bias).  
-    For example, inside the training data, $x = 1 時，y = 9$，  
-    But the predict value from model is $x = 1 時，\hat{y} = 7$, the $2$ is the error.  
+    Based on the error, we can tune the training direction(by changing weight and bias).  
+    For example, inside the training data, $x = 1, y = 9$，  
+    But the predict value from model is $x = 1, \hat{y} = 7$, the $2$ is the error.  
   
     > Error = Actual Value - Predicted Value  
     > 9 (Actual Value) - 7(Predicted Value) = Residual
   
     Error is acceptable, becuz there is no "perfect" model.  
-    But once a error is too big and become an outlier, how we use these errors to improve the training would become a critical section. The common way in Loss Function is MSE(Mean Square Error).
+    But once an error becomes too big and is classified as an outlier, the function of the Loss Function is precisely to aggregate and utilize. The common way in Loss Function is MSE(Mean Square Error).
 3) Optimizer: tune the parameter during the training process
-    By using loss function with proper optimizing strategy to archive the goal of changing parameter in next iteration.  
+    By using loss function with proper optimizing strategy to achieve the goal of changing parameter in next iteration.  
 
 ## Loss Function
 MSE(Mean Square Error)：  
@@ -63,7 +63,7 @@ $J_\mathbf{MSE} = \frac1{m}\sum_{i=1}^{m} (y_{i} - \hat{y}_{i}) ^ 2$
 
 Q: Why MSE can be use as loss function?  
 
-> We hope we can find a formula, which can calculates the whole errors during the whole dataset, and we do our best to let this formula as close as much to zero, which means the performance of model is good.  
+> We hope we can find a formula, which can calculates the whole errors during the whole dataset, and we do our best to let this formula as close as possible to zero, which means the performance of model is good.  
 
 ### De-assemble MSE by chart
 <div id="mse" style="width: 100%; height: 500px;"></div>
@@ -166,7 +166,7 @@ Q: Why MSE can be use as loss function?
   });
 </script>
 
-As you can see from the chart, red line represents the regression line in a training, blue dot is actual value( $x_i, y_i$ ),x-axis as variable,each dot on the read line is the predicted value( $\hat{y}$ ) in the given variable x.。  
+As you can see from the chart, red line represents the regression line in a training, blue dot is actual value( $x_i, y_i$ ),x-axis as variable,each dot on the red line is the predicted value( $\hat{y}$ ) in the given variable x.。  
 There is some positive error and negative error, the purpose of training is to reduce these error as many as possible.  
 In the chart, $\hat{y}_6$ (predicted value)has a huge difference with actual value, we call it outlier, this outlier may cause impact to the training result.
   
@@ -187,7 +187,7 @@ $$
 \frac{1}{m}\sum_{m=1}^{m} E_{i}
 $$
 This bring a problem:   
-Positive and negative error will discharged, thus we need to find another way to avoid the discharge.   
+Positive and negative error will cancel each other out(or offset), thus we need to find another way to avoid the cancellation.   
 
 ### MAE vs MSE
 In match, common way to remove negative value is by take absolute or square.
@@ -197,9 +197,9 @@ Mean Absolute Error, MAE &= \frac{1}{m}\sum_{m=1}^{m} \big|E_{i}\big| \\
 Mean Square Error, MSE &= \frac{1}{m}\sum_{m=1}^{m} {E_{i}}^2
 \end{align*}
 $$
-Two way, which one should we use?  
+Two ways, which one should we use?  
 We keep this problem for now, I will answer later.  
-In the applied math in machine learning, there is no plain answer.  
+In the applied math in machine learning, there is no single correct answer; it's more about trade-offs.  
 
 ## Optimizer
 The purpose of optimizing is to gradually change the value of $w$ in order to reduce the error from loss function, it would be ideal to get zero from loss function.  
@@ -207,10 +207,10 @@ In machine learning fields, optimizer usually represents gradient-based optimize
 there is more other optimizing strategy, but we won't discuss in this article.  
 
 ### Gradient Descent
-Essence of gradient is derivative, it points to the fastest growth direction at current position(steepest uphill),  
+The essence of a gradient is the derivative, it points to the fastest growth direction at current position(steepest uphill),  
 In order to make it easier to understand the mathematic theory, I will simplify the predict function $\hat{y}_i$ into a single-feature function.  
 
-> Here we let $b = 0$ is just only to help us to discuss the theory, in practice, you won't even seen this kind of ideal situation.
+> Here we let $b = 0$ is just only to help us to discuss the theory, in practice, you won't even see this kind of ideal situation.
 > If $b != 0$ will let the gradient descent function become a dual-feature, that would make this section much more complicated, so I will skip this part here.
 
 $$
@@ -277,7 +277,7 @@ We just need to involve with feature $w$ .
   });
 </script>
 
-As the chart, this is the relationship b/w $w$ weight and $J(w)$ errors.  
+As the chart, this is the relationship between $w$ weight and $J(w)$ errors.  
 I meant to take out all the possibilities of $w$ to draw the chart, in actual training cases, its more like the system trying-error with each point's( $w$ ) value blindly.
 
 As you can see from the chart, when $w = [11.1, 11.2]$ is inside of this interval, we can find the smallest value of $J(w)$ .  
@@ -297,7 +297,7 @@ m &= (581.693 - 581.4066) / (11.2 - 11.1) \\
 $$
 
 With this slope as tool, it allows us to find out we should increase/decrease the value of $w$ in order to get minimum $J(w)$ .  
-No matter the slope is positive or negative, it always means we need to fixes reversely the value of $w$ in order to get a slope closes zero as many as possible.  
+No matter the slope is positive or negative, it always means we need to correct the value in the opposite direction the value of $w$ in order to get a slope closes zero as many as possible.  
   
 In math, to find a slope of any point on a smooth curve, we use differentiation.  
 $$
@@ -320,16 +320,16 @@ Thus, we found the gradient function which can help us make correction on parame
 
 #### Optimizing iteration rules
 By using gradient formula:$\dfrac{dJ}{dw} = \frac{2}{m}\sum_{i=1}^{m}(\hat{y}_i - y_i)x_i$  
-We can get a optimizer iteration rules:$w_{new} = w_{old} - \alpha \cdot \dfrac{dJ}{dw}$  
+We can get a optimizer's iteration rules:$w_{new} = w_{old} - \alpha \cdot \dfrac{dJ}{dw}$  
 
-Inside, $\alpha$ is a amplifying parameter, which controls learning speed and the stabilities of convergence.  
+Here, $\alpha$ is a learning rate, works like an amplifying parameter, which controls learning speed and the stability of convergence.  
 
 - $\alpha$ too big: Over-shooting:  
-    It cause training jumping b/w bottom of the curve, eventually cannot converge  
+    It causes training to jump back and forth near the bottom of the curve, eventually cannot converge  
 - $\alpha$ too small: Slow Convergence:  
-    Optimizer will learn in a very slow speed to find the best $w$ ,but it will time costly.  
+    Optimizer will learn in a very slow speed to find the best $w$ ,but it will be time-consuming.  
 
-In actual training $\alpha$ is called hyperparameter, it should be setup and manually tuning before training.  
+In actual training $\alpha$ is called a hyperparameter, it should be setup and manually tuning before training.  
 We won't talk about $\alpha$ here, becuz is comes with much more deep dive, we will skip this part here.  
 
 With optimizer in countless training(we called it epochs), $w$ will move toward the fastest decent direction with curve.  
@@ -392,11 +392,11 @@ b_{new} &= b_{old} - \alpha \cdot \dfrac{dJ}{db} \\
 $$
 In the end we can find a simple conclusion:  
 
-> The correction of $w$ effects by $x_i$, the input of the training data determines to fixing direction.  
-> and the fixes of $b$ only effected by the mean of total errors, $b$ only simply moves the whole regression function vertically.
+> The correction of $w$ is affected by $x_i$; the input of the training data determines the direction of correction.  
+> and the correction of $b$ is only affected by the mean of total errors, $b$ only simply moves the whole regression function vertically.
 
 ### Beside gradient descent?
-In math there is still another way calls normal equation can calculates the answer of $w_{best}$ in a row,  
+In math there is still another way called normal equation can calculate the answer of $w_{best}$ directly,  
 like OLS(Ordinary least squares), but in machine learning field, its almost not possible with such ideal environment,  
 Thus in this article, we did not mention such solutions above.  
 
@@ -404,11 +404,11 @@ Thus in this article, we did not mention such solutions above.
 MAE and MSE are all about collection errors, there is no plain answer to use which of them.  
 But more about the characteristic of training data and how you want the model performs.  
 
-MAE itself, effects by the absolute, the curve would be no smooth but continuously,  
+MAE itself, affected by the absolute, the curve would be non-smooth but continuous,  
 Which is not able to directly find the derivative of whole curve and apply to optimizer's iteration rules.  
-It have to use some technique like sub-gradient to deal with the non-differentiable point.  
-In practice there is something more to do with optimizer, we will skip this part at here.  
+It has to use some technique like sub-gradient to deal with the non-differentiable point.  
+In practice there is something more to do with optimizer, we will skip this part here.  
 
 ## Last
 This article discusses the simplest linear regression with MSE in machine learning field and its mathematic theory.  
-Its broad-wide out there of machine learning, by the change preparing AWS AI Practitioner(AIF-C01), just write this article to figure out some part I didn't understand much before, and also saving my pool Calculus...  
+Its broad-wide out there of machine learning, by the change preparing AWS AI Practitioner(AIF-C01), just write this article to figure out some part I didn't understand much before, and also helped me to brush up on my Calculus(or rescue my falling Calculus)...  
