@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.clo5de.info","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.17.1","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="簡單紀錄一下線性回歸跟一些數學。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linear Regression &amp; ist mathematic">
+<meta property="og:url" content="https://www.clo5de.info/2025/10/03/AI/linear-regression-and-its-math/index.html">
+<meta property="og:site_name" content="clooooode">
+<meta property="og:description" content="簡單紀錄一下線性回歸跟一些數學。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-10-03T21:21:56.000Z">
+<meta property="article:modified_time" content="2025-10-04T03:11:10.572Z">
+<meta property="article:author" content="clooooode">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="Machine Learning">
+<meta property="article:tag" content="Linear Regression">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.clo5de.info/2025/10/03/AI/linear-regression-and-its-math/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.clo5de.info/2025/10/03/AI/linear-regression-and-its-math/","path":"2025/10/03/AI/linear-regression-and-its-math/","title":"Linear Regression & ist mathematic"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Linear Regression & ist mathematic | clooooode</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">clooooode</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">a.k.a. clo5de</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-github"><a href="https://github.com/jackey8616" rel="section" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a></li><li class="menu-item menu-item-e-mail"><a href="mailto:clode@clo5de.info" rel="section" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a></li><li class="menu-item menu-item-linkedin"><a href="https://www.linkedin.com/in/ko-li-mo-294832118/" rel="section" target="_blank"><i class="fab fa-linkedin fa-fw"></i>LinkedIn</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#linear-regression%E7%B7%9A%E6%80%A7%E5%9B%9E%E6%AD%B8"><span class="nav-number">1.</span> <span class="nav-text">Linear Regression(線性回歸)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%BB%BA%E6%A8%A1"><span class="nav-number">2.</span> <span class="nav-text">如何建模</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#loss-function%E6%90%8D%E5%A4%B1%E5%87%BD%E6%95%B8"><span class="nav-number">3.</span> <span class="nav-text">Loss Function(損失函數)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BE%9E%E5%9C%96%E8%A1%A8%E6%8B%86%E8%A7%A3mse"><span class="nav-number">3.1.</span> <span class="nav-text">從圖表拆解MSE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mae-vs-mse"><span class="nav-number">3.2.</span> <span class="nav-text">MAE vs MSE</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#optimizer%E6%9C%80%E4%BD%B3%E5%8C%96%E5%99%A8"><span class="nav-number">4.</span> <span class="nav-text">Optimizer(最佳化器)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#gradient-descent%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D"><span class="nav-number">4.1.</span> <span class="nav-text">Gradient Descent(梯度下降)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%9C%E7%8E%87-%E5%BE%AE%E5%88%86"><span class="nav-number">4.1.1.</span> <span class="nav-text">斜率 &amp; 微分</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%80%E4%BD%B3%E5%8C%96%E8%BF%AD%E4%BB%A3%E8%A6%8F%E5%89%87"><span class="nav-number">4.1.2.</span> <span class="nav-text">最佳化迭代規則</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%80%E4%BB%A5-mae-or-mse"><span class="nav-number">5.</span> <span class="nav-text">所以 MAE or MSE?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%AB%E5%9C%A8%E6%9C%80%E5%BE%8C"><span class="nav-number">6.</span> <span class="nav-text">寫在最後</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="clooooode"
+      src="https://avatars1.githubusercontent.com/u/12930377?s=400&u=3e932a7f6b769a0e1028806815067be598db3351&v=4">
+  <p class="site-author-name" itemprop="name">clooooode</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">46</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/jackey8616" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;jackey8616" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:clode@clo5de.info" title="E-Mail → mailto:clode@clo5de.info" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.linkedin.com/in/ko-li-mo-294832118/" title="LinkedIn → https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;ko-li-mo-294832118&#x2F;" rel="noopener me" target="_blank"><i class="fab fa-linkedin fa-fw"></i></a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.clo5de.info/2025/10/03/AI/linear-regression-and-its-math/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars1.githubusercontent.com/u/12930377?s=400&u=3e932a7f6b769a0e1028806815067be598db3351&v=4">
+      <meta itemprop="name" content="clooooode">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="clooooode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Linear Regression & ist mathematic | clooooode">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Linear Regression & ist mathematic
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2025-10-03 21:21:56" itemprop="dateCreated datePublished" datetime="2025-10-03T21:21:56+00:00">2025-10-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2025-10-04 03:11:10" itemprop="dateModified" datetime="2025-10-04T03:11:10+00:00">2025-10-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/AI/" itemprop="url" rel="index"><span itemprop="name">AI</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/AI/Note/" itemprop="url" rel="index"><span itemprop="name">Note</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span class="firestore-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>簡單紀錄一下線性回歸跟一些數學。 <span id="more"></span></p>
+<h2 id="linear-regression線性回歸">Linear Regression(線性回歸)</h2>
+<p>TL;DR：以一批資料，歸納出趨勢，使用這個趨勢用來預測，就是線性回歸分析。</p>
+<blockquote>
+<p>舉例：一萬筆廣告支出跟對應產品的銷售額關係。</p>
+</blockquote>
+<p>回歸分析本質上是「建模(歸納出趨勢)」、「推論(使用趨勢來預測)」。<br />
+以剛才的例子來看，模型可以告訴我們，每增加一塊錢，可以帶來多少銷售額的影響。<br />
+下面會用最簡單的線性回歸來進行解釋。</p>
+<h2 id="如何建模">如何建模</h2>
+<ol type="1">
+<li><p>數學假設:建模的目的就是盡可能找出能夠貼近趨勢的方程式。<br />
+以單一特徵的線性回歸為例：<span class="math inline">\(\mathbf{h}(x) = w
+x + b\)</span><br />
+其中 <span class="math inline">\(x\)</span> 是變數(例如廣告支出)， <span
+class="math inline">\(\mathbf{h}(x)\)</span>
+是預測值(預測會有多少銷售額)，<br />
+而 <span class="math inline">\(w_1\)</span>(權重)以及 <span
+class="math inline">\(b\)</span>(偏置項)則是模型需要學習並且最佳化的參數。</p>
+<p>這個建模的前提是，廣告支出與銷售額之間「的確」具備線性關係。<br />
+如此一來，建模才有成功的可能。</p></li>
+<li><p>損失函數(Loss Function):損失函數用來量化訓練過程中的誤差。<br />
+根據這個誤差，可以調整模型訓練(調整權重還有偏置項)的方向。<br />
+例如訓練資料中, <span class="math inline">\(x = 1 時，y =
+9\)</span>，<br />
+但是實際訓練出來的結果是<span class="math inline">\(x = 1
+時，\mathbf{h}(x) = 7\)</span>，其中的 <span
+class="math inline">\(2\)</span> 就是誤差。</p>
+<blockquote>
+<p>誤差 = 實際值 - 預測值<br />
+所以這邊的計算是 9 (Actual Value) - 7(Predicted Value) = Residual</p>
+</blockquote>
+<p>誤差本身是可以接受的，因為「沒有絕對完美」的模型。<br />
+但是一但誤差過大成為了離散值，該怎麼樣歸納這些誤差並且利用起來，就是這個損失函數所要使用的工具。常見的方法均方差(Mean
+Square Error, MSE)。</p></li>
+<li><p>Optimizer(最佳化器):在訓練過程中逐步調整權重 透過Loss
+Function所提供的數學工具，使用合理的Optimizing
+Strategy，以達到下次迭代改變參數的目的，<br />
+進一步得到最理想並且符合訓練資料的參數，作為模型的最終樣態。</p></li>
+</ol>
+<h2 id="loss-function損失函數">Loss Function(損失函數)</h2>
+<p>MSE(Mean Square Error，均方差)： <span class="math display">\[
+\begin{align*}
+J_\mathbf{MSE} &amp;= \frac1{\mathbf{m}}\sum_{\mathbf{i}=1}^{\mathbf{m}}
+(y_{\mathbf{i}} - \mathbf{h}(x_{\mathbf{i}})) ^ 2 \\
+一般記作 \\
+J_\mathbf{MSE} &amp;= \frac1{\mathbf{m}}\sum_{\mathbf{i}=1}^{\mathbf{m}}
+(y_{\mathbf{i}} - \hat{y}_{\mathbf{i}}) ^ 2
+\end{align*}
+\]</span></p>
+<p>以下所有的預測值 <span
+class="math inline">\(\mathbf{h}(x_\mathbf{i})\)</span> 後續我們都用
+<span class="math inline">\(\hat{y}_{\mathbf{i}}\)</span> 來代替。</p>
+<p>Q: 為什麼MSE可以用來作為損失函數？</p>
+<blockquote>
+<p>我們希望可以找到一個函數，他可以計算整個訓練過程中的誤差，盡可能的讓誤差趨近於零，代表幾乎沒有錯誤。</p>
+</blockquote>
+<h3 id="從圖表拆解mse">從圖表拆解MSE</h3>
+<div id="mse" style="width: 100%; height: 500px;">
+
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var myChart = echarts.init(document.getElementById('mse'));
+    
+    // *** 高誤差的原始數據 (X: 时数, Y: 分数) ***
+    var rawData = [
+      [2, 50], [4, 65], [6, 50], [8, 90], [10, 75], [12, 160]
+    ];
+
+    // *** 最佳拟合回归函数 (假设: Y = 5X + 35) ***
+    function predict(x) {
+      return 5 * x + 35;
+    }
+
+    // --- 1. 计算残差线段数据 ---
+    var residualData = rawData.map(function(item) {
+      var x = item[0];
+      var actualY = item[1];
+      var predictedY = predict(x);
+      
+      // [x, 实际y, 预测y]
+      return [x, actualY, predictedY];
+    });
+    
+    // 2. 最佳拟合回歸線数据 (取范围端点)
+    var regressionLineData = [
+      [2, predict(2)],
+      [12, predict(12)]
+    ];
+
+    var option = {
+      backgroundColor: '#fff',
+      legend: {
+        data: ['原始數據', '回歸線', '誤差'],
+        bottom: 0
+      },
+      tooltip: {
+        trigger: 'axis',
+        formatter: function (params) {
+          if (params.seriesName === '原始數據') {
+            const data = params.value;
+            const predictedY = predict(data[0]);
+            const residual = (data[1] - predictedY).toFixed(1);
+            return `**学习时数:** ${data[0]}小时<br/>**实际分数:** ${data[1]}分<br/>**预测分数:** ${predictedY.toFixed(1)}分<br/>**残差 (誤差):** ${residual}分`;
+          }
+          return params.seriesName === '誤差' ? '' : params.name;
+        }
+      },
+      xAxis: {
+        type: 'value',
+        name: '廣告成本(萬)',
+        min: 0,
+        max: 14,
+        nameLocation: 'middle'
+      },
+      yAxis: {
+        type: 'value',
+        name: '銷售額成長(萬)',
+        min: 30,
+        max: 180,
+        nameLocation: 'middle'
+      },
+      series: [
+        // --- 1. 原始數據点 (散点图) ---
+        {
+          name: '原始數據',
+          type: 'scatter', 
+          data: rawData,
+          symbolSize: 15,
+          itemStyle: { color: '#007bff' }
+        },
+        // --- 2. 最佳拟合回歸線 ---
+        {
+          name: '回歸線',
+          type: 'line', 
+          data: regressionLineData,
+          symbol: 'none',
+          lineStyle: {
+            color: 'red',
+            width: 3,
+            type: 'solid'
+          }
+        },
+        // --- 3. 自定义系列：绘制残差线 (关键) ---
+        {
+          name: '誤差',
+          type: 'custom',
+          data: residualData,
+          renderItem: function (params, api) {
+            var xValue = api.value(0);
+            
+            // 将 (x, 实际y) 转换为屏幕坐标
+            var pointActual = api.coord([xValue, api.value(1)]);
+            // 将 (x, 预测y) 转换为屏幕坐标
+            var pointPredicted = api.coord([xValue, api.value(2)]);
+
+            // 绘制线段 (残差)
+            return {
+              type: 'line', 
+              shape: {
+                x1: pointActual[0], 
+                y1: pointActual[1], 
+                x2: pointPredicted[0], 
+                y2: pointPredicted[1] 
+              },
+              style: api.style({
+                // 根据残差的正负决定颜色，让效果更明显
+                stroke: api.value(1) > api.value(2) ? 'green' : 'orange', 
+                lineWidth: 2,
+                lineDash: [4, 4] // 虚线
+              })
+            };
+          }
+        }
+      ]
+    };
+
+    myChart.setOption(option);
+  });
+</script>
+<p>在圖表中可以看到：紅色線為某次訓練出的趨勢線，藍點表示實際資料( <span
+class="math inline">\(x_\mathbf{i}, y_\mathbf{i}\)</span>
+)，以x軸為變數，紅線上的每一個點就是該變數下的預測值( <span
+class="math inline">\(\mathbf{h}(x_\mathbf{i})\)</span> )。<br />
+這個例子我們有一些正誤差以及負誤差，訓練的目的是盡可能的減少這些誤差。<br />
+其中 <span class="math inline">\(\hat{y}_6\)</span>
+(預測值)跟實際數據的誤差巨大，我們稱之為離群值(Outlier)，會對於回歸線的訓練產生衝擊。</p>
+<p>以圖表為例由左至右，我們的誤差為： <span class="math display">\[
+\begin{align*}
+\mathbf{E}_\mathbf{i} &amp;= y_\mathbf{i} - \hat{y}_{\mathbf{i}} \\
+\mathbf{E}_1 &amp;= 50 - 45 = 5 \\
+\mathbf{E}_2 &amp;= 65 - 55 = 10 \\
+\mathbf{E}_3 &amp;= 50 - 65 = -15 \\
+\mathbf{E}_4 &amp;= 90 - 75 = 25 \\
+\mathbf{E}_5 &amp;= 75 - 85 = -10 \\
+\mathbf{E}_6 &amp;= 160 - 95 = 65
+\end{align*}
+\]</span>
+如果要計算平均誤差的話，一般做法是總和取平均(算術平均數):<br />
+<span class="math display">\[
+\frac{1}{\mathbf{m}}\sum_{\mathbf{m}=1}^{\mathbf{m}} E_{\mathbf{i}}
+\]</span><br />
+但是這個做法會有一個問題：<br />
+正負誤差會相互抵銷，所以我們必須想辦法避免掉這個抵銷。</p>
+<h3 id="mae-vs-mse">MAE vs MSE</h3>
+<p>在數學上，消除負號的方式不外乎兩種：取絕對值(Absolute)或者是平方(Square)。
+<span class="math display">\[
+\begin{align*}
+Mean Absolute Error, MAE &amp;=
+\frac{1}{\mathbf{m}}\sum_{\mathbf{m}=1}^{\mathbf{m}}
+\big|E_{\mathbf{i}}\big| \\
+Mean Square Error, MSE &amp;=
+\frac{1}{\mathbf{m}}\sum_{\mathbf{m}=1}^{\mathbf{m}} {E_{\mathbf{i}}}^2
+\end{align*}
+\]</span> 兩種方法，應該要用哪一種？<br />
+這個問題我們先保留，後續再回答。<br />
+在機器學習的應用數學上，沒有絕對的解，更多的是Trade-off。</p>
+<h2 id="optimizer最佳化器">Optimizer(最佳化器)</h2>
+<p>最佳化的目的是在於逐步改變 <span
+class="math inline">\(\mathbf{w}\)</span> 的數值，讓Loss
+Function的誤差越來越小，最好趨近於零。<br />
+在機器學習的領域裡面，通常最佳化器指的會是梯度最佳化器(Gradient-based
+optimizers)，<br />
+還有其他的最佳化策略，但是在這邊我們先不談論。</p>
+<h3 id="gradient-descent梯度下降">Gradient Descent(梯度下降)</h3>
+<p>梯度的本質就是函數的導數(Derivative)，它指向了當前位置增長最快的方向(上坡最陡峭)；<br />
+為了方便討論，接下來我會把預測函數 <span
+class="math inline">\(\hat{\mathbf{y}}_i\)</span>
+簡化，以單特徵的方式探討梯度下降的數學原理。 <span
+class="math display">\[
+\begin{align*}
+Before&amp;: \hat{\mathbf{y}}_i = wx + b \\
+After&amp;: \hat{\mathbf{y}}_i = wx
+\end{align*}
+\]</span> 這樣子就只需要討論特徵 <span class="math inline">\(w\)</span>
+即可。</p>
+<div id="jw_curve" style="width: 100%; height: 500px;">
+
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var myChart = echarts.init(document.getElementById('jw_curve'));
+
+    var rawData = [
+      [2, 50], [4, 65], [6, 50], [8, 90], [10, 75], [12, 160]
+    ];
+
+    function mse(w) {
+      let sum = 0;
+      for(let i = 0; i < rawData.length; i++) {
+        sum += (rawData[i][1] - w * rawData[i][0]) ** 2;
+      }
+      return sum / rawData.length;
+    }
+
+    function errorData() {
+      let data = [];
+      for (let i = -10; i <= 30; i += 0.1) {
+        data.push([i, mse(i)]);
+      }
+      return data;
+    }
+
+    var option = {
+      backgroundColor: '#fff',
+      xAxis: {
+        type: 'value',
+        name: 'W 權重'
+      },
+      yAxis: {
+        type: 'value',
+        name: 'J(w) 誤差'
+      },
+      tooltip: {
+        trigger: 'axis',
+      },
+      series: [
+        {
+          name: '誤差值',
+          type: 'line',
+          data: errorData(),
+          showSymbol: false,
+          clip: true,
+          itemStyle: { color: '#007bff' }
+        }
+      ],
+    };
+
+    myChart.setOption(option);
+  });
+</script>
+<p>如圖，這個是 <span class="math inline">\(w\)</span> 權重跟 <span
+class="math inline">\(J(w)\)</span> 之間的關係。<br />
+這一張是我故意窮舉了 <span class="math inline">\(w\)</span>
+的可能性所畫出來的圖，實際訓練的時候，會更像是盲人摸象的去試驗每一個點(
+<span class="math inline">\(w\)</span> )的值。</p>
+<p>圖中可以看到，在 <span class="math inline">\(w = [11.1,
+11.2]\)</span> 的這個區間，我們可以找到 <span
+class="math inline">\(J(w)\)</span> 最小的值。<br />
+在數學上，這個找函數最小值的方法，跟斜率有關係。</p>
+<h4 id="斜率-微分">斜率 &amp; 微分</h4>
+<p>透過計算曲線上的兩個點之間，Y座標的偏移量，可以得出兩點之間的斜率(趨勢)。<br />
+以 <span class="math inline">\(w_{best}\)</span> 為例，<span
+class="math inline">\(J(w)\)</span>最趨近於0(或是整個圖形的最小值)的
+<span class="math inline">\(w\)</span> 即為 <span
+class="math inline">\(w_{best}\)</span>： <span class="math display">\[
+\begin{align*}
+J(11.1) &amp;= 581.4066 \\
+J(11.2) &amp;= 581.693 \\
+m &amp;= (581.693 - 581.4066) / (11.2 - 11.1) \\
+&amp;= 0.2864 / 0.1 \\
+&amp;= 0.02864
+\end{align*}
+\]</span></p>
+<p>這個斜率的工具，可以幫助我們在已知數個點的狀況之下，得出我們應該要「增加/減少」<span
+class="math inline">\(w\)</span> 的值以達到最小 <span
+class="math inline">\(J(w)\)</span> 的目的。<br />
+無論得到的斜率是正還是負，都代表我們需要反向修正，進而嘗試得到斜率為零的
+<span class="math inline">\(w\)</span> 值。</p>
+<p>在數學上，針對一個平滑的函數圖形，找出任意點的斜率，我們會使用微分。<br />
+<span class="math display">\[
+\begin{align*}
+Let\space u &amp;= (Y_i - wX_i), f(u) = u ^ 2 \\
+J(w) &amp;= \frac{1}{m}\sum_{i=1}^{m}f(u) \\
+\dfrac{dJ}{dw} &amp;= \frac{1}{m}\sum_{i=1}^{m}\dfrac{df}{dw} \\
+\because \dfrac{df}{dw} &amp;= \dfrac{df}{du} \times \dfrac{du}{dw} \\
+&amp;= 2u \times \dfrac{d}{dw}(Y_i - wX_i) \\
+&amp;= 2u \times (0 - X_i) \\
+&amp;= 2(Y_i - wX_i) \times -X_i \\
+\therefore \dfrac{dJ}{dw} &amp;= \frac{1}{m}\sum_{i=1}^{m}2(Y_i -
+wX_i)(-X_i) \\
+&amp;= \frac{2}{m}\sum_{i=1}^{m}(- Y_i + wX_i)(X_i) \\
+&amp;= \frac{2}{m}\sum_{i=1}^{m}(wX_i - Y_i)(X_i) \\
+\because \hat{Y}_i &amp;= wX_i \\
+\therefore \dfrac{dJ}{dw} &amp;= \frac{2}{m}\sum_{i=1}^{m}(\hat{Y}_i -
+Y_i)X_i \\
+\end{align*}
+\]</span> 至此，我們找到了Loss Function所能夠為我們進行 <span
+class="math inline">\(w\)</span> 參數修正的依據工具：梯度公式。</p>
+<h4 id="最佳化迭代規則">最佳化迭代規則</h4>
+<p>透過梯度公式：<span class="math inline">\(\dfrac{dJ}{dw} =
+\frac{2}{m}\sum_{i=1}^{m}(\hat{Y}_i - Y_i)X_i\)</span><br />
+我們可以得到最佳化器的迭代規則：<span class="math inline">\(w_{new} =
+w_{old} - \alpha \cdot \dfrac{dJ}{dw}\)</span></p>
+<p>其中 <span class="math inline">\(\alpha\)</span>
+是一個放大參數，可以控制學習速度以及收斂(convergence)的穩定性。</p>
+<ul>
+<li><span class="math inline">\(\alpha\)</span>
+過大：Over-shooting:<br />
+這會導致模型訓練的結果在谷底反覆橫跳，始終無法收斂。<br />
+</li>
+<li><span class="math inline">\(\alpha\)</span> 過小：Slow
+Convergence:<br />
+Optimizer會以極慢的速度逐步找到最佳的 <span
+class="math inline">\(w\)</span> ，但是這個過程會花較長的訓練時間。</li>
+</ul>
+<p>在實際的訓練當中， <span class="math inline">\(\alpha\)</span> 被稱為
+超參數(Hyperparameter)，在模型開始訓練前手動設定以及提整。</p>
+<p>最佳化器在無數次的訓練中(我們稱爲epochs)， <span
+class="math inline">\(w\)</span> 會隨著曲面下降最快的方向移動。<br />
+最終會讓 <span class="math inline">\(J(w)\)</span>
+的值趨於穩定，我們稱為收斂(Convergence)，此時的 <span
+class="math inline">\(w\)</span> 即為 <span
+class="math inline">\(w_{best}\)</span>。<br />
+則：</p>
+<p><span class="math display">\[
+\hat{y} = w_{best}x
+\]</span></p>
+<h2 id="所以-mae-or-mse">所以 MAE or MSE?</h2>
+<p>在本質上MAE跟MSE都是收集錯誤的方法，並沒有分對錯；<br />
+更多的只是訓練資料的特性，還有期望模型的表現。</p>
+<p>MAE本身，因為絕對值的緣故其所畫出來的圖形是不平滑但連續，<br />
+這樣的圖形是沒有辦法直接用微分的數學工具，直接讓Optimizer的迭代規則所使用。</p>
+<p>實務上會再需要做進一步的數學處理，這邊礙於篇幅以及細節複雜，就不多贅述了。</p>
+<h2 id="寫在最後">寫在最後</h2>
+<p>這邊文章只是單純以機器學習中最簡單的線性回歸搭配MSE來探討其背後的數學原理。<br />
+機器學習的世界還很廣闊，以準備AWS AI
+Practitioner(AIF-C01)為契機，剛好來釐清以前不太懂的部分(還有撿回三修死當的微積分Orz)…</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/AI/" rel="tag"># AI</a>
+              <a href="/tags/Machine-Learning/" rel="tag"># Machine Learning</a>
+              <a href="/tags/Linear-Regression/" rel="tag"># Linear Regression</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/04/30/note/MatMul_zhTW/" rel="prev" title="MatMul: Matrix Multiplication">
+                  <i class="fa fa-chevron-left"></i> MatMul: Matrix Multiplication
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2018 – 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">clooooode</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.23.0/firebase-app-compat.js" integrity="sha256-FYa4Xn7MJlI18eIkwawbRKLz7bGeUODtNpSR+bsjlHg=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.23.0/firebase-firestore-compat.js" integrity="sha256-sgbLcRGF3ph6N+ymg9zoy9kFQDWBvJlCd0GbGMKBH0c=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="firestore" type="application/json">{"enable":true,"collection":"articles","apiKey":"AIzaSyCu9-MhzikdJ0BVgPRODV__hMffyr5bgZg","projectId":"clo5de-githubpage"}</script>
+  <script src="/js/third-party/statistics/firestore.js"></script>
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+</body>
+</html>
