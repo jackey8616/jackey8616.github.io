@@ -1,5 +1,5 @@
 ---
-title: Linear Regression & ist mathematic
+title: Linear Regression & its mathematic
 date: 2025-10-03 21:21:56
 tags:
   - AI
