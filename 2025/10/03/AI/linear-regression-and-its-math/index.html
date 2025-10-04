@@ -28,7 +28,7 @@
 <meta property="og:description" content="簡單紀錄一下線性回歸跟一些數學。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-10-03T21:21:56.000Z">
-<meta property="article:modified_time" content="2025-10-04T03:26:48.424Z">
+<meta property="article:modified_time" content="2025-10-04T03:37:40.834Z">
 <meta property="article:author" content="clooooode">
 <meta property="article:tag" content="AI">
 <meta property="article:tag" content="Machine Learning">
@@ -216,7 +216,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-10-04 03:26:48" itemprop="dateModified" datetime="2025-10-04T03:26:48+00:00">2025-10-04</time>
+      <time title="Modified: 2025-10-04 03:37:40" itemprop="dateModified" datetime="2025-10-04T03:37:40+00:00">2025-10-04</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -469,11 +469,18 @@ optimizers)，<br />
 <p>梯度的本質就是函數的導數(Derivative)，它指向了當前位置增長最快的方向(上坡最陡峭)；<br />
 為了方便討論，接下來我會把預測函數 <span
 class="math inline">\(\hat{y}_i\)</span>
-簡化，以單特徵的方式探討梯度下降的數學原理。 <span
-class="math display">\[
+簡化，以單特徵的方式探討梯度下降的數學原理。</p>
+<blockquote>
+<p>令 <span class="math inline">\(b = 0\)</span>
+的做法，在此只是方便我們以單特徵的方式探討，實務上幾乎不會有這麼理想的狀況。
+<span class="math inline">\(b != 0\)</span>
+在此會讓梯度下降的公式需要針對兩個特徵進行偏微分，會讓整篇文章過於複雜，所以在此簡略帶過。</p>
+</blockquote>
+<p><span class="math display">\[
 \begin{align*}
-Before&amp;: \hat{y}_i = wx + b \\
-After&amp;: \hat{y}_i = wx
+\because Let\space b &amp;= 0 \\
+\therefore \hat{y}_i &amp;= wx + 0 \\
+&amp;= wx
 \end{align*}
 \]</span> 這樣子就只需要討論特徵 <span class="math inline">\(w\)</span>
 即可。</p>
@@ -542,7 +549,7 @@ class="math inline">\(J(w)\)</span> 之間的關係。<br />
 class="math inline">\(J(w)\)</span> 最小的值。<br />
 在數學上，這個找函數最小值的方法，跟斜率有關係。</p>
 <h4 id="斜率-微分">斜率 &amp; 微分</h4>
-<p>透過計算曲線上的兩個點之間，Y座標的偏移量，可以得出兩點之間的斜率(趨勢)。<br />
+<p>透過計算曲線上的兩個點之間，y座標的偏移量，可以得出兩點之間的斜率(趨勢)。<br />
 以 <span class="math inline">\(w_{best}\)</span> 為例，<span
 class="math inline">\(J(w)\)</span>最趨近於0(或是整個圖形的最小值)的
 <span class="math inline">\(w\)</span> 即為 <span
@@ -563,26 +570,26 @@ class="math inline">\(J(w)\)</span> 的目的。<br />
 <p>在數學上，針對一個平滑的函數圖形，找出任意點的斜率，我們會使用微分。<br />
 <span class="math display">\[
 \begin{align*}
-Let\space u &amp;= (Y_i - wX_i), f(u) = u ^ 2 \\
+Let\space u &amp;= (y_i - wx_i), f(u) = u ^ 2 \\
 J(w) &amp;= \frac{1}{m}\sum_{i=1}^{m}f(u) \\
 \dfrac{dJ}{dw} &amp;= \frac{1}{m}\sum_{i=1}^{m}\dfrac{df}{dw} \\
 \because \dfrac{df}{dw} &amp;= \dfrac{df}{du} \times \dfrac{du}{dw} \\
-&amp;= 2u \times \dfrac{d}{dw}(Y_i - wX_i) \\
-&amp;= 2u \times (0 - X_i) \\
-&amp;= 2(Y_i - wX_i) \times -X_i \\
-\therefore \dfrac{dJ}{dw} &amp;= \frac{1}{m}\sum_{i=1}^{m}2(Y_i -
-wX_i)(-X_i) \\
-&amp;= \frac{2}{m}\sum_{i=1}^{m}(- Y_i + wX_i)(X_i) \\
-&amp;= \frac{2}{m}\sum_{i=1}^{m}(wX_i - Y_i)(X_i) \\
-\because \hat{Y}_i &amp;= wX_i \\
-\therefore \dfrac{dJ}{dw} &amp;= \frac{2}{m}\sum_{i=1}^{m}(\hat{Y}_i -
-Y_i)X_i \\
+&amp;= 2u \times \dfrac{d}{dw}(y_i - wx_i) \\
+&amp;= 2u \times (0 - x_i) \\
+&amp;= 2(y_i - wx_i) \times -x_i \\
+\therefore \dfrac{dJ}{dw} &amp;= \frac{1}{m}\sum_{i=1}^{m}2(y_i -
+wx_i)(-x_i) \\
+&amp;= \frac{2}{m}\sum_{i=1}^{m}(- y_i + wx_i)(x_i) \\
+&amp;= \frac{2}{m}\sum_{i=1}^{m}(wx_i - y_i)(x_i) \\
+\because \hat{y}_i &amp;= wx_i \\
+\therefore \dfrac{dJ}{dw} &amp;= \frac{2}{m}\sum_{i=1}^{m}(\hat{y}_i -
+y_i)x_i \\
 \end{align*}
 \]</span> 至此，我們找到了Loss Function所能夠為我們進行 <span
 class="math inline">\(w\)</span> 參數修正的依據工具：梯度公式。</p>
 <h4 id="最佳化迭代規則">最佳化迭代規則</h4>
 <p>透過梯度公式：<span class="math inline">\(\dfrac{dJ}{dw} =
-\frac{2}{m}\sum_{i=1}^{m}(\hat{Y}_i - Y_i)X_i\)</span><br />
+\frac{2}{m}\sum_{i=1}^{m}(\hat{y}_i - y_i)x_i\)</span><br />
 我們可以得到最佳化器的迭代規則：<span class="math inline">\(w_{new} =
 w_{old} - \alpha \cdot \dfrac{dJ}{dw}\)</span></p>
 <p>其中 <span class="math inline">\(\alpha\)</span>
@@ -598,7 +605,9 @@ Optimizer會以極慢的速度逐步找到最佳的 <span
 class="math inline">\(w\)</span> ，但是這個過程會花較長的訓練時間。</li>
 </ul>
 <p>在實際的訓練當中， <span class="math inline">\(\alpha\)</span> 被稱為
-超參數(Hyperparameter)，在模型開始訓練前手動設定以及提整。</p>
+超參數(Hyperparameter)，在模型開始訓練前手動設定以及調整。<br />
+我們不會在這裡多講 <span class="math inline">\(\alpha\)</span>
+，因為涉及了更深入的理論，在此處暫時不提。</p>
 <p>最佳化器在無數次的訓練中(我們稱爲epochs)， <span
 class="math inline">\(w\)</span> 會隨著曲面下降最快的方向移動。<br />
 最終會讓 <span class="math inline">\(J(w)\)</span>
