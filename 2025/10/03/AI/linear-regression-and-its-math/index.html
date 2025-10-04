@@ -28,7 +28,7 @@
 <meta property="og:description" content="Simply records something about linear regression and its mathematics. [zhTW version]">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-10-03T21:21:56.000Z">
-<meta property="article:modified_time" content="2025-10-04T07:33:21.312Z">
+<meta property="article:modified_time" content="2025-10-04T07:48:30.962Z">
 <meta property="article:author" content="clooooode">
 <meta property="article:tag" content="AI">
 <meta property="article:tag" content="Machine Learning">
@@ -116,7 +116,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#linear-regression"><span class="nav-number">1.</span> <span class="nav-text">Linear Regression</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#how-to-modeling"><span class="nav-number">2.</span> <span class="nav-text">How to modeling</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#loss-function"><span class="nav-number">3.</span> <span class="nav-text">Loss Function</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#de-assemble-mse-by-chart"><span class="nav-number">3.1.</span> <span class="nav-text">De-assemble MSE by chart</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mae-vs-mse"><span class="nav-number">3.2.</span> <span class="nav-text">MAE vs MSE</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#optimizer"><span class="nav-number">4.</span> <span class="nav-text">Optimizer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#gradient-descent"><span class="nav-number">4.1.</span> <span class="nav-text">Gradient Descent</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#slope-differentiation"><span class="nav-number">4.1.1.</span> <span class="nav-text">Slope &amp; Differentiation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#optimizing-iteration-rules"><span class="nav-number">4.1.2.</span> <span class="nav-text">Optimizing iteration rules</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#massive-calculate-bonus-dual-feature-gradient-descent"><span class="nav-number">4.2.</span> <span class="nav-text">!Massive
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#linear-regression"><span class="nav-number">1.</span> <span class="nav-text">Linear Regression</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#how-to-build-model"><span class="nav-number">2.</span> <span class="nav-text">How to build model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#loss-function"><span class="nav-number">3.</span> <span class="nav-text">Loss Function</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#de-assemble-mse-by-chart"><span class="nav-number">3.1.</span> <span class="nav-text">De-assemble MSE by chart</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mae-vs-mse"><span class="nav-number">3.2.</span> <span class="nav-text">MAE vs MSE</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#optimizer"><span class="nav-number">4.</span> <span class="nav-text">Optimizer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#gradient-descent"><span class="nav-number">4.1.</span> <span class="nav-text">Gradient Descent</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#slope-differentiation"><span class="nav-number">4.1.1.</span> <span class="nav-text">Slope &amp; Differentiation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#optimizing-iteration-rules"><span class="nav-number">4.1.2.</span> <span class="nav-text">Optimizing iteration rules</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#massive-calculate-bonus-dual-feature-gradient-descent"><span class="nav-number">4.2.</span> <span class="nav-text">!Massive
 Calculate! Bonus: Dual-feature gradient descent</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#beside-gradient-descent"><span class="nav-number">4.3.</span> <span class="nav-text">Beside gradient descent?</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#so-mae-or-mse"><span class="nav-number">5.</span> <span class="nav-text">So MAE or MSE?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#last"><span class="nav-number">6.</span> <span class="nav-text">Last</span></a></li></ol></div>
         </div>
         <!--/noindex-->
@@ -217,7 +217,7 @@ Calculate! Bonus: Dual-feature gradient descent</span></a></li><li class="nav-it
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-10-04 07:33:21" itemprop="dateModified" datetime="2025-10-04T07:33:21+00:00">2025-10-04</time>
+      <time title="Modified: 2025-10-04 07:48:30" itemprop="dateModified" datetime="2025-10-04T07:48:30+00:00">2025-10-04</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -257,28 +257,30 @@ version]</a> <span id="more"></span></p>
 <p>TL;DR: with a batch of data, find the trend, use the trend to
 predict, this is linear regression analysis.</p>
 <blockquote>
-<p>For example: 10k of data in relationship b/w advertising budget and
-sales revenue.</p>
+<p>For example: 10k of data in relationship between advertising budget
+and sales revenue.</p>
 </blockquote>
-<p>Essence of regression analysis is modeling and predicting.<br />
+<p>Essence of regression analysis is model building and inference(or
+prediction).<br />
 Take above example, model can tell us, each time we increases a dollar
 in advertising, can brings how much impact to the revenue.<br />
 I will use the simplest linear regression to explain.</p>
 <blockquote>
 <p>In order to let model work properly, we will assume there is some
-kind of linear relationship b/w advertising budge and revenue.<br />
+kind of linear relationship between advertising budget and
+revenue.<br />
 Which means, if you spend more money on advertising, revenue will
 roughly increases.(Not exactly correct, but we assume this trends
 works)<br />
-Besides, we also assume each data is independents(the sales revenue
-would not effected by previous weeks), and model’s predict error would
-not getting bigger or smaller base on advertising budget.</p>
+Besides, we also assume each data point is independent(the sales revenue
+would not be effected by previous weeks), and model’s predict error
+would not getting bigger or smaller based on advertising budget.</p>
 <p>These assumptions helps us to use simple way to learn how a effective
 model works.<br />
 Of course, reality work would not always follow these assumptions, but
 we can understand the foundations of a model.</p>
 </blockquote>
-<h2 id="how-to-modeling">How to modeling</h2>
+<h2 id="how-to-build-model">How to build model</h2>
 <ol type="1">
 <li><p>Mathematic assumption: the purpose of modeling is to find out a
 formula as close as possible to the trend.<br />
@@ -453,8 +455,8 @@ Mean):<br />
 <span class="math display">\[
 \frac{1}{m}\sum_{m=1}^{m} E_{i}
 \]</span> This bring a problem:<br />
-Positive and negative error will discharged, thus we need to find
-another way to avoid the discharge.</p>
+Positive and negative error will cancel each other out(or offset), thus
+we need to find another way to avoid the discharge.</p>
 <h3 id="mae-vs-mse">MAE vs MSE</h3>
 <p>In match, common way to remove negative value is by take absolute or
 square. <span class="math display">\[
@@ -465,7 +467,8 @@ Mean Square Error, MSE &amp;= \frac{1}{m}\sum_{m=1}^{m} {E_{i}}^2
 \end{align*}
 \]</span> Two way, which one should we use?<br />
 We keep this problem for now, I will answer later.<br />
-In the applied math in machine learning, there is no plain answer.</p>
+In the applied math in machine learning, there is single correct answer;
+it’s more about trade-offs.</p>
 <h2 id="optimizer">Optimizer</h2>
 <p>The purpose of optimizing is to gradually change the value of <span
 class="math inline">\(w\)</span> in order to reduce the error from loss
@@ -475,8 +478,8 @@ optimizers,<br />
 there is more other optimizing strategy, but we won’t discuss in this
 article.</p>
 <h3 id="gradient-descent">Gradient Descent</h3>
-<p>Essence of gradient is derivative, it points to the fastest growth
-direction at current position(steepest uphill),<br />
+<p>Essence of a gradient is the derivative, it points to the fastest
+growth direction at current position(steepest uphill),<br />
 In order to make it easier to understand the mathematic theory, I will
 simplify the predict function <span
 class="math inline">\(\hat{y}_i\)</span> into a single-feature
@@ -552,7 +555,7 @@ class="math inline">\(w\)</span> .</p>
     myChart.setOption(option);
   });
 </script>
-<p>As the chart, this is the relationship b/w <span
+<p>As the chart, this is the relationship between <span
 class="math inline">\(w\)</span> weight and <span
 class="math inline">\(J(w)\)</span> errors.<br />
 I meant to take out all the possibilities of <span
@@ -611,7 +614,7 @@ by out loss function.</p>
 <h4 id="optimizing-iteration-rules">Optimizing iteration rules</h4>
 <p>By using gradient formula:<span class="math inline">\(\dfrac{dJ}{dw}
 = \frac{2}{m}\sum_{i=1}^{m}(\hat{y}_i - y_i)x_i\)</span><br />
-We can get a optimizer iteration rules:<span
+We can get a optimizer’s iteration rules:<span
 class="math inline">\(w_{new} = w_{old} - \alpha \cdot
 \dfrac{dJ}{dw}\)</span></p>
 <p>Inside, <span class="math inline">\(\alpha\)</span> is a amplifying
@@ -620,8 +623,8 @@ convergence.</p>
 <ul>
 <li><span class="math inline">\(\alpha\)</span> too big:
 Over-shooting:<br />
-It cause training jumping b/w bottom of the curve, eventually cannot
-converge<br />
+It cause training to jump back and forth near the bottom of the curve,
+eventually cannot converge<br />
 </li>
 <li><span class="math inline">\(\alpha\)</span> too small: Slow
 Convergence:<br />
@@ -629,7 +632,7 @@ Optimizer will learn in a very slow speed to find the best <span
 class="math inline">\(w\)</span> ,but it will time costly.</li>
 </ul>
 <p>In actual training <span class="math inline">\(\alpha\)</span> is
-called hyperparameter, it should be setup and manually tuning before
+called a hyperparameter, it should be setup and manually tuning before
 training.<br />
 We won’t talk about <span class="math inline">\(\alpha\)</span> here,
 becuz is comes with much more deep dive, we will skip this part
@@ -703,12 +706,13 @@ b_{new} &amp;= b_{old} - \alpha \cdot \dfrac{dJ}{db} \\
 \end{align*}
 \]</span> In the end we can find a simple conclusion:</p>
 <blockquote>
-<p>The correction of <span class="math inline">\(w\)</span> effects by
-<span class="math inline">\(x_i\)</span>, the input of the training data
-determines to fixing direction.<br />
-and the fixes of <span class="math inline">\(b\)</span> only effected by
-the mean of total errors, <span class="math inline">\(b\)</span> only
-simply moves the whole regression function vertically.</p>
+<p>The correction of <span class="math inline">\(w\)</span> is affected
+by <span class="math inline">\(x_i\)</span>, the input of the training
+data determines the direction of correction.<br />
+and the correction of <span class="math inline">\(b\)</span> is only
+affected by the mean of total errors, <span
+class="math inline">\(b\)</span> only simply moves the whole regression
+function vertically.</p>
 </blockquote>
 <h3 id="beside-gradient-descent">Beside gradient descent?</h3>
 <p>In math there is still another way calls normal equation can
@@ -735,8 +739,8 @@ this part at here.</p>
 machine learning field and its mathematic theory.<br />
 Its broad-wide out there of machine learning, by the change preparing
 AWS AI Practitioner(AIF-C01), just write this article to figure out some
-part I didn’t understand much before, and also saving my pool
-Calculus…</p>
+part I didn’t understand much before, and also helped me to brush up on
+my Calculus(or retrieve my falling Calculus)…</p>
 
     </div>
 
