@@ -28,7 +28,7 @@
 <meta property="og:description" content="Simply recording something about linear regression and its mathematics. [zhTW version]">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-10-03T21:21:56.000Z">
-<meta property="article:modified_time" content="2025-10-04T08:06:23.462Z">
+<meta property="article:modified_time" content="2025-10-04T08:29:01.788Z">
 <meta property="article:author" content="clooooode">
 <meta property="article:tag" content="AI">
 <meta property="article:tag" content="Machine Learning">
@@ -217,7 +217,7 @@ Calculate! Bonus: Dual-feature gradient descent</span></a></li><li class="nav-it
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-10-04 08:06:23" itemprop="dateModified" datetime="2025-10-04T08:06:23+00:00">2025-10-04</time>
+      <time title="Modified: 2025-10-04 08:29:01" itemprop="dateModified" datetime="2025-10-04T08:29:01+00:00">2025-10-04</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -257,20 +257,20 @@ version]</a> <span id="more"></span></p>
 <p>TL;DR: with a batch of data, find the trend, use the trend to
 predict, this is linear regression analysis.</p>
 <blockquote>
-<p>For example: 10k of data in relationship between advertising budget
-and sales revenue.</p>
+<p>For example: 10,000 of data in relationship between advertising
+budget and sales revenue.</p>
 </blockquote>
 <p>Essence of regression analysis is model building and inference(or
 prediction).<br />
 Take above example, model can tell us, each time we increase a dollar in
-advertising, it can bring how much impact to the revenue.<br />
+advertising, it can bring how much impact on revenue.<br />
 I will use the simplest linear regression to explain.</p>
 <blockquote>
-<p>In order to let model work properly, we will assume there is some
+<p>In order for the model to work properly, we will assume there is some
 kind of linear relationship between advertising budget and
 revenue.<br />
 Which means, if you spend more money on advertising, revenue will
-roughly increases.(Not exactly correct, but we assume this trends
+roughly increases.(Not exactly correct, but we assume this trend
 works)<br />
 Besides, we also assume each data point is independent(the sales revenue
 would not be effected by previous weeks), and model’s predict error
@@ -298,8 +298,8 @@ class="math inline">\(b\)</span>(bias) is the parameters model needs to
 learn and optimize.</p></li>
 <li><p>Loss Function: measure the error during the training
 process.<br />
-Base on the error, we can tune the training direction(by changing weight
-and bias).<br />
+Based on the error, we can tune the training direction(by changing
+weight and bias).<br />
 For example, inside the training data, <span class="math inline">\(x =
 1, y = 9\)</span>，<br />
 But the predict value from model is <span class="math inline">\(x = 1,
@@ -314,7 +314,7 @@ But once an error is too big and become an outlier, how to aggregate and
 utilize these errors is precisely the function of the Loss Function. The
 common way in Loss Function is MSE(Mean Square Error).</p></li>
 <li><p>Optimizer: tune the parameter during the training process By
-using loss function with proper optimizing strategy to archive the goal
+using loss function with proper optimizing strategy to achieve the goal
 of changing parameter in next iteration.</p></li>
 </ol>
 <h2 id="loss-function">Loss Function</h2>
@@ -618,9 +618,9 @@ by out loss function.</p>
 We can get a optimizer’s iteration rules:<span
 class="math inline">\(w_{new} = w_{old} - \alpha \cdot
 \dfrac{dJ}{dw}\)</span></p>
-<p>Inside, <span class="math inline">\(\alpha\)</span> is a amplifying
-parameter, which controls learning speed and the stabilities of
-convergence.</p>
+<p>Here, <span class="math inline">\(\alpha\)</span> is a learning rate,
+works like an amplifying parameter, which controls learning speed and
+the stabilities of convergence.</p>
 <ul>
 <li><span class="math inline">\(\alpha\)</span> too big:
 Over-shooting:<br />
@@ -727,14 +727,14 @@ Thus in this article, we did not mention such solutions above.</p>
 to use which of them.<br />
 But more about the characteristic of training data and how you want the
 model performs.</p>
-<p>MAE itself, effects by the absolute, the curve would be no smooth but
-continuously,<br />
+<p>MAE itself, affected by the absolute, the curve would be non-smooth
+but continuous,<br />
 Which is not able to directly find the derivative of whole curve and
 apply to optimizer’s iteration rules.<br />
 It has to use some technique like sub-gradient to deal with the
 non-differentiable point.<br />
 In practice there is something more to do with optimizer, we will skip
-this part at here.</p>
+this part here.</p>
 <h2 id="last">Last</h2>
 <p>This article discusses the simplest linear regression with MSE in
 machine learning field and its mathematic theory.<br />
