@@ -6,6 +6,7 @@ hidden: true
 tags:
   - AI
   - Machine Learning
+  - Regression Analysis
   - Linear Regression
 mathjax: true
 ---
