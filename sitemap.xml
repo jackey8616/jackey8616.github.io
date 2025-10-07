@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://www.clo5de.info/tags/index.html</loc>
+    <loc>https://www.clo5de.info/milestone/index.html</loc>
     
     <lastmod>2025-10-07</lastmod>
     
@@ -11,7 +11,7 @@
   </url>
   
   <url>
-    <loc>https://www.clo5de.info/milestone/index.html</loc>
+    <loc>https://www.clo5de.info/tags/index.html</loc>
     
     <lastmod>2025-10-07</lastmod>
     
@@ -39,6 +39,24 @@
   
   <url>
     <loc>https://www.clo5de.info/2018/04/10/tutorial/Django/</loc>
+    
+    <lastmod>2025-10-07</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.clo5de.info/2019/04/25/note/OS/ch5/</loc>
+    
+    <lastmod>2025-10-07</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.clo5de.info/2019/05/15/note/OS/ch6/</loc>
     
     <lastmod>2025-10-07</lastmod>
     
@@ -93,6 +111,15 @@
   
   <url>
     <loc>https://www.clo5de.info/categories/index.html</loc>
+    
+    <lastmod>2025-10-07</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.clo5de.info/2018/05/24/CTF/x86-64-Register/</loc>
     
     <lastmod>2025-10-07</lastmod>
     
@@ -227,7 +254,7 @@
   </url>
   
   <url>
-    <loc>https://www.clo5de.info/2019/04/25/note/OS/ch5/</loc>
+    <loc>https://www.clo5de.info/2018/08/02/CTF/pwnable-kr/Toddlers_Bottle/8-leg/</loc>
     
     <lastmod>2025-10-07</lastmod>
     
@@ -236,7 +263,16 @@
   </url>
   
   <url>
-    <loc>https://www.clo5de.info/2019/05/15/note/OS/ch6/</loc>
+    <loc>https://www.clo5de.info/2018/10/23/CTF/pwnable-kr/Toddlers_Bottle/9-mistake/</loc>
+    
+    <lastmod>2025-10-07</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.clo5de.info/2023/08/01/COSCUP/coscup-2023/</loc>
     
     <lastmod>2025-10-07</lastmod>
     
@@ -264,15 +300,6 @@
   
   <url>
     <loc>https://www.clo5de.info/2018/06/01/CTF/Into-X86/</loc>
-    
-    <lastmod>2025-10-07</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.clo5de.info/2018/05/24/CTF/x86-64-Register/</loc>
     
     <lastmod>2025-10-07</lastmod>
     
@@ -371,24 +398,6 @@
   </url>
   
   <url>
-    <loc>https://www.clo5de.info/2018/08/02/CTF/pwnable-kr/Toddlers_Bottle/8-leg/</loc>
-    
-    <lastmod>2025-10-07</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.clo5de.info/2018/10/23/CTF/pwnable-kr/Toddlers_Bottle/9-mistake/</loc>
-    
-    <lastmod>2025-10-07</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://www.clo5de.info/2018/06/03/CTF/AIS3/2018/pre_exam/AIS3-2018-First-Try/</loc>
     
     <lastmod>2025-10-07</lastmod>
@@ -442,15 +451,6 @@
     <priority>0.6</priority>
   </url>
   
-  <url>
-    <loc>https://www.clo5de.info/2023/08/01/COSCUP/coscup-2023/</loc>
-    
-    <lastmod>2025-10-07</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
 
   <url>
     <loc>https://www.clo5de.info/</loc>
@@ -469,6 +469,13 @@
   
   <url>
     <loc>https://www.clo5de.info/tags/Machine-Learning/</loc>
+    <lastmod>2025-10-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.clo5de.info/tags/Regression-Analysis/</loc>
     <lastmod>2025-10-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
