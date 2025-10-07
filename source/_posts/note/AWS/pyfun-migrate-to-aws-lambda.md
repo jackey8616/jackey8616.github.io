@@ -9,11 +9,12 @@ tags:
   - PyFun
 ---
 
-![](/images/note/AWS/pyfun-migrate-to-aws-lambda/structure.svg)
-<center>Migrating a Sanic backend from Linode VPC to AWS Lambda.</center>
+![](/images/note/AWS/pyfun-migrate-to-aws-lambda/structure.svg) 
+<center>Migrating a Sanic backend from Linode VPC to AWS Lambda.</center>  
+<center>
+{% post_link note/AWS/pyfun-migrate-to-aws-lambda_zhTW '>> [zhTW version] <<' %}  
+</center>
 <!-- More -->
-
-[[zhTW version]](/2024/04/19/note/AWS/pyfun-migrate-to-aws-lambda_zhTW)
 
 # Opening
 Recently I want to close my Linode VPC, although it only took me 5 USD/mo.

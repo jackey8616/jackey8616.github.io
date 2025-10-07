@@ -1,13 +1,12 @@
 ---
 title: Linear Regression & its mathematic(zhTW)
 date: 2025-10-03 21:21:56
+categories: AI
+hidden: true
 tags:
   - AI
   - Machine Learning
   - Linear Regression
-categories:
-  - AI
-  - Note
 mathjax: true
 ---
 
