@@ -2,7 +2,7 @@
 title: Logistic Regression & its mathematic(zhTW)
 date: 2025-10-07 15:32:20
 categories: AI
-hidden: false
+hidden: true
 tags:
   - AI
   - Machine Learning
