@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.clo5de.info","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.17.1","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":true,"nav":null,"activeClass":"utterances"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":10,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="This time lets talk about Logistic Regression. Need readers with some concept of natural logarithm. &gt;&gt; [zhTW version] &lt;&lt;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Logistic Regression &amp; its mathematic">
+<meta property="og:url" content="https://www.clo5de.info/2025/10/07/AI/logistic-regression-and-its-math/index.html">
+<meta property="og:site_name" content="clooooode">
+<meta property="og:description" content="This time lets talk about Logistic Regression. Need readers with some concept of natural logarithm. &gt;&gt; [zhTW version] &lt;&lt;">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-10-07T15:32:20.000Z">
+<meta property="article:modified_time" content="2025-10-08T09:30:15.792Z">
+<meta property="article:author" content="clooooode">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="Machine Learning">
+<meta property="article:tag" content="Regression Analysis">
+<meta property="article:tag" content="Logistic Regression">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.clo5de.info/2025/10/07/AI/logistic-regression-and-its-math/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.clo5de.info/2025/10/07/AI/logistic-regression-and-its-math/","path":"2025/10/07/AI/logistic-regression-and-its-math/","title":"Logistic Regression & its mathematic"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Logistic Regression & its mathematic | clooooode</title>
+  
+
+
+
+
+
+
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NGLBLXHD');</script>
+<!-- End Google Tag Manager -->
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGLBLXHD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">clooooode</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">a.k.a. clo5de</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-github"><a href="https://github.com/jackey8616" rel="section" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a></li><li class="menu-item menu-item-e-mail"><a href="mailto:clode@clo5de.info" rel="section" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a></li><li class="menu-item menu-item-linkedin"><a href="https://www.linkedin.com/in/ko-li-mo-294832118/" rel="section" target="_blank"><i class="fab fa-linkedin fa-fw"></i>LinkedIn</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#logistic-regression"><span class="nav-number">1.</span> <span class="nav-text">Logistic Regression</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mathematical-assumption"><span class="nav-number">2.</span> <span class="nav-text">Mathematical assumption</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#definition-of-linear-algebra"><span class="nav-number">2.1.</span> <span class="nav-text">Definition of linear algebra</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#possibility"><span class="nav-number">2.2.</span> <span class="nav-text">Possibility</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#odds"><span class="nav-number">2.2.1.</span> <span class="nav-text">Odds</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#log-odds"><span class="nav-number">2.2.2.</span> <span class="nav-text">Log-Odds</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sigmoid"><span class="nav-number">2.3.</span> <span class="nav-text">Sigmoid</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#decision-boundary"><span class="nav-number">3.</span> <span class="nav-text">Decision Boundary</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#loss-function"><span class="nav-number">4.</span> <span class="nav-text">Loss Function</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#cross-entropy-loss-function"><span class="nav-number">4.1.</span> <span class="nav-text">Cross-Entropy loss function</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#natural-logarithm"><span class="nav-number">4.1.1.</span> <span class="nav-text">Natural Logarithm</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#average-cross-entropy-loss"><span class="nav-number">4.2.</span> <span class="nav-text">Average Cross-Entropy Loss</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#optimizer"><span class="nav-number">5.</span> <span class="nav-text">Optimizer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#expands-the-loss-function"><span class="nav-number">5.1.</span> <span class="nav-text">Expands the Loss Function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#parameter-w_1"><span class="nav-number">5.2.</span> <span class="nav-text">Parameter \(w_1\):</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#parameter-w_2"><span class="nav-number">5.3.</span> <span class="nav-text">Parameter \(w_2\):</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#parameter-b"><span class="nav-number">5.4.</span> <span class="nav-text">Parameter \(b\):</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#all-the-derivative-and-gradient-descent"><span class="nav-number">5.5.</span> <span class="nav-text">All the derivative and
+gradient descent</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#last"><span class="nav-number">6.</span> <span class="nav-text">Last</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="clooooode"
+      src="https://avatars1.githubusercontent.com/u/12930377?s=400&u=3e932a7f6b769a0e1028806815067be598db3351&v=4">
+  <p class="site-author-name" itemprop="name">clooooode</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">48</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">55</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/jackey8616" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;jackey8616" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:clode@clo5de.info" title="E-Mail → mailto:clode@clo5de.info" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.linkedin.com/in/ko-li-mo-294832118/" title="LinkedIn → https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;ko-li-mo-294832118&#x2F;" rel="noopener me" target="_blank"><i class="fab fa-linkedin fa-fw"></i></a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.clo5de.info/2025/10/07/AI/logistic-regression-and-its-math/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars1.githubusercontent.com/u/12930377?s=400&u=3e932a7f6b769a0e1028806815067be598db3351&v=4">
+      <meta itemprop="name" content="clooooode">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="clooooode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Logistic Regression & its mathematic | clooooode">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Logistic Regression & its mathematic
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2025-10-07 15:32:20" itemprop="dateCreated datePublished" datetime="2025-10-07T15:32:20+00:00">2025-10-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2025-10-08 09:30:15" itemprop="dateModified" datetime="2025-10-08T09:30:15+00:00">2025-10-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/AI/" itemprop="url" rel="index"><span itemprop="name">AI</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span class="firestore-visitors-count"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Word count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Word count in article: </span>
+      <span>3.3k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>12 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>This time lets talk about Logistic Regression.<br />
+Need readers with some concept of natural logarithm.<br />
+<a href="/2025/10/07/AI/logistic-regression-and-its-math-zhTW/" title="Logistic Regression &amp; its mathematic(zhTW)">&gt;&gt; [zhTW version] &lt;&lt;</a><br />
+<span id="more"></span></p>
+<h2 id="logistic-regression">Logistic Regression</h2>
+<p>TL;DR: A data classification based on linear regression.</p>
+<blockquote>
+<p>For example: a classification with thousand mails, classified whether
+junk or not junk mail.</p>
+</blockquote>
+<p>Essence of logistic regression is also another kind of linear
+model.<br />
+Despite with finding relationships between input feature(x) and output
+value(y) in linear regression, logistic regression is trying to find a
+equation that can be the boundary of categories of data.</p>
+<h2 id="mathematical-assumption">Mathematical assumption</h2>
+<p>Despites to the assumption in linear regression: <span
+class="math display">\[
+\hat{y} = wx + b
+\]</span> <span class="math inline">\(\hat{y}\)</span> and <span
+class="math inline">\(x\)</span> are the data point actually locate in a
+2-dimension coordinate system.<br />
+But logistic regression can choose how many features to use as
+parameter, same example in 2-dimension coordinate system:<br />
+<span class="math display">\[
+z = w_1x_1 + w_2x_2 + b
+\]</span> <span class="math inline">\(x_1\)</span> and <span
+class="math inline">\(x_2\)</span> represents the 2 axis in 2-dimension,
+we will take this assumption to keep on derivation.</p>
+<h3 id="definition-of-linear-algebra">Definition of linear algebra</h3>
+<p><span class="math display">\[
+z = w_1x_1 + w_2x_2 + b
+\]</span> The equation is actually a linear algebra, it means the
+calculation which considered all the variables (<span
+class="math inline">\(x_1, x_2\)</span>), parameters(<span
+class="math inline">\(w_1, w_2\)</span>) and bias <span
+class="math inline">\(b\)</span>, this calculation eventually get
+returns a score. The score decides <span class="math inline">\(x_1,
+x_2\)</span> is whether A or B category(Because its binary
+classification).<br />
+In this equation, each of <span class="math inline">\(w, x ,b\)</span>
+are all natural number, thus the score <span
+class="math inline">\(z\)</span> will be in the interval of <span
+class="math inline">\((-\infty, \infty)\)</span> 。</p>
+<blockquote>
+<p>Which can also represents like: <span class="math inline">\(z \in
+(-\infty, \infty)\)</span></p>
+</blockquote>
+<h3 id="possibility">Possibility</h3>
+<p>Let’s forget about the linear algebra stuff first, back to the
+essences of binary classification, our goal eventually wants to
+calculate the possibility of a data point is in category. When it comes
+to possibility, the most direct understanding of it should the range of
+possibility, which is <span class="math inline">\(P \in [0,
+1]\)</span>.</p>
+<p>If we want to find a mapping between possibility and equation of
+linear algebra, these two interval is unable to mapping each other.</p>
+<h4 id="odds">Odds</h4>
+<p>Here comes the concept of Odds, the definition of Odds is slightly
+different to Possibility: the ratio of the possibility of event happened
+or not happened, is Odds.<br />
+Assume the possibility of a event happened is <span
+class="math inline">\(P\)</span>: <span class="math display">\[
+Odds = \frac{P}{1-P}
+\]</span></p>
+<p>For example: from Possibility to Odds If the possibility to pass the
+exam <span class="math inline">\(P = 0.9  (90\%)\)</span></p>
+<ul>
+<li>P of happened <span class="math inline">\(0.9\)</span></li>
+<li>P of not happened <span class="math inline">\(1 - 0.9 =
+0.1\)</span></li>
+<li>Odds would be <span class="math inline">\(\frac{0.9}{0.1} =
+9\)</span></li>
+</ul>
+<p>the meaning of 9 is the ratio of the probability of a student passing
+to the probability of them failing is nine to one.<br />
+Normally we write it <span class="math inline">\(9:1\)</span>.</p>
+<p>We can tell the range of Odds is: <span class="math display">\[
+Odds \in [0, \infty)
+\]</span> The range can expends to <span
+class="math inline">\(\infty\)</span> in positive direction, it can
+mapping half of the range with linear algebra.<br />
+Nex step is to find a way to mapping <span
+class="math inline">\(-\infty\)</span>.</p>
+<h4 id="log-odds">Log-Odds</h4>
+<p>As we known from above, the range of Odds is <span
+class="math inline">\([0, \infty)\)</span>, when <span
+class="math inline">\(P\)</span> is much more big, the Odds will more
+close to <span class="math inline">\(\infty\)</span> but not <span
+class="math inline">\(\infty\)</span>, otherwise it will more small, and
+infinitely close to zero but not zero.<br />
+Thus the question become: how do we use a equation to mapping the input
+which close to zero into a smaller enough negative natural number, even
+close to negative infinity.</p>
+<p>There is a cool mathematic tool call natural logarithm: <span
+class="math inline">\(\ln(x) = log_e{x}\)</span><br />
+We can recall from logarithm:<br />
+<span class="math display">\[
+\begin{align*}
+log_{2}2 &amp;= log_{2}{2 ^ 1} = 1 \\
+log_{2}4 &amp;= log_{2}{2 ^ 2} = 2 \\
+log_{3}9 &amp;= log_{3}{3 ^ 2} = 2 \\
+log_{3}81 &amp;= log_{3}{3 ^ 4} = 4 \\
+\end{align*}
+\]</span> Then this natural logarithm:<br />
+<span class="math display">\[
+\begin{align*}
+\ln(x) &amp;= log_{e}x \\
+\text{Let } log_{e}x &amp;= y \\
+\text{Then } e^y &amp;= x \\
+\end{align*}
+\]</span> For example, <span
+class="math inline">\(\ln(1)\)</span>:<br />
+<span class="math display">\[
+\begin{align*}
+log_{e}1 &amp;= y \\
+e^y &amp;= 1 \\
+y &amp;= 0
+\end{align*}
+\]</span> What if a number smaller then 1? <span
+class="math inline">\(\ln(0.5)? \ln(0.1)?\)</span>:<br />
+<span class="math display">\[
+\begin{align*}
+\ln(0.5) &amp;= \ln(\frac{1}{2}) \\
+&amp;= \ln(1) - \ln(2)\quad(\because \ln(\frac{a}{b}) = \ln{a} - \ln{b})
+\\
+&amp;= 0 - \ln(2)\quad(\because \ln(1) = 0) \\
+&amp;= - \ln(2) \\
+\\
+\ln(0.1) &amp;= \ln(\frac{1}{10}) \\
+&amp;= \ln(1) - \ln(10) \\
+&amp;= -\ln(10)
+\end{align*}
+\]</span> In the interval of <span class="math inline">\(0 &lt; x &lt;
+1\)</span> we can find out, if we put it into a natural logarithm, the
+return value would be a negative natural number.<br />
+And when the value of <span class="math inline">\(x\)</span> getting
+closer to 0, the return value would be more and more small, and closed
+to negative infinity eventually.</p>
+<p>Lets apply this into Odds:<br />
+<span class="math display">\[
+\begin{align*}
+Odds &amp;= \frac{P}{1 - P} \\
+Log-Odds &amp;= \ln(\frac{P}{1-P}) = z \\
+e^z &amp;= e^{\ln(\frac{P}{1-P})} \\
+e^z &amp;= \frac{P}{1-P} \\
+e^z(1-P) &amp;= P \\
+e^z - e^{z}P &amp;= P \\
+e^z &amp;= P + e^{z}P \\
+e^z &amp;= P(1 + e^z) \\
+P &amp;= \frac{e^z}{1 + e^z}
+\end{align*}
+\]</span></p>
+<h3 id="sigmoid">Sigmoid</h3>
+<p>Eventually, we found the Log-Odds, and it also been known as
+Sigmoid.<br />
+As we derivate all the way to here, we are trying to find in probability
+theory for method which can a mapping the interval of <span
+class="math inline">\((-\infty, \infty)\)</span> .<br />
+After Odds expends to <span class="math inline">\([0, \infty)\)</span>
+via Log-Odds <span class="math inline">\((-\infty, \infty)\)</span>,
+this is all what we got.</p>
+<p>We use <span class="math inline">\(\sigma(z)\)</span> to
+presents:<br />
+<span class="math display">\[
+\sigma(z) = \frac{e^z}{1 + e^z}
+\]</span><br />
+Next we will simplify to common form of Sigmoid(Not necessary to do
+it):<br />
+<span class="math display">\[
+\begin{align*}
+P = \sigma(z) &amp;= \frac{e^z}{1 + e^z} \\
+&amp;= \frac{\frac{e^z}{e^z}}{\frac{1}{e^z} + \frac{e^z}{e^z}} \\
+&amp;= \frac{1}{1 + e^{-z}} \quad \because \frac{1}{e^z} = e^{-z}
+\end{align*}
+\]</span></p>
+<p>The purpose of this function is to mapping the range of linear
+functions <span class="math inline">\(z = w_1x_1 + w_2x_2 + b\)</span>
+to the range of possibility <span class="math inline">\([0, 1]\)</span>
+.</p>
+<h2 id="decision-boundary">Decision Boundary</h2>
+<p>After we found a tool(Sigmoid) helping us calculates possibility,
+back to our goal is classification.<br />
+The linear function <span class="math inline">\(z\)</span> can help us
+define a boundary in order to find the zone of the binary categories;
+hence on this line, the possibility of category A or B are the
+same(50%), which means <span class="math inline">\(P = 50\% =
+0.5\)</span> .</p>
+<blockquote>
+<p>In other words, when <span class="math inline">\(P &gt; 0.5\)</span>
+, recognize it to be A; otherwise <span class="math inline">\(P &lt;
+0.5\)</span> will be B.</p>
+</blockquote>
+<p>Hence:<br />
+<span class="math display">\[
+\begin{align*}
+\sigma(z) &amp;= P \\
+=&gt; P &amp;= \frac{1}{1 + e^{-z}} \\
+=&gt; 0.5 &amp;= \frac{1}{1 + e^{-z}} \\
+=&gt; 1 &amp;= 0.5 + 0.5e^{-z} \\
+=&gt; 1 &amp;= e^{-z} \\
+=&gt; z &amp;= 0 \\
+\end{align*}
+\]</span></p>
+<p>When $P=0.5, z = 0, then <span class="math inline">\(z = w_1x_1 +
+w_2x_2 + b = 0\)</span><br />
+This equation represents the decision boundary in the coordinate system,
+on the two sides of this line will be categorize to A or B.<br />
+The next question is: based on the actual training data, the parameter
+<span class="math inline">\(w_1, w_2, b\)</span> in the equation is
+meets the actual category(actual value),<br />
+We need to train through machine learning.</p>
+<h2 id="loss-function">Loss Function</h2>
+<p>Same as linear regression, we need to find a mathematic tool to
+aggregate the error which calculated from the after-training prediction
+and the in-data set actual value, in order to be the reference in
+optimizing strategy.<br />
+In the logistic regression of binary classification, the meaning of
+error is “If a data is category A, but been classified as B”, this kind
+of error need to be review by each data in the training set.</p>
+<p>So we need to find a tool can help us compare the difference between
+predict value and actual value:</p>
+<h3 id="cross-entropy-loss-function">Cross-Entropy loss function</h3>
+<p>If <span class="math inline">\(y\)</span> is actual label(result of
+classification,<span class="math inline">\(0 or 1\)</span>, 0 represents
+category A, 1 represents category B), <span
+class="math inline">\(p\)</span> is predict possibility.<br />
+We need to find a method which returns error when actual value is 0, but
+predict value gives 1; and same as opposite; but if each of actual value
+and predict value is the same, returns nothing.</p>
+<p>In other word:<br />
+<span class="math display">\[
+\begin{align*}
+y = 1, p = 0, \quad \text{error!} \\
+y = 0, p = 1, \quad \text{error!} \\
+y = 1, p = 1, \quad \text{good!} \\
+y = 0, p = 0, \quad \text{good!}
+\end{align*}
+\]</span> Same as <span class="math inline">\(p \in [0,
+1]\)</span>:<br />
+<span class="math display">\[
+\begin{align*}
+y = 1, p &amp;= 0.1, \quad \text{big big error!} \\
+y = 1, p &amp;= 0.3, \quad \text{minor error!} \\
+y = 1, p &amp;= 0.9, \quad \text{good!} \\
+\end{align*}
+\]</span> We also needs to based on the level, returns different
+error.<br />
+Below we will use natural logarithm as our mathematic tool again.</p>
+<h4 id="natural-logarithm">Natural Logarithm</h4>
+<p>As the derivation above, if a number locates in the interval of <span
+class="math inline">\([0, 1]\)</span>, given by a natural
+logarithm,<br />
+we will get a negative number, if the number closer the <span
+class="math inline">\(0\)</span>, the return value of <span
+class="math inline">\(\ln\)</span> will more close to <span
+class="math inline">\(-\infty\)</span>.</p>
+<p>If we put possibility into natural logarithm, we can get two kinds of
+error:<br />
+<span class="math display">\[
+\begin{align*}
+\ln(p) &amp;=&gt; when y = 1, but p = 0.1 \\
+\ln(1 - p) &amp;=&gt; when y = 0, but p = 1 \\
+\end{align*}
+\]</span> These two error needs to be apply in different situation,
+hence we need to times a parameter:<br />
+<span class="math display">\[
+\begin{align*}
+y\ln(p) &amp;=&gt; when y = 1, but p = 0.1 \\
+(1-y)\ln(1 - p) &amp;=&gt; when y = 0, but p = 1 \\
+\end{align*}
+\]</span> In this way, these error will be cancel in opposite actual
+value, then we can merge these errors:<br />
+<span class="math display">\[[y\ln(p) + (1-y)\ln(1-p)]\]</span><br />
+These errors are the summation of mapping of natural logarithm to
+negative number, the value more close to zero, the mapping will more
+close to negative infinity.<br />
+With the filter by the parameter(actual value), negative sign is still
+exists, this will cause misleading with the meaning.<br />
+By multiple with <span class="math inline">\(-1\)</span> ,we can flip
+the meaning of negative, let the whole equation presents bigger error
+when the mapping value is more close to negative infinity:<br />
+<span class="math display">\[
+L(y, p) = - [y\ln(p) + (1-y)\ln(1-p)]
+\]</span> This is the cross-entropy loss function.</p>
+<h3 id="average-cross-entropy-loss">Average Cross-Entropy Loss</h3>
+<p>We can calculates the error of a single data point by cross-entropy
+loss function:<br />
+<span class="math display">\[
+L(y_i, p_i) = -[y_i\ln(p_i) + (1 - y_i)\ln(1-p_i)]
+\]</span> Next we are going to calculates the whole error of the data
+set and these error evenly spread in whole set: <span
+class="math display">\[
+\begin{align*}
+Loss &amp;= \frac{1}{N}\sum_{i=1}^{N}-[y_i\ln(p_i) + (1 -
+y_i)\ln(1-p_i)] \\
+&amp;= - \frac{1}{N}\sum_{i=1}^{N}[y_i\ln(p_i) + (1 - y_i)\ln(1-p_i)]
+\end{align*}
+\]</span></p>
+<p>By getting this Loss function, we are able to know the offset(error)
+after each training.<br />
+Next is to find a enhance method then we are good to go to apply in our
+optimizing strategy.</p>
+<h2 id="optimizer">Optimizer</h2>
+The loss function:<br />
+<span class="math display">\[
+J(w_1, w_2, b) = - \frac{1}{N}\sum_{i=1}^{N}[y_i\ln(p_i) + (1 -
+y_i)\ln(1-p_i)]
+\]</span>
+<div id="loss-function-chart" style="width: 100%; height: 500px;">
+
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    let myChart = echarts.init(document.getElementById('loss-function-chart'));
+
+    let xData = [-3, -2, -1, 0, 1, 2, 3];
+    let yData = [0, 0, 0, 0, 1, 1, 1];
+
+    function sigmoid(z) {
+      return 1 / (1 + Math.exp(-z));
+    }
+
+    function average_cross_entropy(w) {
+      let sum = 0;
+      for (let i = 0; i < xData.length; i++) {
+        let p = sigmoid(w * xData[i]);
+        p = Math.max(1e-8, Math.min(1 - 1e-8, p)); // Prevent log(0)
+        let y = yData[i];
+        sum += - (y * Math.log(p) + (1 - y) * Math.log(1 - p));
+      }
+      return sum / xData.length;
+    }
+
+    function errorData() {
+      let datas = [];
+      for (let i = 0; i < 100; i++) {        
+        let w = -6 + i * (12 / 99); 
+        datas.push([w, average_cross_entropy(w)]);
+      }
+      return datas;
+    }
+
+    let option = {
+      backgroundColor: '#fff',
+      title: {
+        text: 'Curve of average cross entropy in different parameter w'
+      },
+      xAxis: {
+        name: 'w',
+        min: -6,
+        max: 6
+      },
+      yAxis: {
+        name: 'Average Loss',
+        min: 0,
+        max: 1.5
+      },
+      series: [{
+        type: 'line',
+        smooth: true,
+        data: errorData(),
+      }]
+    }
+    myChart.setOption(option);
+  });
+</script>
+<p>With single feature, the chart will look like above;<br />
+This is the average cross entropy loss when putting different <span
+class="math inline">\(w\)</span> into linear algebra.<br />
+Basically finding <span class="math inline">\(w\)</span> is exact the
+same process like training.</p>
+<p>In order to find the best <span class="math inline">\(w\)</span>
+letting us get the lowest error, we will gradually use differentiation
+to find the slope to do so.<br />
+<a href="/2025/10/03/AI/linear-regression-and-its-math/#gradient-descent" title="Linear Regression &amp; its mathematic">&gt;&gt; [Why using differentiation?] &lt;&lt;</a></p>
+<h3 id="expands-the-loss-function">Expands the Loss Function</h3>
+<p>The chart is just a schematic chart, it doesn’t meats with our
+assumption.<br />
+Because we have three features <span class="math inline">\(w_1, w_2,
+b\)</span> in our assumption, next we will differentiation of these
+parameters.<br />
+First we are going to expands the loss function: <span
+class="math display">\[
+\begin{align*}
+J(w_1, w_2, b) &amp;= - \frac{1}{N}\sum_{i=1}^{N}[y_i\ln(p_i) + (1 -
+y_i)\ln(1-p_i)] \\
+\because \sigma(z_i) &amp;= P_i = \frac{1}{1 + e^{-z_i}} \\
+&amp;= - \frac{1}{N}\sum_{i=1}^{N}[y_i\ln(\frac{1}{1 + e^{-z_i}}) + (1 -
+y_i)\ln(1 - \frac{1}{1 + e^{-z_i}})] \\
+&amp;= - \frac{1}{N}\sum_{i=1}^{N}[y_i\ln(\frac{1}{1 + e^{-z_i}}) + (1 -
+y_i)\ln(\frac{e^{-z_i}}{1 + e^{-z_i}})] \\
+\because \ln(\frac{N}{M}) &amp;= \ln(N) - \ln(M) \quad (N, M &gt; 0) \\
+&amp;= - \frac{1}{N}\sum_{i=1}^{N}[y_i(\ln(1) - \ln(1 + e^{-z_i})) + (1
+- y_i)(\ln(e^{-z_i}) - \ln(1 + e^{-z_i}))] \\
+\because \ln(1) &amp;= 0 \\
+&amp;= - \frac{1}{N}\sum_{i=1}^{N}[- y_i\ln(1 + e^{-z_i}) + (1 -
+y_i)(\ln(e^{-z_i}) - \ln(1 + e^{-z_i}))] \\
+\because \ln(e^{-z_i}) &amp;= -z_i \\
+&amp;= - \frac{1}{N}\sum_{i=1}^{N}[- y_i\ln(1 + e^{-z_i}) + (1 -
+y_i)[{-z_i} - \ln(1 + e^{-z_i})]] \\
+&amp;= - \frac{1}{N}\sum_{i=1}^{N}[- y_i\ln(1 + e^{-z_i}) - (1 -
+y_i){z_i} - (1 - y_i)\ln(1 + e^{-z_i})] \\
+&amp;= - \frac{1}{N}\sum_{i=1}^{N}[\ln(1 + e^{-z_i})[-y_i -(1 - y_i)] -
+(1 - y_i)z_i] \\
+&amp;= - \frac{1}{N}\sum_{i=1}^{N}[-\ln(1 + e^{-z_i}) - (1 - y_i)z_i] \\
+J(w_1, w_2, b) &amp;= \frac{1}{N}\sum_{i=1}^{N}[\ln(1 + e^{-z_i}) + (1 -
+y_i)z_i]
+\end{align*}
+\]</span> Then we can move on with differentiation.</p>
+<h3 id="parameter-w_1">Parameter <span
+class="math inline">\(w_1\)</span>:</h3>
+<p><span class="math inline">\(\dfrac{dJ}{dw_1}\)</span>: <span
+class="math display">\[
+\begin{align*}
+\text{Let } f(x_i) &amp;= \ln(1 + e^{-z_i}) + (1 - y_i)z_i \\
+\dfrac{dJ}{dw_1} &amp;= \frac{1}{N}\sum_{i=1}^{N}\dfrac{d}{dw_1}f(x_i)
+\\
+&amp;= \frac{1}{N}\sum_{i=1}^{N}\dfrac{df}{dz_i} \cdot
+\dfrac{dz_i}{dw_1} \quad
+\because \dfrac{d}{du}f(x) = \dfrac{df}{dg} \cdot \dfrac{dg}{du} \tag{1}
+\\
+\\
+\dfrac{df}{dz_i} &amp;= \dfrac{d}{dz_i}[\ln(1 + e^{-z_i}) + (1-y_i)z_i]
+\\
+&amp;= \dfrac{d}{dz_i}\ln(1 + e^{-z_i}) + \dfrac{d}{dz_i}(1 - y_i)z_i \\
+&amp;= \dfrac{d}{dz_i}\ln(1 + e^{-z_i}) + (1 - y_i) \tag{2} \\
+\\
+\dfrac{d}{dz_i}\ln(1 + e^{-z_i}) &amp;= \frac{1}{1 + e^{-z_i}} \cdot
+\dfrac{d}{dz_i}(1 + e^{-z_i}) \quad
+\because \dfrac{d}{dg}\ln(u) = \frac{1}{u} \cdot \dfrac{du}{dg} \tag{3}
+\\
+\\
+\dfrac{d}{dz_i}(1 + e^{-z_i}) &amp;= \dfrac{d}{dz_i}(1) +
+\dfrac{d}{dz_i}e^{-z_i} \\
+&amp;= 0 + \dfrac{d}{dz_i}e^{-z_i} \\
+\text{Let } u = -z_i =&gt; \dfrac{d}{dz_i}(1 + e^{-z_i}) &amp;=
+\dfrac{d}{dz_i}e^u \\
+&amp;= \dfrac{d(e^u)}{du} \cdot \dfrac{du}{dz_i} \quad \because
+\dfrac{da}{db} = \dfrac{da}{dc} \cdot \dfrac{dc}{db} \\
+&amp;= e^u \cdot (-1) \\
+\dfrac{d}{dz_i}(1 + e^{-z_i}) &amp;= -e^{-z_i} \tag{4} \\
+\\
+\text{Base on (3), (4)} =&gt; \dfrac{d}{dz_i}\ln(1 + e^{-z_i}) &amp;=
+\frac{1}{1 + e^{-z_i}} \cdot (-e ^ {-z_i})  \\
+&amp;= \frac{-e^{-z_i}}{1 + e^{-z_i}} \\
+&amp;= \frac{-1{e}^{-z_i}e^{z_i}}{(1 + e^{-z_i})e^{z_i}} \\
+&amp;= -\frac{1}{e^{z_i} + 1} \tag{5} \\
+\text{Proof }\sigma(-z) = 1 - \sigma(z) =&gt; \frac{1}{1 + e^z} &amp;= 1
+- \frac{1}{1 + e^{-z}}\quad\because \sigma(z) = \frac{1}{1 + e^{-z}},
+\sigma(-z) = \frac{1}{1 + e ^ {-(-z)}}\\
+=&gt; \frac{1}{1 + e^z} &amp;= \frac{1 + e^{-z} - 1}{1 + e^{-z}} \\
+=&gt; \frac{1}{1 + e^z} &amp;= \frac{e^{-z}}{1 + e^{-z}} \\
+=&gt; \frac{1}{1 + e^z} &amp;= \frac{e^{-z}e^z}{(1 + e^{-z})e^z} \\
+=&gt; \frac{1}{1 + e^z} &amp;= \frac{1}{(1 + e^{-z})e^z} \\
+=&gt; \sigma(-z) = \frac{1}{1 + e^z} = 1 - \sigma(z) \tag{6} \\
+\\
+\text{Base on (5), (6)} =&gt; \dfrac{d}{dz_i}\ln(1 + e^{-z_i}) &amp;=
+-\frac{1}{e^{z_i} + 1} \\
+&amp;= - (1 - \sigma(z_i)) \\
+&amp;= \sigma(z_i) - 1 \tag{7} \\
+\\
+\text{Base on (2), (7)} =&gt; \dfrac{df}{dz_i} &amp;=
+\dfrac{d}{dz_i}\ln(1 + e^{-z_i}) + (1 - y_i) \\
+&amp;= \sigma(z_i) - 1 + (1 - y_i) \\
+&amp;= \sigma(z_i) - y_i \tag{8} \\
+\\
+\dfrac{dz_i}{dw_1} &amp;= \dfrac{d}{dw_i}[w_1x_{i1} + w_2x_{i2} + b]
+\quad \because z_i = w_1x_{i1} + w_2x_{i2} + b \\
+&amp;= x_{i1} + 0 + 0 \\
+&amp;= x_{i1} \tag{9} \\
+\\
+\text{Base on (1), (8), (9)} =&gt; \dfrac{dJ}{dw_1} &amp;=
+\frac{1}{N}\sum_{i=1}^{N}\dfrac{df}{dz_i}\cdot \dfrac{dz_i}{dw_1} \\
+&amp;= \frac{1}{N}\sum_{i=1}^{N}[(\sigma(z) - y_i)x_{i1}] \tag{10} \\
+\end{align*}
+\]</span></p>
+<h3 id="parameter-w_2">Parameter <span
+class="math inline">\(w_2\)</span>:</h3>
+<p><span class="math inline">\(\dfrac{dJ}{dw_2}\)</span> <span
+class="math display">\[
+\begin{align*}
+\text{Let } f(x_i) &amp;= \ln(1 + e^{-z_i}) + (1 - y_i)z_i \\
+\dfrac{dJ}{dw_2} &amp;= \frac{1}{N}\sum_{i=1}^{N}\dfrac{d}{dw_2}f(x_i)
+\\
+&amp;= \frac{1}{N}\sum_{i=1}^{N}\dfrac{df}{dz_i} \cdot
+\dfrac{dz_i}{dw_2} \quad
+\because \dfrac{d}{du}f(x) = \dfrac{df}{dg} \cdot \dfrac{dg}{du}
+\tag{11} \\
+\\
+\dfrac{dz_i}{dw_2} &amp;= \dfrac{d}{dw_2}[w_1x_{i1} + w_2x_{i2} + b]
+\quad \because z_i = w_1x_{i1} + w_2x_{i2} + b \\
+&amp;= 0 + x_{i2} + 0 \tag{12} \\
+\\
+\text{Base on (8), (11), (12)} =&gt; \dfrac{dJ}{dw_2} &amp;=
+\frac{1}{N}\sum_{i=1}^{N}\dfrac{df}{dz_i} \cdot \dfrac{dz_i}{dw_2} \\
+&amp;= \frac{1}{N}\sum_{i=1}^{N}[(\sigma(z_i) - y_i)x_{i2}] \tag{13}
+\end{align*}
+\]</span></p>
+<h3 id="parameter-b">Parameter <span
+class="math inline">\(b\)</span>:</h3>
+<p><span class="math inline">\(\dfrac{dJ}{db}\)</span> <span
+class="math display">\[
+\begin{align*}
+\text{Let } f(x_i) &amp;= \ln(1 + e^{-z_i}) + (1 - y_i)z_i \\
+\dfrac{dJ}{db} &amp;= \frac{1}{N}\sum_{i=1}^{N}\dfrac{d}{db}f(x_i) \\
+&amp;= \frac{1}{N}\sum_{i=1}^{N}\dfrac{df}{dz_i} \cdot \dfrac{dz_i}{db}
+\quad
+\because \dfrac{d}{du}f(x) = \dfrac{df}{dg} \cdot \dfrac{dg}{du}
+\tag{14} \\
+\\
+\dfrac{dz_i}{db} &amp;= \dfrac{d}{db}[w_1x_{i1} + w_2x_{i2} + b] \quad
+\because z_i = w_1x_{i1} + w_2x_{i2} + b \\
+&amp;= 0 + 0 + 1 \tag{15} \\
+\\
+\text{Base on (8), (14), (15)} =&gt; \dfrac{dJ}{db} &amp;=
+\frac{1}{N}\sum_{i=1}^{N}\dfrac{df}{dz_i} \cdot \dfrac{dz_i}{db} \\
+&amp;= \frac{1}{N}\sum_{i=1}^{N}(\sigma(z_i) - y_i) \tag{16}
+\end{align*}
+\]</span></p>
+<h3 id="all-the-derivative-and-gradient-descent">All the derivative and
+gradient descent</h3>
+<p>From the equation <span class="math inline">\(\text{(10),
+(13),(16)}\)</span> above, we can get three derivative:<br />
+<span class="math display">\[
+\begin{align*}
+\dfrac{dJ}{dw_1} &amp;= \frac{1}{N}\sum_{i=1}^{N}[(\sigma(z_i) -
+y_i)x_{i1}] \tag{10} \\
+\dfrac{dJ}{dw_2} &amp;= \frac{1}{N}\sum_{i=1}^{N}[(\sigma(z_i) -
+y_i)x_{i2}] \tag{13} \\
+\dfrac{dJ}{db} &amp;= \frac{1}{N}\sum_{i=1}^{N}(\sigma(z_i) - y_i)
+\tag{16} \\
+\end{align*}
+\]</span> Put it into gradient descent equation:<br />
+<span class="math display">\[
+\begin{align*}
+\text{Base on (10), (13), (16)} &amp;=&gt; \\
+w_{1new} &amp;= w_{1old} - \alpha
+(\frac{1}{N}\sum_{i=1}^{N}[(\sigma(z_i) - y_i)x_{i1}]) \\
+w_{2new} &amp;= w_{2old} - \alpha
+(\frac{1}{N}\sum_{i=1}^{N}[(\sigma(z_i) - y_i)x_{i2}]) \\
+b_{new} &amp;= b_{old} - \alpha (\frac{1}{N}\sum_{i=1}^{N}(\sigma(z_i) -
+y_i)) \\
+\end{align*}
+\]</span></p>
+<p>We can tell from the above equation:</p>
+<blockquote>
+<p><span class="math inline">\(\sigma(z) - y_i\)</span> represents the
+error of each predict possibility and actual label in training
+set.<br />
+With <span class="math inline">\(\frac{1}{N}\sum_{i=1}^{N}\)</span> , it
+becomes average error.<br />
+Interesting thing is: each weight(<span
+class="math inline">\(w\)</span>) are all effected by the product of
+feature itself and error and the average.<br />
+And the gradient of bias(<span class="math inline">\(b\)</span>) itself
+is always 1, so it only effected by the average error of whole
+sample.</p>
+</blockquote>
+<p>After the long derivate and simplification, the final gradient
+descent equation looks quite elegant, TBH xd.</p>
+<h2 id="last">Last</h2>
+<p>Its much more longer derivation then I expect.<br />
+Even though it skip the vector presentation in multi-feature already,
+but it still struggle for me to derivate three features.<br />
+In order to link the linear algebra and possibility theory, I spent a
+lot of effort in derivation.<br />
+I will consider writing something like vector presentation in
+multi-feature or expand the concept of logistic regression into neural
+networking and its derivation, then we should encounter discrete
+mathematics Orz.</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/AI/" rel="tag"># AI</a>
+              <a href="/tags/Machine-Learning/" rel="tag"># Machine Learning</a>
+              <a href="/tags/Regression-Analysis/" rel="tag"># Regression Analysis</a>
+              <a href="/tags/Logistic-Regression/" rel="tag"># Logistic Regression</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/10/03/AI/linear-regression-and-its-math/" rel="prev" title="Linear Regression & its mathematic">
+                  <i class="fa fa-chevron-left"></i> Linear Regression & its mathematic
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2025/10/07/AI/logistic-regression-and-its-math-zhTW/" rel="next" title="Logistic Regression & its mathematic(zhTW)">
+                  Logistic Regression & its mathematic(zhTW) <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2018 – 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">clooooode</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="Word count total">32k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">1:56</span>
+  </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.23.0/firebase-app-compat.js" integrity="sha256-FYa4Xn7MJlI18eIkwawbRKLz7bGeUODtNpSR+bsjlHg=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.23.0/firebase-firestore-compat.js" integrity="sha256-sgbLcRGF3ph6N+ymg9zoy9kFQDWBvJlCd0GbGMKBH0c=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="firestore" type="application/json">{"enable":true,"collection":"articles","apiKey":"AIzaSyCu9-MhzikdJ0BVgPRODV__hMffyr5bgZg","projectId":"clo5de-githubpage"}</script>
+  <script src="/js/third-party/statistics/firestore.js"></script>
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"jackey8616/jackey8616.github.io","issue_term":"title","theme":"github-dark","label":"ChatRoom"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+</body>
+</html>

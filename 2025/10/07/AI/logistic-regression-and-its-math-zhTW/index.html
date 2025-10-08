@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.clo5de.info","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.17.1","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":true,"nav":null,"activeClass":"utterances"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":10,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="換講邏輯回歸.. 需要一點自然對數的概念。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Logistic Regression &amp; its mathematic(zhTW)">
+<meta property="og:url" content="https://www.clo5de.info/2025/10/07/AI/logistic-regression-and-its-math-zhTW/index.html">
+<meta property="og:site_name" content="clooooode">
+<meta property="og:description" content="換講邏輯回歸.. 需要一點自然對數的概念。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-10-07T15:32:20.000Z">
+<meta property="article:modified_time" content="2025-10-08T09:30:15.792Z">
+<meta property="article:author" content="clooooode">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="Machine Learning">
+<meta property="article:tag" content="Regression Analysis">
+<meta property="article:tag" content="Logistic Regression">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.clo5de.info/2025/10/07/AI/logistic-regression-and-its-math-zhTW/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.clo5de.info/2025/10/07/AI/logistic-regression-and-its-math-zhTW/","path":"2025/10/07/AI/logistic-regression-and-its-math-zhTW/","title":"Logistic Regression & its mathematic(zhTW)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Logistic Regression & its mathematic(zhTW) | clooooode</title>
+  
+
+
+
+
+
+
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NGLBLXHD');</script>
+<!-- End Google Tag Manager -->
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGLBLXHD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">clooooode</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">a.k.a. clo5de</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-github"><a href="https://github.com/jackey8616" rel="section" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a></li><li class="menu-item menu-item-e-mail"><a href="mailto:clode@clo5de.info" rel="section" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a></li><li class="menu-item menu-item-linkedin"><a href="https://www.linkedin.com/in/ko-li-mo-294832118/" rel="section" target="_blank"><i class="fab fa-linkedin fa-fw"></i>LinkedIn</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#logistic-regression%E9%82%8F%E8%BC%AF%E5%9B%9E%E6%AD%B8"><span class="nav-number">1.</span> <span class="nav-text">Logistic Regression(邏輯回歸)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B8%E5%AD%B8%E5%81%87%E8%A8%AD"><span class="nav-number">2.</span> <span class="nav-text">數學假設</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B7%9A%E6%80%A7%E4%BB%A3%E6%95%B8%E5%AE%9A%E7%BE%A9"><span class="nav-number">2.1.</span> <span class="nav-text">線性代數定義</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A9%9F%E7%8E%87"><span class="nav-number">2.2.</span> <span class="nav-text">機率</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8B%9D%E7%AE%97odds"><span class="nav-number">2.2.1.</span> <span class="nav-text">勝算(Odds)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%8D%E6%95%B8%E5%8B%9D%E7%AE%97log-odds"><span class="nav-number">2.2.2.</span> <span class="nav-text">對數勝算(Log-Odds)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sigmoid-%E5%87%BD%E6%95%B8"><span class="nav-number">2.3.</span> <span class="nav-text">Sigmoid 函數</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B1%BA%E7%AD%96%E9%82%8A%E7%95%8Cdecision-boundary"><span class="nav-number">3.</span> <span class="nav-text">決策邊界(Decision Boundary)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%90%8D%E5%A4%B1%E5%87%BD%E6%95%B8loss-function"><span class="nav-number">4.</span> <span class="nav-text">損失函數(Loss Function)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%A4%E5%8F%89%E7%86%B5%E6%90%8D%E5%A4%B1%E5%87%BD%E6%95%B8cross-entropy-loss-function"><span class="nav-number">4.1.</span> <span class="nav-text">交叉熵損失函數(Cross-Entropy
+loss function)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%87%AA%E7%84%B6%E5%B0%8D%E6%95%B8"><span class="nav-number">4.1.1.</span> <span class="nav-text">自然對數</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B9%B3%E5%9D%87%E4%BA%A4%E5%8F%89%E7%86%B5%E6%90%8D%E5%A4%B1average-cross-entropy-loss"><span class="nav-number">4.2.</span> <span class="nav-text">平均交叉熵損失(Average
+Cross-Entropy Loss)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E4%BD%B3%E5%8C%96%E5%99%A8optimizer"><span class="nav-number">5.</span> <span class="nav-text">最佳化器(Optimizer)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#loss-function-%E7%AE%97%E5%BC%8F%E5%B1%95%E9%96%8B"><span class="nav-number">5.1.</span> <span class="nav-text">Loss Function 算式展開</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%82%E6%95%B8w_1"><span class="nav-number">5.2.</span> <span class="nav-text">係數\(w_1\):</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%82%E6%95%B8w_2"><span class="nav-number">5.3.</span> <span class="nav-text">係數\(w_2\):</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%82%E6%95%B8b"><span class="nav-number">5.4.</span> <span class="nav-text">係數\(b\):</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%80%E6%9C%89%E7%9A%84%E5%81%8F%E5%B0%8E%E4%BB%A5%E5%8F%8A%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D"><span class="nav-number">5.5.</span> <span class="nav-text">所有的偏導以及梯度下降</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%AB%E5%9C%A8%E6%9C%80%E5%BE%8C"><span class="nav-number">6.</span> <span class="nav-text">寫在最後</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="clooooode"
+      src="https://avatars1.githubusercontent.com/u/12930377?s=400&u=3e932a7f6b769a0e1028806815067be598db3351&v=4">
+  <p class="site-author-name" itemprop="name">clooooode</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">48</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">55</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/jackey8616" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;jackey8616" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:clode@clo5de.info" title="E-Mail → mailto:clode@clo5de.info" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.linkedin.com/in/ko-li-mo-294832118/" title="LinkedIn → https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;ko-li-mo-294832118&#x2F;" rel="noopener me" target="_blank"><i class="fab fa-linkedin fa-fw"></i></a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.clo5de.info/2025/10/07/AI/logistic-regression-and-its-math-zhTW/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars1.githubusercontent.com/u/12930377?s=400&u=3e932a7f6b769a0e1028806815067be598db3351&v=4">
+      <meta itemprop="name" content="clooooode">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="clooooode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Logistic Regression & its mathematic(zhTW) | clooooode">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Logistic Regression & its mathematic(zhTW)
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2025-10-07 15:32:20" itemprop="dateCreated datePublished" datetime="2025-10-07T15:32:20+00:00">2025-10-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2025-10-08 09:30:15" itemprop="dateModified" datetime="2025-10-08T09:30:15+00:00">2025-10-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/AI/" itemprop="url" rel="index"><span itemprop="name">AI</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span class="firestore-visitors-count"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Word count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Word count in article: </span>
+      <span>4.2k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>15 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>換講邏輯回歸..<br />
+需要一點自然對數的概念。<br />
+<span id="more"></span></p>
+<h2 id="logistic-regression邏輯回歸">Logistic Regression(邏輯回歸)</h2>
+<p>TL;DR: 基於線性回歸的資料分類。</p>
+<blockquote>
+<p>舉例: 一千筆郵件的資料，分類出是垃圾郵件以及一般信件。</p>
+</blockquote>
+<p>邏輯回歸本質上也是一種使用線性組合的模型。<br />
+與線性回歸是找出一個方程式來描述輸入特徵（x）與目標數值（y）之間的關係不同，<br />
+邏輯回歸則是針對分類問題，找出一條可以「劃分」資料點類別的決策邊界。</p>
+<h2 id="數學假設">數學假設</h2>
+<p>相較於線性回歸的假設 <span class="math display">\[
+\hat{y} = wx + b
+\]</span> 這邊的 <span class="math inline">\(\hat{y}\)</span> 以及 <span
+class="math inline">\(x\)</span>
+都是實際坐落在二維坐標系中的坐標。<br />
+邏輯回歸則可以選擇要作為特徵的參數，同樣已二維坐標系為例： <span
+class="math display">\[
+z = w_1x_1 + w_2x_2 + b
+\]</span> 這邊的<span class="math inline">\(x_1\)</span>以及<span
+class="math inline">\(x_2\)</span>是對應二維的坐標軸，以下我們會依照這個假設來進行推導。</p>
+<h3 id="線性代數定義">線性代數定義</h3>
+<p><span class="math display">\[
+z = w_1x_1 + w_2x_2 + b
+\]</span> 實際上是一個線性代數，它的意義是綜合了各種變數(<span
+class="math inline">\(x_1, x_2\)</span>)與參數(<span
+class="math inline">\(w_1, w_2\)</span>)以及偏差項<span
+class="math inline">\(b\)</span>的計算，可以獲得一個分數。<br />
+這個分數決定了 <span class="math inline">\(x_1, x_2\)</span>
+是某一個分類(因為是二元分類)。<br />
+而這個方程式中無論是 <span class="math inline">\(w, x ,b\)</span>
+任一個數都是實數，所以計算出來的 <span class="math inline">\(z\)</span>
+會落在 <span class="math inline">\((-\infty, \infty)\)</span> 之間。</p>
+<blockquote>
+<p>又可以表達做 <span class="math inline">\(z \in (-\infty,
+\infty)\)</span></p>
+</blockquote>
+<h3 id="機率">機率</h3>
+<p>我們先撇開上面的線性代數定義，回歸到二元分類的本質，我們的目標，其實歸根結底是希望計算出是否為某類的機率(<span
+class="math inline">\(P\)</span>)。<br />
+而說到機率，大家最直觀的認識應該是機率的範圍。<span
+class="math inline">\(P \in [0, 1]\)</span></p>
+<p>我們如果想要把機率，跟線性代數的方程式有應對關係的話，從數學範圍中，是無法映射的。</p>
+<h4 id="勝算odds">勝算(Odds)</h4>
+<p>這邊引入了勝算這個概念，勝算的定義有別於機率：事件發生的機率與事件不發生的機率兩者的比率。
+假設事件發生的機率是<span class="math inline">\(P\)</span>: <span
+class="math display">\[
+Odds = \frac{P}{1-P}
+\]</span></p>
+<p>舉例來講：從機率到勝算 如果考試通過的機率 <span
+class="math inline">\(P = 0.9  (90\%)\)</span></p>
+<ul>
+<li>發生的機率是 <span class="math inline">\(0.9\)</span></li>
+<li>不發生的機率是 <span class="math inline">\(1 - 0.9 =
+0.1\)</span></li>
+<li>勝算為 <span class="math inline">\(\frac{0.9}{0.1} = 9\)</span></li>
+</ul>
+<p>9的意思是，學生通過的可能性是不通過的可能性的九倍，通常寫作 <span
+class="math inline">\(9:1\)</span></p>
+<p>勝算(Odds)根據公式可以看出來: <span class="math display">\[
+Odds \in [0, \infty)
+\]</span> 這個範圍單向延伸到 <span class="math inline">\(\infty\)</span>
+的範圍，已經有一半可以對上線性代數的範圍了。 下一步就是要找到映射 <span
+class="math inline">\(-\infty\)</span> 的方法。</p>
+<h4 id="對數勝算log-odds">對數勝算(Log-Odds)</h4>
+<p>我們已經知道 勝算的範圍是 <span class="math inline">\([0,
+\infty)\)</span>，當<span
+class="math inline">\(P\)</span>機率越大，勝算會越靠近無限大，反之機率越小，則勝算會無限靠近0但非0。<br />
+所以問題變成：我們要想個方法，讓「越靠近0的數字，變成一個越大的負數，大到無限靠近負無限大」。</p>
+<p>有個酷酷的東西叫做自然對數：<span class="math inline">\(\ln(x) =
+log_e{x}\)</span><br />
+我們可以先從對數開始複習： <span class="math display">\[
+\begin{align*}
+log_{2}2 &amp;= log_{2}{2 ^ 1} = 1 \\
+log_{2}4 &amp;= log_{2}{2 ^ 2} = 2 \\
+log_{3}9 &amp;= log_{3}{3 ^ 2} = 2 \\
+log_{3}81 &amp;= log_{3}{3 ^ 4} = 4 \\
+\end{align*}
+\]</span> 接著我們開始講對數： <span class="math display">\[
+\begin{align*}
+\ln(x) &amp;= log_{e}x \\
+\text{Let } log_{e}x &amp;= y \\
+\text{Then } e^y &amp;= x \\
+\end{align*}
+\]</span> 舉個例子, <span class="math inline">\(\ln(1)\)</span>:<br />
+<span class="math display">\[
+\begin{align*}
+log_{e}1 &amp;= y \\
+e^y &amp;= 1 \\
+y &amp;= 0
+\end{align*}
+\]</span> 如果是小於1的數呢？ <span class="math inline">\(\ln(0.5)?
+\ln(0.1)?\)</span>:<br />
+<span class="math display">\[
+\begin{align*}
+\ln(0.5) &amp;= \ln(\frac{1}{2}) \\
+&amp;= \ln(1) - \ln(2)\quad(\because \ln(\frac{a}{b}) = \ln{a} - \ln{b})
+\\
+&amp;= 0 - \ln(2)\quad(\because \ln(1) = 0) \\
+&amp;= - \ln(2) \\
+\\
+\ln(0.1) &amp;= \ln(\frac{1}{10}) \\
+&amp;= \ln(1) - \ln(10) \\
+&amp;= -\ln(10)
+\end{align*}
+\]</span> 在 <span class="math inline">\(0 &lt; x &lt; 1\)</span>
+這個區間裡面，我們可以發現，取了自然對數之後，所得到的值會是一個負數，<br />
+並且隨著<span
+class="math inline">\(x\)</span>的值越靠近0，這個數字會負的越大，最終無限靠近負無限大。</p>
+<p>套用到勝算當中： <span class="math display">\[
+\begin{align*}
+Odds &amp;= \frac{P}{1 - P} \\
+Log-Odds &amp;= \ln(\frac{P}{1-P}) = z \\
+e^z &amp;= e^{\ln(\frac{P}{1-P})} \\
+e^z &amp;= \frac{P}{1-P} \\
+e^z(1-P) &amp;= P \\
+e^z - e^{z}P &amp;= P \\
+e^z &amp;= P + e^{z}P \\
+e^z &amp;= P(1 + e^z) \\
+P &amp;= \frac{e^z}{1 + e^z}
+\end{align*}
+\]</span></p>
+<h3 id="sigmoid-函數">Sigmoid 函數</h3>
+<p>至此，我們得到了 對數勝算(Log-Odds) 函數，而它也被稱為
+Sigmoid函數。<br />
+如同我們一路推導的目的，是為了在機率論裡頭，找到一個可以映射 <span
+class="math inline">\((-\infty, \infty)\)</span> 區間的方法。<br />
+而經過了 勝算(Odds) 的 <span class="math inline">\([0, \infty)\)</span>
+到 對數勝算(Log-Odds)的 <span class="math inline">\((-\infty,
+\infty)\)</span>。</p>
+<p>我們會用 <span class="math inline">\(\sigma(z)\)</span> 來表示:<br />
+<span class="math display">\[
+\sigma(z) = \frac{e^z}{1 + e^z}
+\]</span><br />
+接下來我們把它化簡成Sigmoid的常見形式(不一定必須):<br />
+<span class="math display">\[
+\begin{align*}
+P = \sigma(z) &amp;= \frac{e^z}{1 + e^z} \\
+&amp;= \frac{\frac{e^z}{e^z}}{\frac{1}{e^z} + \frac{e^z}{e^z}} \\
+&amp;= \frac{1}{1 + e^{-z}} \quad \because \frac{1}{e^z} = e^{-z}
+\end{align*}
+\]</span></p>
+<p>這個函數的目的是把線性函數 <span class="math inline">\(z = w_1x_1 +
+w_2x_2 + b\)</span> 映射到 <span class="math inline">\([0, 1]\)</span>
+的機率。</p>
+<h2 id="決策邊界decision-boundary">決策邊界(Decision Boundary)</h2>
+<p>我們找到了一個工具(Sigmoid)來幫助我們計算機率，而回歸到我們的目的，是要分類。<br />
+<span
+class="math inline">\(z\)</span>這個線性函數，可以幫我們定義一個邊界，而這個邊界可以區分出二元的兩側；所以代表在這條線上，分類為A的機率跟分類為B的機率為相同(50%)，意即
+<span class="math inline">\(P = 50\% = 0.5\)</span> 。</p>
+<blockquote>
+<p>換句話說，當 <span class="math inline">\(P &gt; 0.5\)</span>
+，歸類為A；若 <span class="math inline">\(P &lt; 0.5\)</span>
+則歸類為B。</p>
+</blockquote>
+<p>則:<br />
+<span class="math display">\[
+\begin{align*}
+\sigma(z) &amp;= P \\
+=&gt; P &amp;= \frac{1}{1 + e^{-z}} \\
+=&gt; 0.5 &amp;= \frac{1}{1 + e^{-z}} \\
+=&gt; 1 &amp;= 0.5 + 0.5e^{-z} \\
+=&gt; 1 &amp;= e^{-z} \\
+=&gt; z &amp;= 0 \\
+\end{align*}
+\]</span></p>
+<p>所以當 <span class="math inline">\(P=0.5\)</span> 時， <span
+class="math inline">\(z = 0\)</span>，則 <span class="math inline">\(z =
+w_1x_1 + w_2x_2 + b = 0\)</span><br />
+這個方程式就代表了決策邊界在坐標系中的圖形，介於這條線的兩側，分別被歸類為A或者B。<br />
+接下來的問題就是，根據實際的訓練資料，這個函數中的 <span
+class="math inline">\(w_1, w_2, b\)</span> 是否符合實際的類別，<br />
+我們需要透過機器學習來訓練。</p>
+<h2 id="損失函數loss-function">損失函數(Loss Function)</h2>
+<p>如同線性回歸一樣，我們需要找到一個數學工具，來綜合「訓練後」的預測以及訓練集中的「實際值」中所計算出來的誤差，進一步作為最佳化的依據。<br />
+在二元分類的邏輯回歸中，誤差的意思是「如果某個資料是屬於A類，但是卻被決策邊界歸為B類」，這類型的誤差需要被訓練集中的每一個訓練資料所檢視。</p>
+<p>所以我們需要找到一個數學工具，可以協助我們比較，預測類跟實際類的差別:</p>
+<h3
+id="交叉熵損失函數cross-entropy-loss-function">交叉熵損失函數(Cross-Entropy
+loss function)</h3>
+<p>如果 <span class="math inline">\(y\)</span> 是真實標籤(分類結果,<span
+class="math inline">\(0 or 1\)</span>, 0代表A類，1代表B類), <span
+class="math inline">\(p\)</span> 是預測機率。<br />
+我們需要找到一個方法，在實際值為0，分類為1時出現誤差；相反實際值為1，分類為0時也出現誤差；但是如果兩者一致，則不出現誤差。</p>
+<p>換句話說:<br />
+<span class="math display">\[
+\begin{align*}
+y = 1, p = 0, \quad \text{error!} \\
+y = 0, p = 1, \quad \text{error!} \\
+y = 1, p = 1, \quad \text{good!} \\
+y = 0, p = 0, \quad \text{good!}
+\end{align*}
+\]</span> 同時因為 <span class="math inline">\(p \in [0,
+1]\)</span>:<br />
+<span class="math display">\[
+\begin{align*}
+y = 1, p &amp;= 0.1, \quad \text{big big error!} \\
+y = 1, p &amp;= 0.3, \quad \text{minor error!} \\
+y = 1, p &amp;= 0.9, \quad \text{good!} \\
+\end{align*}
+\]</span> 我們還需要根據程度，給出不同大小的誤差。<br />
+以下我們又會使用到 自然對數 來作為我們的數學工具。</p>
+<h4 id="自然對數">自然對數</h4>
+<p>如同上面推導的時候所使用到的自然對數，如果一個介於 <span
+class="math inline">\([0, 1]\)</span> 之間的數取自然對數，<br />
+會得到一個負數，並且隨著數向 <span class="math inline">\(0\)</span>
+靠近，取 <span class="math inline">\(\ln\)</span> 之後的值會越靠近 <span
+class="math inline">\(-\infty\)</span></p>
+<p>所以如果我們把機率放進去自然對數，我們可以分別計算出兩種誤差:<br />
+<span class="math display">\[
+\begin{align*}
+\ln(p) &amp;=&gt; 當y為1，但p為0.1時 \\
+\ln(1 - p) &amp;=&gt; 當y=0，但p為1時\\
+\end{align*}
+\]</span>
+這兩種誤差，分別需要在對的場合被應用，所以我們需要幫他們乘上一個係數:<br />
+<span class="math display">\[
+\begin{align*}
+y\ln(p) &amp;=&gt; 當y為1，但p為0.1時 \\
+(1-y)\ln(1 - p) &amp;=&gt; 當y=0，但p為1時\\
+\end{align*}
+\]</span>
+如此一來，這些誤差在相反的情況下，會被係數抵銷掉，最後我們可以把這兩個誤差合併起來：<br />
+<span class="math display">\[[y\ln(p) + (1-y)\ln(1-p)]\]</span><br />
+這些誤差，都是自然對數映射了負數的總和，所以越靠近零，其值會越靠近負無限大，<br />
+但是經過係數篩選後，負號還依舊存在，為了要更好的表達損失的大小，<br />
+我們透過乘以 <span class="math inline">\(-1\)</span>
+，翻轉了負號的意義，讓整個函式的輸出越靠近負無限大，則代表錯誤越大:<br />
+<span class="math display">\[
+L(y, p) = - [y\ln(p) + (1-y)\ln(1-p)]
+\]</span> 我們就取得了 交叉熵損失函數。</p>
+<h3 id="平均交叉熵損失average-cross-entropy-loss">平均交叉熵損失(Average
+Cross-Entropy Loss)</h3>
+<p>我們可以透過交叉熵函數，可以計算出單個點的誤差:<br />
+<span class="math display">\[
+L(y_i, p_i) = -[y_i\ln(p_i) + (1 - y_i)\ln(1-p_i)]
+\]</span>
+接下來我們要算出整個資料集的所有誤差，並且這些誤差均勻的散步在整個資料集的大小:
+<span class="math display">\[
+\begin{align*}
+Loss &amp;= \frac{1}{N}\sum_{i=1}^{N}-[y_i\ln(p_i) + (1 -
+y_i)\ln(1-p_i)] \\
+&amp;= - \frac{1}{N}\sum_{i=1}^{N}[y_i\ln(p_i) + (1 - y_i)\ln(1-p_i)]
+\end{align*}
+\]</span></p>
+<p>取得這個Loss
+function後，我們就可以依此來知道每次迭代訓練後的誤差，<br />
+接下來我們只要找到一個改進方法就可以套用進我們的最佳化策略了。</p>
+<h2 id="最佳化器optimizer">最佳化器(Optimizer)</h2>
+我們的損失函數:<br />
+<span class="math display">\[
+J(w_1, w_2, b) = - \frac{1}{N}\sum_{i=1}^{N}[y_i\ln(p_i) + (1 -
+y_i)\ln(1-p_i)]
+\]</span>
+<div id="loss-function-chart" style="width: 100%; height: 500px;">
+
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    let myChart = echarts.init(document.getElementById('loss-function-chart'));
+
+    let xData = [-3, -2, -1, 0, 1, 2, 3];
+    let yData = [0, 0, 0, 0, 1, 1, 1];
+
+    function sigmoid(z) {
+      return 1 / (1 + Math.exp(-z));
+    }
+
+    function average_cross_entropy(w) {
+      let sum = 0;
+      for (let i = 0; i < xData.length; i++) {
+        let p = sigmoid(w * xData[i]);
+        p = Math.max(1e-8, Math.min(1 - 1e-8, p)); // Prevent log(0)
+        let y = yData[i];
+        sum += - (y * Math.log(p) + (1 - y) * Math.log(1 - p));
+      }
+      return sum / xData.length;
+    }
+
+    function errorData() {
+      let datas = [];
+      for (let i = 0; i < 100; i++) {        
+        let w = -6 + i * (12 / 99); 
+        datas.push([w, average_cross_entropy(w)]);
+      }
+      return datas;
+    }
+
+    let option = {
+      backgroundColor: '#fff',
+      title: {
+        text: '不同 w 參數下的平均交叉熵損失曲線'
+      },
+      xAxis: {
+        name: 'w',
+        min: -6,
+        max: 6
+      },
+      yAxis: {
+        name: 'Average Loss',
+        min: 0,
+        max: 1.5
+      },
+      series: [{
+        type: 'line',
+        smooth: true,
+        data: errorData(),
+      }]
+    }
+    myChart.setOption(option);
+  });
+</script>
+<p>在一個特徵底下的圖形會長得像上面那樣；<br />
+這個是以不同的 <span class="math inline">\(w\)</span>
+代入線性代數後，平均交叉熵損失會是多少，<br />
+基本上找 <span class="math inline">\(w\)</span>
+的過程就是我們在訓練的過程。</p>
+<p>為了要找到最佳的 <span class="math inline">\(w\)</span>
+我們可以獲得最低的損失，這邊我們採用求導數(偏微分)來根據斜率逐漸找到最佳的
+<span class="math inline">\(w\)</span>。 <a href="/2025/10/03/AI/linear-regression-and-its-math_zhTW/#gradient-descent%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D" title="Linear Regression &amp; its mathematic(zhTW)">&gt;&gt; [為什麼要用微分？] &lt;&lt;</a></p>
+<h3 id="loss-function-算式展開">Loss Function 算式展開</h3>
+<p>這張圖實際上跟我們的假設不符合，它只是個示意圖，<br />
+因為我們的假設中有 <span class="math inline">\(w_1, w_2, b\)</span>
+三個特徵, 接下來我們要按這三個參數進行求偏導(偏微分)
+首先我們把整個式子展開來: <span class="math display">\[
+\begin{align*}
+J(w_1, w_2, b) &amp;= - \frac{1}{N}\sum_{i=1}^{N}[y_i\ln(p_i) + (1 -
+y_i)\ln(1-p_i)] \\
+\because \sigma(z_i) &amp;= P_i = \frac{1}{1 + e^{-z_i}} \\
+&amp;= - \frac{1}{N}\sum_{i=1}^{N}[y_i\ln(\frac{1}{1 + e^{-z_i}}) + (1 -
+y_i)\ln(1 - \frac{1}{1 + e^{-z_i}})] \\
+&amp;= - \frac{1}{N}\sum_{i=1}^{N}[y_i\ln(\frac{1}{1 + e^{-z_i}}) + (1 -
+y_i)\ln(\frac{e^{-z_i}}{1 + e^{-z_i}})] \\
+\because \ln(\frac{N}{M}) &amp;= \ln(N) - \ln(M) \quad (N, M &gt; 0) \\
+&amp;= - \frac{1}{N}\sum_{i=1}^{N}[y_i(\ln(1) - \ln(1 + e^{-z_i})) + (1
+- y_i)(\ln(e^{-z_i}) - \ln(1 + e^{-z_i}))] \\
+\because \ln(1) &amp;= 0 \\
+&amp;= - \frac{1}{N}\sum_{i=1}^{N}[- y_i\ln(1 + e^{-z_i}) + (1 -
+y_i)(\ln(e^{-z_i}) - \ln(1 + e^{-z_i}))] \\
+\because \ln(e^{-z_i}) &amp;= -z_i \\
+&amp;= - \frac{1}{N}\sum_{i=1}^{N}[- y_i\ln(1 + e^{-z_i}) + (1 -
+y_i)[{-z_i} - \ln(1 + e^{-z_i})]] \\
+&amp;= - \frac{1}{N}\sum_{i=1}^{N}[- y_i\ln(1 + e^{-z_i}) - (1 -
+y_i){z_i} - (1 - y_i)\ln(1 + e^{-z_i})] \\
+&amp;= - \frac{1}{N}\sum_{i=1}^{N}[\ln(1 + e^{-z_i})[-y_i -(1 - y_i)] -
+(1 - y_i)z_i] \\
+&amp;= - \frac{1}{N}\sum_{i=1}^{N}[-\ln(1 + e^{-z_i}) - (1 - y_i)z_i] \\
+J(w_1, w_2, b) &amp;= \frac{1}{N}\sum_{i=1}^{N}[\ln(1 + e^{-z_i}) + (1 -
+y_i)z_i]
+\end{align*}
+\]</span> 接著我們就可以開始來求偏導了。</p>
+<h3 id="係數w_1">係數<span class="math inline">\(w_1\)</span>:</h3>
+<p><span class="math inline">\(\dfrac{dJ}{dw_1}\)</span>: <span
+class="math display">\[
+\begin{align*}
+\text{Let } f(x_i) &amp;= \ln(1 + e^{-z_i}) + (1 - y_i)z_i \\
+\dfrac{dJ}{dw_1} &amp;= \frac{1}{N}\sum_{i=1}^{N}\dfrac{d}{dw_1}f(x_i)
+\\
+&amp;= \frac{1}{N}\sum_{i=1}^{N}\dfrac{df}{dz_i} \cdot
+\dfrac{dz_i}{dw_1} \quad
+\because \dfrac{d}{du}f(x) = \dfrac{df}{dg} \cdot \dfrac{dg}{du} \tag{1}
+\\
+\\
+\dfrac{df}{dz_i} &amp;= \dfrac{d}{dz_i}[\ln(1 + e^{-z_i}) + (1-y_i)z_i]
+\\
+&amp;= \dfrac{d}{dz_i}\ln(1 + e^{-z_i}) + \dfrac{d}{dz_i}(1 - y_i)z_i \\
+&amp;= \dfrac{d}{dz_i}\ln(1 + e^{-z_i}) + (1 - y_i) \tag{2} \\
+\\
+\dfrac{d}{dz_i}\ln(1 + e^{-z_i}) &amp;= \frac{1}{1 + e^{-z_i}} \cdot
+\dfrac{d}{dz_i}(1 + e^{-z_i}) \quad
+\because \dfrac{d}{dg}\ln(u) = \frac{1}{u} \cdot \dfrac{du}{dg} \tag{3}
+\\
+\\
+\dfrac{d}{dz_i}(1 + e^{-z_i}) &amp;= \dfrac{d}{dz_i}(1) +
+\dfrac{d}{dz_i}e^{-z_i} \\
+&amp;= 0 + \dfrac{d}{dz_i}e^{-z_i} \\
+\text{Let } u = -z_i =&gt; \dfrac{d}{dz_i}(1 + e^{-z_i}) &amp;=
+\dfrac{d}{dz_i}e^u \\
+&amp;= \dfrac{d(e^u)}{du} \cdot \dfrac{du}{dz_i} \quad \because
+\dfrac{da}{db} = \dfrac{da}{dc} \cdot \dfrac{dc}{db} \\
+&amp;= e^u \cdot (-1) \\
+\dfrac{d}{dz_i}(1 + e^{-z_i}) &amp;= -e^{-z_i} \tag{4} \\
+\\
+\text{Base on (3), (4)} =&gt; \dfrac{d}{dz_i}\ln(1 + e^{-z_i}) &amp;=
+\frac{1}{1 + e^{-z_i}} \cdot (-e ^ {-z_i})  \\
+&amp;= \frac{-e^{-z_i}}{1 + e^{-z_i}} \\
+&amp;= \frac{-1{e}^{-z_i}e^{z_i}}{(1 + e^{-z_i})e^{z_i}} \\
+&amp;= -\frac{1}{e^{z_i} + 1} \tag{5} \\
+\text{Proof }\sigma(-z) = 1 - \sigma(z) =&gt; \frac{1}{1 + e^z} &amp;= 1
+- \frac{1}{1 + e^{-z}}\quad\because \sigma(z) = \frac{1}{1 + e^{-z}},
+\sigma(-z) = \frac{1}{1 + e ^ {-(-z)}}\\
+=&gt; \frac{1}{1 + e^z} &amp;= \frac{1 + e^{-z} - 1}{1 + e^{-z}} \\
+=&gt; \frac{1}{1 + e^z} &amp;= \frac{e^{-z}}{1 + e^{-z}} \\
+=&gt; \frac{1}{1 + e^z} &amp;= \frac{e^{-z}e^z}{(1 + e^{-z})e^z} \\
+=&gt; \frac{1}{1 + e^z} &amp;= \frac{1}{(1 + e^{-z})e^z} \\
+=&gt; \sigma(-z) = \frac{1}{1 + e^z} = 1 - \sigma(z) \tag{6} \\
+\\
+\text{Base on (5), (6)} =&gt; \dfrac{d}{dz_i}\ln(1 + e^{-z_i}) &amp;=
+-\frac{1}{e^{z_i} + 1} \\
+&amp;= - (1 - \sigma(z_i)) \\
+&amp;= \sigma(z_i) - 1 \tag{7} \\
+\\
+\text{Base on (2), (7)} =&gt; \dfrac{df}{dz_i} &amp;=
+\dfrac{d}{dz_i}\ln(1 + e^{-z_i}) + (1 - y_i) \\
+&amp;= \sigma(z_i) - 1 + (1 - y_i) \\
+&amp;= \sigma(z_i) - y_i \tag{8} \\
+\\
+\dfrac{dz_i}{dw_1} &amp;= \dfrac{d}{dw_i}[w_1x_{i1} + w_2x_{i2} + b]
+\quad \because z_i = w_1x_{i1} + w_2x_{i2} + b \\
+&amp;= x_{i1} + 0 + 0 \\
+&amp;= x_{i1} \tag{9} \\
+\\
+\text{Base on (1), (8), (9)} =&gt; \dfrac{dJ}{dw_1} &amp;=
+\frac{1}{N}\sum_{i=1}^{N}\dfrac{df}{dz_i}\cdot \dfrac{dz_i}{dw_1} \\
+&amp;= \frac{1}{N}\sum_{i=1}^{N}[(\sigma(z) - y_i)x_{i1}] \tag{10} \\
+\end{align*}
+\]</span></p>
+<h3 id="係數w_2">係數<span class="math inline">\(w_2\)</span>:</h3>
+<p><span class="math inline">\(\dfrac{dJ}{dw_2}\)</span> <span
+class="math display">\[
+\begin{align*}
+\text{Let } f(x_i) &amp;= \ln(1 + e^{-z_i}) + (1 - y_i)z_i \\
+\dfrac{dJ}{dw_2} &amp;= \frac{1}{N}\sum_{i=1}^{N}\dfrac{d}{dw_2}f(x_i)
+\\
+&amp;= \frac{1}{N}\sum_{i=1}^{N}\dfrac{df}{dz_i} \cdot
+\dfrac{dz_i}{dw_2} \quad
+\because \dfrac{d}{du}f(x) = \dfrac{df}{dg} \cdot \dfrac{dg}{du}
+\tag{11} \\
+\\
+\dfrac{dz_i}{dw_2} &amp;= \dfrac{d}{dw_2}[w_1x_{i1} + w_2x_{i2} + b]
+\quad \because z_i = w_1x_{i1} + w_2x_{i2} + b \\
+&amp;= 0 + x_{i2} + 0 \tag{12} \\
+\\
+\text{Base on (8), (11), (12)} =&gt; \dfrac{dJ}{dw_2} &amp;=
+\frac{1}{N}\sum_{i=1}^{N}\dfrac{df}{dz_i} \cdot \dfrac{dz_i}{dw_2} \\
+&amp;= \frac{1}{N}\sum_{i=1}^{N}[(\sigma(z_i) - y_i)x_{i2}] \tag{13}
+\end{align*}
+\]</span></p>
+<h3 id="係數b">係數<span class="math inline">\(b\)</span>:</h3>
+<p><span class="math inline">\(\dfrac{dJ}{db}\)</span> <span
+class="math display">\[
+\begin{align*}
+\text{Let } f(x_i) &amp;= \ln(1 + e^{-z_i}) + (1 - y_i)z_i \\
+\dfrac{dJ}{db} &amp;= \frac{1}{N}\sum_{i=1}^{N}\dfrac{d}{db}f(x_i) \\
+&amp;= \frac{1}{N}\sum_{i=1}^{N}\dfrac{df}{dz_i} \cdot \dfrac{dz_i}{db}
+\quad
+\because \dfrac{d}{du}f(x) = \dfrac{df}{dg} \cdot \dfrac{dg}{du}
+\tag{14} \\
+\\
+\dfrac{dz_i}{db} &amp;= \dfrac{d}{db}[w_1x_{i1} + w_2x_{i2} + b] \quad
+\because z_i = w_1x_{i1} + w_2x_{i2} + b \\
+&amp;= 0 + 0 + 1 \tag{15} \\
+\\
+\text{Base on (8), (14), (15)} =&gt; \dfrac{dJ}{db} &amp;=
+\frac{1}{N}\sum_{i=1}^{N}\dfrac{df}{dz_i} \cdot \dfrac{dz_i}{db} \\
+&amp;= \frac{1}{N}\sum_{i=1}^{N}(\sigma(z_i) - y_i) \tag{16}
+\end{align*}
+\]</span></p>
+<h3 id="所有的偏導以及梯度下降">所有的偏導以及梯度下降</h3>
+<p>從上面的 <span class="math inline">\(\text{(10), (13),(16)}\)</span>
+式，我們可以得到三個偏導：<br />
+<span class="math display">\[
+\begin{align*}
+\dfrac{dJ}{dw_1} &amp;= \frac{1}{N}\sum_{i=1}^{N}[(\sigma(z_i) -
+y_i)x_{i1}] \tag{10} \\
+\dfrac{dJ}{dw_2} &amp;= \frac{1}{N}\sum_{i=1}^{N}[(\sigma(z_i) -
+y_i)x_{i2}] \tag{13} \\
+\dfrac{dJ}{db} &amp;= \frac{1}{N}\sum_{i=1}^{N}(\sigma(z_i) - y_i)
+\tag{16} \\
+\end{align*}
+\]</span> 依此來放入梯度下降公式:<br />
+<span class="math display">\[
+\begin{align*}
+\text{Base on (10), (13), (16)} &amp;=&gt; \\
+w_{1new} &amp;= w_{1old} - \alpha
+(\frac{1}{N}\sum_{i=1}^{N}[(\sigma(z_i) - y_i)x_{i1}]) \\
+w_{2new} &amp;= w_{2old} - \alpha
+(\frac{1}{N}\sum_{i=1}^{N}[(\sigma(z_i) - y_i)x_{i2}]) \\
+b_{new} &amp;= b_{old} - \alpha (\frac{1}{N}\sum_{i=1}^{N}(\sigma(z_i) -
+y_i)) \\
+\end{align*}
+\]</span></p>
+<p>可以從上面的梯度公式看出:</p>
+<blockquote>
+<p><span class="math inline">\(\sigma(z) - y_i\)</span> 代表著
+每一個預測機率 跟 實際訓練集的標籤 誤差。<br />
+取了 <span class="math inline">\(\frac{1}{N}\sum_{i=1}^{N}\)</span>
+變成了平均誤差。<br />
+有趣的是，每一個權重(<span class="math inline">\(w\)</span>)都受到了
+特徵本身以及誤差之間相乘 的總和平均影響。<br />
+而偏差項(<span
+class="math inline">\(b\)</span>)本身的梯度總是為1，所以只受到了所有樣本的平均誤差影響。</p>
+</blockquote>
+<p>經過了漫長的推導以及化簡，最終得出來的梯度公式，其實還蠻優雅的xd(elegant)。</p>
+<h2 id="寫在最後">寫在最後</h2>
+<p>這次的推導比我想像中的還要漫長許多。<br />
+雖然已經跳過了多特徵的向量表達，但是三個特徵推導起來還是感到吃力。<br />
+為了連結線性代數以及機率論，花了很大的力氣在推導。<br />
+下次考慮開始寫點多特徵向量或者是邏輯回歸延伸到神經網路的推導，應該就會遇到離散數學了Orz。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/AI/" rel="tag"># AI</a>
+              <a href="/tags/Machine-Learning/" rel="tag"># Machine Learning</a>
+              <a href="/tags/Regression-Analysis/" rel="tag"># Regression Analysis</a>
+              <a href="/tags/Logistic-Regression/" rel="tag"># Logistic Regression</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/10/07/AI/logistic-regression-and-its-math/" rel="prev" title="Logistic Regression & its mathematic">
+                  <i class="fa fa-chevron-left"></i> Logistic Regression & its mathematic
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2018 – 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">clooooode</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="Word count total">32k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">1:56</span>
+  </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.23.0/firebase-app-compat.js" integrity="sha256-FYa4Xn7MJlI18eIkwawbRKLz7bGeUODtNpSR+bsjlHg=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.23.0/firebase-firestore-compat.js" integrity="sha256-sgbLcRGF3ph6N+ymg9zoy9kFQDWBvJlCd0GbGMKBH0c=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="firestore" type="application/json">{"enable":true,"collection":"articles","apiKey":"AIzaSyCu9-MhzikdJ0BVgPRODV__hMffyr5bgZg","projectId":"clo5de-githubpage"}</script>
+  <script src="/js/third-party/statistics/firestore.js"></script>
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"jackey8616/jackey8616.github.io","issue_term":"title","theme":"github-dark","label":"ChatRoom"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+</body>
+</html>
