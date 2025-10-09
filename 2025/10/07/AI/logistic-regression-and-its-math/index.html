@@ -28,7 +28,7 @@
 <meta property="og:description" content="This time lets talk about Logistic Regression. Need readers with some concept of natural logarithm. &gt;&gt; [zhTW version] &lt;&lt;">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-10-07T15:32:20.000Z">
-<meta property="article:modified_time" content="2025-10-08T09:53:10.341Z">
+<meta property="article:modified_time" content="2025-10-09T00:29:10.846Z">
 <meta property="article:author" content="clooooode">
 <meta property="article:tag" content="AI">
 <meta property="article:tag" content="Machine Learning">
@@ -256,7 +256,7 @@ gradient descent</span></a></li></ol></li><li class="nav-item nav-level-2"><a cl
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-10-08 09:53:10" itemprop="dateModified" datetime="2025-10-08T09:53:10+00:00">2025-10-08</time>
+      <time title="Modified: 2025-10-09 00:29:10" itemprop="dateModified" datetime="2025-10-09T00:29:10+00:00">2025-10-09</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -304,18 +304,19 @@ Need readers with some concept of natural logarithm.<br />
 <a href="/2025/10/07/AI/logistic-regression-and-its-math-zhTW/" title="Logistic Regression &amp; its mathematic(zhTW)">&gt;&gt; [zhTW version] &lt;&lt;</a><br />
 <span id="more"></span></p>
 <h2 id="logistic-regression">Logistic Regression</h2>
-<p>TL;DR: A data classification based on linear regression.</p>
+<p>TL;DR: Data classification based on linear regression.</p>
 <blockquote>
-<p>For example: a classification with thousand mails, classified whether
-junk or not junk mail.</p>
+<p>For example: classifying one thousand mails as ether junk or not junk
+mail.</p>
 </blockquote>
 <p>Essence of logistic regression is also another kind of linear
 model.<br />
-Despite with finding relationships between input feature(x) and output
-value(y) in linear regression, logistic regression is trying to find a
-equation that can be the boundary of categories of data.</p>
+Unlike linear regression, which finds relationships between input
+feature(x) and output value(y) in linear regression, logistic regression
+is trying to find a equation that can be the boundary of categories of
+data.</p>
 <h2 id="mathematical-assumption">Mathematical assumption</h2>
-<p>Despites to the assumption in linear regression: <span
+<p>In contrast to the assumption in linear regression: <span
 class="math display">\[
 \hat{y} = wx + b
 \]</span> <span class="math inline">\(\hat{y}\)</span> and <span
@@ -331,16 +332,15 @@ we will take this assumption to keep on derivation.</p>
 <h3 id="definition-of-linear-algebra">Definition of linear algebra</h3>
 <p><span class="math display">\[
 z = w_1x_1 + w_2x_2 + b
-\]</span> The equation is actually a linear algebra, it means the
+\]</span> The equation is actually a linear expression, it means the
 calculation which considered all the variables (<span
 class="math inline">\(x_1, x_2\)</span>), parameters(<span
 class="math inline">\(w_1, w_2\)</span>) and bias <span
-class="math inline">\(b\)</span>, this calculation eventually get
-returns a score. The score decides <span class="math inline">\(x_1,
-x_2\)</span> is whether A or B category(Because its binary
-classification).<br />
+class="math inline">\(b\)</span>, this calculation eventually returns a
+score. The score decides <span class="math inline">\(x_1, x_2\)</span>
+is whether A or B category(Because its binary classification).<br />
 In this equation, each of <span class="math inline">\(w, x ,b\)</span>
-are all natural number, thus the score <span
+are all real numbers, thus the score <span
 class="math inline">\(z\)</span> will be in the interval of <span
 class="math inline">\((-\infty, \infty)\)</span> 。</p>
 <blockquote>
@@ -358,8 +358,8 @@ possibility, which is <span class="math inline">\(P \in [0,
 linear algebra, these two interval is unable to mapping each other.</p>
 <h4 id="odds">Odds</h4>
 <p>Here comes the concept of Odds, the definition of Odds is slightly
-different to Possibility: the ratio of the possibility of event happened
-or not happened, is Odds.<br />
+different from Probability: the ratio of the possibility of event
+happened or not happened, is Odds.<br />
 Assume the possibility of a event happened is <span
 class="math inline">\(P\)</span>: <span class="math display">\[
 Odds = \frac{P}{1-P}
@@ -380,7 +380,7 @@ Normally we write it <span class="math inline">\(9:1\)</span>.</p>
 Odds \in [0, \infty)
 \]</span> The range can expends to <span
 class="math inline">\(\infty\)</span> in positive direction, it can
-mapping half of the range with linear algebra.<br />
+mapping half of the range with linear expression.<br />
 Nex step is to find a way to mapping <span
 class="math inline">\(-\infty\)</span>.</p>
 <h4 id="log-odds">Log-Odds</h4>
@@ -391,8 +391,8 @@ close to <span class="math inline">\(\infty\)</span> but not <span
 class="math inline">\(\infty\)</span>, otherwise it will more small, and
 infinitely close to zero but not zero.<br />
 Thus the question become: how do we use a equation to mapping the input
-which close to zero into a smaller enough negative natural number, even
-close to negative infinity.</p>
+which close to zero into a sufficiently large negative value, even close
+to negative infinity.</p>
 <p>There is a cool mathematic tool call natural logarithm: <span
 class="math inline">\(\ln(x) = log_e{x}\)</span><br />
 We can recall from logarithm:<br />
@@ -499,6 +499,7 @@ same(50%), which means <span class="math inline">\(P = 50\% =
 =&gt; P &amp;= \frac{1}{1 + e^{-z}} \\
 =&gt; 0.5 &amp;= \frac{1}{1 + e^{-z}} \\
 =&gt; 1 &amp;= 0.5 + 0.5e^{-z} \\
+=&gt; 0.5 &amp;= 0.5e^{z-} \\
 =&gt; 1 &amp;= e^{-z} \\
 =&gt; z &amp;= 0 \\
 \end{align*}
@@ -578,10 +579,10 @@ negative number, the value more close to zero, the mapping will more
 close to negative infinity.<br />
 With the filter by the parameter(actual value), negative sign is still
 exists, this will cause misleading with the meaning.<br />
-By multiple with <span class="math inline">\(-1\)</span> ,we can flip
-the meaning of negative, let the whole equation presents bigger error
-when the mapping value is more close to negative infinity:<br />
-<span class="math display">\[
+To better express the magnitude of the loss, we multiply by <span
+class="math inline">\(-1\)</span> , which inverts the scale so that the
+larger the resulting positive value, the greater the error is: <span
+class="math display">\[
 L(y, p) = - [y\ln(p) + (1-y)\ln(1-p)]
 \]</span> This is the cross-entropy loss function.</p>
 <h3 id="average-cross-entropy-loss">Average Cross-Entropy Loss</h3>
@@ -668,9 +669,9 @@ y_i)\ln(1-p_i)]
 </script>
 <p>With single feature, the chart will look like above;<br />
 This is the average cross entropy loss when putting different <span
-class="math inline">\(w\)</span> into linear algebra.<br />
-Basically finding <span class="math inline">\(w\)</span> is exact the
-same process like training.</p>
+class="math inline">\(w\)</span> into linear expression.<br />
+The process of finding <span class="math inline">\(w\)</span> is exactly
+the same as the training process.</p>
 <p>In order to find the best <span class="math inline">\(w\)</span>
 letting us get the lowest error, we will gradually use differentiation
 to find the slope to do so.<br />
@@ -858,7 +859,7 @@ And the gradient of bias(<span class="math inline">\(b\)</span>) itself
 is always 1, so it only effected by the average error of whole
 sample.</p>
 </blockquote>
-<p>After the long derivate and simplification, the final gradient
+<p>After the lengthy derivation and simplification, the final gradient
 descent equation looks quite elegant, TBH xd.</p>
 <h2 id="last">Last</h2>
 <p>Its much more longer derivation then I expect.<br />
