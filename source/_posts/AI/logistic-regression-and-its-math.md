@@ -1,5 +1,5 @@
 ---
-title: Logistic Regression & its mathematic
+title: Logistic Regression & its mathematics
 date: 2025-10-07 15:32:20
 categories: AI
 tags:
@@ -10,76 +10,76 @@ tags:
 mathjax: true
 ---
 
-This time lets talk about Logistic Regression.  
-Need readers with some concept of natural logarithm.  
+This time let's talk about Logistic Regression.  
+Readers need some concept of the natural logarithm.  
 {% post_link AI/logistic-regression-and-its-math-zhTW '>> [zhTW version] <<' %}  
 <!-- More -->
 
 ## Logistic Regression
-TL;DR: A data classification based on linear regression.  
+TL;DR: Data classification based on linear regression.  
 
-> For example: a classification with thousand mails, classified whether junk or not junk mail.  
+> For example: classifying one thousand mails as either junk or not junk mail.  
 
-Essence of logistic regression is also another kind of linear model.  
-Despite with finding relationships between input feature(x) and output value(y) in linear regression, logistic regression is trying to find a equation that can be the boundary of categories of data.
+The essence of logistic regression is that it is also a linear model(using a linear combination).  
+Unlike linear regression, which finds relationships between input feature(x) and output value(y), logistic regression is trying to find an equation that serves as the decision boundary separating data categories.  
 
 ## Mathematical assumption
-Despites to the assumption in linear regression:
+In contrast to the assumption in linear regression:
 $$
 \hat{y} = wx + b
 $$
-$\hat{y}$ and $x$ are the data point actually locate in a 2-dimension coordinate system.  
+$\hat{y}$ and $x$ are the data points actually located in a 2-dimension coordinate system.  
 But logistic regression can choose how many features to use as parameter, same example in 2-dimension coordinate system:  
 $$
 z = w_1x_1 + w_2x_2 + b
 $$
-$x_1$ and $x_2$ represents the 2 axis in 2-dimension, we will take this assumption to keep on derivation.  
+$x_1$ and $x_2$ represent the 2 axes in 2-dimension, we will take this assumption to continue with the derivation.  
 
-### Definition of linear algebra
+### Definition in Linear Algebra
 $$
 z = w_1x_1 + w_2x_2 + b
 $$
-The equation is actually a linear algebra, it means the calculation which considered all the variables ($x_1, x_2$), parameters($w_1, w_2$) and bias $b$, this calculation eventually get returns a score.
-The score decides $x_1, x_2$ is whether A or B category(Because its binary classification).  
-In this equation, each of $w, x ,b$ are all natural number, thus the score $z$ will be in the interval of $(-\infty, \infty)$ 。  
+The equation is actually a linear expression, it means the calculation considering all the variables ($x_1, x_2$), parameters($w_1, w_2$) and bias $b$, this calculation eventually returns a score.
+The score determines whether $x_1, x_2$ belongs to category A or B(Because its binary classification).  
+In this equation, all of $w, x ,b$ are real numbers, thus the score $z$ will be in the interval of $(-\infty, \infty)$ 。  
 
-> Which can also represents like: $z \in (-\infty, \infty)$  
+> Which can also be represented as: $z \in (-\infty, \infty)$  
 
-### Possibility
-Let's forget about the linear algebra stuff first, back to the essences of binary classification, our goal eventually wants to calculate the possibility of a data point is in category.
-When it comes to possibility, the most direct understanding of it should the range of possibility, which is $P \in [0, 1]$.  
+### Probability
+Let's forget about the linear algebra stuff first, back to the essences of binary classification, our goal eventually wants to calculate the probability of a data point is in category.
+When it comes to probability, the most direct understanding of it should the range of probability, which is $P \in [0, 1]$.  
 
-If we want to find a mapping between possibility and equation of linear algebra, these two interval is unable to mapping each other.  
+If we want to find a mapping between probability and equation of linear algebra, these two intervals cannot be directly mapped (to each other).  
 
 #### Odds
-Here comes the concept of Odds, the definition of Odds is slightly different to Possibility: the ratio of the possibility of event happened or not happened, is Odds.  
-Assume the possibility of a event happened is $P$:
+Here comes the concept of Odds, the definition of Odds is slightly different from Probability: It is the ratio of the probability of an event happening to the probability of it not happening.  
+Assume the probability of a event happened is $P$:
 $$
 Odds = \frac{P}{1-P}
 $$
 
-For example: from Possibility to Odds
-If the possibility to pass the exam  $P = 0.9  (90\%)$
+For example: from Probability to Odds
+If the probability to pass the exam  $P = 0.9  (90\%)$
 
-- P of happened $0.9$
+- P of happening $0.9$
 - P of not happened $1 - 0.9 = 0.1$
 - Odds would be $\frac{0.9}{0.1} = 9$
 
-the meaning of 9 is the ratio of the probability of a student passing to the probability of them failing is nine to one.  
+The value of 9 means the probability of a student passing is nine times the probability of them failing.  
 Normally we write it $9:1$.  
 
-We can tell the range of Odds is:
+The range of Odds can be determined from the formula:
 $$
 Odds \in [0, \infty)
 $$
-The range can expends to $\infty$ in positive direction, it can mapping half of the range with linear algebra.  
-Nex step is to find a way to mapping $-\infty$.  
+The range can expands to $\infty$ in positive direction, mapping half of the required range to the linear expression.  
+Next step is to find a way to map $-\infty$.  
 
-#### Log-Odds
-As we known from above, the range of Odds is $[0, \infty)$, when $P$ is much more big, the Odds will more close to $\infty$ but not $\infty$, otherwise it will more small, and infinitely close to zero but not zero.  
-Thus the question become: how do we use a equation to mapping the input which close to zero into a smaller enough negative natural number, even close to negative infinity.  
+#### Log-Odds function
+As we known from above, the range of Odds is $[0, \infty)$, when $P$ is much more big, the Odds will more close to $\infty$ but not $\infty$, otherwise it will get smaller, and infinitely close to zero but not zero.  
+Thus, the question becomes: how  do we use an equation to map the input that is close to zero into a sufficiently large negative value, even close to negative infinity.  
 
-There is a cool mathematic tool call natural logarithm: $\ln(x) = log_e{x}$  
+There is a cool mathematical tool called natural logarithm: $\ln(x) = log_e{x}$  
 We can recall from logarithm:  
 $$
 \begin{align*}
@@ -89,7 +89,7 @@ log_{3}9 &= log_{3}{3 ^ 2} = 2 \\
 log_{3}81 &= log_{3}{3 ^ 4} = 4 \\
 \end{align*}
 $$
-Then this natural logarithm:  
+Then let's review the natural logarithm:  
 $$
 \begin{align*}
 \ln(x) &= log_{e}x \\
@@ -105,7 +105,7 @@ e^y &= 1 \\
 y &= 0
 \end{align*}
 $$
-What if a number smaller then 1? $\ln(0.5)? \ln(0.1)?$:  
+What if a number smaller than 1? $\ln(0.5)? \ln(0.1)?$:  
 $$
 \begin{align*}
 \ln(0.5) &= \ln(\frac{1}{2}) \\
@@ -118,8 +118,8 @@ $$
 &= -\ln(10)
 \end{align*}
 $$
-In the interval of $0 < x < 1$ we can find out, if we put it into a natural logarithm, the return value would be a negative natural number.  
-And when the value of $x$ getting closer to 0, the return value would be more and more small, and closed to negative infinity eventually.  
+In the interval of $0 < x < 1$ we can find out, if we put it into a natural logarithm, the return value would be a negative real number.  
+And as the value of $x$ gets closer to 0, the return value becomes a larger negative value(or more negative), and closer to negative infinity.  
 
 Lets apply this into Odds:  
 $$
@@ -137,15 +137,15 @@ P &= \frac{e^z}{1 + e^z}
 $$
 
 ### Sigmoid
-Eventually, we found the Log-Odds, and it also been known as Sigmoid.  
-As we derivate all the way to here, we are trying to find in probability theory for method which can a mapping the interval of $(-\infty, \infty)$ .  
-After Odds expends to $[0, \infty)$ via Log-Odds $(-\infty, \infty)$, this is all what we got.  
+Eventually, we found the Log-Odds function, and it is also known as the Sigmoid function.  
+As we have derived the function up to this point, our goal was to find a method in probability theory that could map the interval of $(-\infty, \infty)$.  
+After going from Odds $[0, \infty)$ to Log-Odds $(-\infty, \infty)$, we have successfully achieved this mapping.  
 
 We use $\sigma(z)$ to presents:  
 $$
 \sigma(z) = \frac{e^z}{1 + e^z}
 $$  
-Next we will simplify to common form of Sigmoid(Not necessary to do it):  
+Next we will simplify it into the common form of Sigmoid(which is not strictly necessary):  
 $$
 \begin{align*}
 P = \sigma(z) &= \frac{e^z}{1 + e^z} \\
@@ -154,11 +154,11 @@ P = \sigma(z) &= \frac{e^z}{1 + e^z} \\
 \end{align*}
 $$
 
-The purpose of this function is to mapping the range of linear functions $z = w_1x_1 + w_2x_2 + b$ to the range of possibility $[0, 1]$ .  
+The purpose of this function is to mapping the range of linear functions $z = w_1x_1 + w_2x_2 + b$ to the range of probability $[0, 1]$ .  
 
 ## Decision Boundary
-After we found a tool(Sigmoid) helping us calculates possibility, back to our goal is classification.  
-The linear function $z$ can help us define a boundary in order to find the zone of the binary categories; hence on this line, the possibility of category A or B are the same(50%), which means $P = 50\% = 0.5$ .
+After we found a tool(Sigmoid) helping us calculates probability, Returning to our goal, which is classification.  
+The linear function $z$ can help us define a boundary in order to find the zone of the binary categories; hence on this line, the probability of category A or B is the same(50%), which means $P = 50\% = 0.5$ .
 
 > In other words, when $P > 0.5$ , recognize it to be A; otherwise $P < 0.5$ will be B.
 
@@ -169,25 +169,26 @@ $$
 => P &= \frac{1}{1 + e^{-z}} \\
 => 0.5 &= \frac{1}{1 + e^{-z}} \\
 => 1 &= 0.5 + 0.5e^{-z} \\
+=> 0.5 &= 0.5e^{z-} \\
 => 1 &= e^{-z} \\
 => z &= 0 \\
 \end{align*}
 $$
 
 When $P=0.5, z = 0, then $z = w_1x_1 + w_2x_2 + b = 0$  
-This equation represents the decision boundary in the coordinate system, on the two sides of this line will be categorize to A or B.  
-The next question is: based on the actual training data, the parameter $w_1, w_2, b$ in the equation is meets the actual category(actual value),   
-We need to train through machine learning.  
+This equation represents the decision boundary in the coordinate system, on the two sides of this line will be categorized to A or B.  
+The next question is: based on the actual training data, do the parameter $w_1, w_2, b$ in the equation match the actual category(actual value),   
+We need to train model using machine learning.  
 
 ## Loss Function
 Same as linear regression, we need to find a mathematic tool to aggregate the error which calculated from the after-training prediction and the in-data set actual value, in order to be the reference in optimizing strategy.  
-In the logistic regression of binary classification, the meaning of error is "If a data is category A, but been classified as B", this kind of error need to be review by each data in the training set.  
+In binary classification using logistic regression, the error means "If a data point is category A, but is classified as B", this kind of error needs to be evaluated for each data point in the training set.  
   
 So we need to find a tool can help us compare the difference between predict value and actual value:  
 
 ### Cross-Entropy loss function
-If $y$ is actual label(result of classification,$0 or 1$, 0 represents category A, 1 represents category B), $p$ is predict possibility.  
-We need to find a method which returns error when actual value is 0, but predict value gives 1; and same as opposite; but if each of actual value and predict value is the same, returns nothing.  
+If $y$ is actual label(result of classification,$0 or 1$, 0 represents category A, 1 represents category B), $p$ is the predicted probability.  
+We need to find a method which returns error when actual value is 0, but predict value gives 1; and conversely; but if each of actual value and predict value is the same, returns nothing.  
 
 In other word:  
 $$
@@ -206,14 +207,14 @@ y = 1, p &= 0.3, \quad \text{minor error!} \\
 y = 1, p &= 0.9, \quad \text{good!} \\
 \end{align*}
 $$
-We also needs to based on the level, returns different error.  
+We also need to ensure that the error magnitude reflects the degree of the mismatch.  
 Below we will use natural logarithm as our mathematic tool again.
 
 #### Natural Logarithm
-As the derivation above, if a number locates in the interval of  $[0, 1]$, given by a natural logarithm,  
+As the derivation above, if a number within in the interval of  $[0, 1]$, given by a natural logarithm,  
 we will get a negative number, if the number closer the $0$, the return value of $\ln$ will more close to $-\infty$.  
 
-If we put possibility into natural logarithm, we can get two kinds of error:  
+If we put probability into natural logarithm, we can get two kinds of error:  
 $$
 \begin{align*}
 \ln(p) &=> when y = 1, but p = 0.1 \\
@@ -229,9 +230,9 @@ y\ln(p) &=> when y = 1, but p = 0.1 \\
 $$
 In this way, these error will be cancel in opposite actual value, then we can merge these errors:  
 $$[y\ln(p) + (1-y)\ln(1-p)]$$  
-These errors are the summation of mapping of natural logarithm to negative number, the value more close to zero, the mapping will more close to negative infinity.  
-With the filter by the parameter(actual value), negative sign is still exists, this will cause misleading with the meaning.  
-By multiple with $-1$ ,we can flip the meaning of negative, let the whole equation presents bigger error when the mapping value is more close to negative infinity:  
+These errors are the negative values resulting from the natural logarithm transformation. The closer the value is to zero, the more negative the result becomes, approaching negative infinity.
+With the filtering by the parameter(actual value), the negative sign still exists, which could be misleading regarding the meaning of "loss".  
+To better express the magnitude of the loss, we multiply by $-1$ , which inverts the scale so that the larger the resulting positive value, the greater the error is:
 $$
 L(y, p) = - [y\ln(p) + (1-y)\ln(1-p)]
 $$
@@ -317,10 +318,10 @@ $$
 </script>
 
 With single feature, the chart will look like above;  
-This is the average cross entropy loss when putting different $w$ into linear algebra.  
-Basically finding $w$ is exact the same process like training.  
+This is the average cross entropy loss when putting different $w$ into linear expression.  
+The process of finding $w$ is exactly the same as the training process.  
 
-In order to find the best $w$ letting us get the lowest error, we will gradually use differentiation to find the slope to do so.  
+In order to find the best $w$ that yields the lowest error, we will gradually use differentiation to find the slope to do so.  
 {% post_link AI/linear-regression-and-its-math#gradient-descent '>> [Why using differentiation?] <<' %}  
 
 ### Expands the Loss Function
@@ -453,15 +454,15 @@ $$
 
 We can tell from the above equation:
 
-> $\sigma(z) - y_i$ represents the error of each predict possibility and actual label in training set.  
+> $\sigma(z) - y_i$ represents the error of each predict probability and actual label in training set.  
 > With $\frac{1}{N}\sum_{i=1}^{N}$ , it becomes average error.  
-> Interesting thing is: each weight($w$) are all effected by the product of feature itself and error and the average.  
-> And the gradient of bias($b$) itself is always 1, so it only effected by the average error of whole sample.  
+> The interesting thing is: each weight($w$) is affected by the average of the product between the feature itself and the error.  
+> And the gradient of bias($b$) itself is always 1, so it only affected by the average error of whole sample.  
 
-After the long derivate and simplification, the final gradient descent equation looks quite elegant, TBH xd.  
+After the lengthy derivation and simplification, the final gradient descent equation looks quite elegant, TBH xd.  
 
-## Last
-Its much more longer derivation then I expect.  
-Even though it skip the vector presentation in multi-feature already, but it still struggle for me to derivate three features.  
-In order to link the linear algebra and possibility theory, I spent a lot of effort in derivation.  
-I will consider writing something like vector presentation in multi-feature or expand the concept of logistic regression into neural networking and its derivation, then we should encounter discrete mathematics Orz.  
+## Conclusion
+It's a much longer derivation than I expect.  
+Even though it skips the vector form in multi-feature already, the derivation of three features was still challenging for me.  
+In order to link the linear algebra and probability theory, I spent a lot of effort in derivation.  
+I will consider writing something like vector form in multi-feature or expand the concept of logistic regression into neural networks and its derivation, then we should encounter discrete mathematics Orz.  

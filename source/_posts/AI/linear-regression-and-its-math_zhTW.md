@@ -1,5 +1,5 @@
 ---
-title: Linear Regression & its mathematic(zhTW)
+title: Linear Regression & its mathematics(zhTW)
 date: 2025-10-03 21:21:56
 categories: AI
 hidden: true

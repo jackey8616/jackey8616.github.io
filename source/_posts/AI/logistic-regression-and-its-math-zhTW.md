@@ -1,5 +1,5 @@
 ---
-title: Logistic Regression & its mathematic(zhTW)
+title: Logistic Regression & its mathematics(zhTW)
 date: 2025-10-07 15:32:20
 categories: AI
 hidden: true
@@ -36,7 +36,7 @@ z = w_1x_1 + w_2x_2 + b
 $$
 這邊的$x_1$以及$x_2$是對應二維的坐標軸，以下我們會依照這個假設來進行推導。
 
-### 線性代數定義
+### 在線性代數中的定義
 $$
 z = w_1x_1 + w_2x_2 + b
 $$
@@ -169,6 +169,7 @@ $$
 => P &= \frac{1}{1 + e^{-z}} \\
 => 0.5 &= \frac{1}{1 + e^{-z}} \\
 => 1 &= 0.5 + 0.5e^{-z} \\
+=> 0.5 &= 0.5e^{z-} \\
 => 1 &= e^{-z} \\
 => z &= 0 \\
 \end{align*}
