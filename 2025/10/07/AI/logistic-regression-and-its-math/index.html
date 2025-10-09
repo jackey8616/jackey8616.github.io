@@ -28,7 +28,7 @@
 <meta property="og:description" content="This time let’s talk about Logistic Regression. Need readers with some concept of natural logarithm. &gt;&gt; [zhTW version] &lt;&lt;">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-10-07T15:32:20.000Z">
-<meta property="article:modified_time" content="2025-10-09T02:02:39.830Z">
+<meta property="article:modified_time" content="2025-10-09T02:22:15.872Z">
 <meta property="article:author" content="clooooode">
 <meta property="article:tag" content="AI">
 <meta property="article:tag" content="Machine Learning">
@@ -155,7 +155,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#logistic-regression"><span class="nav-number">1.</span> <span class="nav-text">Logistic Regression</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mathematical-assumption"><span class="nav-number">2.</span> <span class="nav-text">Mathematical assumption</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#linear-model-definition"><span class="nav-number">2.1.</span> <span class="nav-text">Linear Model Definition</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#possibility"><span class="nav-number">2.2.</span> <span class="nav-text">Possibility</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#odds"><span class="nav-number">2.2.1.</span> <span class="nav-text">Odds</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#log-odds"><span class="nav-number">2.2.2.</span> <span class="nav-text">Log-Odds</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sigmoid"><span class="nav-number">2.3.</span> <span class="nav-text">Sigmoid</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#decision-boundary"><span class="nav-number">3.</span> <span class="nav-text">Decision Boundary</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#loss-function"><span class="nav-number">4.</span> <span class="nav-text">Loss Function</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#cross-entropy-loss-function"><span class="nav-number">4.1.</span> <span class="nav-text">Cross-Entropy loss function</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#natural-logarithm"><span class="nav-number">4.1.1.</span> <span class="nav-text">Natural Logarithm</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#average-cross-entropy-loss"><span class="nav-number">4.2.</span> <span class="nav-text">Average Cross-Entropy Loss</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#optimizer"><span class="nav-number">5.</span> <span class="nav-text">Optimizer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#expands-the-loss-function"><span class="nav-number">5.1.</span> <span class="nav-text">Expands the Loss Function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#parameter-w_1"><span class="nav-number">5.2.</span> <span class="nav-text">Parameter \(w_1\):</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#parameter-w_2"><span class="nav-number">5.3.</span> <span class="nav-text">Parameter \(w_2\):</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#parameter-b"><span class="nav-number">5.4.</span> <span class="nav-text">Parameter \(b\):</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#all-the-derivative-and-gradient-descent"><span class="nav-number">5.5.</span> <span class="nav-text">All the derivative and
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#logistic-regression"><span class="nav-number">1.</span> <span class="nav-text">Logistic Regression</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mathematical-assumption"><span class="nav-number">2.</span> <span class="nav-text">Mathematical assumption</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#definition-in-linear-algebra"><span class="nav-number">2.1.</span> <span class="nav-text">Definition in Linear Algebra</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#probability"><span class="nav-number">2.2.</span> <span class="nav-text">Probability</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#odds"><span class="nav-number">2.2.1.</span> <span class="nav-text">Odds</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#log-odds-function"><span class="nav-number">2.2.2.</span> <span class="nav-text">Log-Odds function</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sigmoid"><span class="nav-number">2.3.</span> <span class="nav-text">Sigmoid</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#decision-boundary"><span class="nav-number">3.</span> <span class="nav-text">Decision Boundary</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#loss-function"><span class="nav-number">4.</span> <span class="nav-text">Loss Function</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#cross-entropy-loss-function"><span class="nav-number">4.1.</span> <span class="nav-text">Cross-Entropy loss function</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#natural-logarithm"><span class="nav-number">4.1.1.</span> <span class="nav-text">Natural Logarithm</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#average-cross-entropy-loss"><span class="nav-number">4.2.</span> <span class="nav-text">Average Cross-Entropy Loss</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#optimizer"><span class="nav-number">5.</span> <span class="nav-text">Optimizer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#expands-the-loss-function"><span class="nav-number">5.1.</span> <span class="nav-text">Expands the Loss Function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#parameter-w_1"><span class="nav-number">5.2.</span> <span class="nav-text">Parameter \(w_1\):</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#parameter-w_2"><span class="nav-number">5.3.</span> <span class="nav-text">Parameter \(w_2\):</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#parameter-b"><span class="nav-number">5.4.</span> <span class="nav-text">Parameter \(b\):</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#all-the-derivative-and-gradient-descent"><span class="nav-number">5.5.</span> <span class="nav-text">All the derivative and
 gradient descent</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#last"><span class="nav-number">6.</span> <span class="nav-text">Last</span></a></li></ol></div>
         </div>
         <!--/noindex-->
@@ -256,7 +256,7 @@ gradient descent</span></a></li></ol></li><li class="nav-item nav-level-2"><a cl
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-10-09 02:02:39" itemprop="dateModified" datetime="2025-10-09T02:02:39+00:00">2025-10-09</time>
+      <time title="Modified: 2025-10-09 02:22:15" itemprop="dateModified" datetime="2025-10-09T02:22:15+00:00">2025-10-09</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -329,7 +329,7 @@ z = w_1x_1 + w_2x_2 + b
 \]</span> <span class="math inline">\(x_1\)</span> and <span
 class="math inline">\(x_2\)</span> represent the 2 axes in 2-dimension,
 we will take this assumption to continue with the derivation.</p>
-<h3 id="linear-model-definition">Linear Model Definition</h3>
+<h3 id="definition-in-linear-algebra">Definition in Linear Algebra</h3>
 <p><span class="math display">\[
 z = w_1x_1 + w_2x_2 + b
 \]</span> The equation is actually a linear expression, it means the
@@ -348,7 +348,7 @@ will be in the interval of <span class="math inline">\((-\infty,
 <p>Which can also represents like: <span class="math inline">\(z \in
 (-\infty, \infty)\)</span></p>
 </blockquote>
-<h3 id="possibility">Possibility</h3>
+<h3 id="probability">Probability</h3>
 <p>Let’s forget about the linear algebra stuff first, back to the
 essences of binary classification, our goal eventually wants to
 calculate the probability of a data point is in category. When it comes
@@ -361,15 +361,15 @@ other.</p>
 <h4 id="odds">Odds</h4>
 <p>Here comes the concept of Odds, the definition of Odds is slightly
 different from Probability: It is the ratio of the probability of an
-event happening to the probability of it not happening, is Odds.<br />
+event happening to the probability of it not happening.<br />
 Assume the probability of a event happened is <span
 class="math inline">\(P\)</span>: <span class="math display">\[
 Odds = \frac{P}{1-P}
 \]</span></p>
-<p>For example: from Possibility to Odds If the probability to pass the
+<p>For example: from Probability to Odds If the probability to pass the
 exam <span class="math inline">\(P = 0.9  (90\%)\)</span></p>
 <ul>
-<li>P of happened <span class="math inline">\(0.9\)</span></li>
+<li>P of happening <span class="math inline">\(0.9\)</span></li>
 <li>P of not happened <span class="math inline">\(1 - 0.9 =
 0.1\)</span></li>
 <li>Odds would be <span class="math inline">\(\frac{0.9}{0.1} =
@@ -385,17 +385,17 @@ class="math inline">\(\infty\)</span> in positive direction, mapping
 half of the required range to the linear expression.<br />
 Next step is to find a way to map <span
 class="math inline">\(-\infty\)</span>.</p>
-<h4 id="log-odds">Log-Odds</h4>
+<h4 id="log-odds-function">Log-Odds function</h4>
 <p>As we known from above, the range of Odds is <span
 class="math inline">\([0, \infty)\)</span>, when <span
 class="math inline">\(P\)</span> is much more big, the Odds will more
 close to <span class="math inline">\(\infty\)</span> but not <span
-class="math inline">\(\infty\)</span>, otherwise it will more small, and
-infinitely close to zero but not zero.<br />
-Thus the question become: how do we use an equation to mapping the input
+class="math inline">\(\infty\)</span>, otherwise it will get smaller,
+and infinitely close to zero but not zero.<br />
+Thus the question become: how do we use an equation to map the input
 which close to zero into a sufficiently large negative value, even close
 to negative infinity.</p>
-<p>There is a cool mathematic tool call natural logarithm: <span
+<p>There is a cool mathematical tool called natural logarithm: <span
 class="math inline">\(\ln(x) = log_e{x}\)</span><br />
 We can recall from logarithm:<br />
 <span class="math display">\[
@@ -420,7 +420,7 @@ log_{e}1 &amp;= y \\
 e^y &amp;= 1 \\
 y &amp;= 0
 \end{align*}
-\]</span> What if a number smaller then 1? <span
+\]</span> What if a number smaller than 1? <span
 class="math inline">\(\ln(0.5)? \ln(0.1)?\)</span>:<br />
 <span class="math display">\[
 \begin{align*}
@@ -455,10 +455,10 @@ P &amp;= \frac{e^z}{1 + e^z}
 \end{align*}
 \]</span></p>
 <h3 id="sigmoid">Sigmoid</h3>
-<p>Eventually, we found the Log-Odds, and it also been known as
-Sigmoid.<br />
-As we derivate the function up to this point, our goal was to find a
-method in probability theory that could map the interval of <span
+<p>Eventually, we found the Log-Odds, and it is also known as the
+Sigmoid function.<br />
+As we have derivated the function up to this point, our goal was to find
+a method in probability theory that could map the interval of <span
 class="math inline">\((-\infty, \infty)\)</span>.<br />
 After going from Odds <span class="math inline">\([0, \infty)\)</span>
 to Log-Odds <span class="math inline">\((-\infty, \infty)\)</span>, we
@@ -531,8 +531,8 @@ classification,<span class="math inline">\(0 or 1\)</span>, 0 represents
 category A, 1 represents category B), <span
 class="math inline">\(p\)</span> is the predicted probability.<br />
 We need to find a method which returns error when actual value is 0, but
-predict value gives 1; and same as opposite; but if each of actual value
-and predict value is the same, returns nothing.</p>
+predict value gives 1; and conversely; but if each of actual value and
+predict value is the same, returns nothing.</p>
 <p>In other word:<br />
 <span class="math display">\[
 \begin{align*}
@@ -553,7 +553,7 @@ y = 1, p &amp;= 0.9, \quad \text{good!} \\
 degree of the mismatch.<br />
 Below we will use natural logarithm as our mathematic tool again.</p>
 <h4 id="natural-logarithm">Natural Logarithm</h4>
-<p>As the derivation above, if a number locates in the interval of <span
+<p>As the derivation above, if a number within in the interval of <span
 class="math inline">\([0, 1]\)</span>, given by a natural
 logarithm,<br />
 we will get a negative number, if the number closer the <span
@@ -581,7 +581,8 @@ These errors are the summation of mapping of natural logarithm to
 negative number, the value more close to zero, the mapping will more
 close to negative infinity.<br />
 With the filtering by the parameter(actual value), the negative sign
-still exists, this will cause misleading with the meaning.<br />
+still exists, which could be misleading regarding the meaning of
+“loss”.<br />
 To better express the magnitude of the loss, we multiply by <span
 class="math inline">\(-1\)</span> , which inverts the scale so that the
 larger the resulting positive value, the greater the error is: <span
@@ -675,9 +676,9 @@ This is the average cross entropy loss when putting different <span
 class="math inline">\(w\)</span> into linear expression.<br />
 The process of finding <span class="math inline">\(w\)</span> is exactly
 the same as the training process.</p>
-<p>In order to find the best <span class="math inline">\(w\)</span>
-letting us get the lowest error, we will gradually use differentiation
-to find the slope to do so.<br />
+<p>In order to find the best <span class="math inline">\(w\)</span> that
+yields the lowest error, we will gradually use differentiation to find
+the slope to do so.<br />
 <a href="/2025/10/03/AI/linear-regression-and-its-math/#gradient-descent" title="Linear Regression &amp; its mathematics">&gt;&gt; [Why using differentiation?] &lt;&lt;</a></p>
 <h3 id="expands-the-loss-function">Expands the Loss Function</h3>
 <p>The chart is just a schematic chart, it doesn’t meats with our
@@ -856,7 +857,7 @@ set.<br />
 With <span class="math inline">\(\frac{1}{N}\sum_{i=1}^{N}\)</span> , it
 becomes average error.<br />
 Interesting thing is: each weight(<span
-class="math inline">\(w\)</span>) are all effected by the product of
+class="math inline">\(w\)</span>) are is affected by the product of
 feature itself and error and the average.<br />
 And the gradient of bias(<span class="math inline">\(b\)</span>) itself
 is always 1, so it only effected by the average error of whole
@@ -865,15 +866,14 @@ sample.</p>
 <p>After the lengthy derivation and simplification, the final gradient
 descent equation looks quite elegant, TBH xd.</p>
 <h2 id="last">Last</h2>
-<p>It’s a much more longer derivation than I expect.<br />
-Even though it skips the vector presentation in multi-feature already,
-the derivation of three features was still challenging for me.<br />
+<p>It’s a much longer derivation than I expect.<br />
+Even though it skips the vector form in multi-feature already, the
+derivation of three features was still challenging for me.<br />
 In order to link the linear algebra and probability theory, I spent a
 lot of effort in derivation.<br />
-I will consider writing something like vector presentation in
-multi-feature or expand the concept of logistic regression into neural
-networks and its derivation, then we should encounter discrete
-mathematics Orz.</p>
+I will consider writing something like vector form in multi-feature or
+expand the concept of logistic regression into neural networks and its
+derivation, then we should encounter discrete mathematics Orz.</p>
 
     </div>
 
