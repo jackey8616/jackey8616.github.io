@@ -22,13 +22,13 @@
 
     <meta name="description" content="This time lets talk about Logistic Regression. Need readers with some concept of natural logarithm. &gt;&gt; [zhTW version] &lt;&lt;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Logistic Regression &amp; its mathematic">
+<meta property="og:title" content="Logistic Regression &amp; its mathematics">
 <meta property="og:url" content="https://www.clo5de.info/2025/10/07/AI/logistic-regression-and-its-math/index.html">
 <meta property="og:site_name" content="clooooode">
 <meta property="og:description" content="This time lets talk about Logistic Regression. Need readers with some concept of natural logarithm. &gt;&gt; [zhTW version] &lt;&lt;">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-10-07T15:32:20.000Z">
-<meta property="article:modified_time" content="2025-10-09T00:29:10.846Z">
+<meta property="article:modified_time" content="2025-10-09T00:45:54.691Z">
 <meta property="article:author" content="clooooode">
 <meta property="article:tag" content="AI">
 <meta property="article:tag" content="Machine Learning">
@@ -41,10 +41,10 @@
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.clo5de.info/2025/10/07/AI/logistic-regression-and-its-math/","path":"2025/10/07/AI/logistic-regression-and-its-math/","title":"Logistic Regression & its mathematic"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.clo5de.info/2025/10/07/AI/logistic-regression-and-its-math/","path":"2025/10/07/AI/logistic-regression-and-its-math/","title":"Logistic Regression & its mathematics"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Logistic Regression & its mathematic | clooooode</title>
+<title>Logistic Regression & its mathematics | clooooode</title>
   
 
 
@@ -155,7 +155,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#logistic-regression"><span class="nav-number">1.</span> <span class="nav-text">Logistic Regression</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mathematical-assumption"><span class="nav-number">2.</span> <span class="nav-text">Mathematical assumption</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#definition-of-linear-algebra"><span class="nav-number">2.1.</span> <span class="nav-text">Definition of linear algebra</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#possibility"><span class="nav-number">2.2.</span> <span class="nav-text">Possibility</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#odds"><span class="nav-number">2.2.1.</span> <span class="nav-text">Odds</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#log-odds"><span class="nav-number">2.2.2.</span> <span class="nav-text">Log-Odds</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sigmoid"><span class="nav-number">2.3.</span> <span class="nav-text">Sigmoid</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#decision-boundary"><span class="nav-number">3.</span> <span class="nav-text">Decision Boundary</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#loss-function"><span class="nav-number">4.</span> <span class="nav-text">Loss Function</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#cross-entropy-loss-function"><span class="nav-number">4.1.</span> <span class="nav-text">Cross-Entropy loss function</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#natural-logarithm"><span class="nav-number">4.1.1.</span> <span class="nav-text">Natural Logarithm</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#average-cross-entropy-loss"><span class="nav-number">4.2.</span> <span class="nav-text">Average Cross-Entropy Loss</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#optimizer"><span class="nav-number">5.</span> <span class="nav-text">Optimizer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#expands-the-loss-function"><span class="nav-number">5.1.</span> <span class="nav-text">Expands the Loss Function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#parameter-w_1"><span class="nav-number">5.2.</span> <span class="nav-text">Parameter \(w_1\):</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#parameter-w_2"><span class="nav-number">5.3.</span> <span class="nav-text">Parameter \(w_2\):</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#parameter-b"><span class="nav-number">5.4.</span> <span class="nav-text">Parameter \(b\):</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#all-the-derivative-and-gradient-descent"><span class="nav-number">5.5.</span> <span class="nav-text">All the derivative and
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#logistic-regression"><span class="nav-number">1.</span> <span class="nav-text">Logistic Regression</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mathematical-assumption"><span class="nav-number">2.</span> <span class="nav-text">Mathematical assumption</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#linear-model-definition"><span class="nav-number">2.1.</span> <span class="nav-text">Linear Model Definition</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#possibility"><span class="nav-number">2.2.</span> <span class="nav-text">Possibility</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#odds"><span class="nav-number">2.2.1.</span> <span class="nav-text">Odds</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#log-odds"><span class="nav-number">2.2.2.</span> <span class="nav-text">Log-Odds</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sigmoid"><span class="nav-number">2.3.</span> <span class="nav-text">Sigmoid</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#decision-boundary"><span class="nav-number">3.</span> <span class="nav-text">Decision Boundary</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#loss-function"><span class="nav-number">4.</span> <span class="nav-text">Loss Function</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#cross-entropy-loss-function"><span class="nav-number">4.1.</span> <span class="nav-text">Cross-Entropy loss function</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#natural-logarithm"><span class="nav-number">4.1.1.</span> <span class="nav-text">Natural Logarithm</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#average-cross-entropy-loss"><span class="nav-number">4.2.</span> <span class="nav-text">Average Cross-Entropy Loss</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#optimizer"><span class="nav-number">5.</span> <span class="nav-text">Optimizer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#expands-the-loss-function"><span class="nav-number">5.1.</span> <span class="nav-text">Expands the Loss Function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#parameter-w_1"><span class="nav-number">5.2.</span> <span class="nav-text">Parameter \(w_1\):</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#parameter-w_2"><span class="nav-number">5.3.</span> <span class="nav-text">Parameter \(w_2\):</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#parameter-b"><span class="nav-number">5.4.</span> <span class="nav-text">Parameter \(b\):</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#all-the-derivative-and-gradient-descent"><span class="nav-number">5.5.</span> <span class="nav-text">All the derivative and
 gradient descent</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#last"><span class="nav-number">6.</span> <span class="nav-text">Last</span></a></li></ol></div>
         </div>
         <!--/noindex-->
@@ -233,12 +233,12 @@ gradient descent</span></a></li></ol></li><li class="nav-item nav-level-2"><a cl
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="Logistic Regression & its mathematic | clooooode">
+      <meta itemprop="name" content="Logistic Regression & its mathematics | clooooode">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Logistic Regression & its mathematic
+          Logistic Regression & its mathematics
         </h1>
 
         <div class="post-meta-container">
@@ -256,7 +256,7 @@ gradient descent</span></a></li></ol></li><li class="nav-item nav-level-2"><a cl
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-10-09 00:29:10" itemprop="dateModified" datetime="2025-10-09T00:29:10+00:00">2025-10-09</time>
+      <time title="Modified: 2025-10-09 00:45:54" itemprop="dateModified" datetime="2025-10-09T00:45:54+00:00">2025-10-09</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -301,20 +301,20 @@ gradient descent</span></a></li></ol></li><li class="nav-item nav-level-2"><a cl
     
     <div class="post-body" itemprop="articleBody"><p>This time lets talk about Logistic Regression.<br />
 Need readers with some concept of natural logarithm.<br />
-<a href="/2025/10/07/AI/logistic-regression-and-its-math-zhTW/" title="Logistic Regression &amp; its mathematic(zhTW)">&gt;&gt; [zhTW version] &lt;&lt;</a><br />
+<a href="/2025/10/07/AI/logistic-regression-and-its-math-zhTW/" title="Logistic Regression &amp; its mathematics(zhTW)">&gt;&gt; [zhTW version] &lt;&lt;</a><br />
 <span id="more"></span></p>
 <h2 id="logistic-regression">Logistic Regression</h2>
 <p>TL;DR: Data classification based on linear regression.</p>
 <blockquote>
-<p>For example: classifying one thousand mails as ether junk or not junk
-mail.</p>
+<p>For example: classifying one thousand mails as either junk or not
+junk mail.</p>
 </blockquote>
 <p>Essence of logistic regression is also another kind of linear
 model.<br />
 Unlike linear regression, which finds relationships between input
 feature(x) and output value(y) in linear regression, logistic regression
-is trying to find a equation that can be the boundary of categories of
-data.</p>
+is trying to find an equation that serves as the decision boundary
+separating data categories.</p>
 <h2 id="mathematical-assumption">Mathematical assumption</h2>
 <p>In contrast to the assumption in linear regression: <span
 class="math display">\[
@@ -328,12 +328,12 @@ parameter, same example in 2-dimension coordinate system:<br />
 z = w_1x_1 + w_2x_2 + b
 \]</span> <span class="math inline">\(x_1\)</span> and <span
 class="math inline">\(x_2\)</span> represents the 2 axis in 2-dimension,
-we will take this assumption to keep on derivation.</p>
-<h3 id="definition-of-linear-algebra">Definition of linear algebra</h3>
+we will take this assumption to continue with the derivation.</p>
+<h3 id="linear-model-definition">Linear Model Definition</h3>
 <p><span class="math display">\[
 z = w_1x_1 + w_2x_2 + b
 \]</span> The equation is actually a linear expression, it means the
-calculation which considered all the variables (<span
+calculation considering all the variables (<span
 class="math inline">\(x_1, x_2\)</span>), parameters(<span
 class="math inline">\(w_1, w_2\)</span>) and bias <span
 class="math inline">\(b\)</span>, this calculation eventually returns a
@@ -355,7 +355,8 @@ to possibility, the most direct understanding of it should the range of
 possibility, which is <span class="math inline">\(P \in [0,
 1]\)</span>.</p>
 <p>If we want to find a mapping between possibility and equation of
-linear algebra, these two interval is unable to mapping each other.</p>
+linear algebra, these two intervals are unable to be mapped each
+other.</p>
 <h4 id="odds">Odds</h4>
 <p>Here comes the concept of Odds, the definition of Odds is slightly
 different from Probability: the ratio of the possibility of event
@@ -390,7 +391,7 @@ class="math inline">\(P\)</span> is much more big, the Odds will more
 close to <span class="math inline">\(\infty\)</span> but not <span
 class="math inline">\(\infty\)</span>, otherwise it will more small, and
 infinitely close to zero but not zero.<br />
-Thus the question become: how do we use a equation to mapping the input
+Thus the question become: how do we use an equation to mapping the input
 which close to zero into a sufficiently large negative value, even close
 to negative infinity.</p>
 <p>There is a cool mathematic tool call natural logarithm: <span
@@ -518,8 +519,8 @@ aggregate the error which calculated from the after-training prediction
 and the in-data set actual value, in order to be the reference in
 optimizing strategy.<br />
 In the logistic regression of binary classification, the meaning of
-error is “If a data is category A, but been classified as B”, this kind
-of error need to be review by each data in the training set.</p>
+error is “If a data point is category A, but been classified as B”, this
+kind of error needs to be reviewed by each data in the training set.</p>
 <p>So we need to find a tool can help us compare the difference between
 predict value and actual value:</p>
 <h3 id="cross-entropy-loss-function">Cross-Entropy loss function</h3>
@@ -675,7 +676,7 @@ the same as the training process.</p>
 <p>In order to find the best <span class="math inline">\(w\)</span>
 letting us get the lowest error, we will gradually use differentiation
 to find the slope to do so.<br />
-<a href="/2025/10/03/AI/linear-regression-and-its-math/#gradient-descent" title="Linear Regression &amp; its mathematic">&gt;&gt; [Why using differentiation?] &lt;&lt;</a></p>
+<a href="/2025/10/03/AI/linear-regression-and-its-math/#gradient-descent" title="Linear Regression &amp; its mathematics">&gt;&gt; [Why using differentiation?] &lt;&lt;</a></p>
 <h3 id="expands-the-loss-function">Expands the Loss Function</h3>
 <p>The chart is just a schematic chart, it doesn’t meats with our
 assumption.<br />
@@ -890,8 +891,8 @@ mathematics Orz.</p>
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2025/10/03/AI/linear-regression-and-its-math/" rel="prev" title="Linear Regression & its mathematic">
-                  <i class="fa fa-chevron-left"></i> Linear Regression & its mathematic
+                <a href="/2025/10/03/AI/linear-regression-and-its-math/" rel="prev" title="Linear Regression & its mathematics">
+                  <i class="fa fa-chevron-left"></i> Linear Regression & its mathematics
                 </a>
             </div>
             <div class="post-nav-item">

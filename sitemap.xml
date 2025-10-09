@@ -47,15 +47,6 @@
   </url>
   
   <url>
-    <loc>https://www.clo5de.info/2019/04/25/note/OS/ch4/</loc>
-    
-    <lastmod>2025-10-09</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://www.clo5de.info/2019/04/25/note/OS/ch5/</loc>
     
     <lastmod>2025-10-09</lastmod>
@@ -83,7 +74,7 @@
   </url>
   
   <url>
-    <loc>https://www.clo5de.info/2019/06/19/note/OS/ch8/</loc>
+    <loc>https://www.clo5de.info/2023/08/01/note/PostgreSQL/PostgreSQL-canceling-statement-due-to-conflict-with-recovery/</loc>
     
     <lastmod>2025-10-09</lastmod>
     
@@ -92,7 +83,7 @@
   </url>
   
   <url>
-    <loc>https://www.clo5de.info/2023/08/01/note/PostgreSQL/PostgreSQL-canceling-statement-due-to-conflict-with-recovery/</loc>
+    <loc>https://www.clo5de.info/2019/06/19/note/OS/ch8/</loc>
     
     <lastmod>2025-10-09</lastmod>
     
@@ -191,7 +182,7 @@
   </url>
   
   <url>
-    <loc>https://www.clo5de.info/2018/04/11/note/Lets-Macbuntu/</loc>
+    <loc>https://www.clo5de.info/2018/04/10/note/Hexo/</loc>
     
     <lastmod>2025-10-09</lastmod>
     
@@ -200,7 +191,7 @@
   </url>
   
   <url>
-    <loc>https://www.clo5de.info/2018/04/10/note/Hexo/</loc>
+    <loc>https://www.clo5de.info/2018/04/11/note/Lets-Macbuntu/</loc>
     
     <lastmod>2025-10-09</lastmod>
     
@@ -254,7 +245,7 @@
   </url>
   
   <url>
-    <loc>https://www.clo5de.info/2018/05/31/CTF/pwnable-kr/Toddlers_Bottle/7-input/</loc>
+    <loc>https://www.clo5de.info/2019/04/25/note/OS/ch4/</loc>
     
     <lastmod>2025-10-09</lastmod>
     
@@ -273,15 +264,6 @@
   
   <url>
     <loc>https://www.clo5de.info/2018/10/23/CTF/pwnable-kr/Toddlers_Bottle/9-mistake/</loc>
-    
-    <lastmod>2025-10-09</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.clo5de.info/2025/10/07/AI/logistic-regression-and-its-math/</loc>
     
     <lastmod>2025-10-09</lastmod>
     
@@ -335,15 +317,6 @@
   </url>
   
   <url>
-    <loc>https://www.clo5de.info/2018/10/23/CTF/pwnable-kr/Toddlers_Bottle/10-shellshock/</loc>
-    
-    <lastmod>2025-10-09</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://www.clo5de.info/2018/10/24/CTF/pwnable-kr/Toddlers_Bottle/11-coin1/</loc>
     
     <lastmod>2025-10-09</lastmod>
@@ -354,6 +327,15 @@
   
   <url>
     <loc>https://www.clo5de.info/2018/10/23/CTF/pwnable-kr/Toddlers_Bottle/12-blackjack/</loc>
+    
+    <lastmod>2025-10-09</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.clo5de.info/2018/10/23/CTF/pwnable-kr/Toddlers_Bottle/10-shellshock/</loc>
     
     <lastmod>2025-10-09</lastmod>
     
@@ -399,6 +381,15 @@
   
   <url>
     <loc>https://www.clo5de.info/2018/05/30/CTF/pwnable-kr/Toddlers_Bottle/6-random/</loc>
+    
+    <lastmod>2025-10-09</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.clo5de.info/2018/05/31/CTF/pwnable-kr/Toddlers_Bottle/7-input/</loc>
     
     <lastmod>2025-10-09</lastmod>
     
@@ -453,6 +444,15 @@
   
   <url>
     <loc>https://www.clo5de.info/2025/10/03/AI/linear-regression-and-its-math/</loc>
+    
+    <lastmod>2025-10-09</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.clo5de.info/2025/10/07/AI/logistic-regression-and-its-math/</loc>
     
     <lastmod>2025-10-09</lastmod>
     
@@ -680,13 +680,6 @@
   </url>
   
   <url>
-    <loc>https://www.clo5de.info/tags/Django/</loc>
-    <lastmod>2025-10-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://www.clo5de.info/tags/Python/</loc>
     <lastmod>2025-10-09</lastmod>
     <changefreq>weekly</changefreq>
@@ -716,6 +709,13 @@
   
   <url>
     <loc>https://www.clo5de.info/tags/peer-to-peer/</loc>
+    <lastmod>2025-10-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.clo5de.info/tags/Django/</loc>
     <lastmod>2025-10-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -906,14 +906,14 @@
   </url>
   
   <url>
-    <loc>https://www.clo5de.info/categories/Tutorial/</loc>
+    <loc>https://www.clo5de.info/categories/Application/MaybeP2P/</loc>
     <lastmod>2025-10-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.clo5de.info/categories/Application/MaybeP2P/</loc>
+    <loc>https://www.clo5de.info/categories/Tutorial/</loc>
     <lastmod>2025-10-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
