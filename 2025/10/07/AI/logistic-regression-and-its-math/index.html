@@ -20,15 +20,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.clo5de.info","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.17.1","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":true,"nav":null,"activeClass":"utterances"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":10,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="This time lets talk about Logistic Regression. Need readers with some concept of natural logarithm. &gt;&gt; [zhTW version] &lt;&lt;">
+    <meta name="description" content="This time let’s talk about Logistic Regression. Need readers with some concept of natural logarithm. &gt;&gt; [zhTW version] &lt;&lt;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Logistic Regression &amp; its mathematics">
 <meta property="og:url" content="https://www.clo5de.info/2025/10/07/AI/logistic-regression-and-its-math/index.html">
 <meta property="og:site_name" content="clooooode">
-<meta property="og:description" content="This time lets talk about Logistic Regression. Need readers with some concept of natural logarithm. &gt;&gt; [zhTW version] &lt;&lt;">
+<meta property="og:description" content="This time let’s talk about Logistic Regression. Need readers with some concept of natural logarithm. &gt;&gt; [zhTW version] &lt;&lt;">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-10-07T15:32:20.000Z">
-<meta property="article:modified_time" content="2025-10-09T00:45:54.691Z">
+<meta property="article:modified_time" content="2025-10-09T02:02:39.830Z">
 <meta property="article:author" content="clooooode">
 <meta property="article:tag" content="AI">
 <meta property="article:tag" content="Machine Learning">
@@ -256,7 +256,7 @@ gradient descent</span></a></li></ol></li><li class="nav-item nav-level-2"><a cl
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-10-09 00:45:54" itemprop="dateModified" datetime="2025-10-09T00:45:54+00:00">2025-10-09</time>
+      <time title="Modified: 2025-10-09 02:02:39" itemprop="dateModified" datetime="2025-10-09T02:02:39+00:00">2025-10-09</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -299,7 +299,7 @@ gradient descent</span></a></li></ol></li><li class="nav-item nav-level-2"><a cl
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>This time lets talk about Logistic Regression.<br />
+    <div class="post-body" itemprop="articleBody"><p>This time let’s talk about Logistic Regression.<br />
 Need readers with some concept of natural logarithm.<br />
 <a href="/2025/10/07/AI/logistic-regression-and-its-math-zhTW/" title="Logistic Regression &amp; its mathematics(zhTW)">&gt;&gt; [zhTW version] &lt;&lt;</a><br />
 <span id="more"></span></p>
@@ -320,14 +320,14 @@ separating data categories.</p>
 class="math display">\[
 \hat{y} = wx + b
 \]</span> <span class="math inline">\(\hat{y}\)</span> and <span
-class="math inline">\(x\)</span> are the data point actually locate in a
-2-dimension coordinate system.<br />
+class="math inline">\(x\)</span> are the data points actually located in
+a 2-dimension coordinate system.<br />
 But logistic regression can choose how many features to use as
 parameter, same example in 2-dimension coordinate system:<br />
 <span class="math display">\[
 z = w_1x_1 + w_2x_2 + b
 \]</span> <span class="math inline">\(x_1\)</span> and <span
-class="math inline">\(x_2\)</span> represents the 2 axis in 2-dimension,
+class="math inline">\(x_2\)</span> represent the 2 axes in 2-dimension,
 we will take this assumption to continue with the derivation.</p>
 <h3 id="linear-model-definition">Linear Model Definition</h3>
 <p><span class="math display">\[
@@ -337,12 +337,13 @@ calculation considering all the variables (<span
 class="math inline">\(x_1, x_2\)</span>), parameters(<span
 class="math inline">\(w_1, w_2\)</span>) and bias <span
 class="math inline">\(b\)</span>, this calculation eventually returns a
-score. The score decides <span class="math inline">\(x_1, x_2\)</span>
-is whether A or B category(Because its binary classification).<br />
-In this equation, each of <span class="math inline">\(w, x ,b\)</span>
-are all real numbers, thus the score <span
-class="math inline">\(z\)</span> will be in the interval of <span
-class="math inline">\((-\infty, \infty)\)</span> 。</p>
+score. The score determines whether <span class="math inline">\(x_1,
+x_2\)</span> belongs to category A or B(Because its binary
+classification).<br />
+In this equation, all of <span class="math inline">\(w, x ,b\)</span>
+are real numbers, thus the score <span class="math inline">\(z\)</span>
+will be in the interval of <span class="math inline">\((-\infty,
+\infty)\)</span> 。</p>
 <blockquote>
 <p>Which can also represents like: <span class="math inline">\(z \in
 (-\infty, \infty)\)</span></p>
@@ -350,22 +351,22 @@ class="math inline">\((-\infty, \infty)\)</span> 。</p>
 <h3 id="possibility">Possibility</h3>
 <p>Let’s forget about the linear algebra stuff first, back to the
 essences of binary classification, our goal eventually wants to
-calculate the possibility of a data point is in category. When it comes
-to possibility, the most direct understanding of it should the range of
-possibility, which is <span class="math inline">\(P \in [0,
+calculate the probability of a data point is in category. When it comes
+to probability, the most direct understanding of it should the range of
+probability, which is <span class="math inline">\(P \in [0,
 1]\)</span>.</p>
-<p>If we want to find a mapping between possibility and equation of
+<p>If we want to find a mapping between probability and equation of
 linear algebra, these two intervals are unable to be mapped each
 other.</p>
 <h4 id="odds">Odds</h4>
 <p>Here comes the concept of Odds, the definition of Odds is slightly
-different from Probability: the ratio of the possibility of event
-happened or not happened, is Odds.<br />
-Assume the possibility of a event happened is <span
+different from Probability: It is the ratio of the probability of an
+event happening to the probability of it not happening, is Odds.<br />
+Assume the probability of a event happened is <span
 class="math inline">\(P\)</span>: <span class="math display">\[
 Odds = \frac{P}{1-P}
 \]</span></p>
-<p>For example: from Possibility to Odds If the possibility to pass the
+<p>For example: from Possibility to Odds If the probability to pass the
 exam <span class="math inline">\(P = 0.9  (90\%)\)</span></p>
 <ul>
 <li>P of happened <span class="math inline">\(0.9\)</span></li>
@@ -374,15 +375,15 @@ exam <span class="math inline">\(P = 0.9  (90\%)\)</span></p>
 <li>Odds would be <span class="math inline">\(\frac{0.9}{0.1} =
 9\)</span></li>
 </ul>
-<p>the meaning of 9 is the ratio of the probability of a student passing
-to the probability of them failing is nine to one.<br />
+<p>The value of 9 means the probability of a student passing is nine
+times the probability of them failing.<br />
 Normally we write it <span class="math inline">\(9:1\)</span>.</p>
 <p>We can tell the range of Odds is: <span class="math display">\[
 Odds \in [0, \infty)
-\]</span> The range can expends to <span
-class="math inline">\(\infty\)</span> in positive direction, it can
-mapping half of the range with linear expression.<br />
-Nex step is to find a way to mapping <span
+\]</span> The range can expands to <span
+class="math inline">\(\infty\)</span> in positive direction, mapping
+half of the required range to the linear expression.<br />
+Next step is to find a way to map <span
 class="math inline">\(-\infty\)</span>.</p>
 <h4 id="log-odds">Log-Odds</h4>
 <p>As we known from above, the range of Odds is <span
@@ -435,10 +436,10 @@ class="math inline">\(\ln(0.5)? \ln(0.1)?\)</span>:<br />
 \end{align*}
 \]</span> In the interval of <span class="math inline">\(0 &lt; x &lt;
 1\)</span> we can find out, if we put it into a natural logarithm, the
-return value would be a negative natural number.<br />
-And when the value of <span class="math inline">\(x\)</span> getting
-closer to 0, the return value would be more and more small, and closed
-to negative infinity eventually.</p>
+return value would be a negative real number.<br />
+And as the value of <span class="math inline">\(x\)</span> gets closer
+to 0, the return value becomes a larger negative value(or smaller and
+smaller), and closer to negative infinity.</p>
 <p>Lets apply this into Odds:<br />
 <span class="math display">\[
 \begin{align*}
@@ -456,12 +457,12 @@ P &amp;= \frac{e^z}{1 + e^z}
 <h3 id="sigmoid">Sigmoid</h3>
 <p>Eventually, we found the Log-Odds, and it also been known as
 Sigmoid.<br />
-As we derivate all the way to here, we are trying to find in probability
-theory for method which can a mapping the interval of <span
-class="math inline">\((-\infty, \infty)\)</span> .<br />
-After Odds expends to <span class="math inline">\([0, \infty)\)</span>
-via Log-Odds <span class="math inline">\((-\infty, \infty)\)</span>,
-this is all what we got.</p>
+As we derivate the function up to this point, our goal was to find a
+method in probability theory that could map the interval of <span
+class="math inline">\((-\infty, \infty)\)</span>.<br />
+After going from Odds <span class="math inline">\([0, \infty)\)</span>
+to Log-Odds <span class="math inline">\((-\infty, \infty)\)</span>, we
+have successfully achieved this mapping.</p>
 <p>We use <span class="math inline">\(\sigma(z)\)</span> to
 presents:<br />
 <span class="math display">\[
@@ -478,14 +479,14 @@ P = \sigma(z) &amp;= \frac{e^z}{1 + e^z} \\
 \]</span></p>
 <p>The purpose of this function is to mapping the range of linear
 functions <span class="math inline">\(z = w_1x_1 + w_2x_2 + b\)</span>
-to the range of possibility <span class="math inline">\([0, 1]\)</span>
+to the range of probability <span class="math inline">\([0, 1]\)</span>
 .</p>
 <h2 id="decision-boundary">Decision Boundary</h2>
-<p>After we found a tool(Sigmoid) helping us calculates possibility,
+<p>After we found a tool(Sigmoid) helping us calculates probability,
 back to our goal is classification.<br />
 The linear function <span class="math inline">\(z\)</span> can help us
 define a boundary in order to find the zone of the binary categories;
-hence on this line, the possibility of category A or B are the
+hence on this line, the probability of category A or B are the
 same(50%), which means <span class="math inline">\(P = 50\% =
 0.5\)</span> .</p>
 <blockquote>
@@ -508,26 +509,27 @@ same(50%), which means <span class="math inline">\(P = 50\% =
 <p>When $P=0.5, z = 0, then <span class="math inline">\(z = w_1x_1 +
 w_2x_2 + b = 0\)</span><br />
 This equation represents the decision boundary in the coordinate system,
-on the two sides of this line will be categorize to A or B.<br />
-The next question is: based on the actual training data, the parameter
-<span class="math inline">\(w_1, w_2, b\)</span> in the equation is
-meets the actual category(actual value),<br />
-We need to train through machine learning.</p>
+on the two sides of this line will be categorized to A or B.<br />
+The next question is: based on the actual training data, do the
+parameter <span class="math inline">\(w_1, w_2, b\)</span> in the
+equation match the actual category(actual value),<br />
+We need to train model using machine learning.</p>
 <h2 id="loss-function">Loss Function</h2>
 <p>Same as linear regression, we need to find a mathematic tool to
 aggregate the error which calculated from the after-training prediction
 and the in-data set actual value, in order to be the reference in
 optimizing strategy.<br />
 In the logistic regression of binary classification, the meaning of
-error is “If a data point is category A, but been classified as B”, this
-kind of error needs to be reviewed by each data in the training set.</p>
+error is “If a data point is category A, but is classified as B”, this
+kind of error needs to be evaluated for each data point in the training
+set.</p>
 <p>So we need to find a tool can help us compare the difference between
 predict value and actual value:</p>
 <h3 id="cross-entropy-loss-function">Cross-Entropy loss function</h3>
 <p>If <span class="math inline">\(y\)</span> is actual label(result of
 classification,<span class="math inline">\(0 or 1\)</span>, 0 represents
 category A, 1 represents category B), <span
-class="math inline">\(p\)</span> is predict possibility.<br />
+class="math inline">\(p\)</span> is the predicted probability.<br />
 We need to find a method which returns error when actual value is 0, but
 predict value gives 1; and same as opposite; but if each of actual value
 and predict value is the same, returns nothing.</p>
@@ -547,8 +549,8 @@ y = 1, p &amp;= 0.1, \quad \text{big big error!} \\
 y = 1, p &amp;= 0.3, \quad \text{minor error!} \\
 y = 1, p &amp;= 0.9, \quad \text{good!} \\
 \end{align*}
-\]</span> We also needs to based on the level, returns different
-error.<br />
+\]</span> We also need to ensure that the error magnitude reflects the
+degree of the mismatch.<br />
 Below we will use natural logarithm as our mathematic tool again.</p>
 <h4 id="natural-logarithm">Natural Logarithm</h4>
 <p>As the derivation above, if a number locates in the interval of <span
@@ -558,7 +560,7 @@ we will get a negative number, if the number closer the <span
 class="math inline">\(0\)</span>, the return value of <span
 class="math inline">\(\ln\)</span> will more close to <span
 class="math inline">\(-\infty\)</span>.</p>
-<p>If we put possibility into natural logarithm, we can get two kinds of
+<p>If we put probability into natural logarithm, we can get two kinds of
 error:<br />
 <span class="math display">\[
 \begin{align*}
@@ -578,8 +580,8 @@ value, then we can merge these errors:<br />
 These errors are the summation of mapping of natural logarithm to
 negative number, the value more close to zero, the mapping will more
 close to negative infinity.<br />
-With the filter by the parameter(actual value), negative sign is still
-exists, this will cause misleading with the meaning.<br />
+With the filtering by the parameter(actual value), the negative sign
+still exists, this will cause misleading with the meaning.<br />
 To better express the magnitude of the loss, we multiply by <span
 class="math inline">\(-1\)</span> , which inverts the scale so that the
 larger the resulting positive value, the greater the error is: <span
@@ -849,7 +851,7 @@ y_i)) \\
 <p>We can tell from the above equation:</p>
 <blockquote>
 <p><span class="math inline">\(\sigma(z) - y_i\)</span> represents the
-error of each predict possibility and actual label in training
+error of each predict probability and actual label in training
 set.<br />
 With <span class="math inline">\(\frac{1}{N}\sum_{i=1}^{N}\)</span> , it
 becomes average error.<br />
@@ -863,14 +865,14 @@ sample.</p>
 <p>After the lengthy derivation and simplification, the final gradient
 descent equation looks quite elegant, TBH xd.</p>
 <h2 id="last">Last</h2>
-<p>Its much more longer derivation then I expect.<br />
-Even though it skip the vector presentation in multi-feature already,
-but it still struggle for me to derivate three features.<br />
-In order to link the linear algebra and possibility theory, I spent a
+<p>It’s a much more longer derivation than I expect.<br />
+Even though it skips the vector presentation in multi-feature already,
+the derivation of three features was still challenging for me.<br />
+In order to link the linear algebra and probability theory, I spent a
 lot of effort in derivation.<br />
 I will consider writing something like vector presentation in
 multi-feature or expand the concept of logistic regression into neural
-networking and its derivation, then we should encounter discrete
+networks and its derivation, then we should encounter discrete
 mathematics Orz.</p>
 
     </div>
