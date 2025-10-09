@@ -28,7 +28,7 @@
 <meta property="og:description" content="This time let’s talk about Logistic Regression. Readers need some concept of the natural logarithm. &gt;&gt; [zhTW version] &lt;&lt;">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-10-07T15:32:20.000Z">
-<meta property="article:modified_time" content="2025-10-09T02:47:09.779Z">
+<meta property="article:modified_time" content="2025-10-09T03:06:12.748Z">
 <meta property="article:author" content="clooooode">
 <meta property="article:tag" content="AI">
 <meta property="article:tag" content="Machine Learning">
@@ -156,7 +156,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
             <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#logistic-regression"><span class="nav-number">1.</span> <span class="nav-text">Logistic Regression</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mathematical-assumption"><span class="nav-number">2.</span> <span class="nav-text">Mathematical assumption</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#definition-in-linear-algebra"><span class="nav-number">2.1.</span> <span class="nav-text">Definition in Linear Algebra</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#probability"><span class="nav-number">2.2.</span> <span class="nav-text">Probability</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#odds"><span class="nav-number">2.2.1.</span> <span class="nav-text">Odds</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#log-odds-function"><span class="nav-number">2.2.2.</span> <span class="nav-text">Log-Odds function</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sigmoid"><span class="nav-number">2.3.</span> <span class="nav-text">Sigmoid</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#decision-boundary"><span class="nav-number">3.</span> <span class="nav-text">Decision Boundary</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#loss-function"><span class="nav-number">4.</span> <span class="nav-text">Loss Function</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#cross-entropy-loss-function"><span class="nav-number">4.1.</span> <span class="nav-text">Cross-Entropy loss function</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#natural-logarithm"><span class="nav-number">4.1.1.</span> <span class="nav-text">Natural Logarithm</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#average-cross-entropy-loss"><span class="nav-number">4.2.</span> <span class="nav-text">Average Cross-Entropy Loss</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#optimizer"><span class="nav-number">5.</span> <span class="nav-text">Optimizer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#expands-the-loss-function"><span class="nav-number">5.1.</span> <span class="nav-text">Expands the Loss Function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#parameter-w_1"><span class="nav-number">5.2.</span> <span class="nav-text">Parameter \(w_1\):</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#parameter-w_2"><span class="nav-number">5.3.</span> <span class="nav-text">Parameter \(w_2\):</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#parameter-b"><span class="nav-number">5.4.</span> <span class="nav-text">Parameter \(b\):</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#all-the-derivative-and-gradient-descent"><span class="nav-number">5.5.</span> <span class="nav-text">All the derivative and
-gradient descent</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#last"><span class="nav-number">6.</span> <span class="nav-text">Last</span></a></li></ol></div>
+gradient descent</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#conclusion"><span class="nav-number">6.</span> <span class="nav-text">Conclusion</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -256,7 +256,7 @@ gradient descent</span></a></li></ol></li><li class="nav-item nav-level-2"><a cl
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-10-09 02:47:09" itemprop="dateModified" datetime="2025-10-09T02:47:09+00:00">2025-10-09</time>
+      <time title="Modified: 2025-10-09 03:06:12" itemprop="dateModified" datetime="2025-10-09T03:06:12+00:00">2025-10-09</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -345,7 +345,7 @@ are real numbers, thus the score <span class="math inline">\(z\)</span>
 will be in the interval of <span class="math inline">\((-\infty,
 \infty)\)</span> 。</p>
 <blockquote>
-<p>Which can also represents like: <span class="math inline">\(z \in
+<p>Which can also be represented as: <span class="math inline">\(z \in
 (-\infty, \infty)\)</span></p>
 </blockquote>
 <h3 id="probability">Probability</h3>
@@ -356,8 +356,8 @@ to probability, the most direct understanding of it should the range of
 probability, which is <span class="math inline">\(P \in [0,
 1]\)</span>.</p>
 <p>If we want to find a mapping between probability and equation of
-linear algebra, these two intervals are unable to be mapped each
-other.</p>
+linear algebra, these two intervals cannot be directly mapped (to each
+other).</p>
 <h4 id="odds">Odds</h4>
 <p>Here comes the concept of Odds, the definition of Odds is slightly
 different from Probability: It is the ratio of the probability of an
@@ -378,7 +378,8 @@ exam <span class="math inline">\(P = 0.9  (90\%)\)</span></p>
 <p>The value of 9 means the probability of a student passing is nine
 times the probability of them failing.<br />
 Normally we write it <span class="math inline">\(9:1\)</span>.</p>
-<p>We can tell the range of Odds is: <span class="math display">\[
+<p>The range of Odds can be determined from the formula: <span
+class="math display">\[
 Odds \in [0, \infty)
 \]</span> The range can expands to <span
 class="math inline">\(\infty\)</span> in positive direction, mapping
@@ -405,7 +406,7 @@ log_{2}4 &amp;= log_{2}{2 ^ 2} = 2 \\
 log_{3}9 &amp;= log_{3}{3 ^ 2} = 2 \\
 log_{3}81 &amp;= log_{3}{3 ^ 4} = 4 \\
 \end{align*}
-\]</span> Then this natural logarithm:<br />
+\]</span> Then let’s review the natural logarithm:<br />
 <span class="math display">\[
 \begin{align*}
 \ln(x) &amp;= log_{e}x \\
@@ -438,8 +439,8 @@ class="math inline">\(\ln(0.5)? \ln(0.1)?\)</span>:<br />
 1\)</span> we can find out, if we put it into a natural logarithm, the
 return value would be a negative real number.<br />
 And as the value of <span class="math inline">\(x\)</span> gets closer
-to 0, the return value becomes a larger negative value(or smaller and
-smaller), and closer to negative infinity.</p>
+to 0, the return value becomes a larger negative value(or more
+negative), and closer to negative infinity.</p>
 <p>Lets apply this into Odds:<br />
 <span class="math display">\[
 \begin{align*}
@@ -455,10 +456,10 @@ P &amp;= \frac{e^z}{1 + e^z}
 \end{align*}
 \]</span></p>
 <h3 id="sigmoid">Sigmoid</h3>
-<p>Eventually, we found the Log-Odds, and it is also known as the
-Sigmoid function.<br />
-As we have derivated the function up to this point, our goal was to find
-a method in probability theory that could map the interval of <span
+<p>Eventually, we found the Log-Odds function, and it is also known as
+the Sigmoid function.<br />
+As we have derived the function up to this point, our goal was to find a
+method in probability theory that could map the interval of <span
 class="math inline">\((-\infty, \infty)\)</span>.<br />
 After going from Odds <span class="math inline">\([0, \infty)\)</span>
 to Log-Odds <span class="math inline">\((-\infty, \infty)\)</span>, we
@@ -468,8 +469,8 @@ presents:<br />
 <span class="math display">\[
 \sigma(z) = \frac{e^z}{1 + e^z}
 \]</span><br />
-Next we will simplify to common form of Sigmoid(Not necessary to do
-it):<br />
+Next we will simplify it into the common form of Sigmoid(which is not
+strictly necessary):<br />
 <span class="math display">\[
 \begin{align*}
 P = \sigma(z) &amp;= \frac{e^z}{1 + e^z} \\
@@ -483,7 +484,7 @@ to the range of probability <span class="math inline">\([0, 1]\)</span>
 .</p>
 <h2 id="decision-boundary">Decision Boundary</h2>
 <p>After we found a tool(Sigmoid) helping us calculates probability,
-back to our goal is classification.<br />
+Returning to our goal, which is classification.<br />
 The linear function <span class="math inline">\(z\)</span> can help us
 define a boundary in order to find the zone of the binary categories;
 hence on this line, the probability of category A or B is the same(50%),
@@ -857,12 +858,12 @@ The interesting thing is: each weight(<span
 class="math inline">\(w\)</span>) is affected by the average of the
 product between the feature itself and the error.<br />
 And the gradient of bias(<span class="math inline">\(b\)</span>) itself
-is always 1, so it only effected by the average error of whole
+is always 1, so it only affected by the average error of whole
 sample.</p>
 </blockquote>
 <p>After the lengthy derivation and simplification, the final gradient
 descent equation looks quite elegant, TBH xd.</p>
-<h2 id="last">Last</h2>
+<h2 id="conclusion">Conclusion</h2>
 <p>It’s a much longer derivation than I expect.<br />
 Even though it skips the vector form in multi-feature already, the
 derivation of three features was still challenging for me.<br />
