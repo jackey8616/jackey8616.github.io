@@ -322,7 +322,7 @@ $$
 基本上找 $w$ 的過程就是我們在訓練的過程。  
 
 為了要找到最佳的 $w$ 我們可以獲得最低的損失，這邊我們採用求導數(偏微分)來根據斜率逐漸找到最佳的 $w$。
-{% post_link AI/linear-regression-and-its-math_zhTW#gradient-descent梯度下降 '>> [為什麼要用微分？] <<' %}  
+{% post_link AI/linear-regression-and-its-math-zhTW#gradient-descent梯度下降 '>> [為什麼要用微分？] <<' %}  
 
 ### Loss Function 算式展開
 這張圖實際上跟我們的假設不符合，它只是個示意圖，  

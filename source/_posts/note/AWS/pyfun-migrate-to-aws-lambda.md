@@ -12,7 +12,7 @@ tags:
 ![](/images/note/AWS/pyfun-migrate-to-aws-lambda/structure.svg) 
 <center>Migrating a Sanic backend from Linode VPC to AWS Lambda.</center>  
 <center>
-{% post_link note/AWS/pyfun-migrate-to-aws-lambda_zhTW '>> [zhTW version] <<' %}  
+{% post_link note/AWS/pyfun-migrate-to-aws-lambda-zhTW '>> [zhTW version] <<' %}  
 </center>
 <!-- More -->
 

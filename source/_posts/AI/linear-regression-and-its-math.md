@@ -11,7 +11,7 @@ mathjax: true
 ---
 
 Simply recording something about linear regression and its mathematics.  
-{% post_link AI/linear-regression-and-its-math_zhTW '>> [zhTW version] <<' %}  
+{% post_link AI/linear-regression-and-its-math-zhTW '>> [zhTW version] <<' %}  
 
 <!-- More -->
 
