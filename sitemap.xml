@@ -20,6 +20,15 @@
   </url>
   
   <url>
+    <loc>https://www.clo5de.info/2018/11/03/note/SNMPv3-on-Cisco/</loc>
+    
+    <lastmod>2025-10-09</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.clo5de.info/2019/04/19/paper_reading/Automatic_Memory_Control_of_Multiple_Virtual%20Machines_on_a_Consolidated%20Server/</loc>
     
     <lastmod>2025-10-09</lastmod>
@@ -30,123 +39,6 @@
   
   <url>
     <loc>https://www.clo5de.info/2018/04/10/tutorial/Django/</loc>
-    
-    <lastmod>2025-10-09</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.clo5de.info/2019/01/05/note/Unity/Unity-Communicate-With-Arduino/</loc>
-    
-    <lastmod>2025-10-09</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.clo5de.info/about/index.html</loc>
-    
-    <lastmod>2025-10-09</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.clo5de.info/categories/index.html</loc>
-    
-    <lastmod>2025-10-09</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.clo5de.info/2018/04/11/life_geeking/Unix-Hole-Is-So-Deep/</loc>
-    
-    <lastmod>2025-10-09</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.clo5de.info/2018/04/10/note/C-C++/</loc>
-    
-    <lastmod>2025-10-09</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.clo5de.info/2018/11/07/note/CISCO-IOS/</loc>
-    
-    <lastmod>2025-10-09</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.clo5de.info/2018/04/10/note/Hexo/</loc>
-    
-    <lastmod>2025-10-09</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.clo5de.info/2018/04/11/note/Lets-Macbuntu/</loc>
-    
-    <lastmod>2025-10-09</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.clo5de.info/2025/04/30/note/MatMul_zhTW/</loc>
-    
-    <lastmod>2025-10-09</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.clo5de.info/2018/04/10/note/OOP/</loc>
-    
-    <lastmod>2025-10-09</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.clo5de.info/2018/11/03/note/SNMPv3-on-Cisco/</loc>
-    
-    <lastmod>2025-10-09</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.clo5de.info/2023/07/11/note/AWS/EC2-Swap-With-Launch-Template/</loc>
-    
-    <lastmod>2025-10-09</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.clo5de.info/2024/04/16/note/AWS/pyfun-migrate-to-aws-lambda/</loc>
     
     <lastmod>2025-10-09</lastmod>
     
@@ -191,6 +83,15 @@
   </url>
   
   <url>
+    <loc>https://www.clo5de.info/2023/08/01/note/PostgreSQL/PostgreSQL-canceling-statement-due-to-conflict-with-recovery/</loc>
+    
+    <lastmod>2025-10-09</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.clo5de.info/2019/06/19/note/OS/ch8/</loc>
     
     <lastmod>2025-10-09</lastmod>
@@ -200,7 +101,25 @@
   </url>
   
   <url>
-    <loc>https://www.clo5de.info/2023/08/01/note/PostgreSQL/PostgreSQL-canceling-statement-due-to-conflict-with-recovery/</loc>
+    <loc>https://www.clo5de.info/2019/01/05/note/Unity/Unity-Communicate-With-Arduino/</loc>
+    
+    <lastmod>2025-10-09</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.clo5de.info/about/index.html</loc>
+    
+    <lastmod>2025-10-09</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.clo5de.info/categories/index.html</loc>
     
     <lastmod>2025-10-09</lastmod>
     
@@ -272,7 +191,88 @@
   </url>
   
   <url>
+    <loc>https://www.clo5de.info/2018/04/11/life_geeking/Unix-Hole-Is-So-Deep/</loc>
+    
+    <lastmod>2025-10-09</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.clo5de.info/2018/04/10/note/C-C++/</loc>
+    
+    <lastmod>2025-10-09</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.clo5de.info/2018/11/07/note/CISCO-IOS/</loc>
+    
+    <lastmod>2025-10-09</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.clo5de.info/2018/04/10/note/Hexo/</loc>
+    
+    <lastmod>2025-10-09</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.clo5de.info/2018/04/11/note/Lets-Macbuntu/</loc>
+    
+    <lastmod>2025-10-09</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.clo5de.info/2025/04/30/note/MatMul_zhTW/</loc>
+    
+    <lastmod>2025-10-09</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.clo5de.info/2018/04/10/note/OOP/</loc>
+    
+    <lastmod>2025-10-09</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.clo5de.info/2018/05/01/application/maybep2p/MaybeP2P-1/</loc>
+    
+    <lastmod>2025-10-09</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.clo5de.info/2023/07/11/note/AWS/EC2-Swap-With-Launch-Template/</loc>
+    
+    <lastmod>2025-10-09</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.clo5de.info/2024/04/16/note/AWS/pyfun-migrate-to-aws-lambda/</loc>
     
     <lastmod>2025-10-09</lastmod>
     
@@ -416,7 +416,7 @@
   </url>
   
   <url>
-    <loc>https://www.clo5de.info/2018/06/03/CTF/AIS3/2018/pre_exam/AIS3-2018-First-Try/</loc>
+    <loc>https://www.clo5de.info/2018/08/01/CTF/AIS3/2018/pre_exam/crypto/</loc>
     
     <lastmod>2025-10-09</lastmod>
     
@@ -425,7 +425,7 @@
   </url>
   
   <url>
-    <loc>https://www.clo5de.info/2018/08/01/CTF/AIS3/2018/pre_exam/crypto/</loc>
+    <loc>https://www.clo5de.info/2018/06/03/CTF/AIS3/2018/pre_exam/AIS3-2018-First-Try/</loc>
     
     <lastmod>2025-10-09</lastmod>
     
@@ -505,13 +505,6 @@
   </url>
   
   <url>
-    <loc>https://www.clo5de.info/tags/COSCUP/</loc>
-    <lastmod>2025-10-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://www.clo5de.info/tags/CTF/</loc>
     <lastmod>2025-10-09</lastmod>
     <changefreq>weekly</changefreq>
@@ -527,6 +520,13 @@
   
   <url>
     <loc>https://www.clo5de.info/tags/YuntechOSC/</loc>
+    <lastmod>2025-10-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.clo5de.info/tags/COSCUP/</loc>
     <lastmod>2025-10-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -864,14 +864,14 @@
   </url>
   
   <url>
-    <loc>https://www.clo5de.info/categories/COSCUP/</loc>
+    <loc>https://www.clo5de.info/categories/CTF/</loc>
     <lastmod>2025-10-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.clo5de.info/categories/CTF/</loc>
+    <loc>https://www.clo5de.info/categories/COSCUP/</loc>
     <lastmod>2025-10-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
