@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.clo5de.info","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.17.1","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":true,"nav":null,"activeClass":"utterances"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":10,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="機器學習的基石： 從 \(w^T{x}\) 向量內積以及矩陣乘法看懂線性與邏輯迴歸">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Foundation of Machine Learning: Vector &amp; Matrix(zhTW)">
+<meta property="og:url" content="https://www.clo5de.info/2025/10/09/AI/foundation-of-machine-learning-vector-n-matrix-zhTW/index.html">
+<meta property="og:site_name" content="clooooode">
+<meta property="og:description" content="機器學習的基石： 從 \(w^T{x}\) 向量內積以及矩陣乘法看懂線性與邏輯迴歸">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-10-09T19:37:23.000Z">
+<meta property="article:modified_time" content="2025-10-12T23:47:13.467Z">
+<meta property="article:author" content="clooooode">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="Machine Learning">
+<meta property="article:tag" content="Regression Analysis">
+<meta property="article:tag" content="Vector">
+<meta property="article:tag" content="Matrix">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.clo5de.info/2025/10/09/AI/foundation-of-machine-learning-vector-n-matrix-zhTW/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.clo5de.info/2025/10/09/AI/foundation-of-machine-learning-vector-n-matrix-zhTW/","path":"2025/10/09/AI/foundation-of-machine-learning-vector-n-matrix-zhTW/","title":"Foundation of Machine Learning: Vector & Matrix(zhTW)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Foundation of Machine Learning: Vector & Matrix(zhTW) | clooooode</title><meta name="robots" content="noindex">
+  
+
+
+
+
+
+
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NGLBLXHD');</script>
+<!-- End Google Tag Manager -->
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGLBLXHD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">clooooode</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">a.k.a. clo5de</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-github"><a href="https://github.com/jackey8616" rel="section" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a></li><li class="menu-item menu-item-e-mail"><a href="mailto:clode@clo5de.info" rel="section" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a></li><li class="menu-item menu-item-linkedin"><a href="https://www.linkedin.com/in/ko-li-mo-294832118/" rel="section" target="_blank"><i class="fab fa-linkedin fa-fw"></i>LinkedIn</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%96%AE%E4%B8%80%E7%89%B9%E5%BE%B5%E7%9A%84%E7%AA%98%E5%A2%83"><span class="nav-number">1.</span> <span class="nav-text">單一特徵的窘境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%91%E9%87%8F%E5%8C%96vectorization"><span class="nav-number">2.</span> <span class="nav-text">向量化(Vectorization)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%B9%E5%BE%B5%E5%90%91%E9%87%8Fx-%E6%AC%8A%E9%87%8D%E5%90%91%E9%87%8Fw"><span class="nav-number">2.1.</span> <span class="nav-text">特徵向量x &amp; 權重向量w</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%91%E9%87%8F%E5%85%A7%E7%A9%8D"><span class="nav-number">2.2.</span> <span class="nav-text">向量內積</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%91%E9%87%8F%E5%85%A7%E7%A9%8D%E7%9A%84%E5%BE%AE%E5%88%86"><span class="nav-number">3.</span> <span class="nav-text">向量內積的微分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9F%A9%E9%99%A3"><span class="nav-number">4.</span> <span class="nav-text">矩陣</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%B9%E5%BE%B5%E7%9F%A9%E9%99%A3x"><span class="nav-number">4.1.</span> <span class="nav-text">特徵矩陣(x)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AC%8A%E9%87%8D%E5%90%91%E9%87%8Fw"><span class="nav-number">4.2.</span> <span class="nav-text">權重向量(w)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%AE%E6%A8%99%E5%90%91%E9%87%8Fy"><span class="nav-number">4.3.</span> <span class="nav-text">目標向量(y)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%96%AE%E4%B8%80%E5%90%91%E9%87%8F%E5%85%A7%E7%A9%8D%E5%96%AE%E6%A8%A3%E6%9C%AC"><span class="nav-number">4.4.</span> <span class="nav-text">單一向量內積(單樣本)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%B9%E9%87%8F%E7%9F%A9%E9%99%A3%E4%B9%98%E6%B3%95%E6%89%80%E6%9C%89%E6%A8%A3%E6%9C%AC"><span class="nav-number">4.5.</span> <span class="nav-text">批量矩陣乘法(所有樣本)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%82%BA%E4%BB%80%E9%BA%BC%E5%BC%B7%E8%AA%BF%E5%B0%BA%E5%AF%B8"><span class="nav-number">4.6.</span> <span class="nav-text">為什麼強調尺寸？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%8F%E7%B5%90"><span class="nav-number">5.</span> <span class="nav-text">小結</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A3%9C%E5%85%85%E5%90%84%E9%A0%85%E6%8E%A8%E5%B0%8E"><span class="nav-number">6.</span> <span class="nav-text">(補充)各項推導</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B7%9A%E6%80%A7%E5%9B%9E%E6%AD%B8"><span class="nav-number">6.1.</span> <span class="nav-text">線性回歸</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%81%8F%E5%BE%AE%E5%88%86%E6%AC%8A%E9%87%8D%E5%90%91%E9%87%8F-w"><span class="nav-number">6.1.1.</span> <span class="nav-text">偏微分權重向量 w</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%81%8F%E5%BE%AE%E5%88%86%E5%81%8F%E5%B7%AE%E9%A0%85-b"><span class="nav-number">6.1.2.</span> <span class="nav-text">偏微分偏差項 b</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A2%AF%E5%BA%A6%E5%85%AC%E5%BC%8F"><span class="nav-number">6.1.3.</span> <span class="nav-text">梯度公式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%82%8F%E8%BC%AF%E5%9B%9E%E6%AD%B8"><span class="nav-number">6.2.</span> <span class="nav-text">邏輯回歸</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%81%8F%E5%BE%AE%E5%88%86%E6%AC%8A%E9%87%8D%E5%90%91%E9%87%8F-w-1"><span class="nav-number">6.2.1.</span> <span class="nav-text">偏微分權重向量 w</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%81%8F%E5%BE%AE%E5%88%86%E5%81%8F%E5%B7%AE%E9%A0%85-b-1"><span class="nav-number">6.2.2.</span> <span class="nav-text">偏微分偏差項 b</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A2%AF%E5%BA%A6%E5%85%AC%E5%BC%8F-1"><span class="nav-number">6.2.3.</span> <span class="nav-text">梯度公式</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="clooooode"
+      src="https://avatars1.githubusercontent.com/u/12930377?s=400&u=3e932a7f6b769a0e1028806815067be598db3351&v=4">
+  <p class="site-author-name" itemprop="name">clooooode</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">47</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">55</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/jackey8616" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;jackey8616" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:clode@clo5de.info" title="E-Mail → mailto:clode@clo5de.info" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.linkedin.com/in/ko-li-mo-294832118/" title="LinkedIn → https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;ko-li-mo-294832118&#x2F;" rel="noopener me" target="_blank"><i class="fab fa-linkedin fa-fw"></i></a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.clo5de.info/2025/10/09/AI/foundation-of-machine-learning-vector-n-matrix-zhTW/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars1.githubusercontent.com/u/12930377?s=400&u=3e932a7f6b769a0e1028806815067be598db3351&v=4">
+      <meta itemprop="name" content="clooooode">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="clooooode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Foundation of Machine Learning: Vector & Matrix(zhTW) | clooooode">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Foundation of Machine Learning: Vector & Matrix(zhTW)
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2025-10-09 19:37:23" itemprop="dateCreated datePublished" datetime="2025-10-09T19:37:23+00:00">2025-10-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2025-10-12 23:47:13" itemprop="dateModified" datetime="2025-10-12T23:47:13+00:00">2025-10-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/AI/" itemprop="url" rel="index"><span itemprop="name">AI</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span class="firestore-visitors-count"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Word count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Word count in article: </span>
+      <span>2.4k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>9 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>機器學習的基石： 從 <span class="math inline">\(w^T{x}\)</span>
+向量內積以及矩陣乘法看懂線性與邏輯迴歸<br />
+<span id="more"></span></p>
+<h2 id="單一特徵的窘境">單一特徵的窘境</h2>
+<p>在前幾篇文章中(<a href="/2025/10/03/AI/linear-regression-and-its-math-zhTW/" title="Linear Regression &amp; its mathematics(zhTW)">[線性回歸]</a>,
+<a href="/2025/10/07/AI/logistic-regression-and-its-math-zhTW/" title="Logistic Regression &amp; its mathematics(zhTW)">[邏輯回歸]</a>)，我們使用了大量的數學推導，但是為了方便討論數學原理，我們都採用了較為單純的單特徵或者是雙特徵的假設來進行:</p>
+<p><span class="math display">\[
+\begin{align*}
+y &amp;= wx + b \\
+z &amp;= w_1x_1 + w_2x_2 + b \\
+\end{align*}
+\]</span></p>
+<p>在實務場景中，這樣子的假設幾乎沒辦法應用。</p>
+<blockquote>
+<p>例如房價(y) 跟 面積(x1), 樓層(x2), 南北朝向(x3) …
+這些因素所影響。</p>
+</blockquote>
+<p>一但我們有多個特徵，公式就會變成冗長的求和式:</p>
+<p><span class="math display">\[
+\begin{align*}
+y &amp;= w_1x_1 + w_2x_2 + w_3x_3 + ... + w_nx_n + b \\
+\end{align*}
+\]</span>
+這樣子的式子，不僅難以處理，而且對於運算的效率也有所影響。<br />
+為了要幫助計算，必須引入線性代數的工具：向量(Vector)以及矩陣(Matrix)。</p>
+<h2 id="向量化vectorization">向量化(Vectorization)</h2>
+<p>用以下的式子為例:<br />
+<span class="math display">\[
+\begin{align*}
+y &amp;= w_1x_1 + w_2x_2 + w_3x_3 + ... + w_nx_n + b \tag{1} \\
+\end{align*}
+\]</span></p>
+<h3 id="特徵向量x-權重向量w">特徵向量x &amp; 權重向量w</h3>
+<p>我們將所有特徵以及權重各別打包成一個列向量(column vector): <span
+class="math display">\[
+w =
+\begin{bmatrix}
+w_1 \\
+w_2 \\
+\vdots \\
+w_n \\
+\end{bmatrix}
+\quad
+x =
+\begin{bmatrix}
+x_1 \\
+x_2 \\
+\vdots \\
+x_n \\
+\end{bmatrix}
+\]</span> 在進行向量內積時，我們會把其中一個向量做轉置(column to row
+vector)來好滿足矩陣乘法的條件: <span class="math display">\[
+w^{T} =
+\begin{bmatrix}
+w_1 &amp; w_2 &amp; \cdots &amp; w_n
+\end{bmatrix}
+\]</span></p>
+<h3 id="向量內積">向量內積</h3>
+<p>根據向量內積的代數定義:<br />
+<span class="math display">\[
+\begin{align*}
+\vec{a} &amp;= [a_1, a_2, \dots, a_n] \\
+\vec{b} &amp;= [b_1, b_2, \dots, b_n] \\
+\vec{a} \cdot \vec{b} &amp;= \sum_{i=1}^{n}a_ib_i = a_1b_1 + a_2b_2 +
+\dots + a_nb_n \\
+\end{align*}
+\]</span> 其中又可以表示為w轉置乘以x(w transpose x): <span
+class="math inline">\(w^{T}x\)</span><br />
+因此:<br />
+<span class="math display">\[
+w^{T}x = w_1x_1 + w_2x_2 + ... + w_nx_n
+\]</span> 替換掉 <span class="math inline">\(\text{(1)}\)</span>
+中部分的式子: <span class="math display">\[
+\begin{align*}
+y &amp;= w_1x_1 + w_2x_2 + ... + w_nx_n + b \\
+&amp;= w^{T}x + b \\
+\end{align*}
+\]</span></p>
+<h2 id="向量內積的微分">向量內積的微分</h2>
+<p><span class="math display">\[
+\begin{align*}
+\hat{y} &amp;= (w^{T}x + b) \\
+\dfrac{d\hat{y}}{dw} &amp;= \dfrac{d}{dw}(w^{T}x) + 0 \\
+&amp;= \begin{bmatrix}
+\dfrac{d\hat{y}}{dw_1} \\
+\dfrac{d\hat{y}}{dw_2} \\
+\vdots \\
+\dfrac{d\hat{y}}{dw_n} \\
+\end{bmatrix}\tag{2.1}\\
+\\
+\dfrac{d\hat{y}}{dw_j} &amp;= \dfrac{d}{dw_j}(w_1x_1 + w_2x_2 + \dots +
+w_nx_n) \\
+&amp;= \dfrac{d}{dw_j}(w_jx_j) \\
+&amp;= x_j\tag{2.2}\\
+\\
+\text{Base on (2.1), (2.2)} =&gt; \dfrac{d\hat{y}}{dw} &amp;=
+\begin{bmatrix}
+\dfrac{d\hat{y}}{dw_1} \\
+\dfrac{d\hat{y}}{dw_2} \\
+\vdots \\
+\dfrac{d\hat{y}}{dw_n} \\
+\end{bmatrix}
+= \begin{bmatrix}
+x_1 \\
+x_2 \\
+\vdots \\
+x_n \\
+\end{bmatrix}
+= x^{(i)}\tag{2.3}
+\end{align*}
+\]</span></p>
+<p><span class="math display">\[
+\begin{align*}
+\dfrac{d}{db}\hat{y}^{(i)} &amp;= \dfrac{d(w^{T}x^{(i)} + b)}{db}
+=
+\begin{bmatrix}
+\dfrac{d\hat{y}}{db} \\
+\dfrac{d\hat{y}}{db} \\
+\vdots \\
+\dfrac{d\hat{y}}{db} \\
+\end{bmatrix} + 1
+=
+\begin{bmatrix}
+0 \\
+0 \\
+\vdots \\
+0 \\
+\end{bmatrix} + 1 = 1 \tag{2.4} \\
+\end{align*}
+\]</span></p>
+<h2 id="矩陣">矩陣</h2>
+<p>我們假設現在有一個房價訓練集，裡面包含了5筆訓練資料(樣本)，每筆資料有3個特徵。</p>
+<h3 id="特徵矩陣x">特徵矩陣(x)</h3>
+<p>我們有n個樣本(n=5), 每個樣本有m個特徵(m=3):</p>
+<table>
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 19%" />
+<col style="width: 17%" />
+<col style="width: 19%" />
+<col style="width: 23%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: center;">樣本編號<span
+class="math inline">\((i)\)</span></th>
+<th style="text-align: center;">面積(<span
+class="math inline">\(x_1\)</span>)</th>
+<th style="text-align: center;">房齡(<span
+class="math inline">\(x_2\)</span>)</th>
+<th style="text-align: center;">樓層(<span
+class="math inline">\(x_3\)</span>)</th>
+<th style="text-align: center;">房價(<span
+class="math inline">\(y^{(i)}\)</span>)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">150</td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">550K</td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">80</td>
+<td style="text-align: center;">25</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">280K</td>
+</tr>
+<tr>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">200</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">720K</td>
+</tr>
+<tr>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">120</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">450K</td>
+</tr>
+<tr>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">180</td>
+<td style="text-align: center;">15</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">580K</td>
+</tr>
+</tbody>
+</table>
+<p>而我們的矩陣大小會是 <span class="math inline">\(n \times m\)</span>:
+<span class="math display">\[
+\begin{align*}
+x =
+\begin{bmatrix}
+150 &amp; 20 &amp; 3 \\
+80  &amp; 25 &amp; 4 \\
+200 &amp; 2  &amp; 9 \\
+120 &amp; 10 &amp; 7 \\
+180 &amp; 15 &amp; 6 \\
+\end{bmatrix} \\
+\\
+Shape = 5 \times 3 \\
+\end{align*}
+\]</span></p>
+<h3 id="權重向量w">權重向量(w)</h3>
+<blockquote>
+<p>為什麼一下說矩陣、一下說向量？</p>
+<p>其實向量跟矩陣是一樣的東西。<br />
+只是向量是一個(n x 1)大小的一維矩陣，而矩陣的大小通常為(n x m)。</p>
+</blockquote>
+<p>因為m=3，所以總共會有三個權重需要學習:<br />
+<span class="math display">\[
+\begin{align*}
+w =
+\begin{bmatrix}
+w_1 \\
+w_2 \\
+w_3 \\
+\end{bmatrix} \\
+\\
+Shape = 3 \times 1 \\
+\end{align*}
+\]</span></p>
+<h3 id="目標向量y">目標向量(y)</h3>
+<p>同理，因為有五個樣本(n=5)，對應的值也有五個(單位是萬元): <span
+class="math display">\[
+\begin{align*}
+y =
+\begin{bmatrix}
+550 \\
+280 \\
+720 \\
+450 \\
+580 \\
+\end{bmatrix} \\
+\\
+Shape = 5 \times 1 \\
+\end{align*}
+\]</span></p>
+<h3 id="單一向量內積單樣本">單一向量內積(單樣本)</h3>
+<p>只看第一個樣本時，我們所計算的是 <span
+class="math inline">\(w^{T}x^{(i)}\)</span>: <span
+class="math display">\[
+\begin{align*}
+w^{T}x^{(i)} &amp;=
+\begin{bmatrix}w_1 &amp; w_2 &amp; w_3\end{bmatrix}
+\begin{bmatrix}
+150 \\
+20 \\
+3 \\
+\end{bmatrix} \\
+&amp;= (w_1 \cdot 150 + w_2 \cdot 20 + w_3 \cdot 3)\\
+\end{align*}
+\]</span> 按照尺寸(Shape)來看: <span class="math inline">\((1 \times 3)
+\times (3 \times 1) = (1 \times 1)\)</span></p>
+<h3 id="批量矩陣乘法所有樣本">批量矩陣乘法(所有樣本)</h3>
+<p>同時計算所有的特徵以及樣本時：<br />
+<span class="math display">\[
+\begin{align*}
+\hat{y} &amp;= x\cdot w\\
+&amp;=
+\begin{bmatrix}
+150 &amp; 20 &amp; 3 \\
+80  &amp; 25 &amp; 4 \\
+200 &amp; 2  &amp; 9 \\
+120 &amp; 10 &amp; 7 \\
+180 &amp; 15 &amp; 6 \\
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+w_1 \\
+w_2 \\
+w_3
+\end{bmatrix} \\
+&amp;= (w_1 \cdot 150 + w_2 \cdot 20 + w_3 \cdot 3) + (w_1 \cdot 80 +
+w_2 \cdot 25 + w_3 \cdot 4) ... \\
+&amp;=
+\begin{bmatrix}
+\hat{y_1} \\
+\hat{y_2} \\
+\hat{y_3} \\
+\hat{y_4} \\
+\hat{y_5} \\
+\end{bmatrix}
+\end{align*}
+\]</span> 尺寸(Shape)則會是: <span class="math inline">\((5 \times 3)
+\times (3 \times 1) = (5 \times 1)\)</span><br />
+算出來的值會是對應五個樣本的預測值(<span
+class="math inline">\(\hat{y}\)</span>)。</p>
+<h3 id="為什麼強調尺寸">為什麼強調尺寸？</h3>
+<p>尺寸(維度)影響到了矩陣相乘。<br />
+如果維度沒有對齊，那麼矩陣是無法相乘的。</p>
+<p>拿以下兩個矩陣為例：<br />
+<span class="math display">\[
+a =
+\begin{bmatrix}
+0 &amp; 1 &amp; 2 \\
+3 &amp; 4 &amp; 5 \\
+\end{bmatrix}
+\quad
+b =
+\begin{bmatrix}
+6 &amp; 7 \\
+8 &amp; 9 \\
+10 &amp; 11 \\
+\end{bmatrix}
+\]</span> <span class="math display">\[
+\begin{align*}
+a \cdot b &amp;=
+\begin{bmatrix}
+0 * 6 + 1 * 8 + 2 * 10 &amp; 0 * 7 + 1 * 9 + 2 * 11 \\
+3 * 6 + 4 * 8 + 5 * 10 &amp; 3 * 7 + 4 * 9 + 5 * 11 \\
+\end{bmatrix}
+\\
+&amp;=
+\begin{bmatrix}
+28 &amp; 31 \\
+100 &amp; 112 \\
+\end{bmatrix}
+\end{align*}
+\]</span> 用其他方式運算:<br />
+<span class="math display">\[
+\begin{align*}
+a \cdot b &amp;=
+\begin{bmatrix}
+0\cdot\begin{bmatrix}6 &amp; 7\end{bmatrix} + 1\cdot\begin{bmatrix}8
+&amp; 9\end{bmatrix} + 2\cdot\begin{bmatrix}10 &amp; 11\end{bmatrix} \\
+3\cdot\begin{bmatrix}6 &amp; 7\end{bmatrix} + 4\cdot\begin{bmatrix}8
+&amp; 9\end{bmatrix} + 5\cdot\begin{bmatrix}10 &amp; 11\end{bmatrix} \\
+\end{bmatrix}
+\\
+&amp;=
+\begin{bmatrix}
+\begin{bmatrix}0 &amp; 0\end{bmatrix} + \begin{bmatrix}8 &amp;
+9\end{bmatrix} + \begin{bmatrix}20 &amp; 22\end{bmatrix} \\
+\begin{bmatrix}18 &amp; 21\end{bmatrix} + \begin{bmatrix}32 &amp;
+36\end{bmatrix} + \begin{bmatrix}50 &amp; 55\end{bmatrix} \\
+\end{bmatrix}
+\\
+&amp;=
+\begin{bmatrix}
+0 + 8 + 20 &amp; 0 + 9 + 22 \\
+18 + 32 + 50 &amp; 21 + 36 + 55 \\
+\end{bmatrix}
+\\
+&amp;=
+\begin{bmatrix}
+28 &amp; 31 \\
+100 &amp; 112 \\
+\end{bmatrix}
+\end{align*}
+\]</span></p>
+<h2 id="小結">小結</h2>
+<p>我們已經從單一特徵的公式，推廣到多特徵並用向量與矩陣的方式表達，大幅簡化數學推導與計算流程。<br />
+在神經網路中，每個模型（層）都對應特定大小的矩陣，例如 l 為層數，m
+為特徵，n 為樣本，後續設計會大量用到這些矩陣運算。<br />
+矩陣的靈活性與效率，是現代機器學習與深度學習不可或缺的基礎。</p>
+<h2 id="補充各項推導">(補充)各項推導</h2>
+<h3 id="線性回歸">線性回歸</h3>
+<p>對於一個多特徵的線性回歸，我們來看在數學運算上有什麼差別:<br />
+樣本數: <span class="math inline">\(n\)</span><br />
+模型預測: <span class="math inline">\(\hat{y}^{(i)} = w^{T}x^{(i)} +
+b\)</span><br />
+損失函數(MSE):<br />
+<span class="math display">\[
+L(w, b) = \frac{1}{n}\sum_{i=1}^{n}(\hat{y}^{(i)} - y^{(i)})^2
+\]</span></p>
+<h4 id="偏微分權重向量-w">偏微分權重向量 w</h4>
+<p><span class="math display">\[
+\begin{align*}
+\dfrac{dL}{dw} &amp;=
+\dfrac{d}{dw}[\frac{1}{n}\sum_{i=1}^{n}(\hat{y}^{(i)} - y^{(i)})^2] \\
+&amp;= \frac{1}{n}\sum_{i=1}^{n}[\dfrac{d}{dw}(\hat{y}^{(i)} -
+y^{(i)})^2] \\
+&amp;= \frac{1}{n}\sum_{i=1}^{n}[2 \cdot (\hat{y}^{(i)} - y^{(i)}) \cdot
+\dfrac{d}{dw}(\hat{y}^{(i)} - y^{(i)})] \\
+\because &amp; \dfrac{d}{dx}(a - b) = \dfrac{da}{dx} -
+\dfrac{db}{dx},\quad\dfrac{d}{dw}y^{(i)} = 0\\
+&amp;= \frac{2}{n}\sum_{i=1}^{n}[(\hat{y}^{(i)} - y^{(i)}) \cdot
+(\dfrac{d}{dw}\hat{y}^{(i)} - 0)] \\
+\because &amp; \dfrac{d}{dw}\hat{y}^{(i)} = x^{(i)} \\
+&amp;= \frac{2}{n}\sum_{i=1}^{n}[(\hat{y}^{(i)} -
+y^{(i)})\dfrac{d}{dw}\hat{y}^{(i)}]\tag{3.1}\\
+\end{align*}
+\]</span></p>
+<h4 id="偏微分偏差項-b">偏微分偏差項 b</h4>
+<p><span class="math display">\[
+\begin{align*}
+\dfrac{dL}{db} &amp;=
+\dfrac{d}{db}[\frac{1}{n}\sum_{i=1}^{n}(\hat{y}^{(i)} - y^{(i)})^2] \\
+&amp;= \frac{2}{n}\sum_{i=1}^{n}[(\hat{y}^{(i)} - y^{(i)}) \cdot
+\dfrac{d}{db}\hat{y}^{(i)}] \\
+\because &amp; \dfrac{d}{db}\hat{y}^{(i)} = 1 \\
+&amp;= \frac{2}{n}\sum_{i=1}^{n}(\hat{y}^{(i)} - y^{(i)}) \tag{3.2}
+\end{align*}
+\]</span></p>
+<h4 id="梯度公式">梯度公式</h4>
+<p>根據 <span class="math inline">\(\text{(3.1) (3.2)式}\)</span>
+我們可以得到: <span class="math display">\[
+\begin{align*}
+\dfrac{dL}{dw} &amp;= \frac{2}{n}\sum_{i=1}^{n}(\hat{y}^{(i)} -
+y^{(i)})x^{(i)} \\
+\dfrac{dL}{db} &amp;= \frac{2}{n}\sum_{i=1}^{n}(\hat{y}^{(i)} - y^{(i)})
+\\
+\end{align*}
+\]</span><br />
+其中 <span class="math inline">\(\dfrac{dL}{dw}\)</span> 又可以記做:
+<span class="math inline">\(\nabla_{w}L\)</span></p>
+<h3 id="邏輯回歸">邏輯回歸</h3>
+<p>對於一個多特徵的邏輯回歸，我們來看在數學運算上有什麼差別:<br />
+樣本數: <span class="math inline">\(n\)</span><br />
+模型預測: <span class="math inline">\(z^{(i)} = w^{T}x^{(i)} +
+b\)</span><br />
+Sigmoid函數: <span class="math inline">\(\sigma(z^{(i)}) = P^{(i)} =
+\frac{1}{1 + e^{-z^{(i)}}}\)</span><br />
+交叉熵損失函數: <span class="math inline">\(L(y^{(i)}, P^{(i)}) = -
+[y^{(i)}\ln(P^{(i)}) + (1-y^{(i)})\ln(1-P^{(i)})]\)</span><br />
+平均交叉熵損失: <span class="math inline">\(Loss =
+\frac{1}{n}\sum_{i=1}^{n}-[y^{(i)}\ln(P^{(i)})+(1-y^{(i)})\ln(1-P^{(i)})]\)</span></p>
+<h4 id="偏微分權重向量-w-1">偏微分權重向量 w</h4>
+<p><span class="math display">\[
+\begin{align*}
+\dfrac{dL^{(i)}}{dw} &amp;= \dfrac{dL^{(i)}}{dP^{(i)}} \cdot
+\dfrac{dP^{(i)}}{dz^{(i)}} \cdot \dfrac{dz^{(i)}}{dw}\tag{4.1} \\
+\\
+\dfrac{dL^{(i)}}{dP^{(i)}} &amp;=
+\dfrac{d}{dP^{(i)}}[-[y^{(i)}\ln(P^{(i)}) + (1-y^{(i)})\ln(1-P^{(i)})]]
+\\
+&amp;= -(\dfrac{y^{(i)}}{P^{(i)}} - \frac{(1-y^{(i)})}{1-P^{(i)}}) \\
+\because &amp; \dfrac{d}{dx}ln(x) = \frac{1}{x}\quad\dfrac{d}{dx}(1-x) =
+\frac{-1}{1-x} \\
+&amp;= \frac{(1-y^{(i)})}{1-P^{(i)}} - \dfrac{y^{(i)}}{P^{(i)}} \\
+&amp;= \frac{(1-y^{(i)})P^{(i)} -
+(1-P^{(i)})y^{(i)}}{(1-P^{(i)}){P^{(i)}}} \\
+&amp;=
+\frac{P^{(i)}-y^{(i)}P^{(i)}-y^{(i)}+y^{(i)}P^{(i)}}{(1-P^{(i)}){P^{(i)}}}
+\\
+&amp;= \frac{P^{(i)}-y^{(i)}}{(1-P^{(i)}){P^{(i)}}}\tag{4.2}\\
+\\
+\dfrac{dP^{(i)}}{dz^{(i)}} &amp;=
+\dfrac{d}{dz^{(i)}}(\frac{1}{1+e^{-z^{(i)}}}) =
+\dfrac{d}{dz^{(i)}}(1+e^{-z^{(i)}})^{-1} \\
+Let &amp; \space u = 1 + e^{-z^{(i)}} \\
+\dfrac{dP^{(i)}}{dz^{(i)}} &amp;= \dfrac{dP^{(i)}}{du} \cdot
+\dfrac{du}{dz^{(i)}} \\
+&amp;= -1 \cdot u^{-2} \cdot (0 + \dfrac{d}{dz^{(i)}}e^{-z^{(i)}}) \\
+&amp;= \frac{-1}{u^2} \cdot (-e^{-z^{(i)}}) \\
+&amp;= \frac{e^{(i)}}{(1 + e^{-z^{(i)}})^2} \\
+&amp;= \frac{1}{1+e^{-z^{(i)}}} \cdot
+\frac{e^{-z^{(i)}}}{1+e^{-z^{(i)}}} \\
+\because &amp; P^{(i)} = \frac{1}{1+e^{-z^{(i)}}}\quad (1-P^{(i)}) =
+\frac{e^{-z^{(i)}}}{1 + e^{-z^{(i)}}}\\
+&amp;= P^{(i)}(1-P^{(i)})\tag{4.3}\\
+\\
+\dfrac{dz^{(i)}}{dw} &amp;= \dfrac{d}{dw}(w^{T}x^{(i)} + b) \\
+&amp;= x^{(i)}\tag{4.4}\\
+\\
+\text{Base on (4.1), }&amp;\text{(4.2), (4.3), (4.4)} =&gt; \\
+\dfrac{dL^{(i)}}{dw} &amp;= \dfrac{dL^{(i)}}{dP^{(i)}} \cdot
+\dfrac{dP^{(i)}}{dz^{(i)}} \cdot \dfrac{dz^{(i)}}{dw}\\
+&amp;= \frac{P^{(i)}-y^{(i)}}{(1-P^{(i)}){P^{(i)}}} \cdot
+P^{(i)}(1-P^{(i)}) \cdot x^{(i)} \\
+&amp;= (P^{(i)}-y^{(i)})x^{(i)}\tag{4.5}\\
+\end{align*}
+\]</span></p>
+<h4 id="偏微分偏差項-b-1">偏微分偏差項 b</h4>
+<p><span class="math display">\[
+\begin{align*}
+\dfrac{dL^{(i)}}{db} &amp;= \dfrac{dL^{(i)}}{dP^{(i)}} \cdot
+\dfrac{dP^{(i)}}{dz^{(i)}} \cdot \dfrac{dz^{(i)}}{db}\tag{4.6} \\
+\\
+\dfrac{dz^{(i)}}{db} &amp;= 1\tag{4.7} \\
+\\
+\text{Base on (4.6), }&amp;\text{(4.2), (4.3), (4.7)} =&gt; \\
+&amp;= (P^{(i)}-y^{(i)})\tag{4.8}\\
+\end{align*}
+\]</span></p>
+<h4 id="梯度公式-1">梯度公式</h4>
+<p>根據 <span class="math inline">\(\text{(4.5) (4.8)式}\)</span>
+我們可以得到: <span class="math display">\[
+\begin{align*}
+\dfrac{dLoss}{dw} &amp;=
+\frac{1}{n}\sum_{i=1}^{n}(P^{(i)}-y^{(i)})x^{(i)}\\
+\dfrac{dLoss}{db} &amp;= \frac{1}{n}\sum_{i=1}^{n}(P^{(i)}-y^{(i)})\\
+\end{align*}
+\]</span><br />
+其中 <span class="math inline">\(\dfrac{dLoss}{dw}\)</span> 又可以記做:
+<span class="math inline">\(\nabla_{w}Loss\)</span></p>
+<!-- flag of hidden posts -->
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/AI/" rel="tag"># AI</a>
+              <a href="/tags/Machine-Learning/" rel="tag"># Machine Learning</a>
+              <a href="/tags/Regression-Analysis/" rel="tag"># Regression Analysis</a>
+              <a href="/tags/Vector/" rel="tag"># Vector</a>
+              <a href="/tags/Matrix/" rel="tag"># Matrix</a>
+          </div>
+
+        
+
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2018 – 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">clooooode</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="Word count total">28k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">1:41</span>
+  </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.23.0/firebase-app-compat.js" integrity="sha256-FYa4Xn7MJlI18eIkwawbRKLz7bGeUODtNpSR+bsjlHg=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.23.0/firebase-firestore-compat.js" integrity="sha256-sgbLcRGF3ph6N+ymg9zoy9kFQDWBvJlCd0GbGMKBH0c=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="firestore" type="application/json">{"enable":true,"collection":"articles","apiKey":"AIzaSyCu9-MhzikdJ0BVgPRODV__hMffyr5bgZg","projectId":"clo5de-githubpage"}</script>
+  <script src="/js/third-party/statistics/firestore.js"></script>
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"jackey8616/jackey8616.github.io","issue_term":"title","theme":"github-dark","label":"ChatRoom"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+</body>
+</html>
