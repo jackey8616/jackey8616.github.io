@@ -28,7 +28,7 @@
 <meta property="og:description" content="記錄一下今天面試的問題，發現沒有搞清楚矩陣以及行列(欄列)的定義。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-04-30T18:02:00.000Z">
-<meta property="article:modified_time" content="2025-10-12T23:47:13.470Z">
+<meta property="article:modified_time" content="2025-10-14T04:09:42.794Z">
 <meta property="article:author" content="clooooode">
 <meta property="article:tag" content="Note">
 <meta name="twitter:card" content="summary">
@@ -252,7 +252,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-10-12 23:47:13" itemprop="dateModified" datetime="2025-10-12T23:47:13+00:00">2025-10-12</time>
+      <time title="Modified: 2025-10-14 04:09:42" itemprop="dateModified" datetime="2025-10-14T04:09:42+00:00">2025-10-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -347,7 +347,7 @@ Result=
 \]</span></p>
 <h2 id="python">Python</h2>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">multiple</span>(<span class="params">a: <span class="built_in">list</span>[<span class="built_in">list</span>[<span class="built_in">int</span>]], b: <span class="built_in">list</span>[<span class="built_in">list</span>[<span class="built_in">int</span>]]</span>):</span><br><span class="line">    a_row_len = <span class="built_in">len</span>(a)</span><br><span class="line">    a_column_len = <span class="built_in">len</span>(a[<span class="number">0</span>])</span><br><span class="line">    b_row_len = <span class="built_in">len</span>(b)</span><br><span class="line">    b_column_len = <span class="built_in">len</span>(b[<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> a_column_len != b_row_len:</span><br><span class="line">        <span class="keyword">raise</span> ValueError(<span class="string">&quot;Unable to multiple&quot;</span>)</span><br><span class="line"></span><br><span class="line">    result_matrix = [</span><br><span class="line">        [<span class="number">0</span> <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(b_column_len)]</span><br><span class="line">        <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(a_row_len)</span><br><span class="line">    ]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(a_row_len):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(b_column_len):</span><br><span class="line">            summation = <span class="number">0</span></span><br><span class="line">            <span class="keyword">for</span> k <span class="keyword">in</span> <span class="built_in">range</span>(b_row_len):</span><br><span class="line">                summation += a[i][k] * b[k][j]</span><br><span class="line">            result_matrix[i][j] = summation</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result_matrix</span><br></pre></td></tr></table></figure>
-
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
     </div>
 
     

