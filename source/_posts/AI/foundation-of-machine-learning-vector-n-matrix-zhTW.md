@@ -130,28 +130,16 @@ $$
 
 $$
 \begin{align*}
-\dfrac{d}{db}\hat{y}^{(i)} &= \dfrac{d(w^{T}x^{(i)} + b)}{db} 
-=
-\begin{bmatrix}
-\dfrac{d\hat{y}}{db} \\
-\dfrac{d\hat{y}}{db} \\
-\vdots \\
-\dfrac{d\hat{y}}{db} \\
-\end{bmatrix} + 1
-=
-\begin{bmatrix}
-0 \\
-0 \\
-\vdots \\
-0 \\
-\end{bmatrix} + 1 = 1 \tag{2.4} \\
+\dfrac{d}{db}\hat{y}^{(i)} &= \dfrac{d(w^{T}x^{(i)} + b)}{db} \\
+&= \dfrac{d}{db}(w^{T}x^{(i)}) + \dfrac{db}{db} \\
+&= 0 + 1 = 1 \tag{2.4} \\
 \end{align*}
 $$
 
 ## 矩陣
 我們假設現在有一個房價訓練集，裡面包含了5筆訓練資料(樣本)，每筆資料有3個特徵。
 
-### 特徵矩陣(x)
+### 特徵矩陣(X)
 我們有n個樣本(n=5), 每個樣本有m個特徵(m=3):  
 
 | 樣本編號$(i)$ | 面積($x_1$) | 房齡($x_2$) | 樓層($x_3$) | 房價($y^{(i)}$) |  
@@ -165,7 +153,7 @@ $$
 而我們的矩陣大小會是 $n \times m$:
 $$
 \begin{align*}
-x =
+X =
 \begin{bmatrix}
 150 & 20 & 3 \\
 80  & 25 & 4 \\
@@ -179,10 +167,11 @@ Shape = 5 \times 3 \\
 $$
 
 ### 權重向量(w)
-> 為什麼一下說矩陣、一下說向量？
-> 
-> 其實向量跟矩陣是一樣的東西。  
-> 只是向量是一個(n x 1)大小的一維矩陣，而矩陣的大小通常為(n x m)。
+{% spoiler [為什麼一下說矩陣、一下說向量？] %}
+> 其實向量跟矩陣在機器學習領域中本質上是一樣的東西。  
+> 為了方便在訓練中計算向量，向量被提升到了一個($n \times 1$ or $1 \times n$)大小的矩陣中。  
+> 但是在純數學的領域當中，向量跟矩陣是不同的概念。
+{% endspoiler %}
 
 因為m=3，所以總共會有三個權重需要學習:  
 $$
@@ -235,7 +224,7 @@ $$
 同時計算所有的特徵以及樣本時：  
 $$
 \begin{align*}
-\hat{y} &= x\cdot w\\
+\hat{y} &= X\cdot w \\
 &= 
 \begin{bmatrix}
 150 & 20 & 3 \\
@@ -334,46 +323,160 @@ $$
 
 ## (補充)各項推導
 ### 線性回歸
-對於一個多特徵的線性回歸，我們來看在數學運算上有什麼差別:  
-樣本數: $n$  
+樣本數: $n$, 特徵數: $m$  
 模型預測: $\hat{y}^{(i)} = w^{T}x^{(i)} + b$  
+Shape of $\hat{y}$: $(1 \times m) \times (m \times 1) + (1 \times 1)= 1 \times 1$  
 損失函數(MSE):  
 $$
 L(w, b) = \frac{1}{n}\sum_{i=1}^{n}(\hat{y}^{(i)} - y^{(i)})^2
 $$
-
-#### 偏微分權重向量 w
+以上是單個樣本的向量表達式，當我們以矩陣形式去所有樣本表達時:    
+模型預測: $\hat{Y} = Xw + b1$  
+Shape of $Y$: $(n \times m) \times (m \times 1) + (n \times 1)= n \times 1$  
+{% spoiler [什麼是 $b1$ ?] %}
+$1$ 代表的是一個「全1向量」。
 $$
 \begin{align*}
-\dfrac{dL}{dw} &= \dfrac{d}{dw}[\frac{1}{n}\sum_{i=1}^{n}(\hat{y}^{(i)} - y^{(i)})^2] \\
-&= \frac{1}{n}\sum_{i=1}^{n}[\dfrac{d}{dw}(\hat{y}^{(i)} - y^{(i)})^2] \\
-&= \frac{1}{n}\sum_{i=1}^{n}[2 \cdot (\hat{y}^{(i)} - y^{(i)}) \cdot \dfrac{d}{dw}(\hat{y}^{(i)} - y^{(i)})] \\
-\because & \dfrac{d}{dx}(a - b) = \dfrac{da}{dx} - \dfrac{db}{dx},\quad\dfrac{d}{dw}y^{(i)} = 0\\
-&= \frac{2}{n}\sum_{i=1}^{n}[(\hat{y}^{(i)} - y^{(i)}) \cdot (\dfrac{d}{dw}\hat{y}^{(i)} - 0)] \\
-\because & \dfrac{d}{dw}\hat{y}^{(i)} = x^{(i)} \\
-&= \frac{2}{n}\sum_{i=1}^{n}[(\hat{y}^{(i)} - y^{(i)})\dfrac{d}{dw}\hat{y}^{(i)}]\tag{3.1}\\
+b1 = b \cdot
+\begin{bmatrix}
+1 \\
+1 \\
+\vdots \\
+1 \\
+\end{bmatrix}
+&=
+\begin{bmatrix}
+b \\
+b \\
+\vdots \\
+b \\
+\end{bmatrix}
 \end{align*}
 $$
+因為我們以矩陣來表達整個等式，當這些矩陣要進行運算的時候，  
+向量並沒有辦法跟標量(b)進行運算，  
+這個時候我們要把偏置項轉為一個向量來進行後續的運算。  
+{% endspoiler %}
+損失函數(MSE):
+$$
+\begin{align*}
+\text{Let } E &= \hat{Y} - Y\\
+L(w, b) &= \frac{1}{n}\sum_{i=1}^{n}(\hat{Y} - Y)^2 \\
+&= \frac{1}{n}\sum_{i=1}^{n}E^2 \\
+&= \frac{1}{n}E^{T}E\quad\because\sum_{i=1}^{n}E^2 = E^{T}E  \\
+&= \frac{1}{n}(\hat{Y} - Y)^{T}(\hat{Y} - Y) \\
+\end{align*}
+$$
+Shape of $E$ = Shape of $Y$ = $(n \times 1)$  
+Shape of $L_{MSE}(w, b)$ = $(1 \times n) \times (n \times 1) = 1 \times 1$  
+{% spoiler [為什麼 $\sum_{i=1}^{n} = E^{T}E$ ?] %}
+$$
+\begin{align*}
+\sum_{i=1}^{n}E^2 &= E^{T}E \\
+\because
+E^{T}E &= 
+\begin{bmatrix}E_1&E_2&\cdots&E_n\end{bmatrix}
+\begin{bmatrix}E_1\\E_2\\\vdots\\E_n\end{bmatrix} \\
+&= {E_1}^2 + {E_2}^2 + \cdots + {E_n}^2 \\
+\therefore \sum_{i=1}^{n}E^2 = E^{T}E \\
+\end{align*}
+$$
+{% endspoiler %}
+
+#### 偏微分權重向量 w
+{% spoiler [分母佈局] %}
+> 在本系列文章中，我們採用矩陣微分的分母佈局（Denominator Layout）慣例。  
+> 這表示對一個標量函數 $L$ 關於一個列向量 $w$ 進行微分時，  
+> 得到的梯度 $\nabla_{w}L$ 應為與 $w$ 相同形狀的列向量（即 $m\times1$）。  
+{% endspoiler %}
+
+$$
+\begin{align*}
+\dfrac{dL_{MSE}}{dw} &= \dfrac{d(\frac{1}{n}(\hat{Y} - Y)^{T}(\hat{Y} - Y))}{dw} = \frac{1}{n}\dfrac{d(\hat{Y} - Y)^{T}(\hat{Y} - Y)}{dw} \\
+&= \frac{1}{n}\dfrac{d(w^{T}X+b1 - Y)^{T}(w^{T}X+b1 - Y)}{dw} \\
+\text{Set }E = Xw &+ b1 - Y => \\
+&= \frac{1}{n}\dfrac{d(E^{T}E)}{dw} \\
+&= \frac{1}{n}(\dfrac{dE}{dw})^{T}\dfrac{d(E^{T}E)}{dE} \\
+&= \frac{1}{n}(X^T \cdot 2E) \\
+&= \frac{2}{n}(X^{T}E) \\
+&= \frac{2}{n}(X^{T}(Xw + b1 - Y)) \\
+&= \frac{2}{n}(X^{T}(\hat{Y} - Y)) \\
+\nabla_{w}L &= \frac{2}{n}(X^{T}(\hat{Y} - Y))
+\end{align*}
+$$
+{% spoiler [證明 $\dfrac{dL}{dw} = (\dfrac{dE}{dw})^{T}\dfrac{dL}{dE}$] %}
+舉一個簡單的模型為例:  
+權重向量 $w : d=2$個權重 不含 $b$: $w = \begin{bmatrix}w_1 \\ w_2\end{bmatrix}$  
+誤差向量 $E : n=3$個樣本 $E = \begin{bmatrix}E_1 \\ E_2 \\ E_3\end{bmatrix}$  
+損失函數 $L$: 標量 $L(E) = E^{2}_1 + E^{2}_2 + E^{2}_3$ 忽略 $\frac{1}{n}$ 等常數。  
+$$
+\begin{align*}
+\dfrac{dL}{dE} &= 
+\begin{bmatrix}
+\dfrac{dL}{dE_1} \\
+\dfrac{dL}{dE_2} \\
+\dfrac{dL}{dE_3} \\
+\end{bmatrix}\quad\text{Shape: }(3 \times 1) \\
+&= 
+\begin{bmatrix}2E_1 \\ 2E_2 \\ 2E_3\end{bmatrix}\quad\because L = E^{2}_1 + E^{2}_2 + E^{2}_3 \\
+&= 2E\tag{1}\\
+\\
+\dfrac{dE}{dw} &=
+\begin{bmatrix}
+\dfrac{de_1}{dw_1} & \dfrac{de_1}{dw_2} \\
+\dfrac{de_2}{dw_1} & \dfrac{de_2}{dw_2} \\
+\dfrac{de_3}{dw_1} & \dfrac{de_3}{dw_2} \\
+\end{bmatrix}\tag{2}\because \text{Jacobian matrix} \\
+\text{Shape } &= (n \times d) = 3 \times 2 \\
+\\
+(\dfrac{dE}{dw}^{T}) &= 
+\begin{bmatrix}
+\dfrac{de_1}{dw_1} & \dfrac{de_2}{dw_1} & \dfrac{de_3}{dw_1} \\
+\dfrac{de_1}{dw_2} & \dfrac{de_2}{dw_2} & \dfrac{de_3}{dw_2} \\
+\end{bmatrix}\tag{2}\\
+\text{Shape } &= (d \times n) = 2 \times 3 \\
+\\
+\text{Base on (1), (2) =>} \\
+(\dfrac{dE}{dw})^{T}\dfrac{dL}{dE} &= 
+\begin{bmatrix}
+\dfrac{de_1}{dw_1}\cdot 2E_1 + \dfrac{de_2}{dw_1}\cdot 2E_2 + \dfrac{de_3}{dw_1}\cdot 2E_3 \\
+\dfrac{de_1}{dw_2}\cdot 2E_1 + \dfrac{de_2}{dw_2}\cdot 2E_2 + \dfrac{de_3}{dw_2}\cdot 2E_3 \\
+\end{bmatrix}\\
+\\
+\dfrac{dL}{dw_1} &= \sum_{i=1}^{3}\dfrac{dL}{dE_i}\dfrac{dE_i}{dw_1} \\
+&= 2E_1\dfrac{dE_1}{dw_1} + 2E_2\dfrac{dE_1}{dw_1} + 2E_3\dfrac{dE_3}{dw_1} \\
+\\
+\dfrac{dL}{dw} &=
+\begin{bmatrix}
+2E_1\dfrac{dE_1}{dw_1} + 2E_2\dfrac{dE_1}{dw_2} + 2E_3\dfrac{dE_3}{dw_1} \\
+2E_1\dfrac{dE_1}{dw_2} + 2E_2\dfrac{dE_1}{dw_2} + 2E_3\dfrac{dE_3}{dw_2}
+\end{bmatrix} \\
+\therefore
+\dfrac{dL}{dw} &= (\dfrac{dE}{dw})^{T}\dfrac{dL}{dE} \\
+\end{align*}
+$$
+{% endspoiler %}
 
 #### 偏微分偏差項 b
 $$
 \begin{align*}
-\dfrac{dL}{db} &= \dfrac{d}{db}[\frac{1}{n}\sum_{i=1}^{n}(\hat{y}^{(i)} - y^{(i)})^2] \\
-&= \frac{2}{n}\sum_{i=1}^{n}[(\hat{y}^{(i)} - y^{(i)}) \cdot \dfrac{d}{db}\hat{y}^{(i)}] \\
-\because & \dfrac{d}{db}\hat{y}^{(i)} = 1 \\
-&= \frac{2}{n}\sum_{i=1}^{n}(\hat{y}^{(i)} - y^{(i)}) \tag{3.2}
+\text{Set }E = Xw + b1 - Y &=> \\
+\dfrac{dL_{MSE}}{db} &= \frac{1}{n}\dfrac{d(E^{T}E)}{db} \\
+&= \frac{1}{n}(\dfrac{dE}{db})^{T}\dfrac{d(E^{T}E)}{dE} \\
+&= \frac{1}{n}(1^T \cdot 2E) \\
+&= \frac{2}{n}1^{T}(Xw + b1 - Y) \\
+\dfrac{dL}{db} &= \frac{2}{n}1^{T}(\hat{Y} - Y) \\
 \end{align*}
 $$
 
 #### 梯度公式
-根據 $\text{(3.1) (3.2)式}$ 我們可以得到:
+最後可以得到:
 $$
 \begin{align*}
-\dfrac{dL}{dw} &= \frac{2}{n}\sum_{i=1}^{n}(\hat{y}^{(i)} - y^{(i)})x^{(i)} \\
-\dfrac{dL}{db} &= \frac{2}{n}\sum_{i=1}^{n}(\hat{y}^{(i)} - y^{(i)}) \\
+\nabla_{w}L &= \frac{2}{n}(X^{T}(\hat{Y} - Y)) \\
+\dfrac{dL}{db} &= \frac{2}{n}1^{T}(\hat{Y} - Y) \\
 \end{align*}
 $$  
-其中 $\dfrac{dL}{dw}$ 又可以記做: $\nabla_{w}L$  
 
 ### 邏輯回歸
 對於一個多特徵的邏輯回歸，我們來看在數學運算上有什麼差別:  
