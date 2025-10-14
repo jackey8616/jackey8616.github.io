@@ -65,15 +65,6 @@
   </url>
   
   <url>
-    <loc>https://www.clo5de.info/2018/04/11/life_geeking/Unix-Hole-Is-So-Deep/</loc>
-    
-    <lastmod>2025-10-14</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://www.clo5de.info/2018/04/10/note/C-C++/</loc>
     
     <lastmod>2025-10-14</lastmod>
@@ -209,15 +200,6 @@
   </url>
   
   <url>
-    <loc>https://www.clo5de.info/2018/08/02/CTF/ARM-ISA/</loc>
-    
-    <lastmod>2025-10-14</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://www.clo5de.info/2018/05/22/CTF/CTF-note/</loc>
     
     <lastmod>2025-10-14</lastmod>
@@ -245,15 +227,6 @@
   </url>
   
   <url>
-    <loc>https://www.clo5de.info/2018/04/10/application/Hexo-Gitpage-TravisCI/</loc>
-    
-    <lastmod>2025-10-14</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://www.clo5de.info/2018/05/01/life_geeking/Cracking-APK/</loc>
     
     <lastmod>2025-10-14</lastmod>
@@ -263,7 +236,25 @@
   </url>
   
   <url>
+    <loc>https://www.clo5de.info/2018/04/10/application/Hexo-Gitpage-TravisCI/</loc>
+    
+    <lastmod>2025-10-14</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.clo5de.info/2018/04/10/life_geeking/Fish-with-NVM/</loc>
+    
+    <lastmod>2025-10-14</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.clo5de.info/2018/04/11/life_geeking/Unix-Hole-Is-So-Deep/</loc>
     
     <lastmod>2025-10-14</lastmod>
     
@@ -416,6 +407,15 @@
   </url>
   
   <url>
+    <loc>https://www.clo5de.info/2018/08/02/CTF/ARM-ISA/</loc>
+    
+    <lastmod>2025-10-14</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.clo5de.info/2018/06/03/CTF/AIS3/2018/pre_exam/AIS3-2018-First-Try/</loc>
     
     <lastmod>2025-10-14</lastmod>
@@ -533,6 +533,13 @@
   </url>
   
   <url>
+    <loc>https://www.clo5de.info/tags/Android/</loc>
+    <lastmod>2025-10-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://www.clo5de.info/tags/Hexo/</loc>
     <lastmod>2025-10-14</lastmod>
     <changefreq>weekly</changefreq>
@@ -548,13 +555,6 @@
   
   <url>
     <loc>https://www.clo5de.info/tags/CI/</loc>
-    <lastmod>2025-10-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.clo5de.info/tags/Android/</loc>
     <lastmod>2025-10-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -680,13 +680,6 @@
   </url>
   
   <url>
-    <loc>https://www.clo5de.info/tags/Django/</loc>
-    <lastmod>2025-10-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://www.clo5de.info/tags/Python/</loc>
     <lastmod>2025-10-14</lastmod>
     <changefreq>weekly</changefreq>
@@ -716,6 +709,13 @@
   
   <url>
     <loc>https://www.clo5de.info/tags/peer-to-peer/</loc>
+    <lastmod>2025-10-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.clo5de.info/tags/Django/</loc>
     <lastmod>2025-10-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -878,14 +878,14 @@
   </url>
   
   <url>
-    <loc>https://www.clo5de.info/categories/Application/</loc>
+    <loc>https://www.clo5de.info/categories/LifeGeeking/</loc>
     <lastmod>2025-10-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.clo5de.info/categories/LifeGeeking/</loc>
+    <loc>https://www.clo5de.info/categories/Application/</loc>
     <lastmod>2025-10-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -906,14 +906,14 @@
   </url>
   
   <url>
-    <loc>https://www.clo5de.info/categories/Tutorial/</loc>
+    <loc>https://www.clo5de.info/categories/Application/MaybeP2P/</loc>
     <lastmod>2025-10-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.clo5de.info/categories/Application/MaybeP2P/</loc>
+    <loc>https://www.clo5de.info/categories/Tutorial/</loc>
     <lastmod>2025-10-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
