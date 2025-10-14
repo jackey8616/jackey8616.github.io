@@ -28,7 +28,7 @@
 <meta property="og:description" content="機器學習的基石： 從 \(w^T{x}\) 向量內積以及矩陣乘法看懂線性與邏輯迴歸">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-10-09T19:37:23.000Z">
-<meta property="article:modified_time" content="2025-10-14T04:09:42.791Z">
+<meta property="article:modified_time" content="2025-10-14T06:34:41.624Z">
 <meta property="article:author" content="clooooode">
 <meta property="article:tag" content="AI">
 <meta property="article:tag" content="Machine Learning">
@@ -256,7 +256,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-10-14 04:09:42" itemprop="dateModified" datetime="2025-10-14T04:09:42+00:00">2025-10-14</time>
+      <time title="Modified: 2025-10-14 06:34:41" itemprop="dateModified" datetime="2025-10-14T06:34:41+00:00">2025-10-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -831,16 +831,16 @@ E^{2}_1 + E^{2}_2 + E^{2}_3 \\
 \text{Set }E = XW + b1 - Y &amp;=&gt; \\
 \dfrac{dL_{MSE}}{db} &amp;= \frac{1}{n}\dfrac{d(E^{T}E)}{db} \\
 &amp;= \frac{1}{n}(\dfrac{dE}{db})^{T}\dfrac{d(E^{T}E)}{dE} \\
-&amp;= \frac{1}{n}(1^T \cdot E) \\
-&amp;= \frac{1}{n}(XW + b1 - Y) \\
-\dfrac{dL}{db} &amp;= \frac{1}{n}(\hat{Y} - Y) \\
+&amp;= \frac{1}{n}(1^T \cdot 2E) \\
+&amp;= \frac{2}{n}1^{T}(XW + b1 - Y) \\
+\dfrac{dL}{db} &amp;= \frac{2}{n}1^{T}(\hat{Y} - Y) \\
 \end{align*}
 \]</span></p>
 <h4 id="梯度公式">梯度公式</h4>
 <p>最後可以得到: <span class="math display">\[
 \begin{align*}
 \nabla_{W}L &amp;= \frac{2}{n}(X^{T}(\hat{Y} - Y)) \\
-\dfrac{dL}{db} &amp;= \frac{1}{n}(\hat{Y} - Y) \\
+\dfrac{dL}{db} &amp;= \frac{2}{n}1^{T}(\hat{Y} - Y) \\
 \end{align*}
 \]</span></p>
 <h3 id="邏輯回歸">邏輯回歸</h3>
