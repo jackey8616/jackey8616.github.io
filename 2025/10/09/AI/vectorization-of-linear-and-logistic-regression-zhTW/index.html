@@ -28,7 +28,7 @@
 <meta property="og:description" content="線性&#x2F;邏輯迴歸的向量化推導">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-10-09T19:37:23.000Z">
-<meta property="article:modified_time" content="2025-10-18T10:22:49.059Z">
+<meta property="article:modified_time" content="2025-10-18T10:44:35.778Z">
 <meta property="article:author" content="clooooode">
 <meta property="article:tag" content="AI">
 <meta property="article:tag" content="Machine Learning">
@@ -258,7 +258,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-10-18 10:22:49" itemprop="dateModified" datetime="2025-10-18T10:22:49+00:00">2025-10-18</time>
+      <time title="Modified: 2025-10-18 10:44:35" itemprop="dateModified" datetime="2025-10-18T10:44:35+00:00">2025-10-18</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -418,10 +418,10 @@ Shape of <span class="math inline">\(\hat{y}^{(i)} =
 \tilde{\mathbf{x}} =
 \begin{bmatrix}1 \\ x_1 \\ x_2 \\ \cdots \\ x_m\end{bmatrix}
 \]</span> 當我們有一個樣本的時候，這個樣本的第一個特徵會表達為: <span
-class="math inline">\(\tilde{x}^{(1)}\)</span>。<br />
+class="math inline">\(\tilde{\mathbf{x}}^{(1)}\)</span>。<br />
 第二個特徵則表達為: <span
-class="math inline">\(\tilde{x}^{(2)}\)</span>… 依此類推直到, <span
-class="math inline">\(\tilde{x}^{(m)}\)</span>,<br />
+class="math inline">\(\tilde{\mathbf{x}}^{(2)}\)</span>… 依此類推直到,
+<span class="math inline">\(\tilde{\mathbf{x}}^{(m)}\)</span>,<br />
 而整個向量 <span class="math inline">\(\tilde{\mathbf{x}}\)</span>
 的尺寸大小會是 <span class="math inline">\(((m + 1)\times
 1)\)</span>。<br />
@@ -650,7 +650,7 @@ p^{(i)})] \\
 \dfrac{dJ_{MCE}}{d\tilde{\mathbf{w}}} &amp;=
 \frac{1}{n}\dfrac{d}{d\tilde{\mathbf{w}}}\sum_{i=1}^{n}[y^{(i)}\ln(p^{(i)})
 + (1 - y^{(i)})\ln(1 - p^{(i)})] \\
-&amp;= \frac{1}{n}\dfrac{d}{d\tilde{\mathbf{w}}}\sum_{i=1}^{n}L^{(i)} \\
+&amp;= \frac{1}{n}\sum_{i=1}^{n}\dfrac{dL^{(i)}}{d\tilde{\mathbf{w}}} \\
 \end{align*}
 \]</span> 套用鏈式法則: <span
 class="math inline">\(\dfrac{dL^{(i)}}{d\tilde{\mathbf{w}}} =
@@ -731,7 +731,7 @@ class="math inline">\(J_{MCE}\)</span>的微分式中並且轉為向量及矩陣
 <span class="math display">\[
 \begin{align*}
 \dfrac{dJ_{MCE}}{d\tilde{\mathbf{w}}} &amp;=
-\frac{1}{n}\dfrac{d}{d\tilde{\mathbf{w}}}\sum_{i=1}^{n}L^{(i)} \\
+\frac{1}{n}\sum_{i=1}^{n}\dfrac{dL^{(i)}}{d\tilde{\mathbf{w}}} \\
 &amp;= \frac{1}{n}\sum_{i=1}^{n}(p^{(i)} - y^{(i)})\cdot
 \tilde{\mathbf{x}}^{(i)} \\
 \nabla{\tilde{\mathbf{w}}}J_{MCE} &amp;=
