@@ -28,7 +28,7 @@
 <meta property="og:description" content="機器學習的基石： 從 \(w^T{x}\) 向量內積以及矩陣乘法看懂線性與邏輯迴歸">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-10-09T19:37:23.000Z">
-<meta property="article:modified_time" content="2025-10-14T07:12:46.431Z">
+<meta property="article:modified_time" content="2025-10-18T05:51:21.246Z">
 <meta property="article:author" content="clooooode">
 <meta property="article:tag" content="AI">
 <meta property="article:tag" content="Machine Learning">
@@ -156,7 +156,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%96%AE%E4%B8%80%E7%89%B9%E5%BE%B5%E7%9A%84%E7%AA%98%E5%A2%83"><span class="nav-number">1.</span> <span class="nav-text">單一特徵的窘境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%91%E9%87%8F%E5%8C%96vectorization"><span class="nav-number">2.</span> <span class="nav-text">向量化(Vectorization)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%B9%E5%BE%B5%E5%90%91%E9%87%8Fx-%E6%AC%8A%E9%87%8D%E5%90%91%E9%87%8Fw"><span class="nav-number">2.1.</span> <span class="nav-text">特徵向量x &amp; 權重向量w</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%91%E9%87%8F%E5%85%A7%E7%A9%8D"><span class="nav-number">2.2.</span> <span class="nav-text">向量內積</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%91%E9%87%8F%E5%85%A7%E7%A9%8D%E7%9A%84%E5%BE%AE%E5%88%86"><span class="nav-number">3.</span> <span class="nav-text">向量內積的微分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9F%A9%E9%99%A3"><span class="nav-number">4.</span> <span class="nav-text">矩陣</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%B9%E5%BE%B5%E7%9F%A9%E9%99%A3x"><span class="nav-number">4.1.</span> <span class="nav-text">特徵矩陣(X)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AC%8A%E9%87%8D%E5%90%91%E9%87%8Fw"><span class="nav-number">4.2.</span> <span class="nav-text">權重向量(w)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%AE%E6%A8%99%E5%90%91%E9%87%8Fy"><span class="nav-number">4.3.</span> <span class="nav-text">目標向量(y)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%96%AE%E4%B8%80%E5%90%91%E9%87%8F%E5%85%A7%E7%A9%8D%E5%96%AE%E6%A8%A3%E6%9C%AC"><span class="nav-number">4.4.</span> <span class="nav-text">單一向量內積(單樣本)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%B9%E9%87%8F%E7%9F%A9%E9%99%A3%E4%B9%98%E6%B3%95%E6%89%80%E6%9C%89%E6%A8%A3%E6%9C%AC"><span class="nav-number">4.5.</span> <span class="nav-text">批量矩陣乘法(所有樣本)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%82%BA%E4%BB%80%E9%BA%BC%E5%BC%B7%E8%AA%BF%E5%B0%BA%E5%AF%B8"><span class="nav-number">4.6.</span> <span class="nav-text">為什麼強調尺寸？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%8F%E7%B5%90"><span class="nav-number">5.</span> <span class="nav-text">小結</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A3%9C%E5%85%85%E5%90%84%E9%A0%85%E6%8E%A8%E5%B0%8E"><span class="nav-number">6.</span> <span class="nav-text">(補充)各項推導</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B7%9A%E6%80%A7%E5%9B%9E%E6%AD%B8"><span class="nav-number">6.1.</span> <span class="nav-text">線性回歸</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%81%8F%E5%BE%AE%E5%88%86%E6%AC%8A%E9%87%8D%E5%90%91%E9%87%8F-w"><span class="nav-number">6.1.1.</span> <span class="nav-text">偏微分權重向量 w</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%81%8F%E5%BE%AE%E5%88%86%E5%81%8F%E5%B7%AE%E9%A0%85-b"><span class="nav-number">6.1.2.</span> <span class="nav-text">偏微分偏差項 b</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A2%AF%E5%BA%A6%E5%85%AC%E5%BC%8F"><span class="nav-number">6.1.3.</span> <span class="nav-text">梯度公式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%82%8F%E8%BC%AF%E5%9B%9E%E6%AD%B8"><span class="nav-number">6.2.</span> <span class="nav-text">邏輯回歸</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%81%8F%E5%BE%AE%E5%88%86%E6%AC%8A%E9%87%8D%E5%90%91%E9%87%8F-w-1"><span class="nav-number">6.2.1.</span> <span class="nav-text">偏微分權重向量 w</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%81%8F%E5%BE%AE%E5%88%86%E5%81%8F%E5%B7%AE%E9%A0%85-b-1"><span class="nav-number">6.2.2.</span> <span class="nav-text">偏微分偏差項 b</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A2%AF%E5%BA%A6%E5%85%AC%E5%BC%8F-1"><span class="nav-number">6.2.3.</span> <span class="nav-text">梯度公式</span></a></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%96%AE%E4%B8%80%E7%89%B9%E5%BE%B5%E7%9A%84%E7%AA%98%E5%A2%83"><span class="nav-number">1.</span> <span class="nav-text">單一特徵的窘境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%91%E9%87%8F%E5%8C%96vectorization"><span class="nav-number">2.</span> <span class="nav-text">向量化(Vectorization)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%B9%E5%BE%B5%E5%90%91%E9%87%8Fx-%E6%AC%8A%E9%87%8D%E5%90%91%E9%87%8Fw"><span class="nav-number">2.1.</span> <span class="nav-text">特徵向量x &amp; 權重向量w</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%91%E9%87%8F%E5%85%A7%E7%A9%8D"><span class="nav-number">2.2.</span> <span class="nav-text">向量內積</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B7%9A%E6%80%A7%E5%9B%9E%E6%AD%B8%E7%9A%84%E7%9F%A9%E9%99%A3%E5%BD%A2%E5%BC%8F"><span class="nav-number">3.</span> <span class="nav-text">線性回歸的矩陣形式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%B9%E5%BE%B5%E7%9F%A9%E9%99%A3x%E7%9A%84%E6%93%B4%E5%85%85"><span class="nav-number">3.1.</span> <span class="nav-text">特徵矩陣(X)的擴充</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A0%90%E6%B8%AC%E5%90%91%E9%87%8Fhatmathbfy"><span class="nav-number">3.2.</span> <span class="nav-text">預測向量(\(\hat{\mathbf{y}}\))</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%A6%E9%9A%9B%E8%BC%B8%E5%87%BA%E5%90%91%E9%87%8Fmathbfy"><span class="nav-number">3.3.</span> <span class="nav-text">實際輸出向量(\(\mathbf{y}\))</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9F%A9%E9%99%A3%E5%BD%A2%E5%BC%8F%E7%9A%84%E6%A8%A1%E5%9E%8B%E9%A0%90%E6%B8%AC%E5%AE%9A%E7%BE%A9"><span class="nav-number">3.4.</span> <span class="nav-text">矩陣形式的模型預測定義</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9F%A9%E9%99%A3%E5%BD%A2%E5%BC%8F%E7%9A%84%E5%9D%87%E6%96%B9%E6%A0%B9%E8%AA%A4%E5%B7%AE"><span class="nav-number">3.5.</span> <span class="nav-text">矩陣形式的均方根誤差</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E7%89%B9%E5%BE%B5%E5%A4%9A%E6%A8%A3%E6%9C%AC%E7%B7%9A%E6%80%A7%E5%9B%9E%E6%AD%B8%E7%9A%84%E5%81%8F%E5%B0%8E"><span class="nav-number">4.</span> <span class="nav-text">多特徵多樣本線性回歸的偏導</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%82%8F%E8%BC%AF%E5%9B%9E%E6%AD%B8%E7%9A%84%E7%9F%A9%E9%99%A3%E5%BD%A2%E5%BC%8F"><span class="nav-number">5.</span> <span class="nav-text">邏輯回歸的矩陣形式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9F%A9%E9%99%A3%E5%BD%A2%E5%BC%8F%E7%9A%84%E5%B9%B3%E5%9D%87%E4%BA%A4%E5%8F%89%E7%86%B5%E8%AA%A4%E5%B7%AE"><span class="nav-number">5.1.</span> <span class="nav-text">矩陣形式的平均交叉熵誤差</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E7%89%B9%E5%BE%B5%E5%A4%9A%E6%A8%A3%E6%9C%AC%E9%82%8F%E8%BC%AF%E5%9B%9E%E6%AD%B8%E7%9A%84%E5%81%8F%E5%B0%8E"><span class="nav-number">6.</span> <span class="nav-text">多特徵多樣本邏輯回歸的偏導</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -256,7 +256,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-10-14 07:12:46" itemprop="dateModified" datetime="2025-10-14T07:12:46+00:00">2025-10-14</time>
+      <time title="Modified: 2025-10-18 05:51:21" itemprop="dateModified" datetime="2025-10-18T05:51:21+00:00">2025-10-18</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -282,14 +282,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>3.1k</span>
+      <span>5.1k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>11 mins.</span>
+      <span>19 mins.</span>
     </span>
 </div>
 
@@ -319,7 +319,7 @@ z &amp;= w_1x_1 + w_2x_2 + b \\
 <p>一但我們有多個特徵，公式就會變成冗長的求和式:</p>
 <p><span class="math display">\[
 \begin{align*}
-y &amp;= w_1x_1 + w_2x_2 + w_3x_3 + ... + w_nx_n + b \\
+y &amp;= w_1x_1 + w_2x_2 + w_3x_3 + ... + w_mx_m + b \\
 \end{align*}
 \]</span>
 這樣子的式子，不僅難以處理，而且對於運算的效率也有所影響。<br />
@@ -328,32 +328,55 @@ y &amp;= w_1x_1 + w_2x_2 + w_3x_3 + ... + w_nx_n + b \\
 <p>用以下的式子為例:<br />
 <span class="math display">\[
 \begin{align*}
-y &amp;= w_1x_1 + w_2x_2 + w_3x_3 + ... + w_nx_n + b \tag{1} \\
+y &amp;= w_1x_1 + w_2x_2 + w_3x_3 + ... + w_mx_m + b \tag{1} \\
 \end{align*}
 \]</span></p>
 <h3 id="特徵向量x-權重向量w">特徵向量x &amp; 權重向量w</h3>
 <p>我們將所有特徵以及權重各別打包成一個列向量(column vector): <span
 class="math display">\[
-w =
+\mathbf{w} =
 \begin{bmatrix}
 w_1 \\
 w_2 \\
 \vdots \\
-w_n \\
+w_m \\
 \end{bmatrix}
 \quad
-x =
+\mathbf{x} =
 \begin{bmatrix}
 x_1 \\
 x_2 \\
 \vdots \\
-x_n \\
+x_m \\
+\end{bmatrix}
+\]</span> 在第 <span class="math inline">\(\text{(1)}\)</span>
+式，我們用向量替換掉之後，還會剩下一個 <span
+class="math inline">\(b\)</span>
+的偏置項，為了讓整體的運算更加簡潔，我們把偏置項也納入向量之中。<br />
+這個擴增過的向量，我們稱之為增廣向量(Augmented Vector):<br />
+<span class="math display">\[
+\tilde{\mathbf{w}} =
+\begin{bmatrix}
+b \\
+w_1 \\
+w_2 \\
+\vdots \\
+w_m \\
+\end{bmatrix}
+\quad
+\tilde{\mathbf{x}} =
+\begin{bmatrix}
+1 \\
+x_1 \\
+x_2 \\
+\vdots \\
+x_m \\
 \end{bmatrix}
 \]</span> 在進行向量內積時，我們會把其中一個向量做轉置(column to row
 vector)來好滿足矩陣乘法的條件: <span class="math display">\[
-w^{T} =
+\tilde{\mathbf{w}}^{T} =
 \begin{bmatrix}
-w_1 &amp; w_2 &amp; \cdots &amp; w_n
+b &amp; w_1 &amp; w_2 &amp; \cdots &amp; w_m
 \end{bmatrix}
 \]</span></p>
 <h3 id="向量內積">向量內積</h3>
@@ -366,36 +389,421 @@ w_1 &amp; w_2 &amp; \cdots &amp; w_n
 \dots + a_nb_n \\
 \end{align*}
 \]</span> 其中又可以表示為w轉置乘以x(w transpose x): <span
-class="math inline">\(w^{T}x\)</span><br />
+class="math inline">\(\mathbf{w}^{T}\mathbf{x}\)</span><br />
 因此:<br />
 <span class="math display">\[
-w^{T}x = w_1x_1 + w_2x_2 + ... + w_nx_n
-\]</span> 替換掉 <span class="math inline">\(\text{(1)}\)</span>
-中部分的式子: <span class="math display">\[
+\mathbf{w}^{T}\mathbf{x} = w_1x_1 + w_2x_2 + ... + w_mx_m
+\]</span> 我們套用 <span
+class="math inline">\(\tilde{\mathbf{x}}\)</span>, <span
+class="math inline">\(\tilde{\mathbf{w}}\)</span>: <span
+class="math display">\[
 \begin{align*}
-y &amp;= w_1x_1 + w_2x_2 + ... + w_nx_n + b \\
-&amp;= w^{T}x + b \\
+\hat{y} &amp;= b\cdot 1 + w_1\cdot x_1 + \cdots + w_m\cdot x_m \\
+&amp;= \tilde{\mathbf{w}}^{T}\tilde{\mathbf{x}}
 \end{align*}
 \]</span></p>
-<h2 id="向量內積的微分">向量內積的微分</h2>
-<p><span class="math display">\[
+<h2 id="線性回歸的矩陣形式">線性回歸的矩陣形式</h2>
+<p>假設樣本數為 <span class="math inline">\(n\)</span>, 特徵數為 <span
+class="math inline">\(m\)</span><br />
+單樣本模型: <span class="math inline">\(\hat{y}^{(i)} =
+\tilde{\mathbf{w}}^{T}\tilde{\mathbf{x}}^{(i)}\)</span><br />
+Shape of <span class="math inline">\(\hat{y}^{(i)} =
+(1\times(m+1))\times((m+1)\times 1) = 1\times 1\)</span></p>
+<h3 id="特徵矩陣x的擴充">特徵矩陣(X)的擴充</h3>
+<p>當我們有一個樣本的時候，這個樣本的特徵會表達為: <span
+class="math inline">\(\tilde{x}^{(1)}\)</span>.<br />
+第二個樣本，會表達為: <span
+class="math inline">\(\tilde{x}^{(2)}\)</span>… 依此類推直到, <span
+class="math inline">\(\tilde{x}^{(m)}\)</span><br />
+如果我們把這些樣本，也使用一個向量來表達，則會成為一個二維數組，也就是矩陣:
+<span class="math display">\[
+\tilde{\mathbf{X}} =
+\begin{bmatrix}
+\tilde{\mathbf{x}}^{(1)} \\
+\tilde{\mathbf{x}}^{(2)} \\
+\vdots \\
+\tilde{\mathbf{x}}^{(m)} \\
+\end{bmatrix}
+\]</span> 因為 <span
+class="math inline">\(\tilde{\mathbf{x}}^{(i)}\)</span>
+本身已經是一個列向量(row
+vector)了，為了讓矩陣可以展開來，我們這邊把每一個向量都轉置:<br />
+<span class="math display">\[
+\tilde{\mathbf{X}} =
+\begin{bmatrix}
+(\tilde{\mathbf{x}}^{(1)})^T \\
+(\tilde{\mathbf{x}}^{(2)})^T \\
+\vdots \\
+(\tilde{\mathbf{x}}^{(m)})^T \\
+\end{bmatrix}
+=
+\begin{bmatrix}
+1 &amp; x_{1, 1} &amp; x_{1, 2} &amp; \cdots &amp; x_{1, m} \\
+1 &amp; x_{2, 1} &amp; x_{2, 2} &amp; \cdots &amp; x_{2, m} \\
+\vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+1 &amp; x_{n, 1} &amp; x_{n, 2} &amp; \cdots &amp; x_{n, m} \\
+\end{bmatrix}
+\]</span> Shape of <span class="math inline">\(X = (n\times
+1)\times(1\times (m+1)) = n\times(m+1)\)</span></p>
+<h3 id="預測向量hatmathbfy">預測向量(<span
+class="math inline">\(\hat{\mathbf{y}}\)</span>)</h3>
+<p>每一個 <span class="math inline">\(\tilde{\mathbf{x}}^{(i)}\)</span>
+向量，都會有一個對應的預測值 <span
+class="math inline">\(\hat{y}^{(i)}\)</span>,<br />
+把這些預測值都堆疊起來，就成為了 <span
+class="math inline">\(\tilde{\mathbf{y}}\)</span>:<br />
+<span class="math display">\[
+\hat{\mathbf{y}} =
+\begin{bmatrix}
+\hat{y}^{(1)} \\
+\hat{y}^{(2)} \\
+\vdots \\
+\hat{y}^{(n)},
+\end{bmatrix}
+\]</span><br />
+Shape of <span class="math inline">\(\tilde{\mathbf{y}} = n\times
+1\)</span></p>
+<h3 id="實際輸出向量mathbfy">實際輸出向量(<span
+class="math inline">\(\mathbf{y}\)</span>)</h3>
+<p>而對應的真實輸出，也同樣可以推疊成向量: <span class="math display">\[
+\mathbf{y} =
+\begin{bmatrix}
+y^{(1)} \\
+y^{(2)} \\
+\vdots \\
+y^{(n)},
+\end{bmatrix}
+\]</span><br />
+Shape of <span class="math inline">\(\mathbf{y} = n\times 1\)</span></p>
+<h3 id="矩陣形式的模型預測定義">矩陣形式的模型預測定義</h3>
+<p>接著我們以矩陣形式定義模型:<br />
+<span class="math display">\[
+\hat{\mathbf{y}} = \tilde{\mathbf{X}}\tilde{\mathbf{w}}
+\]</span> Shape of <span class="math inline">\(\hat{\mathbf{y}} =
+(n\times m)\times(m\times 1) = (n\times 1)\)</span></p>
+<h3 id="矩陣形式的均方根誤差">矩陣形式的均方根誤差</h3>
+<p>計算所有樣本的均方根公式如下:<br />
+<span class="math display">\[
+L_{MSE} = \frac{1}{n}\sum_{i=1}^{n}(\hat{y}^{(i)} - y^{(i)}) ^ 2
+\]</span><br />
+我們令 <span class="math inline">\(e^{(i)} = \hat{y}^{(i)} - y^{(i)},
+\mathbf{e} = \hat{\mathbf{y}} - \mathbf{y}\)</span>, 則:<br />
+<span class="math display">\[
+\mathbf{e} =
+\begin{bmatrix}
+\hat{y}^{(1)} - y^{(1)} \\
+\hat{y}^{(2)} - y^{(2)} \\
+\vdots \\
+\hat{y}^{(n)} - y^{(n)} \\
+\end{bmatrix}
+\]</span> 而 <span class="math inline">\(\sum_{i=1}^{n}(e^{(i)})^2 =
+\mathbf{e}^T\mathbf{e}\)</span> 則:<br />
+<span class="math display">\[
+L_{MSE} = \frac{1}{n}\mathbf{e}^T\mathbf{e} =
+\frac{1}{n}(\hat{\mathbf{y}} - \mathbf{y})^T(\hat{\mathbf{y}} -
+\mathbf{y})
+\]</span> Shape of <span class="math inline">\(L_{MSE} = (1\times
+n)\times(n\times 1)=1\times 1\)</span><br />
+<div class='spoiler collapsed'>
+    <div class='spoiler-title'>
+        [為什麼 $\sum_{i=1}^{n}(e^{(i)})^2 = \mathbf{e}^{T}\mathbf{e}$ ?]
+    </div>
+    <div class='spoiler-content'>
+        <p><span class="math display">\[
 \begin{align*}
-\hat{y} &amp;= (w^{T}x + b) \\
-\dfrac{d\hat{y}}{dw} &amp;= \dfrac{d}{dw}(w^{T}x) + 0 \\
-&amp;= \begin{bmatrix}
+\sum_{i=1}^{n}(e^{(i)})^2 &amp;= \mathbf{e}^{T}\mathbf{e} \\
+\because
+\mathbf{e}^{T}\mathbf{e} &amp;=
+\begin{bmatrix}e^{(1)}&amp;e^{(2)}&amp;\cdots&amp;e^{(n)}\end{bmatrix}
+\begin{bmatrix}e^{(1)}\\e^{(2)}\\\vdots\\e^{(n)}\end{bmatrix} \\
+&amp;= (e^{(1)})^2 + (e^{(2)})^2 + \cdots + (e^{(n)})^2 \\
+&amp;= \sum_{i=1}^{n}(e^{(i)})^2 \\
+\therefore \sum_{i=1}^{n}(e^{(i)})^2 &amp;= \mathbf{e}^{T}\mathbf{e} \\
+\end{align*}
+\]</span></p>
+
+    </div>
+</div></p>
+<h2 id="多特徵多樣本線性回歸的偏導">多特徵多樣本線性回歸的偏導</h2>
+<p>我們上面寫出了線性回歸的幾個矩陣形式:<br />
+<span class="math display">\[
+\begin{align*}
+\hat{\mathbf{y}} &amp;= \tilde{\mathbf{X}}\tilde{\mathbf{w}} \\
+L_{MSE} &amp;= \frac{1}{n}(\hat{\mathbf{y}} -
+\mathbf{y})^T(\hat{\mathbf{y}} - \mathbf{y})
+\end{align*}
+\]</span><br />
+接下來我們求偏導:<br />
+<span class="math display">\[
+\begin{align*}
+\text{Let }\mathbf{e} &amp;= \hat{\mathbf{y}} - \mathbf{y} \\
+\dfrac{dL_{MSE}}{d\tilde{\mathbf{w}}} &amp;=
+\frac{1}{n}\dfrac{d}{d\tilde{\mathbf{w}}}(\hat{\mathbf{y}} -
+\mathbf{y})^T(\hat{\mathbf{y}} - \mathbf{y}) \\
+&amp;= \frac{1}{n}\dfrac{d}{d\tilde{\mathbf{w}}}\mathbf{e}^T\mathbf{e}
+\\
+&amp;=
+\frac{1}{n}(\dfrac{d\mathbf{e}}{d\tilde{\mathbf{w}}})^{T}\dfrac{d(\mathbf{e}^{T}\mathbf{e})}{d\mathbf{e}}
+\\
+&amp;= \frac{1}{n}\tilde{\mathbf{X}}^{T}\cdot 2\mathbf{e} \\
+&amp;= \frac{2}{n}\tilde{\mathbf{X}}^{T}\mathbf{e} \\
+\nabla{\tilde{\mathbf{w}}}L_{MSE} &amp;=
+\frac{2}{n}\tilde{\mathbf{X}}^{T}(\tilde{\mathbf{X}}\tilde{\mathbf{w}} -
+\mathbf{y}) \\
+\end{align*}
+\]</span><br />
+<div class='spoiler collapsed'>
+    <div class='spoiler-title'>
+        [證明 $\dfrac{dL}{dw} = (\dfrac{de}{dw})^{T}\dfrac{dL}{de}$]
+    </div>
+    <div class='spoiler-content'>
+        <p>舉一個簡單的模型為例:<br />
+權重向量 <span class="math inline">\(\tilde{\mathbf{w}} : d=2 +
+1\)</span> 個權重 含 <span class="math inline">\(b\)</span>: <span
+class="math inline">\(\tilde{\mathbf{w}} = \begin{bmatrix}b \\ w_1 \\
+w_2\end{bmatrix}\)</span><br />
+誤差向量 <span class="math inline">\(\mathbf{e} : n=3\)</span> 個樣本
+<span class="math inline">\(\mathbf{e} = \begin{bmatrix}e^{(1)} \\
+e^{(2)} \\ e^{(3)}\end{bmatrix}\)</span><br />
+損失函數 <span class="math inline">\(L\)</span>: 標量 <span
+class="math inline">\(L_{MSE} = (e^{(1)})^2 + (e^{(2)})^2 +
+(e^{(3)})^2\)</span> 忽略 <span
+class="math inline">\(\frac{1}{n}\)</span> 等常數。<br />
+<span class="math display">\[
+\begin{align*}
+\dfrac{dL}{d\mathbf{e}} &amp;=
+\begin{bmatrix}
+\dfrac{dL}{de^{(1)}} \\
+\dfrac{dL}{de^{(2)}} \\
+\dfrac{dL}{de^{(3)}} \\
+\end{bmatrix} \\
+&amp;=
+\begin{bmatrix}2e^{(1)} \\ 2e^{(2)} \\
+2e^{(3)}\end{bmatrix}\quad\because L = (e^{(1)})^2 + (e^{(2)})^2 +
+(e^{(3)})^2 \\
+&amp;= 2\mathbf{e}\tag{1}\\
+\\
+\dfrac{d\mathbf{e}}{d\tilde{\mathbf{w}}} &amp;=
+\begin{bmatrix}
+\dfrac{de^{(1)}}{db} &amp; \dfrac{de^{(1)}}{dw_1} &amp;
+\dfrac{de^{(1)}}{dw_2} \\
+\dfrac{de^{(2)}}{db} &amp; \dfrac{de^{(2)}}{dw_1} &amp;
+\dfrac{de^{(2)}}{dw_2} \\
+\dfrac{de^{(3)}}{db} &amp; \dfrac{de^{(3)}}{dw_1} &amp;
+\dfrac{de^{(3)}}{dw_2} \\
+\end{bmatrix}\tag{2}\because \text{Jacobian matrix} \\
+\text{Shape } &amp;= (n \times d) = 3 \times 3 \\
+\\
+(\dfrac{d\mathbf{e}}{d\tilde{\mathbf{w}}})^{T} &amp;=
+\begin{bmatrix}
+\dfrac{de^{(1)}}{db} &amp; \dfrac{de^{(2)}}{db} &amp;
+\dfrac{de^{(3)}}{db} \\
+\dfrac{de^{(1)}}{dw_1} &amp; \dfrac{de^{(2)}}{dw_1} &amp;
+\dfrac{de^{(3)}}{dw_1} \\
+\dfrac{de^{(1)}}{dw_2} &amp; \dfrac{de^{(2)}}{dw_2} &amp;
+\dfrac{de^{(3)}}{dw_2} \\
+\end{bmatrix}\tag{2}\\
+\text{Shape } &amp;= (d \times n) = 3 \times 3 \\
+\\
+\text{Base on (1), (2) =&gt;} \\
+(\dfrac{d\mathbf{e}}{d\tilde{\mathbf{w}}})^{T}\dfrac{dL}{d\mathbf{e}}
+&amp;=
+\begin{bmatrix}
+\dfrac{de^{(1)}}{db}\cdot 2e^{(1)} + \dfrac{de^{(2)}}{db}\cdot 2e^{(2)}
++ \dfrac{de^{(3)}}{db}\cdot 2e^{(3)} \\
+\dfrac{de^{(1)}}{dw_1}\cdot 2e^{(1)} + \dfrac{de^{(2)}}{dw_1}\cdot
+2e^{(2)} + \dfrac{de^{(3)}}{dw_1}\cdot 2e^{(3)} \\
+\dfrac{de^{(1)}}{dw_2}\cdot 2e^{(1)} + \dfrac{de^{(2)}}{dw_2}\cdot
+2e^{(2)} + \dfrac{de^{(3)}}{dw_2}\cdot 2e^{(3)} \\
+\end{bmatrix}\\
+\\
+\dfrac{dL}{dw_1} &amp;=
+\sum_{i=1}^{3}\dfrac{dL}{de^{(i)}}\dfrac{de^{(i)}}{dw_1} \\
+&amp;= 2e^{(1)}\dfrac{de^{(1)}}{dw_1} + 2e^{(2)}\dfrac{de^{(1)}}{dw_1} +
+2e^{(3)}\dfrac{de^{(3)}}{dw_1} \\
+\\
+\dfrac{dL}{d\tilde{\mathbf{w}}} &amp;=
+\begin{bmatrix}
+2e^{(1)}\dfrac{de^{(1)}}{db} + 2e^{(2)}\dfrac{de^{(2)}}{db} +
+2e^{(3)}\dfrac{de^{(3)}}{db} \\
+2e^{(1)}\dfrac{de^{(1)}}{dw_1} + 2e^{(2)}\dfrac{de^{(2)}}{dw_1} +
+2e^{(3)}\dfrac{de^{(3)}}{dw_1} \\
+2e^{(1)}\dfrac{de^{(1)}}{dw_2} + 2e^{(2)}\dfrac{de^{(2)}}{dw_2} +
+2e^{(3)}\dfrac{de^{(3)}}{dw_2}
+\end{bmatrix} \\
+\therefore
+\dfrac{dL}{d\tilde{\mathbf{w}}} &amp;=
+(\dfrac{d\mathbf{e}}{d\tilde{\mathbf{w}}})^{T}\dfrac{dL}{d\mathbf{e}} \\
+\end{align*}
+\]</span></p>
+
+    </div>
+</div></p>
+<h2 id="邏輯回歸的矩陣形式">邏輯回歸的矩陣形式</h2>
+<p>假設樣本數為 <span class="math inline">\(n\)</span>, 特徵數為 <span
+class="math inline">\(m\)</span><br />
+單樣本模型: <span class="math inline">\(z^{(i)} =
+\tilde{\mathbf{w}}^{T}\tilde{\mathbf{x}}^{(i)}\)</span><br />
+Shape of <span class="math inline">\(z^{(i)} =
+(1\times(m+1))\times((m+1)\times 1) = 1\times 1\)</span><br />
+Sigmoid函數: <span class="math inline">\(\sigma(z^{(i)}) = p^{(i)} =
+\frac{1}{1 + e^{-z^{(i)}}}\)</span><br />
+Shape of <span class="math inline">\(p^{(i)} = 1\times 1\)</span></p>
+<h3 id="矩陣形式的平均交叉熵誤差">矩陣形式的平均交叉熵誤差</h3>
+<p>計算所有樣本的平均交叉熵公式如下:<br />
+<span class="math display">\[
+L_{MCE} = -\frac{1}{n}\sum_{i=1}^{n}[y^{(i)}\ln(p^{(i)}) + (1 -
+y^{(i)})\ln(1 - p^{(i)})]
+\]</span> 針對 <span class="math inline">\(y^{(i)}\)</span> 與 <span
+class="math inline">\(p^{(i)}\)</span> 我們先寫作向量:<br />
+<span class="math display">\[
+\mathbf{y} = \begin{bmatrix}y^{(1)} \\ y^{(2)} \\ \vdots \\
+y^{(n)}\end{bmatrix}\quad
+\mathbf{p} = \begin{bmatrix}p^{(1)} \\ p^{(2)} \\ \vdots \\
+p^{(n)}\end{bmatrix} \\
+\]</span> <span class="math inline">\(\mathbf{p}, (1 -
+\mathbf{p})\)</span> 向量中的每一個元素都取自然對數<span
+class="math inline">\(\ln\)</span>:<br />
+<span class="math display">\[
+\ln(\mathbf{p}) = \begin{bmatrix}\ln(p^{(1)}) \\ \ln(p^{(2)}) \\ \vdots
+\\ \ln(p^{(n)})\end{bmatrix}\quad
+\ln(\mathbf{1 - p}) = \begin{bmatrix}\ln(1 - p^{(1)}) \\ \ln(1 -
+p^{(2)}) \\ \vdots \\ \ln(1- p^{(n)})\end{bmatrix}
+\]</span> 最後開始取代掉 <span class="math inline">\(L_{MCE}\)</span>
+中的元素:<br />
+<span class="math display">\[
+\begin{align*}
+L_{MCE} &amp;= -\frac{1}{n}\sum_{i=1}^{n}[y^{(i)}\ln(p^{(i)}) + (1 -
+y^{(i)})\ln(1 - p^{(i)})] \\
+&amp;= -\frac{1}{n}[\sum_{i=1}^{n}y^{(i)}\ln(p^{(i)}) + \sum_{i=1}^{n}(1
+- y^{(i)})\ln(1 - p^{(i)})] \\
+&amp;= -\frac{1}{n}[\mathbf{y}^{T}\ln(\mathbf{p}) + (\mathbf{1 -
+y})^{T}\ln(\mathbf{1 - \mathbf{p}})] \\
+\end{align*}
+\]</span></p>
+<h2 id="多特徵多樣本邏輯回歸的偏導">多特徵多樣本邏輯回歸的偏導</h2>
+<p>在這邊我們以單個樣本的方式來進行偏導數的推導，最後再合併所有樣本並且用向量或矩陣的形式來表達：<br />
+這裏我們上面寫出了邏輯回歸的幾個向量形式:<br />
+<span class="math display">\[
+\begin{align*}
+z^{(i)} &amp;= \tilde{\mathbf{w}}^{T}\tilde{\mathbf{x}}^{(i)} \\
+p^{(i)} &amp;= \sigma(z^{(i)}) = \frac{1}{1 + e^{-z^{(i)}}} \\
+L_{MCE} &amp;= -\frac{1}{n}\sum_{i=1}^{n}[y^{(i)}\ln(p^{(i)}) + (1 -
+y^{(i)})\ln(1 - p^{(i)})] \\
+\end{align*}
+\]</span> 接著我們開始求偏導:<br />
+<span class="math display">\[
+\begin{align*}
+\text{Let } L^{(i)} &amp;= -[y^{(i)}\ln(p^{(i)}) + (1 - y^{(i)})\ln(1 -
+p^{(i)})] \\
+\dfrac{dL_{MCE}}{d\tilde{\mathbf{w}}} &amp;=
+\frac{1}{n}\dfrac{d}{d\tilde{\mathbf{w}}}\sum_{i=1}^{n}[y^{(i)}\ln(p^{(i)})
++ (1 - y^{(i)})\ln(1 - p^{(i)})] \\
+&amp;= \frac{1}{n}\dfrac{d}{d\tilde{\mathbf{w}}}\sum_{i=1}^{n}L^{(i)} \\
+\end{align*}
+\]</span> 套用鏈式法則: <span
+class="math inline">\(\dfrac{dL^{(i)}}{d\tilde{\mathbf{w}}} =
+\dfrac{dL^{(i)}}{dp^{(i)}}\dfrac{dp^{(i)}}{dz^{(i)}}\dfrac{dz^{(i)}}{d\tilde{\mathbf{w}}}\)</span><br />
+先求 <span
+class="math inline">\(\dfrac{dL^{(i)}}{dp^{(i)}}\)</span>:<br />
+<span class="math display">\[
+\begin{align*}
+\dfrac{dL^{(i)}}{dp^{(i)}} &amp;=
+\dfrac{d}{dp^{(i)}}[-(y^{(i)}\ln(p^{(i)}) + (1 - y^{(i)})\ln(1 -
+p^{(i)}))] \\
+&amp;= -y^{(i)}\frac{1}{p^{(i)}} - (1 - y^{(i)})\frac{-1}{1 -
+p^{(i)}}\quad\because \dfrac{d}{dx}\ln(x) = \frac{1}{x},
+\dfrac{d}{dx}\ln(1 - x) = \frac{-1}{1 - x} \\
+&amp;= \frac{-y^{(i)}}{p^{(i)}} + \frac{1-y^{(i)}}{1-p^{(i)}} \\
+&amp;= \frac{-y^{(i)} + y^{(i)}p^{(i)} + p^{(i)} -
+p^{(i)}y^{(i)}}{p^{(i)}(1-p^{(i)})} \\
+&amp;= \frac{p^{(i)} - y^{(i)}}{p^{(i)}(1-p^{(i)})} \\
+\end{align*}
+\]</span></p>
+<p>第二步求 <span
+class="math inline">\(\dfrac{dp^{(i)}}{dz^{(i)}}\)</span>:<br />
+<span class="math display">\[
+\begin{align*}
+p^{(i)} &amp;= \sigma(z^{(i)}) = \frac{1}{1 + e^{-z^{(i)}}} = (1 +
+e^{-z^{(i)}})^{-1} \\
+\text{Let } u &amp;= 1 + e^{-z^{(i)}} \\
+\dfrac{dp^{(i)}}{dz^{(i)}} &amp;=
+\dfrac{dp^{(i)}}{du}\dfrac{du}{dz^{(i)}} \\
+&amp;= \dfrac{du^{-1}}{du}\dfrac{d(1 + e^{-z^{(i)}})}{dz^{(i)}} \\
+&amp;= -1u^{-2} \cdot (0 -e^{-z^{(i)}}) \\
+&amp;= \frac{-1}{u^2}\cdot -e^{-z^{(i)}} \\
+&amp;= \frac{e^{-z^{(i)}}}{(1 + e^{-z^{(i)}})^2} \\
+&amp;= \frac{1 \cdot e^{-z^{(i)}}}{(1 + e^{-z^{(i)}})(1 + e^{-z^{(i)}})}
+\\
+&amp;= p^{(i)}(1 - p^{(i)}) \\
+\end{align*}
+\]</span></p>
+<div class='spoiler collapsed'>
+    <div class='spoiler-title'>
+        [$(1-p^{(i)})$怎麼來的？]
+    </div>
+    <div class='spoiler-content'>
+        <p><span class="math display">\[
+\begin{align*}
+\frac{e^{-z^{(i)}}}{1 + e^{-z^{(i)}}} &amp;= \frac{e^{-z^{(i)}} + 1 -
+1}{1 + e^{-z^{(i)}}} \\
+&amp;= \frac{1 + e^{-z^{(i)}}}{1 + e^{-z^{(i)}}} - \frac{1}{1 +
+e^{-z^{(i)}}} \\
+&amp;= 1 - p^{(i)} \\
+\end{align*}
+\]</span></p>
+
+    </div>
+</div>
+<p>第三步求 <span
+class="math inline">\(\dfrac{dz^{(i)}}{d\tilde{\mathbf{w}}}\)</span>:<br />
+<span class="math display">\[
+\begin{align*}
+\dfrac{dz^{(i)}}{d\tilde{\mathbf{w}}} &amp;=
+\dfrac{d}{d\tilde{\mathbf{w}}}(\tilde{\mathbf{w}}^{T}\tilde{\mathbf{x}}^{(i)})
+\\
+&amp;= \tilde{\mathbf{x}}^{(i)} \\
+\end{align*}
+\]</span></p>
+<p>把三者合起來:<br />
+<span class="math display">\[
+\begin{align*}
+\dfrac{dL^{(i)}}{d\tilde{\mathbf{w}}} &amp;=
+\dfrac{dL^{(i)}}{dp^{(i)}}\dfrac{dp^{(i)}}{dz^{(i)}}\dfrac{dz^{(i)}}{d\tilde{\mathbf{w}}}
+\\
+&amp;= \frac{p^{(i)} - y^{(i)}}{p^{(i)}(1-p^{(i)})}\cdot p^{(i)}(1 -
+p^{(i)})\cdot \tilde{\mathbf{x}}^{(i)} \\
+&amp;= (p^{(i)} - y^{(i)})\cdot \tilde{\mathbf{x}}^{(i)} \\
+\end{align*}
+\]</span> 最後放回 <span
+class="math inline">\(L_{MCE}\)</span>的微分式中並且轉為向量及矩陣形式:<br />
+<span class="math display">\[
+\begin{align*}
+\dfrac{dL_{MCE}}{d\tilde{\mathbf{w}}} &amp;=
+\frac{1}{n}\dfrac{d}{d\tilde{\mathbf{w}}}\sum_{i=1}^{n}L^{(i)} \\
+&amp;= \frac{1}{n}\sum_{i=1}^{n}(p^{(i)} - y^{(i)})\cdot
+\tilde{\mathbf{x}}^{(i)} \\
+&amp;= \frac{1}{n}\tilde{\mathbf{X}}(\mathbf{p} - \mathbf{y}) \\
+\end{align*}
+\]</span></p>
+<!--
+## 向量內積的微分
+$$
+\begin{align*}
+\hat{y} &= (w^{T}x + b) \\
+\dfrac{d\hat{y}}{dw} &= \dfrac{d}{dw}(w^{T}x) + 0 \\
+&= \begin{bmatrix}
 \dfrac{d\hat{y}}{dw_1} \\
 \dfrac{d\hat{y}}{dw_2} \\
 \vdots \\
 \dfrac{d\hat{y}}{dw_n} \\
 \end{bmatrix}\tag{2.1}\\
 \\
-\dfrac{d\hat{y}}{dw_j} &amp;= \dfrac{d}{dw_j}(w_1x_1 + w_2x_2 + \dots +
-w_nx_n) \\
-&amp;= \dfrac{d}{dw_j}(w_jx_j) \\
-&amp;= x_j\tag{2.2}\\
+\dfrac{d\hat{y}}{dw_j} &= \dfrac{d}{dw_j}(w_1x_1 + w_2x_2 + \dots + w_nx_n) \\
+&= \dfrac{d}{dw_j}(w_jx_j) \\
+&= x_j\tag{2.2}\\
 \\
-\text{Base on (2.1), (2.2)} =&gt; \dfrac{d\hat{y}}{dw} &amp;=
-\begin{bmatrix}
+\text{Base on (2.1), (2.2)} => \dfrac{d\hat{y}}{dw} &= \begin{bmatrix}
 \dfrac{d\hat{y}}{dw_1} \\
 \dfrac{d\hat{y}}{dw_2} \\
 \vdots \\
@@ -409,94 +817,47 @@ x_n \\
 \end{bmatrix}
 = x^{(i)}\tag{2.3}
 \end{align*}
-\]</span></p>
-<p><span class="math display">\[
+$$
+
+$$
 \begin{align*}
-\dfrac{d}{db}\hat{y}^{(i)} &amp;= \dfrac{d(w^{T}x^{(i)} + b)}{db} \\
-&amp;= \dfrac{d}{db}(w^{T}x^{(i)}) + \dfrac{db}{db} \\
-&amp;= 0 + 1 = 1 \tag{2.4} \\
+\dfrac{d}{db}\hat{y}^{(i)} &= \dfrac{d(w^{T}x^{(i)} + b)}{db} \\
+&= \dfrac{d}{db}(w^{T}x^{(i)}) + \dfrac{db}{db} \\
+&= 0 + 1 = 1 \tag{2.4} \\
 \end{align*}
-\]</span></p>
-<h2 id="矩陣">矩陣</h2>
-<p>我們假設現在有一個房價訓練集，裡面包含了5筆訓練資料(樣本)，每筆資料有3個特徵。</p>
-<h3 id="特徵矩陣x">特徵矩陣(X)</h3>
-<p>我們有n個樣本(n=5), 每個樣本有m個特徵(m=3):</p>
-<table>
-<colgroup>
-<col style="width: 19%" />
-<col style="width: 19%" />
-<col style="width: 17%" />
-<col style="width: 19%" />
-<col style="width: 23%" />
-</colgroup>
-<thead>
-<tr>
-<th style="text-align: center;">樣本編號<span
-class="math inline">\((i)\)</span></th>
-<th style="text-align: center;">面積(<span
-class="math inline">\(x_1\)</span>)</th>
-<th style="text-align: center;">房齡(<span
-class="math inline">\(x_2\)</span>)</th>
-<th style="text-align: center;">樓層(<span
-class="math inline">\(x_3\)</span>)</th>
-<th style="text-align: center;">房價(<span
-class="math inline">\(y^{(i)}\)</span>)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: center;">1</td>
-<td style="text-align: center;">150</td>
-<td style="text-align: center;">20</td>
-<td style="text-align: center;">3</td>
-<td style="text-align: center;">550K</td>
-</tr>
-<tr>
-<td style="text-align: center;">2</td>
-<td style="text-align: center;">80</td>
-<td style="text-align: center;">25</td>
-<td style="text-align: center;">4</td>
-<td style="text-align: center;">280K</td>
-</tr>
-<tr>
-<td style="text-align: center;">3</td>
-<td style="text-align: center;">200</td>
-<td style="text-align: center;">2</td>
-<td style="text-align: center;">9</td>
-<td style="text-align: center;">720K</td>
-</tr>
-<tr>
-<td style="text-align: center;">4</td>
-<td style="text-align: center;">120</td>
-<td style="text-align: center;">10</td>
-<td style="text-align: center;">7</td>
-<td style="text-align: center;">450K</td>
-</tr>
-<tr>
-<td style="text-align: center;">5</td>
-<td style="text-align: center;">180</td>
-<td style="text-align: center;">15</td>
-<td style="text-align: center;">6</td>
-<td style="text-align: center;">580K</td>
-</tr>
-</tbody>
-</table>
-<p>而我們的矩陣大小會是 <span class="math inline">\(n \times m\)</span>:
-<span class="math display">\[
+$$
+
+## 矩陣
+我們假設現在有一個房價訓練集，裡面包含了5筆訓練資料(樣本)，每筆資料有3個特徵。
+
+### 特徵矩陣(X)
+我們有n個樣本(n=5), 每個樣本有m個特徵(m=3):  
+
+| 樣本編號$(i)$ | 面積($x_1$) | 房齡($x_2$) | 樓層($x_3$) | 房價($y^{(i)}$) |  
+|:-----------:|:-----------:|:----------:|:-----------:|:--------------:|  
+| 1           | 150         | 20         | 3           | 550K           |  
+| 2           | 80          | 25         | 4           | 280K           |  
+| 3           | 200         | 2          | 9           | 720K           |  
+| 4           | 120         | 10           | 7           | 450K           |  
+| 5           | 180         | 15           | 6           | 580K           |  
+
+而我們的矩陣大小會是 $n \times m$:
+$$
 \begin{align*}
 X =
 \begin{bmatrix}
-150 &amp; 20 &amp; 3 \\
-80  &amp; 25 &amp; 4 \\
-200 &amp; 2  &amp; 9 \\
-120 &amp; 10 &amp; 7 \\
-180 &amp; 15 &amp; 6 \\
+150 & 20 & 3 \\
+80  & 25 & 4 \\
+200 & 2  & 9 \\
+120 & 10 & 7 \\
+180 & 15 & 6 \\
 \end{bmatrix} \\
 \\
 Shape = 5 \times 3 \\
 \end{align*}
-\]</span></p>
-<h3 id="權重向量w">權重向量(w)</h3>
+$$
+
+### 權重向量(w)
 <div class='spoiler collapsed'>
     <div class='spoiler-title'>
         [為什麼一下說矩陣、一下說向量？]
@@ -719,26 +1080,7 @@ L(w, b) &amp;= \frac{1}{n}\sum_{i=1}^{n}(\hat{Y} - Y)^2 \\
 \times 1)\)</span><br />
 Shape of <span class="math inline">\(L_{MSE}(w, b)\)</span> = <span
 class="math inline">\((1 \times n) \times (n \times 1) = 1 \times
-1\)</span><br />
-<div class='spoiler collapsed'>
-    <div class='spoiler-title'>
-        [為什麼 $\sum_{i=1}^{n} = E^{T}E$ ?]
-    </div>
-    <div class='spoiler-content'>
-        <p><span class="math display">\[
-\begin{align*}
-\sum_{i=1}^{n}E^2 &amp;= E^{T}E \\
-\because
-E^{T}E &amp;=
-\begin{bmatrix}E_1&amp;E_2&amp;\cdots&amp;E_n\end{bmatrix}
-\begin{bmatrix}E_1\\E_2\\\vdots\\E_n\end{bmatrix} \\
-&amp;= {E_1}^2 + {E_2}^2 + \cdots + {E_n}^2 \\
-\therefore \sum_{i=1}^{n}E^2 = E^{T}E \\
-\end{align*}
-\]</span></p>
-
-    </div>
-</div></p>
+1\)</span></p>
 <h4 id="偏微分權重向量-w">偏微分權重向量 w</h4>
 <div class='spoiler collapsed'>
     <div class='spoiler-title'>
@@ -772,76 +1114,7 @@ Y)^{T}(\hat{Y} - Y))}{dw} = \frac{1}{n}\dfrac{d(\hat{Y} - Y)^{T}(\hat{Y}
 &amp;= \frac{2}{n}(X^{T}(\hat{Y} - Y)) \\
 \nabla_{w}L &amp;= \frac{2}{n}(X^{T}(\hat{Y} - Y))
 \end{align*}
-\]</span> <div class='spoiler collapsed'>
-    <div class='spoiler-title'>
-        [證明 $\dfrac{dL}{dw} = (\dfrac{dE}{dw})^{T}\dfrac{dL}{dE}$]
-    </div>
-    <div class='spoiler-content'>
-        <p>舉一個簡單的模型為例:<br />
-權重向量 <span class="math inline">\(w : d=2\)</span>個權重 不含 <span
-class="math inline">\(b\)</span>: <span class="math inline">\(w =
-\begin{bmatrix}w_1 \\ w_2\end{bmatrix}\)</span><br />
-誤差向量 <span class="math inline">\(E : n=3\)</span>個樣本 <span
-class="math inline">\(E = \begin{bmatrix}E_1 \\ E_2 \\
-E_3\end{bmatrix}\)</span><br />
-損失函數 <span class="math inline">\(L\)</span>: 標量 <span
-class="math inline">\(L(E) = E^{2}_1 + E^{2}_2 + E^{2}_3\)</span> 忽略
-<span class="math inline">\(\frac{1}{n}\)</span> 等常數。<br />
-<span class="math display">\[
-\begin{align*}
-\dfrac{dL}{dE} &amp;=
-\begin{bmatrix}
-\dfrac{dL}{dE_1} \\
-\dfrac{dL}{dE_2} \\
-\dfrac{dL}{dE_3} \\
-\end{bmatrix}\quad\text{Shape: }(3 \times 1) \\
-&amp;=
-\begin{bmatrix}2E_1 \\ 2E_2 \\ 2E_3\end{bmatrix}\quad\because L =
-E^{2}_1 + E^{2}_2 + E^{2}_3 \\
-&amp;= 2E\tag{1}\\
-\\
-\dfrac{dE}{dw} &amp;=
-\begin{bmatrix}
-\dfrac{de_1}{dw_1} &amp; \dfrac{de_1}{dw_2} \\
-\dfrac{de_2}{dw_1} &amp; \dfrac{de_2}{dw_2} \\
-\dfrac{de_3}{dw_1} &amp; \dfrac{de_3}{dw_2} \\
-\end{bmatrix}\tag{2}\because \text{Jacobian matrix} \\
-\text{Shape } &amp;= (n \times d) = 3 \times 2 \\
-\\
-(\dfrac{dE}{dw}^{T}) &amp;=
-\begin{bmatrix}
-\dfrac{de_1}{dw_1} &amp; \dfrac{de_2}{dw_1} &amp; \dfrac{de_3}{dw_1} \\
-\dfrac{de_1}{dw_2} &amp; \dfrac{de_2}{dw_2} &amp; \dfrac{de_3}{dw_2} \\
-\end{bmatrix}\tag{2}\\
-\text{Shape } &amp;= (d \times n) = 2 \times 3 \\
-\\
-\text{Base on (1), (2) =&gt;} \\
-(\dfrac{dE}{dw})^{T}\dfrac{dL}{dE} &amp;=
-\begin{bmatrix}
-\dfrac{de_1}{dw_1}\cdot 2E_1 + \dfrac{de_2}{dw_1}\cdot 2E_2 +
-\dfrac{de_3}{dw_1}\cdot 2E_3 \\
-\dfrac{de_1}{dw_2}\cdot 2E_1 + \dfrac{de_2}{dw_2}\cdot 2E_2 +
-\dfrac{de_3}{dw_2}\cdot 2E_3 \\
-\end{bmatrix}\\
-\\
-\dfrac{dL}{dw_1} &amp;= \sum_{i=1}^{3}\dfrac{dL}{dE_i}\dfrac{dE_i}{dw_1}
-\\
-&amp;= 2E_1\dfrac{dE_1}{dw_1} + 2E_2\dfrac{dE_1}{dw_1} +
-2E_3\dfrac{dE_3}{dw_1} \\
-\\
-\dfrac{dL}{dw} &amp;=
-\begin{bmatrix}
-2E_1\dfrac{dE_1}{dw_1} + 2E_2\dfrac{dE_1}{dw_2} + 2E_3\dfrac{dE_3}{dw_1}
-\\
-2E_1\dfrac{dE_1}{dw_2} + 2E_2\dfrac{dE_1}{dw_2} + 2E_3\dfrac{dE_3}{dw_2}
-\end{bmatrix} \\
-\therefore
-\dfrac{dL}{dw} &amp;= (\dfrac{dE}{dw})^{T}\dfrac{dL}{dE} \\
-\end{align*}
 \]</span></p>
-
-    </div>
-</div></p>
 <h4 id="偏微分偏差項-b">偏微分偏差項 b</h4>
 <p><span class="math display">\[
 \begin{align*}
@@ -861,10 +1134,13 @@ E^{2}_1 + E^{2}_2 + E^{2}_3 \\
 \end{align*}
 \]</span></p>
 <h3 id="邏輯回歸">邏輯回歸</h3>
-<p>對於一個多特徵的邏輯回歸，我們來看在數學運算上有什麼差別:<br />
-樣本數: <span class="math inline">\(n\)</span><br />
+<p>樣本數: <span class="math inline">\(n\)</span>, 特徵數: <span
+class="math inline">\(m\)</span><br />
 模型預測: <span class="math inline">\(z^{(i)} = w^{T}x^{(i)} +
 b\)</span><br />
+Shape of <span class="math inline">\(z\)</span>: <span
+class="math inline">\((1 \times m) \times (m \times 1) + (1 \times 1) =
+1 \times 1\)</span><br />
 Sigmoid函數: <span class="math inline">\(\sigma(z^{(i)}) = P^{(i)} =
 \frac{1}{1 + e^{-z^{(i)}}}\)</span><br />
 交叉熵損失函數: <span class="math inline">\(L(y^{(i)}, P^{(i)}) = -
@@ -939,7 +1215,8 @@ P^{(i)}(1-P^{(i)}) \cdot x^{(i)} \\
 \end{align*}
 \]</span><br />
 其中 <span class="math inline">\(\dfrac{dLoss}{dw}\)</span> 又可以記做:
-<span class="math inline">\(\nabla_{w}Loss\)</span></p>
+<span class="math inline">\(\nabla_{w}Loss\)</span><br />
+–&gt;</p>
 <!-- flag of hidden posts --><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
     </div>
 
