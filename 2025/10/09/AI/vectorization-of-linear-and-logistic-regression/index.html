@@ -28,7 +28,7 @@
 <meta property="og:description" content="Vectorized Derivations of Linear and Logistic Regression &gt;&gt; [zhTW version] &lt;&lt;">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-10-09T19:37:23.000Z">
-<meta property="article:modified_time" content="2025-10-18T11:06:16.271Z">
+<meta property="article:modified_time" content="2025-10-18T21:56:51.562Z">
 <meta property="article:author" content="clooooode">
 <meta property="article:tag" content="AI">
 <meta property="article:tag" content="Machine Learning">
@@ -266,7 +266,7 @@ Derivatives for Multiple Features and Samples</span></a></li></ol></li><li class
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-10-18 11:06:16" itemprop="dateModified" datetime="2025-10-18T11:06:16+00:00">2025-10-18</time>
+      <time title="Modified: 2025-10-18 21:56:51" itemprop="dateModified" datetime="2025-10-18T21:56:51+00:00">2025-10-18</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -442,9 +442,13 @@ class="math display">\[
 class="math inline">\(x_m\)</span>. The size of the entire vector <span
 class="math inline">\(\tilde{\mathbf{x}}\)</span> will be <span
 class="math inline">\(((m + 1)\times 1)\)</span>. Next, we need to stack
-these vectors vertically. However, vectors of size <span
-class="math inline">\(((m + 1)\times 1)\)</span> cannot be stacked
-vertically as rows. So, we transpose each vector <span
+these vectors vertically. However, directly stacking vectors of size
+<span class="math inline">\(((m + 1)\times 1)\)</span> would result in a
+matrix with dimensions <span class="math inline">\(n\times((m + 1)\times
+1)\)</span>, which clearly doesn’t meet the requirements for the matrix
+multiplication <span class="math inline">\(\hat{\mathbf{y}} =
+\tilde{\mathbf{X}}\tilde{\mathbf{w}}\)</span>.<br />
+So, we transpose each vector <span
 class="math inline">\(\tilde{\mathbf{x}}\)</span> for stacking: <span
 class="math display">\[
 \tilde{\mathbf{X}} =
@@ -602,7 +606,7 @@ form: <span class="math display">\[
 y^{(i)})\tilde{\mathbf{x}}^{(i)}) \\
 &amp;= \frac{2}{n}\sum_{i=1}^{n}(\hat{y}^{(i)} -
 y^{(i)})\tilde{\mathbf{x}}^{(i)} \\
-\nabla{\tilde{\mathbf{w}}}J_{MSE} &amp;=
+\nabla_{\tilde{\mathbf{w}}}J_{MSE} &amp;=
 \frac{2}{n}\tilde{\mathbf{X}}^{T}(\tilde{\mathbf{X}}\tilde{\mathbf{w}} -
 \mathbf{y}) \\
 \end{align*}
@@ -755,7 +759,7 @@ form: <span class="math display">\[
 \frac{1}{n}\sum_{i=1}^{n}\dfrac{dL^{(i)}}{d\tilde{\mathbf{w}}} \\
 &amp;= \frac{1}{n}\sum_{i=1}^{n}(p^{(i)} - y^{(i)})\cdot
 \tilde{\mathbf{x}}^{(i)} \\
-\nabla{\tilde{\mathbf{w}}}J_{MCE} &amp;=
+\nabla_{\tilde{\mathbf{w}}}J_{MCE} &amp;=
 \frac{1}{n}\tilde{\mathbf{X}}^{T}(\mathbf{p} - \mathbf{y}) \\
 \end{align*}
 \]</span></p>
