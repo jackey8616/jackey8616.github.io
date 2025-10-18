@@ -28,7 +28,7 @@
 <meta property="og:description" content="機器學習的基礎： 從 \(w^T{x}\) 向量內積以及矩陣乘法看懂線性與邏輯迴歸">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-10-09T19:37:23.000Z">
-<meta property="article:modified_time" content="2025-10-18T08:17:38.811Z">
+<meta property="article:modified_time" content="2025-10-18T08:35:04.453Z">
 <meta property="article:author" content="clooooode">
 <meta property="article:tag" content="AI">
 <meta property="article:tag" content="Machine Learning">
@@ -256,7 +256,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-10-18 08:17:38" itemprop="dateModified" datetime="2025-10-18T08:17:38+00:00">2025-10-18</time>
+      <time title="Modified: 2025-10-18 08:35:04" itemprop="dateModified" datetime="2025-10-18T08:35:04+00:00">2025-10-18</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -487,7 +487,7 @@ Shape of <span class="math inline">\(\mathbf{y} = n\times 1\)</span></p>
 <h4 id="矩陣形式的平均平方誤差">矩陣形式的平均平方誤差</h4>
 <p>計算所有樣本的平均平方誤差公式如下:<br />
 <span class="math display">\[
-L_{MSE} = \frac{1}{n}\sum_{i=1}^{n}(\hat{y}^{(i)} - y^{(i)}) ^ 2
+J_{MSE} = \frac{1}{n}\sum_{i=1}^{n}(\hat{y}^{(i)} - y^{(i)}) ^ 2
 \]</span><br />
 我們令 <span class="math inline">\(e^{(i)} = \hat{y}^{(i)} - y^{(i)},
 \mathbf{e} = \hat{\mathbf{y}} - \mathbf{y}\)</span>, 則:<br />
@@ -502,10 +502,10 @@ L_{MSE} = \frac{1}{n}\sum_{i=1}^{n}(\hat{y}^{(i)} - y^{(i)}) ^ 2
 \]</span> 而 <span class="math inline">\(\sum_{i=1}^{n}(e^{(i)})^2 =
 \mathbf{e}^T\mathbf{e}\)</span> 則:<br />
 <span class="math display">\[
-L_{MSE} = \frac{1}{n}\mathbf{e}^T\mathbf{e} =
+J_{MSE} = \frac{1}{n}\mathbf{e}^T\mathbf{e} =
 \frac{1}{n}(\hat{\mathbf{y}} - \mathbf{y})^T(\hat{\mathbf{y}} -
 \mathbf{y})
-\]</span> Shape of <span class="math inline">\(L_{MSE} = (1\times
+\]</span> Shape of <span class="math inline">\(J_{MSE} = (1\times
 n)\times(n\times 1)=1\times 1\)</span><br />
 <div class='spoiler collapsed'>
     <div class='spoiler-title'>
@@ -532,7 +532,7 @@ n)\times(n\times 1)=1\times 1\)</span><br />
 <span class="math display">\[
 \begin{align*}
 \hat{\mathbf{y}} &amp;= \tilde{\mathbf{X}}\tilde{\mathbf{w}} \\
-L_{MSE} &amp;= \frac{1}{n}(\hat{\mathbf{y}} -
+J_{MSE} &amp;= \frac{1}{n}(\hat{\mathbf{y}} -
 \mathbf{y})^T(\hat{\mathbf{y}} - \mathbf{y})
 \end{align*}
 \]</span><br />
@@ -540,8 +540,8 @@ L_{MSE} &amp;= \frac{1}{n}(\hat{\mathbf{y}} -
 <span class="math display">\[
 \begin{align*}
 \text{Let }L^{(i)} &amp;= \hat{y}^{(i)} - y^{(i)} \\
-L_{MSE} &amp;= \frac{1}{n}\sum_{i=1}^{n}(\hat{y}^{(i)} - y^{(i)})^2 \\
-\dfrac{dL_{MSE}}{d\tilde{\mathbf{w}}} &amp;=
+J_{MSE} &amp;= \frac{1}{n}\sum_{i=1}^{n}(\hat{y}^{(i)} - y^{(i)})^2 \\
+\dfrac{dJ_{MSE}}{d\tilde{\mathbf{w}}} &amp;=
 \frac{1}{n}\sum_{i=1}^{n}\dfrac{d(L^{(i)})^2}{d\tilde{\mathbf{w}}}
 \end{align*}
 \]</span><br />
@@ -575,16 +575,16 @@ y^{(i)})}{d\tilde{\mathbf{w}}} \\
 &amp;= 2(\hat{y}^{(i)} - y^{(i)})\tilde{\mathbf{x}}^{(i)} \\
 \end{align*}
 \]</span> 最後放回 <span
-class="math inline">\(L_{MSE}\)</span>的微分式中並且轉為向量及矩陣形式:<br />
+class="math inline">\(J_{MSE}\)</span>的微分式中並且轉為向量及矩陣形式:<br />
 <span class="math display">\[
 \begin{align*}
-\dfrac{dL_{MSE}}{d\tilde{\mathbf{w}}} &amp;=
+\dfrac{dJ_{MSE}}{d\tilde{\mathbf{w}}} &amp;=
 \frac{1}{n}\sum_{i=1}^{n}\dfrac{d(L^{(i)})^2}{d\tilde{\mathbf{w}}} \\
 &amp;= \frac{1}{n}\sum_{i=1}^{n}(2(\hat{y}^{(i)} -
 y^{(i)})\tilde{\mathbf{x}}^{(i)}) \\
 &amp;= \frac{2}{n}\sum_{i=1}^{n}(\hat{y}^{(i)} -
 y^{(i)})\tilde{\mathbf{x}}^{(i)} \\
-\nabla{\tilde{\mathbf{w}}}L_{MSE} &amp;=
+\nabla{\tilde{\mathbf{w}}}J_{MSE} &amp;=
 \frac{2}{n}\tilde{\mathbf{X}}^{T}(\tilde{\mathbf{X}}\tilde{\mathbf{w}} -
 \mathbf{y}) \\
 \end{align*}
@@ -603,7 +603,7 @@ Shape of <span class="math inline">\(p^{(i)} = 1\times 1\)</span></p>
 <h4 id="矩陣形式的平均交叉熵誤差">矩陣形式的平均交叉熵誤差</h4>
 <p>計算所有樣本的平均交叉熵公式如下:<br />
 <span class="math display">\[
-L_{MCE} = -\frac{1}{n}\sum_{i=1}^{n}[y^{(i)}\ln(p^{(i)}) + (1 -
+J_{MCE} = -\frac{1}{n}\sum_{i=1}^{n}[y^{(i)}\ln(p^{(i)}) + (1 -
 y^{(i)})\ln(1 - p^{(i)})]
 \]</span> 針對 <span class="math inline">\(y^{(i)}\)</span> 與 <span
 class="math inline">\(p^{(i)}\)</span> 我們先寫作向量:<br />
@@ -620,11 +620,11 @@ class="math inline">\(\ln\)</span>:<br />
 \\ \ln(p^{(n)})\end{bmatrix}\quad
 \ln(\mathbf{1 - p}) = \begin{bmatrix}\ln(1 - p^{(1)}) \\ \ln(1 -
 p^{(2)}) \\ \vdots \\ \ln(1- p^{(n)})\end{bmatrix}
-\]</span> 最後開始取代掉 <span class="math inline">\(L_{MCE}\)</span>
+\]</span> 最後開始取代掉 <span class="math inline">\(J_{MCE}\)</span>
 中的元素:<br />
 <span class="math display">\[
 \begin{align*}
-L_{MCE} &amp;= -\frac{1}{n}\sum_{i=1}^{n}[y^{(i)}\ln(p^{(i)}) + (1 -
+J_{MCE} &amp;= -\frac{1}{n}\sum_{i=1}^{n}[y^{(i)}\ln(p^{(i)}) + (1 -
 y^{(i)})\ln(1 - p^{(i)})] \\
 &amp;= -\frac{1}{n}[\sum_{i=1}^{n}y^{(i)}\ln(p^{(i)}) + \sum_{i=1}^{n}(1
 - y^{(i)})\ln(1 - p^{(i)})] \\
@@ -639,7 +639,7 @@ y})^{T}\ln(\mathbf{1 - \mathbf{p}})] \\
 \begin{align*}
 z^{(i)} &amp;= \tilde{\mathbf{w}}^{T}\tilde{\mathbf{x}}^{(i)} \\
 p^{(i)} &amp;= \sigma(z^{(i)}) = \frac{1}{1 + e^{-z^{(i)}}} \\
-L_{MCE} &amp;= -\frac{1}{n}\sum_{i=1}^{n}[y^{(i)}\ln(p^{(i)}) + (1 -
+J_{MCE} &amp;= -\frac{1}{n}\sum_{i=1}^{n}[y^{(i)}\ln(p^{(i)}) + (1 -
 y^{(i)})\ln(1 - p^{(i)})] \\
 \end{align*}
 \]</span> 接著我們開始求偏導:<br />
@@ -647,7 +647,7 @@ y^{(i)})\ln(1 - p^{(i)})] \\
 \begin{align*}
 \text{Let } L^{(i)} &amp;= -[y^{(i)}\ln(p^{(i)}) + (1 - y^{(i)})\ln(1 -
 p^{(i)})] \\
-\dfrac{dL_{MCE}}{d\tilde{\mathbf{w}}} &amp;=
+\dfrac{dJ_{MCE}}{d\tilde{\mathbf{w}}} &amp;=
 \frac{1}{n}\dfrac{d}{d\tilde{\mathbf{w}}}\sum_{i=1}^{n}[y^{(i)}\ln(p^{(i)})
 + (1 - y^{(i)})\ln(1 - p^{(i)})] \\
 &amp;= \frac{1}{n}\dfrac{d}{d\tilde{\mathbf{w}}}\sum_{i=1}^{n}L^{(i)} \\
@@ -727,14 +727,14 @@ p^{(i)})\cdot \tilde{\mathbf{x}}^{(i)} \\
 &amp;= (p^{(i)} - y^{(i)})\cdot \tilde{\mathbf{x}}^{(i)} \\
 \end{align*}
 \]</span> 最後放回 <span
-class="math inline">\(L_{MCE}\)</span>的微分式中並且轉為向量及矩陣形式:<br />
+class="math inline">\(J_{MCE}\)</span>的微分式中並且轉為向量及矩陣形式:<br />
 <span class="math display">\[
 \begin{align*}
-\dfrac{dL_{MCE}}{d\tilde{\mathbf{w}}} &amp;=
+\dfrac{dJ_{MCE}}{d\tilde{\mathbf{w}}} &amp;=
 \frac{1}{n}\dfrac{d}{d\tilde{\mathbf{w}}}\sum_{i=1}^{n}L^{(i)} \\
 &amp;= \frac{1}{n}\sum_{i=1}^{n}(p^{(i)} - y^{(i)})\cdot
 \tilde{\mathbf{x}}^{(i)} \\
-\nabla{\tilde{\mathbf{w}}}L_{MCE} &amp;=
+\nabla{\tilde{\mathbf{w}}}J_{MCE} &amp;=
 \frac{1}{n}\tilde{\mathbf{X}}^{T}(\mathbf{p} - \mathbf{y}) \\
 \end{align*}
 \]</span></p>
@@ -742,20 +742,20 @@ class="math inline">\(L_{MCE}\)</span>的微分式中並且轉為向量及矩陣
 <p>無論是線性回歸還是邏輯回歸，我們最終取得了損失函數的偏導數:<br />
 <span class="math display">\[
 \begin{align*}
-\nabla{\tilde{\mathbf{w}}}L_{MSE} &amp;=
+\nabla{\tilde{\mathbf{w}}}J_{MSE} &amp;=
 \frac{2}{n}\tilde{\mathbf{X}}^{T}(\tilde{\mathbf{X}}\tilde{\mathbf{w}} -
 \mathbf{y}) \\
-\nabla{\tilde{\mathbf{w}}}L_{MCE} &amp;=
+\nabla{\tilde{\mathbf{w}}}J_{MCE} &amp;=
 \frac{1}{n}\tilde{\mathbf{X}}^{T}(\mathbf{p} - \mathbf{y}) \\
 \end{align*}
 \]</span> 這些偏導數的目的是要逐步地修正向量 <span
 class="math inline">\(\tilde{\mathbf{w}}\)</span> 的值:<br />
 線性回歸: <span class="math inline">\(\tilde{\mathbf{w}} =
 \tilde{\mathbf{w}} -
-\alpha\nabla{\tilde{\mathbf{w}}}L_{MSE}\)</span><br />
+\alpha\nabla{\tilde{\mathbf{w}}}J_{MSE}\)</span><br />
 邏輯回歸: <span class="math inline">\(\tilde{\mathbf{w}} =
 \tilde{\mathbf{w}} -
-\alpha\nabla{\tilde{\mathbf{w}}}L_{MCE}\)</span><br />
+\alpha\nabla{\tilde{\mathbf{w}}}J_{MCE}\)</span><br />
 其中 <span class="math inline">\(\alpha\)</span>
 是學習率用以控制步長，在此不多贅述。</p>
 <!--
