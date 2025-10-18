@@ -20,15 +20,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.clo5de.info","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.17.1","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":true,"nav":null,"activeClass":"utterances"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":10,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="機器學習的基石： 從 \(w^T{x}\) 向量內積以及矩陣乘法看懂線性與邏輯迴歸">
+    <meta name="description" content="機器學習的基礎： 從 \(w^T{x}\) 向量內積以及矩陣乘法看懂線性與邏輯迴歸">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Foundation of Machine Learning: Vector &amp; Matrix(zhTW)">
 <meta property="og:url" content="https://www.clo5de.info/2025/10/09/AI/foundation-of-machine-learning-vector-n-matrix-zhTW/index.html">
 <meta property="og:site_name" content="clooooode">
-<meta property="og:description" content="機器學習的基石： 從 \(w^T{x}\) 向量內積以及矩陣乘法看懂線性與邏輯迴歸">
+<meta property="og:description" content="機器學習的基礎： 從 \(w^T{x}\) 向量內積以及矩陣乘法看懂線性與邏輯迴歸">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-10-09T19:37:23.000Z">
-<meta property="article:modified_time" content="2025-10-18T08:08:39.727Z">
+<meta property="article:modified_time" content="2025-10-18T08:17:38.811Z">
 <meta property="article:author" content="clooooode">
 <meta property="article:tag" content="AI">
 <meta property="article:tag" content="Machine Learning">
@@ -256,7 +256,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-10-18 08:08:39" itemprop="dateModified" datetime="2025-10-18T08:08:39+00:00">2025-10-18</time>
+      <time title="Modified: 2025-10-18 08:17:38" itemprop="dateModified" datetime="2025-10-18T08:17:38+00:00">2025-10-18</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -299,7 +299,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>機器學習的基石： 從 <span class="math inline">\(w^T{x}\)</span>
+    <div class="post-body" itemprop="articleBody"><p>機器學習的基礎： 從 <span class="math inline">\(w^T{x}\)</span>
 向量內積以及矩陣乘法看懂線性與邏輯迴歸<br />
 <span id="more"></span></p>
 <h2 id="單一特徵的窘境">單一特徵的窘境</h2>
@@ -418,26 +418,17 @@ Shape of <span class="math inline">\(\hat{y}^{(i)} =
 \tilde{\mathbf{x}} =
 \begin{bmatrix}1 \\ x_1 \\ x_2 \\ \cdots \\ x_m\end{bmatrix}
 \]</span> 當我們有一個樣本的時候，這個樣本的第一個特徵會表達為: <span
-class="math inline">\(\tilde{x}^{(1)}\)</span>.<br />
+class="math inline">\(\tilde{x}^{(1)}\)</span>。<br />
 第二個特徵則表達為: <span
 class="math inline">\(\tilde{x}^{(2)}\)</span>… 依此類推直到, <span
 class="math inline">\(\tilde{x}^{(m)}\)</span>,<br />
 而整個向量 <span class="math inline">\(\tilde{\mathbf{x}}\)</span>
 的尺寸大小會是 <span class="math inline">\(((m + 1)\times
-1)\)</span>.<br />
-如果我們把這些樣本，也使用一個向量來表達，則會成為一個二維數組，也就是矩陣:
-<span class="math display">\[
-\tilde{\mathbf{X}} =
-\begin{bmatrix}
-\tilde{\mathbf{x}}^{(1)} \\
-\tilde{\mathbf{x}}^{(2)} \\
-\vdots \\
-\tilde{\mathbf{x}}^{(n)} \\
-\end{bmatrix}
-\]</span> 因為 <span
-class="math inline">\(\tilde{\mathbf{x}}^{(i)}\)</span>
-本身已經是一個列向量(column
-vector)了，為了讓矩陣可以展開來，我們這邊把每一個向量都轉置:<br />
+1)\)</span>。<br />
+接下來要垂直堆疊這些向量，但是尺寸大小 <span class="math inline">\(((m +
+1)\times 1)\)</span> 的向量不能垂直堆疊，<br />
+所以這邊對於每個向量 <span
+class="math inline">\(\tilde{\mathbf{x}}\)</span> 進行轉置後堆疊:<br />
 <span class="math display">\[
 \tilde{\mathbf{X}} =
 \begin{bmatrix}
@@ -446,7 +437,9 @@ vector)了，為了讓矩陣可以展開來，我們這邊把每一個向量都�
 \vdots \\
 (\tilde{\mathbf{x}}^{(n)})^T \\
 \end{bmatrix}
-=
+\]</span> 最後將矩陣展開來:<br />
+<span class="math display">\[
+\tilde{\mathbf{X}} =
 \begin{bmatrix}
 1 &amp; x_1^{(1)} &amp; x_2^{(1)} &amp; \cdots &amp; x_m^{(1)} \\
 1 &amp; x_1^{(2)} &amp; x_2^{(2)} &amp; \cdots &amp; x_m^{(2)} \\
