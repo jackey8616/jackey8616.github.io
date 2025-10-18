@@ -20,15 +20,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.clo5de.info","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.17.1","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":true,"nav":null,"activeClass":"utterances"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":10,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="機器學習的基礎： 從 \(w^T{x}\) 向量內積以及矩陣乘法看懂線性與邏輯迴歸">
+    <meta name="description" content="線性&#x2F;邏輯迴歸的向量化推導">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Foundation of Machine Learning: Vector &amp; Matrix(zhTW)">
-<meta property="og:url" content="https://www.clo5de.info/2025/10/09/AI/foundation-of-machine-learning-vector-n-matrix-zhTW/index.html">
+<meta property="og:title" content="Vectorization of Linear and Logistic Regression: A Mathematical Derivation(zhTW)">
+<meta property="og:url" content="https://www.clo5de.info/2025/10/09/AI/vectorization-of-linear-and-logistic-regression-zhTW/index.html">
 <meta property="og:site_name" content="clooooode">
-<meta property="og:description" content="機器學習的基礎： 從 \(w^T{x}\) 向量內積以及矩陣乘法看懂線性與邏輯迴歸">
+<meta property="og:description" content="線性&#x2F;邏輯迴歸的向量化推導">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-10-09T19:37:23.000Z">
-<meta property="article:modified_time" content="2025-10-18T08:35:04.453Z">
+<meta property="article:modified_time" content="2025-10-18T09:07:41.335Z">
 <meta property="article:author" content="clooooode">
 <meta property="article:tag" content="AI">
 <meta property="article:tag" content="Machine Learning">
@@ -38,14 +38,14 @@
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://www.clo5de.info/2025/10/09/AI/foundation-of-machine-learning-vector-n-matrix-zhTW/">
+<link rel="canonical" href="https://www.clo5de.info/2025/10/09/AI/vectorization-of-linear-and-logistic-regression-zhTW/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.clo5de.info/2025/10/09/AI/foundation-of-machine-learning-vector-n-matrix-zhTW/","path":"2025/10/09/AI/foundation-of-machine-learning-vector-n-matrix-zhTW/","title":"Foundation of Machine Learning: Vector & Matrix(zhTW)"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.clo5de.info/2025/10/09/AI/vectorization-of-linear-and-logistic-regression-zhTW/","path":"2025/10/09/AI/vectorization-of-linear-and-logistic-regression-zhTW/","title":"Vectorization of Linear and Logistic Regression: A Mathematical Derivation(zhTW)"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Foundation of Machine Learning: Vector & Matrix(zhTW) | clooooode</title><meta name="robots" content="noindex">
+<title>Vectorization of Linear and Logistic Regression: A Mathematical Derivation(zhTW) | clooooode</title><meta name="robots" content="noindex">
   
 
 
@@ -220,7 +220,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://www.clo5de.info/2025/10/09/AI/foundation-of-machine-learning-vector-n-matrix-zhTW/">
+    <link itemprop="mainEntityOfPage" href="https://www.clo5de.info/2025/10/09/AI/vectorization-of-linear-and-logistic-regression-zhTW/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://avatars1.githubusercontent.com/u/12930377?s=400&u=3e932a7f6b769a0e1028806815067be598db3351&v=4">
@@ -233,12 +233,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="Foundation of Machine Learning: Vector & Matrix(zhTW) | clooooode">
+      <meta itemprop="name" content="Vectorization of Linear and Logistic Regression: A Mathematical Derivation(zhTW) | clooooode">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Foundation of Machine Learning: Vector & Matrix(zhTW)
+          Vectorization of Linear and Logistic Regression: A Mathematical Derivation(zhTW)
         </h1>
 
         <div class="post-meta-container">
@@ -256,7 +256,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-10-18 08:35:04" itemprop="dateModified" datetime="2025-10-18T08:35:04+00:00">2025-10-18</time>
+      <time title="Modified: 2025-10-18 09:07:41" itemprop="dateModified" datetime="2025-10-18T09:07:41+00:00">2025-10-18</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -299,9 +299,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>機器學習的基礎： 從 <span class="math inline">\(w^T{x}\)</span>
-向量內積以及矩陣乘法看懂線性與邏輯迴歸<br />
-<span id="more"></span></p>
+    <div class="post-body" itemprop="articleBody"><p>線性/邏輯迴歸的向量化推導 <span id="more"></span></p>
 <h2 id="單一特徵的窘境">單一特徵的窘境</h2>
 <p>在前幾篇文章中(<a href="/2025/10/03/AI/linear-regression-and-its-math-zhTW/" title="Linear Regression &amp; its mathematics(zhTW)">[線性回歸]</a>,
 <a href="/2025/10/07/AI/logistic-regression-and-its-math-zhTW/" title="Logistic Regression &amp; its mathematics(zhTW)">[邏輯回歸]</a>)，我們使用了大量的數學推導，但是為了方便討論數學原理，我們都採用了較為單純的單特徵或者是雙特徵的假設來進行:</p>
@@ -454,7 +452,7 @@ class="math inline">\(\hat{\mathbf{y}}\)</span>)</h4>
 向量，都會有一個對應的預測值 <span
 class="math inline">\(\hat{y}^{(i)}\)</span>,<br />
 把這些預測值都堆疊起來，就成為了 <span
-class="math inline">\(\tilde{\mathbf{y}}\)</span>:<br />
+class="math inline">\(\hat{\mathbf{y}}\)</span>:<br />
 <span class="math display">\[
 \hat{\mathbf{y}} =
 \begin{bmatrix}
