@@ -131,11 +131,11 @@ $$
 \tilde{\mathbf{x}} =
 \begin{bmatrix}1 \\ x_1 \\ x_2 \\ \cdots \\ x_m\end{bmatrix}
 $$
-When we have one sample, its first feature vector is expressed as $\tilde{\mathbf{x}}^{(1)}$.
-The second is expressed as $\tilde{\mathbf{x}}^{(2)}$, and so on, up to $\tilde{\mathbf{x}}^{(n)}$.
+When we have one sample, its first feature is expressed as $x_1$.
+The second is expressed as $x_2$, and so on, up to $x_m$.
 The size of the entire vector $\tilde{\mathbf{x}}$ will be $((m + 1)\times 1)$.
 Next, we need to stack these vectors vertically. However, vectors of size $((m + 1)\times 1)$ cannot be stacked vertically as rows.
-So, we transpose each vector $\tilde{\mathbf{x}}$ before stacking:
+So, we transpose each vector $\tilde{\mathbf{x}}$ for stacking:
 $$
 \tilde{\mathbf{X}} = 
 \begin{bmatrix}
@@ -143,7 +143,6 @@ $$
 (\tilde{\mathbf{x}}^{(2)})^T \\
 \vdots \\
 (\tilde{\mathbf{x}}^{(n)})^T \\
-(\tilde{\mathbf{x}}^{(n)})^T
 \end{bmatrix}
 $$
 Finally, expanding the matrix:
@@ -154,7 +153,6 @@ $$
 1 & x_1^{(2)} & x_2^{(2)} & \cdots & x_m^{(2)} \\
 \vdots & \vdots & \vdots & \ddots & \vdots \\
 1 & x_1^{(n)} & x_2^{(n)} & \cdots & x_m^{(n)} \\
-1 & x_1^{(n)} & x_2^{(n)} & \cdots & x_m^{(n)}
 \end{bmatrix}
 $$
 Shape of $\tilde{\mathbf{X}} = (n\times (m+1))$  
@@ -331,7 +329,7 @@ $$
 &= \frac{1}{n}\sum_{i=1}^{n}\dfrac{dL^{(i)}}{d\tilde{\mathbf{w}}}
 \end{align*}
 $$
-Apply the chain rule: $\dfrac{dL^{(i)}}{d\tilde{\mathbf{w}}} = \dfrac{dL^{(i)}}{dp^{(i)}}\dfrac{dp^{(i)}}{dz^{(i)}}\dfrac{dz^{(i)}}{d\tilde{\mathbf{w}}}$
+Apply the chain rule: $\dfrac{dL^{(i)}}{d\tilde{\mathbf{w}}} = \dfrac{dL^{(i)}}{dp^{(i)}}\dfrac{dp^{(i)}}{dz^{(i)}}\dfrac{dz^{(i)}}{d\tilde{\mathbf{w}}}$  
 First, find $\dfrac{dL^{(i)}}{dp^{(i)}}$:
 $$
 \begin{align*}

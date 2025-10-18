@@ -131,8 +131,8 @@ $$
 \tilde{\mathbf{x}} =
 \begin{bmatrix}1 \\ x_1 \\ x_2 \\ \cdots \\ x_m\end{bmatrix}
 $$
-當我們有一個樣本的時候，這個樣本的第一個特徵會表達為: $\tilde{x}^{(1)}$。  
-第二個特徵則表達為: $\tilde{x}^{(2)}$... 依此類推直到, $\tilde{x}^{(m)}$,  
+當我們有一個樣本的時候，這個樣本的第一個特徵會表達為: $x_1$。  
+第二個特徵則表達為: $x_2$... 依此類推直到, $x_m$,  
 而整個向量 $\tilde{\mathbf{x}}$ 的尺寸大小會是 $((m + 1)\times 1)$。  
 接下來要垂直堆疊這些向量，但是尺寸大小 $((m + 1)\times 1)$ 的向量不能垂直堆疊，  
 所以這邊對於每個向量 $\tilde{\mathbf{x}}$ 進行轉置後堆疊:  
@@ -326,7 +326,7 @@ $$
 \begin{align*}
 \text{Let } L^{(i)} &= -[y^{(i)}\ln(p^{(i)}) + (1 - y^{(i)})\ln(1 - p^{(i)})] \\
 \dfrac{dJ_{MCE}}{d\tilde{\mathbf{w}}} &= \frac{1}{n}\dfrac{d}{d\tilde{\mathbf{w}}}\sum_{i=1}^{n}[y^{(i)}\ln(p^{(i)}) + (1 - y^{(i)})\ln(1 - p^{(i)})] \\
-&= \frac{1}{n}\dfrac{d}{d\tilde{\mathbf{w}}}\sum_{i=1}^{n}L^{(i)} \\
+&= \frac{1}{n}\sum_{i=1}^{n}\dfrac{dL^{(i)}}{d\tilde{\mathbf{w}}} \\
 \end{align*}
 $$
 套用鏈式法則: $\dfrac{dL^{(i)}}{d\tilde{\mathbf{w}}} = \dfrac{dL^{(i)}}{dp^{(i)}}\dfrac{dp^{(i)}}{dz^{(i)}}\dfrac{dz^{(i)}}{d\tilde{\mathbf{w}}}$  
@@ -385,7 +385,7 @@ $$
 最後放回 $J_{MCE}$的微分式中並且轉為向量及矩陣形式:  
 $$
 \begin{align*}
-\dfrac{dJ_{MCE}}{d\tilde{\mathbf{w}}} &= \frac{1}{n}\dfrac{d}{d\tilde{\mathbf{w}}}\sum_{i=1}^{n}L^{(i)} \\
+\dfrac{dJ_{MCE}}{d\tilde{\mathbf{w}}} &= \frac{1}{n}\sum_{i=1}^{n}\dfrac{dL^{(i)}}{d\tilde{\mathbf{w}}} \\
 &= \frac{1}{n}\sum_{i=1}^{n}(p^{(i)} - y^{(i)})\cdot \tilde{\mathbf{x}}^{(i)} \\
 \nabla{\tilde{\mathbf{w}}}J_{MCE} &= \frac{1}{n}\tilde{\mathbf{X}}^{T}(\mathbf{p} - \mathbf{y}) \\
 \end{align*}
@@ -400,8 +400,8 @@ $$
 \end{align*}
 $$
 這些偏導數的目的是要逐步地修正向量 $\tilde{\mathbf{w}}$ 的值:  
-線性回歸: $\tilde{\mathbf{w}} = \tilde{\mathbf{w}} - \alpha\nabla{\tilde{\mathbf{w}}}J_{MSE}$  
-邏輯回歸: $\tilde{\mathbf{w}} = \tilde{\mathbf{w}} - \alpha\nabla{\tilde{\mathbf{w}}}J_{MCE}$  
+線性回歸: $\tilde{\mathbf{w}} := \tilde{\mathbf{w}} - \alpha\nabla{\tilde{\mathbf{w}}}J_{MSE}$  
+邏輯回歸: $\tilde{\mathbf{w}} := \tilde{\mathbf{w}} - \alpha\nabla{\tilde{\mathbf{w}}}J_{MCE}$  
 其中 $\alpha$ 是學習率用以控制步長，在此不多贅述。  
 
 ## 結語
