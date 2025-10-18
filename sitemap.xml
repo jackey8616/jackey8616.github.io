@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://www.clo5de.info/milestone/index.html</loc>
+    <loc>https://www.clo5de.info/tags/index.html</loc>
     
     <lastmod>2025-10-18</lastmod>
     
@@ -11,7 +11,7 @@
   </url>
   
   <url>
-    <loc>https://www.clo5de.info/tags/index.html</loc>
+    <loc>https://www.clo5de.info/milestone/index.html</loc>
     
     <lastmod>2025-10-18</lastmod>
     
@@ -200,7 +200,7 @@
   </url>
   
   <url>
-    <loc>https://www.clo5de.info/2023/07/11/note/AWS/EC2-Swap-With-Launch-Template/</loc>
+    <loc>https://www.clo5de.info/2018/05/01/application/maybep2p/MaybeP2P-1/</loc>
     
     <lastmod>2025-10-18</lastmod>
     
@@ -209,7 +209,7 @@
   </url>
   
   <url>
-    <loc>https://www.clo5de.info/2018/05/01/application/maybep2p/MaybeP2P-1/</loc>
+    <loc>https://www.clo5de.info/2023/07/11/note/AWS/EC2-Swap-With-Launch-Template/</loc>
     
     <lastmod>2025-10-18</lastmod>
     
@@ -335,15 +335,6 @@
   </url>
   
   <url>
-    <loc>https://www.clo5de.info/2018/05/24/CTF/pwnable-kr/Toddlers_Bottle/4-flag/</loc>
-    
-    <lastmod>2025-10-18</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://www.clo5de.info/2018/05/25/CTF/pwnable-kr/Toddlers_Bottle/5-passcode/</loc>
     
     <lastmod>2025-10-18</lastmod>
@@ -362,7 +353,7 @@
   </url>
   
   <url>
-    <loc>https://www.clo5de.info/2018/05/31/CTF/pwnable-kr/Toddlers_Bottle/7-input/</loc>
+    <loc>https://www.clo5de.info/2018/05/24/CTF/pwnable-kr/Toddlers_Bottle/4-flag/</loc>
     
     <lastmod>2025-10-18</lastmod>
     
@@ -372,6 +363,15 @@
   
   <url>
     <loc>https://www.clo5de.info/2018/08/02/CTF/pwnable-kr/Toddlers_Bottle/8-leg/</loc>
+    
+    <lastmod>2025-10-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.clo5de.info/2018/05/31/CTF/pwnable-kr/Toddlers_Bottle/7-input/</loc>
     
     <lastmod>2025-10-18</lastmod>
     
@@ -717,34 +717,6 @@
   </url>
   
   <url>
-    <loc>https://www.clo5de.info/tags/AWS/</loc>
-    <lastmod>2025-10-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.clo5de.info/tags/ECS/</loc>
-    <lastmod>2025-10-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.clo5de.info/tags/EC2/</loc>
-    <lastmod>2025-10-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.clo5de.info/tags/EBS/</loc>
-    <lastmod>2025-10-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://www.clo5de.info/tags/Python2-7/</loc>
     <lastmod>2025-10-18</lastmod>
     <changefreq>weekly</changefreq>
@@ -767,6 +739,34 @@
   
   <url>
     <loc>https://www.clo5de.info/tags/peer-to-peer/</loc>
+    <lastmod>2025-10-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.clo5de.info/tags/AWS/</loc>
+    <lastmod>2025-10-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.clo5de.info/tags/ECS/</loc>
+    <lastmod>2025-10-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.clo5de.info/tags/EC2/</loc>
+    <lastmod>2025-10-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.clo5de.info/tags/EBS/</loc>
     <lastmod>2025-10-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -936,14 +936,14 @@
   </url>
   
   <url>
-    <loc>https://www.clo5de.info/categories/AWS/</loc>
+    <loc>https://www.clo5de.info/categories/Application/MaybeP2P/</loc>
     <lastmod>2025-10-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.clo5de.info/categories/Application/MaybeP2P/</loc>
+    <loc>https://www.clo5de.info/categories/AWS/</loc>
     <lastmod>2025-10-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
