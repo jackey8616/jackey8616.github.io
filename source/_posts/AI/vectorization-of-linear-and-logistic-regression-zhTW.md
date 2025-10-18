@@ -166,10 +166,10 @@ $$
 \hat{y}^{(1)} \\
 \hat{y}^{(2)} \\
 \vdots \\
-\hat{y}^{(n)},
+\hat{y}^{(n)}
 \end{bmatrix}
 $$  
-Shape of $\tilde{\mathbf{y}} = n\times 1$  
+Shape of $\hat{\mathbf{y}} = n\times 1$  
 
 #### 實際輸出向量($\mathbf{y}$)
 而對應的真實輸出，也同樣可以推疊成向量:
@@ -179,7 +179,7 @@ $$
 y^{(1)} \\
 y^{(2)} \\
 \vdots \\
-y^{(n)},
+y^{(n)}
 \end{bmatrix}
 $$  
 Shape of $\mathbf{y} = n\times 1$  
