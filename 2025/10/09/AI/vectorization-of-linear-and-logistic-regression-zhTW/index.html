@@ -22,17 +22,19 @@
 
     <meta name="description" content="線性&#x2F;邏輯迴歸的向量化推導">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Vectorization of Linear and Logistic Regression: A Mathematical Derivation(zhTW)">
+<meta property="og:title" content="Vectorization of Linear and Logistic Regression(zhTW)">
 <meta property="og:url" content="https://www.clo5de.info/2025/10/09/AI/vectorization-of-linear-and-logistic-regression-zhTW/index.html">
 <meta property="og:site_name" content="clooooode">
 <meta property="og:description" content="線性&#x2F;邏輯迴歸的向量化推導">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-10-09T19:37:23.000Z">
-<meta property="article:modified_time" content="2025-10-18T09:42:55.733Z">
+<meta property="article:modified_time" content="2025-10-18T09:52:21.477Z">
 <meta property="article:author" content="clooooode">
 <meta property="article:tag" content="AI">
 <meta property="article:tag" content="Machine Learning">
 <meta property="article:tag" content="Regression Analysis">
+<meta property="article:tag" content="Linear Regression">
+<meta property="article:tag" content="Logistic Regression">
 <meta property="article:tag" content="Vector">
 <meta property="article:tag" content="Matrix">
 <meta name="twitter:card" content="summary">
@@ -42,10 +44,10 @@
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.clo5de.info/2025/10/09/AI/vectorization-of-linear-and-logistic-regression-zhTW/","path":"2025/10/09/AI/vectorization-of-linear-and-logistic-regression-zhTW/","title":"Vectorization of Linear and Logistic Regression: A Mathematical Derivation(zhTW)"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.clo5de.info/2025/10/09/AI/vectorization-of-linear-and-logistic-regression-zhTW/","path":"2025/10/09/AI/vectorization-of-linear-and-logistic-regression-zhTW/","title":"Vectorization of Linear and Logistic Regression(zhTW)"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Vectorization of Linear and Logistic Regression: A Mathematical Derivation(zhTW) | clooooode</title><meta name="robots" content="noindex">
+<title>Vectorization of Linear and Logistic Regression(zhTW) | clooooode</title><meta name="robots" content="noindex">
   
 
 
@@ -233,12 +235,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="Vectorization of Linear and Logistic Regression: A Mathematical Derivation(zhTW) | clooooode">
+      <meta itemprop="name" content="Vectorization of Linear and Logistic Regression(zhTW) | clooooode">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Vectorization of Linear and Logistic Regression: A Mathematical Derivation(zhTW)
+          Vectorization of Linear and Logistic Regression(zhTW)
         </h1>
 
         <div class="post-meta-container">
@@ -256,7 +258,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-10-18 09:42:55" itemprop="dateModified" datetime="2025-10-18T09:42:55+00:00">2025-10-18</time>
+      <time title="Modified: 2025-10-18 09:52:21" itemprop="dateModified" datetime="2025-10-18T09:52:21+00:00">2025-10-18</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -444,8 +446,8 @@ class="math inline">\(\tilde{\mathbf{x}}\)</span> 進行轉置後堆疊:<br />
 \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
 1 &amp; x_1^{(n)} &amp; x_2^{(n)} &amp; \cdots &amp; x_m^{(n)} \\
 \end{bmatrix}
-\]</span> Shape of <span class="math inline">\(X = (n\times
-(m+1))\)</span></p>
+\]</span> Shape of <span class="math inline">\(\tilde{\mathbf{X}} =
+(n\times (m+1))\)</span></p>
 <h4 id="預測向量hatmathbfy">預測向量(<span
 class="math inline">\(\hat{\mathbf{y}}\)</span>)</h4>
 <p>每一個 <span class="math inline">\(\tilde{\mathbf{x}}^{(i)}\)</span>
@@ -772,6 +774,8 @@ class="math inline">\(\tilde{\mathbf{w}}\)</span> 的值:<br />
               <a href="/tags/AI/" rel="tag"># AI</a>
               <a href="/tags/Machine-Learning/" rel="tag"># Machine Learning</a>
               <a href="/tags/Regression-Analysis/" rel="tag"># Regression Analysis</a>
+              <a href="/tags/Linear-Regression/" rel="tag"># Linear Regression</a>
+              <a href="/tags/Logistic-Regression/" rel="tag"># Logistic Regression</a>
               <a href="/tags/Vector/" rel="tag"># Vector</a>
               <a href="/tags/Matrix/" rel="tag"># Matrix</a>
           </div>
