@@ -14,6 +14,7 @@ mathjax: true
 ---
 
 Vectorized Derivations of Linear and Logistic Regression
+{% post_link AI/vectorization-of-linear-and-logistic-regression-zhTW '>> [zhTW version] <<' %}  
 <!-- More -->
 
 ## The Predicament of a Single Feature
