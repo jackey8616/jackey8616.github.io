@@ -28,7 +28,7 @@
 <meta property="og:description" content="機器學習的基石： 從 \(w^T{x}\) 向量內積以及矩陣乘法看懂線性與邏輯迴歸">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-10-09T19:37:23.000Z">
-<meta property="article:modified_time" content="2025-10-18T07:21:22.572Z">
+<meta property="article:modified_time" content="2025-10-18T08:08:39.727Z">
 <meta property="article:author" content="clooooode">
 <meta property="article:tag" content="AI">
 <meta property="article:tag" content="Machine Learning">
@@ -256,7 +256,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-10-18 07:21:22" itemprop="dateModified" datetime="2025-10-18T07:21:22+00:00">2025-10-18</time>
+      <time title="Modified: 2025-10-18 08:08:39" itemprop="dateModified" datetime="2025-10-18T08:08:39+00:00">2025-10-18</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -282,14 +282,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>5.4k</span>
+      <span>5k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>19 mins.</span>
+      <span>18 mins.</span>
     </span>
 </div>
 
@@ -416,7 +416,7 @@ Shape of <span class="math inline">\(\hat{y}^{(i)} =
 向量來表示:<br />
 <span class="math display">\[
 \tilde{\mathbf{x}} =
-\begin{bmatrix}1 \\ x^{(1)} \\ x^{(2)} \\ \cdots \\ x^{(m)}\end{bmatrix}
+\begin{bmatrix}1 \\ x_1 \\ x_2 \\ \cdots \\ x_m\end{bmatrix}
 \]</span> 當我們有一個樣本的時候，這個樣本的第一個特徵會表達為: <span
 class="math inline">\(\tilde{x}^{(1)}\)</span>.<br />
 第二個特徵則表達為: <span
@@ -448,10 +448,10 @@ vector)了，為了讓矩陣可以展開來，我們這邊把每一個向量都�
 \end{bmatrix}
 =
 \begin{bmatrix}
-1 &amp; x_{1, 1} &amp; x_{1, 2} &amp; \cdots &amp; x_{1, m} \\
-1 &amp; x_{2, 1} &amp; x_{2, 2} &amp; \cdots &amp; x_{2, m} \\
+1 &amp; x_1^{(1)} &amp; x_2^{(1)} &amp; \cdots &amp; x_m^{(1)} \\
+1 &amp; x_1^{(2)} &amp; x_2^{(2)} &amp; \cdots &amp; x_m^{(2)} \\
 \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-1 &amp; x_{n, 1} &amp; x_{n, 2} &amp; \cdots &amp; x_{n, m} \\
+1 &amp; x_1^{(n)} &amp; x_2^{(n)} &amp; \cdots &amp; x_m^{(n)} \\
 \end{bmatrix}
 \]</span> Shape of <span class="math inline">\(X = (n\times
 (m+1))\)</span></p>
@@ -546,111 +546,56 @@ L_{MSE} &amp;= \frac{1}{n}(\hat{\mathbf{y}} -
 接下來我們求偏導:<br />
 <span class="math display">\[
 \begin{align*}
-\text{Let }\mathbf{e} &amp;= \begin{bmatrix}\hat{y}^{(1)} - y^{(1)} \\
-\hat{y}^{(2)} - y^{(2)} \\ \vdots \\ \hat{y}^{(n)} -
-y^{(n)}\end{bmatrix} = \hat{\mathbf{y}} - \mathbf{y} \\
+\text{Let }L^{(i)} &amp;= \hat{y}^{(i)} - y^{(i)} \\
+L_{MSE} &amp;= \frac{1}{n}\sum_{i=1}^{n}(\hat{y}^{(i)} - y^{(i)})^2 \\
 \dfrac{dL_{MSE}}{d\tilde{\mathbf{w}}} &amp;=
-\frac{1}{n}\dfrac{d}{d\tilde{\mathbf{w}}}(\hat{\mathbf{y}} -
-\mathbf{y})^T(\hat{\mathbf{y}} - \mathbf{y}) \\
-&amp;= \frac{1}{n}\dfrac{d}{d\tilde{\mathbf{w}}}\mathbf{e}^T\mathbf{e}
-\\
-&amp;=
-\frac{1}{n}(\dfrac{d\mathbf{e}}{d\tilde{\mathbf{w}}})^{T}\dfrac{d(\mathbf{e}^{T}\mathbf{e})}{d\mathbf{e}}
-\\
-&amp;= \frac{1}{n}\tilde{\mathbf{X}}^{T}\cdot 2\mathbf{e} \\
-&amp;= \frac{2}{n}\tilde{\mathbf{X}}^{T}\mathbf{e} \\
+\frac{1}{n}\sum_{i=1}^{n}\dfrac{d(L^{(i)})^2}{d\tilde{\mathbf{w}}}
+\end{align*}
+\]</span><br />
+鏈式法則:<br />
+<span class="math display">\[
+\dfrac{d(L^{(i)})^2}{d\tilde{\mathbf{w}}} =
+\dfrac{d(L^{(i)})^2}{dL^{(i)}}\dfrac{dL^{(i)}}{d\tilde{\mathbf{w}}}
+\]</span> 第一步求 <span
+class="math inline">\(\dfrac{d(L^{(i)})^2}{dL^{(i)}}\)</span>:<br />
+<span class="math display">\[
+\begin{align*}
+\dfrac{d(L^{(i)})^2}{dL^{(i)}} &amp;= 2L^{(i)} \\
+&amp;= 2(\hat{y}^{(i)} - y^{(i)})
+\end{align*}
+\]</span> 接著求 <span
+class="math inline">\(\dfrac{dL^{(i)}}{d\tilde{\mathbf{w}}}\)</span>:<br />
+<span class="math display">\[
+\begin{align*}
+\dfrac{dL^{(i)}}{d\tilde{\mathbf{w}}} &amp;= \dfrac{d(\hat{y}^{(i)} -
+y^{(i)})}{d\tilde{\mathbf{w}}} \\
+&amp;= \dfrac{d(\tilde{\mathbf{w}}^T\tilde{\mathbf{x}}^{(i)} -
+y^{(i)})}{d\tilde{\mathbf{w}}} \\
+&amp;= \tilde{\mathbf{x}}^{(i)} - 0 \\
+&amp;= \tilde{\mathbf{x}}^{(i)} \\
+\end{align*}
+\]</span> 合併回鏈式法則:<br />
+<span class="math display">\[
+\begin{align*}
+\dfrac{d(L^{(i)})^2}{d\tilde{\mathbf{w}}} &amp;=
+\dfrac{d(L^{(i)})^2}{dL^{(i)}}\dfrac{dL^{(i)}}{d\tilde{\mathbf{w}}} \\
+&amp;= 2(\hat{y}^{(i)} - y^{(i)})\tilde{\mathbf{x}}^{(i)} \\
+\end{align*}
+\]</span> 最後放回 <span
+class="math inline">\(L_{MSE}\)</span>的微分式中並且轉為向量及矩陣形式:<br />
+<span class="math display">\[
+\begin{align*}
+\dfrac{dL_{MSE}}{d\tilde{\mathbf{w}}} &amp;=
+\frac{1}{n}\sum_{i=1}^{n}\dfrac{d(L^{(i)})^2}{d\tilde{\mathbf{w}}} \\
+&amp;= \frac{1}{n}\sum_{i=1}^{n}(2(\hat{y}^{(i)} -
+y^{(i)})\tilde{\mathbf{x}}^{(i)}) \\
+&amp;= \frac{2}{n}\sum_{i=1}^{n}(\hat{y}^{(i)} -
+y^{(i)})\tilde{\mathbf{x}}^{(i)} \\
 \nabla{\tilde{\mathbf{w}}}L_{MSE} &amp;=
 \frac{2}{n}\tilde{\mathbf{X}}^{T}(\tilde{\mathbf{X}}\tilde{\mathbf{w}} -
 \mathbf{y}) \\
 \end{align*}
-\]</span><br />
-<div class='spoiler collapsed'>
-    <div class='spoiler-title'>
-        [證明 $\dfrac{dL}{dw} = (\dfrac{de}{dw})^{T}\dfrac{dL}{de}$]
-    </div>
-    <div class='spoiler-content'>
-        <p>舉一個簡單的模型為例:<br />
-權重向量 <span class="math inline">\(\tilde{\mathbf{w}} : d=2 +
-1\)</span> 個權重 含 <span class="math inline">\(b\)</span>: <span
-class="math inline">\(\tilde{\mathbf{w}} = \begin{bmatrix}b \\ w_1 \\
-w_2\end{bmatrix}\)</span><br />
-誤差向量 <span class="math inline">\(\mathbf{e} : n=3\)</span> 個樣本
-<span class="math inline">\(\mathbf{e} = \begin{bmatrix}e^{(1)} \\
-e^{(2)} \\ e^{(3)}\end{bmatrix}\)</span><br />
-損失函數 <span class="math inline">\(L\)</span>: 標量 <span
-class="math inline">\(L_{MSE} = (e^{(1)})^2 + (e^{(2)})^2 +
-(e^{(3)})^2\)</span> 忽略 <span
-class="math inline">\(\frac{1}{n}\)</span> 等常數。<br />
-<span class="math display">\[
-\begin{align*}
-\dfrac{dL}{d\mathbf{e}} &amp;=
-\begin{bmatrix}
-\dfrac{dL}{de^{(1)}} \\
-\dfrac{dL}{de^{(2)}} \\
-\dfrac{dL}{de^{(3)}} \\
-\end{bmatrix} \\
-&amp;=
-\begin{bmatrix}2e^{(1)} \\ 2e^{(2)} \\
-2e^{(3)}\end{bmatrix}\quad\because L = (e^{(1)})^2 + (e^{(2)})^2 +
-(e^{(3)})^2 \\
-&amp;= 2\mathbf{e}\tag{1}\\
-\\
-\dfrac{d\mathbf{e}}{d\tilde{\mathbf{w}}} &amp;=
-\begin{bmatrix}
-\dfrac{de^{(1)}}{db} &amp; \dfrac{de^{(1)}}{dw_1} &amp;
-\dfrac{de^{(1)}}{dw_2} \\
-\dfrac{de^{(2)}}{db} &amp; \dfrac{de^{(2)}}{dw_1} &amp;
-\dfrac{de^{(2)}}{dw_2} \\
-\dfrac{de^{(3)}}{db} &amp; \dfrac{de^{(3)}}{dw_1} &amp;
-\dfrac{de^{(3)}}{dw_2} \\
-\end{bmatrix}\tag{2}\because \text{Jacobian matrix} \\
-\text{Shape } &amp;= (n \times d) = 3 \times 3 \\
-\\
-(\dfrac{d\mathbf{e}}{d\tilde{\mathbf{w}}})^{T} &amp;=
-\begin{bmatrix}
-\dfrac{de^{(1)}}{db} &amp; \dfrac{de^{(2)}}{db} &amp;
-\dfrac{de^{(3)}}{db} \\
-\dfrac{de^{(1)}}{dw_1} &amp; \dfrac{de^{(2)}}{dw_1} &amp;
-\dfrac{de^{(3)}}{dw_1} \\
-\dfrac{de^{(1)}}{dw_2} &amp; \dfrac{de^{(2)}}{dw_2} &amp;
-\dfrac{de^{(3)}}{dw_2} \\
-\end{bmatrix}\tag{2}\\
-\text{Shape } &amp;= (d \times n) = 3 \times 3 \\
-\\
-\text{Base on (1), (2) =&gt;} \\
-(\dfrac{d\mathbf{e}}{d\tilde{\mathbf{w}}})^{T}\dfrac{dL}{d\mathbf{e}}
-&amp;=
-\begin{bmatrix}
-\dfrac{de^{(1)}}{db}\cdot 2e^{(1)} + \dfrac{de^{(2)}}{db}\cdot 2e^{(2)}
-+ \dfrac{de^{(3)}}{db}\cdot 2e^{(3)} \\
-\dfrac{de^{(1)}}{dw_1}\cdot 2e^{(1)} + \dfrac{de^{(2)}}{dw_1}\cdot
-2e^{(2)} + \dfrac{de^{(3)}}{dw_1}\cdot 2e^{(3)} \\
-\dfrac{de^{(1)}}{dw_2}\cdot 2e^{(1)} + \dfrac{de^{(2)}}{dw_2}\cdot
-2e^{(2)} + \dfrac{de^{(3)}}{dw_2}\cdot 2e^{(3)} \\
-\end{bmatrix}\\
-\\
-\dfrac{dL}{dw_1} &amp;=
-\sum_{i=1}^{3}\dfrac{dL}{de^{(i)}}\dfrac{de^{(i)}}{dw_1} \\
-&amp;= 2e^{(1)}\dfrac{de^{(1)}}{dw_1} + 2e^{(2)}\dfrac{de^{(1)}}{dw_1} +
-2e^{(3)}\dfrac{de^{(3)}}{dw_1} \\
-\\
-\dfrac{dL}{d\tilde{\mathbf{w}}} &amp;=
-\begin{bmatrix}
-2e^{(1)}\dfrac{de^{(1)}}{db} + 2e^{(2)}\dfrac{de^{(2)}}{db} +
-2e^{(3)}\dfrac{de^{(3)}}{db} \\
-2e^{(1)}\dfrac{de^{(1)}}{dw_1} + 2e^{(2)}\dfrac{de^{(2)}}{dw_1} +
-2e^{(3)}\dfrac{de^{(3)}}{dw_1} \\
-2e^{(1)}\dfrac{de^{(1)}}{dw_2} + 2e^{(2)}\dfrac{de^{(2)}}{dw_2} +
-2e^{(3)}\dfrac{de^{(3)}}{dw_2}
-\end{bmatrix} \\
-\therefore
-\dfrac{dL}{d\tilde{\mathbf{w}}} &amp;=
-(\dfrac{d\mathbf{e}}{d\tilde{\mathbf{w}}})^{T}\dfrac{dL}{d\mathbf{e}} \\
-\end{align*}
 \]</span></p>
-
-    </div>
-</div></p>
 <h2 id="邏輯回歸">邏輯回歸</h2>
 <h3 id="矩陣形式-1">矩陣形式</h3>
 <p>假設樣本數為 <span class="math inline">\(n\)</span>, 特徵數為 <span
