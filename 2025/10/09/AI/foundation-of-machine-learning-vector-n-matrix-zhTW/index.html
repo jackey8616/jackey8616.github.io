@@ -28,7 +28,7 @@
 <meta property="og:description" content="機器學習的基石： 從 \(w^T{x}\) 向量內積以及矩陣乘法看懂線性與邏輯迴歸">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-10-09T19:37:23.000Z">
-<meta property="article:modified_time" content="2025-10-18T06:43:56.516Z">
+<meta property="article:modified_time" content="2025-10-18T06:55:51.731Z">
 <meta property="article:author" content="clooooode">
 <meta property="article:tag" content="AI">
 <meta property="article:tag" content="Machine Learning">
@@ -156,7 +156,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%96%AE%E4%B8%80%E7%89%B9%E5%BE%B5%E7%9A%84%E7%AA%98%E5%A2%83"><span class="nav-number">1.</span> <span class="nav-text">單一特徵的窘境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%91%E9%87%8F%E5%8C%96vectorization"><span class="nav-number">2.</span> <span class="nav-text">向量化(Vectorization)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%B9%E5%BE%B5%E5%90%91%E9%87%8Fx-%E6%AC%8A%E9%87%8D%E5%90%91%E9%87%8Fw"><span class="nav-number">2.1.</span> <span class="nav-text">特徵向量x &amp; 權重向量w</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%91%E9%87%8F%E5%85%A7%E7%A9%8D"><span class="nav-number">2.2.</span> <span class="nav-text">向量內積</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B7%9A%E6%80%A7%E5%9B%9E%E6%AD%B8%E7%9A%84%E7%9F%A9%E9%99%A3%E5%BD%A2%E5%BC%8F"><span class="nav-number">3.</span> <span class="nav-text">線性回歸的矩陣形式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%B9%E5%BE%B5%E7%9F%A9%E9%99%A3x%E7%9A%84%E6%93%B4%E5%85%85"><span class="nav-number">3.1.</span> <span class="nav-text">特徵矩陣(X)的擴充</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A0%90%E6%B8%AC%E5%90%91%E9%87%8Fhatmathbfy"><span class="nav-number">3.2.</span> <span class="nav-text">預測向量(\(\hat{\mathbf{y}}\))</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%A6%E9%9A%9B%E8%BC%B8%E5%87%BA%E5%90%91%E9%87%8Fmathbfy"><span class="nav-number">3.3.</span> <span class="nav-text">實際輸出向量(\(\mathbf{y}\))</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9F%A9%E9%99%A3%E5%BD%A2%E5%BC%8F%E7%9A%84%E6%A8%A1%E5%9E%8B%E9%A0%90%E6%B8%AC%E5%AE%9A%E7%BE%A9"><span class="nav-number">3.4.</span> <span class="nav-text">矩陣形式的模型預測定義</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9F%A9%E9%99%A3%E5%BD%A2%E5%BC%8F%E7%9A%84%E5%9D%87%E6%96%B9%E6%A0%B9%E8%AA%A4%E5%B7%AE"><span class="nav-number">3.5.</span> <span class="nav-text">矩陣形式的均方根誤差</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E7%89%B9%E5%BE%B5%E5%A4%9A%E6%A8%A3%E6%9C%AC%E7%B7%9A%E6%80%A7%E5%9B%9E%E6%AD%B8%E7%9A%84%E5%81%8F%E5%B0%8E"><span class="nav-number">4.</span> <span class="nav-text">多特徵多樣本線性回歸的偏導</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%82%8F%E8%BC%AF%E5%9B%9E%E6%AD%B8%E7%9A%84%E7%9F%A9%E9%99%A3%E5%BD%A2%E5%BC%8F"><span class="nav-number">5.</span> <span class="nav-text">邏輯回歸的矩陣形式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9F%A9%E9%99%A3%E5%BD%A2%E5%BC%8F%E7%9A%84%E5%B9%B3%E5%9D%87%E4%BA%A4%E5%8F%89%E7%86%B5%E8%AA%A4%E5%B7%AE"><span class="nav-number">5.1.</span> <span class="nav-text">矩陣形式的平均交叉熵誤差</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E7%89%B9%E5%BE%B5%E5%A4%9A%E6%A8%A3%E6%9C%AC%E9%82%8F%E8%BC%AF%E5%9B%9E%E6%AD%B8%E7%9A%84%E5%81%8F%E5%B0%8E"><span class="nav-number">6.</span> <span class="nav-text">多特徵多樣本邏輯回歸的偏導</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%96%AE%E4%B8%80%E7%89%B9%E5%BE%B5%E7%9A%84%E7%AA%98%E5%A2%83"><span class="nav-number">1.</span> <span class="nav-text">單一特徵的窘境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%91%E9%87%8F%E5%8C%96vectorization"><span class="nav-number">2.</span> <span class="nav-text">向量化(Vectorization)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%B9%E5%BE%B5%E5%90%91%E9%87%8Fx-%E6%AC%8A%E9%87%8D%E5%90%91%E9%87%8Fw"><span class="nav-number">2.1.</span> <span class="nav-text">特徵向量x &amp; 權重向量w</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%91%E9%87%8F%E5%85%A7%E7%A9%8D"><span class="nav-number">2.2.</span> <span class="nav-text">向量內積</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B7%9A%E6%80%A7%E5%9B%9E%E6%AD%B8%E7%9A%84%E7%9F%A9%E9%99%A3%E5%BD%A2%E5%BC%8F"><span class="nav-number">3.</span> <span class="nav-text">線性回歸的矩陣形式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%B9%E5%BE%B5%E7%9F%A9%E9%99%A3x%E7%9A%84%E6%93%B4%E5%85%85"><span class="nav-number">3.1.</span> <span class="nav-text">特徵矩陣(X)的擴充</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A0%90%E6%B8%AC%E5%90%91%E9%87%8Fhatmathbfy"><span class="nav-number">3.2.</span> <span class="nav-text">預測向量(\(\hat{\mathbf{y}}\))</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%A6%E9%9A%9B%E8%BC%B8%E5%87%BA%E5%90%91%E9%87%8Fmathbfy"><span class="nav-number">3.3.</span> <span class="nav-text">實際輸出向量(\(\mathbf{y}\))</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9F%A9%E9%99%A3%E5%BD%A2%E5%BC%8F%E7%9A%84%E6%A8%A1%E5%9E%8B%E9%A0%90%E6%B8%AC%E5%AE%9A%E7%BE%A9"><span class="nav-number">3.4.</span> <span class="nav-text">矩陣形式的模型預測定義</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9F%A9%E9%99%A3%E5%BD%A2%E5%BC%8F%E7%9A%84%E5%B9%B3%E5%9D%87%E5%B9%B3%E6%96%B9%E8%AA%A4%E5%B7%AE"><span class="nav-number">3.5.</span> <span class="nav-text">矩陣形式的平均平方誤差</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E7%89%B9%E5%BE%B5%E5%A4%9A%E6%A8%A3%E6%9C%AC%E7%B7%9A%E6%80%A7%E5%9B%9E%E6%AD%B8%E7%9A%84%E5%81%8F%E5%B0%8E"><span class="nav-number">4.</span> <span class="nav-text">多特徵多樣本線性回歸的偏導</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%82%8F%E8%BC%AF%E5%9B%9E%E6%AD%B8%E7%9A%84%E7%9F%A9%E9%99%A3%E5%BD%A2%E5%BC%8F"><span class="nav-number">5.</span> <span class="nav-text">邏輯回歸的矩陣形式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9F%A9%E9%99%A3%E5%BD%A2%E5%BC%8F%E7%9A%84%E5%B9%B3%E5%9D%87%E4%BA%A4%E5%8F%89%E7%86%B5%E8%AA%A4%E5%B7%AE"><span class="nav-number">5.1.</span> <span class="nav-text">矩陣形式的平均交叉熵誤差</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E7%89%B9%E5%BE%B5%E5%A4%9A%E6%A8%A3%E6%9C%AC%E9%82%8F%E8%BC%AF%E5%9B%9E%E6%AD%B8%E7%9A%84%E5%81%8F%E5%B0%8E"><span class="nav-number">6.</span> <span class="nav-text">多特徵多樣本邏輯回歸的偏導</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -256,7 +256,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-10-18 06:43:56" itemprop="dateModified" datetime="2025-10-18T06:43:56+00:00">2025-10-18</time>
+      <time title="Modified: 2025-10-18 06:55:51" itemprop="dateModified" datetime="2025-10-18T06:55:51+00:00">2025-10-18</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -282,7 +282,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>5.1k</span>
+      <span>5.2k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
@@ -410,9 +410,16 @@ class="math inline">\(m\)</span><br />
 Shape of <span class="math inline">\(\hat{y}^{(i)} =
 (1\times(m+1))\times((m+1)\times 1) = 1\times 1\)</span></p>
 <h3 id="特徵矩陣x的擴充">特徵矩陣(X)的擴充</h3>
-<p>當我們有一個樣本的時候，這個樣本的特徵會表達為: <span
+<p>在已經經過增廣處理後的資料中，一個樣本會包含了每個特徵的自變數，我們會以一個
+<span class="math inline">\(\tilde{\mathbf{x}}\)</span>
+向量來表示:<br />
+<span class="math display">\[
+\mathbf{x} =
+\begin{bmatrix}1 &amp; x^{(1)} &amp; x^{(2)} &amp; \cdots &amp;
+x^{(m)}\end{bmatrix}
+\]</span> 當我們有一個樣本的時候，這個樣本的第一個特徵會表達為: <span
 class="math inline">\(\tilde{x}^{(1)}\)</span>.<br />
-第二個樣本，會表達為: <span
+第二個特徵則表達為: <span
 class="math inline">\(\tilde{x}^{(2)}\)</span>… 依此類推直到, <span
 class="math inline">\(\tilde{x}^{(m)}\)</span><br />
 如果我們把這些樣本，也使用一個向量來表達，則會成為一個二維數組，也就是矩陣:
@@ -426,7 +433,7 @@ class="math inline">\(\tilde{x}^{(m)}\)</span><br />
 \end{bmatrix}
 \]</span> 因為 <span
 class="math inline">\(\tilde{\mathbf{x}}^{(i)}\)</span>
-本身已經是一個列向量(row
+本身已經是一個列向量(column
 vector)了，為了讓矩陣可以展開來，我們這邊把每一個向量都轉置:<br />
 <span class="math display">\[
 \tilde{\mathbf{X}} =
@@ -481,8 +488,8 @@ Shape of <span class="math inline">\(\mathbf{y} = n\times 1\)</span></p>
 \hat{\mathbf{y}} = \tilde{\mathbf{X}}\tilde{\mathbf{w}}
 \]</span> Shape of <span class="math inline">\(\hat{\mathbf{y}} =
 (n\times (m + 1))\times((m + 1)\times 1) = (n\times 1)\)</span></p>
-<h3 id="矩陣形式的均方根誤差">矩陣形式的均方根誤差</h3>
-<p>計算所有樣本的均方根公式如下:<br />
+<h3 id="矩陣形式的平均平方誤差">矩陣形式的平均平方誤差</h3>
+<p>計算所有樣本的平均平方誤差公式如下:<br />
 <span class="math display">\[
 L_{MSE} = \frac{1}{n}\sum_{i=1}^{n}(\hat{y}^{(i)} - y^{(i)}) ^ 2
 \]</span><br />
