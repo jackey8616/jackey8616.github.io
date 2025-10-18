@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.clo5de.info","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.17.1","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":true,"nav":null,"activeClass":"utterances"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":10,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Vectorized Derivations of Linear and Logistic Regression">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vectorization of Linear and Logistic Regression">
+<meta property="og:url" content="https://www.clo5de.info/2025/10/09/AI/vectorization-of-linear-and-logistic-regression/index.html">
+<meta property="og:site_name" content="clooooode">
+<meta property="og:description" content="Vectorized Derivations of Linear and Logistic Regression">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-10-09T19:37:23.000Z">
+<meta property="article:modified_time" content="2025-10-18T10:18:57.568Z">
+<meta property="article:author" content="clooooode">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="Machine Learning">
+<meta property="article:tag" content="Regression Analysis">
+<meta property="article:tag" content="Linear Regression">
+<meta property="article:tag" content="Logistic Regression">
+<meta property="article:tag" content="Vector">
+<meta property="article:tag" content="Matrix">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.clo5de.info/2025/10/09/AI/vectorization-of-linear-and-logistic-regression/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.clo5de.info/2025/10/09/AI/vectorization-of-linear-and-logistic-regression/","path":"2025/10/09/AI/vectorization-of-linear-and-logistic-regression/","title":"Vectorization of Linear and Logistic Regression"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Vectorization of Linear and Logistic Regression | clooooode</title>
+  
+
+
+
+
+
+
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NGLBLXHD');</script>
+<!-- End Google Tag Manager -->
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGLBLXHD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">clooooode</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">a.k.a. clo5de</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-github"><a href="https://github.com/jackey8616" rel="section" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a></li><li class="menu-item menu-item-e-mail"><a href="mailto:clode@clo5de.info" rel="section" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a></li><li class="menu-item menu-item-linkedin"><a href="https://www.linkedin.com/in/ko-li-mo-294832118/" rel="section" target="_blank"><i class="fab fa-linkedin fa-fw"></i>LinkedIn</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#the-predicament-of-a-single-feature"><span class="nav-number">1.</span> <span class="nav-text">The Predicament of a Single
+Feature</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vectorization"><span class="nav-number">2.</span> <span class="nav-text">Vectorization</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#feature-vector-x-weight-vector-w"><span class="nav-number">2.1.</span> <span class="nav-text">Feature Vector x &amp; Weight
+Vector w</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vector-dot-product"><span class="nav-number">2.2.</span> <span class="nav-text">Vector Dot Product</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#linear-regression"><span class="nav-number">3.</span> <span class="nav-text">Linear Regression</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#matrix-form"><span class="nav-number">3.1.</span> <span class="nav-text">Matrix Form</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#expansion-of-feature-matrix-x"><span class="nav-number">3.1.1.</span> <span class="nav-text">Expansion of Feature Matrix
+(X)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#prediction-vector-hatmathbfy"><span class="nav-number">3.1.2.</span> <span class="nav-text">Prediction Vector (\(\hat{\mathbf{y}}\))</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#actual-output-vector-mathbfy"><span class="nav-number">3.1.3.</span> <span class="nav-text">Actual Output Vector (\(\mathbf{y}\))</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#model-prediction-in-matrix-form"><span class="nav-number">3.1.4.</span> <span class="nav-text">Model Prediction in Matrix
+Form</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mean-squared-error-in-matrix-form"><span class="nav-number">3.1.5.</span> <span class="nav-text">Mean Squared Error in Matrix
+Form</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#partial-derivatives-for-multiple-features-and-samples"><span class="nav-number">3.2.</span> <span class="nav-text">Partial
+Derivatives for Multiple Features and Samples</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#logistic-regression"><span class="nav-number">4.</span> <span class="nav-text">Logistic Regression</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#matrix-form-1"><span class="nav-number">4.1.</span> <span class="nav-text">Matrix Form</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#mean-cross-entropy-error-in-matrix-form"><span class="nav-number">4.1.1.</span> <span class="nav-text">Mean Cross-Entropy
+Error in Matrix Form</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#partial-derivatives-for-multiple-features-and-samples-1"><span class="nav-number">4.2.</span> <span class="nav-text">Partial
+Derivatives for Multiple Features and Samples</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gradient-descent"><span class="nav-number">5.</span> <span class="nav-text">Gradient Descent</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#conclusion"><span class="nav-number">6.</span> <span class="nav-text">Conclusion</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="clooooode"
+      src="https://avatars1.githubusercontent.com/u/12930377?s=400&u=3e932a7f6b769a0e1028806815067be598db3351&v=4">
+  <p class="site-author-name" itemprop="name">clooooode</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">48</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">57</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/jackey8616" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;jackey8616" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:clode@clo5de.info" title="E-Mail → mailto:clode@clo5de.info" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.linkedin.com/in/ko-li-mo-294832118/" title="LinkedIn → https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;ko-li-mo-294832118&#x2F;" rel="noopener me" target="_blank"><i class="fab fa-linkedin fa-fw"></i></a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.clo5de.info/2025/10/09/AI/vectorization-of-linear-and-logistic-regression/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars1.githubusercontent.com/u/12930377?s=400&u=3e932a7f6b769a0e1028806815067be598db3351&v=4">
+      <meta itemprop="name" content="clooooode">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="clooooode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Vectorization of Linear and Logistic Regression | clooooode">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Vectorization of Linear and Logistic Regression
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2025-10-09 19:37:23" itemprop="dateCreated datePublished" datetime="2025-10-09T19:37:23+00:00">2025-10-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2025-10-18 10:18:57" itemprop="dateModified" datetime="2025-10-18T10:18:57+00:00">2025-10-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/AI/" itemprop="url" rel="index"><span itemprop="name">AI</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span class="firestore-visitors-count"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Word count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Word count in article: </span>
+      <span>2.5k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>9 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>Vectorized Derivations of Linear and Logistic Regression
+<span id="more"></span></p>
+<h2 id="the-predicament-of-a-single-feature">The Predicament of a Single
+Feature</h2>
+<p>In previous articles (<a href="/2025/10/03/AI/linear-regression-and-its-math-zhTW/" title="Linear Regression &amp; its mathematics(zhTW)">[Linear Regression]</a>, <a href="/2025/10/07/AI/logistic-regression-and-its-math-zhTW/" title="Logistic Regression &amp; its mathematics(zhTW)">[Logistic Regression]</a>), we used a lot of
+mathematical derivations. However, for the convenience of discussing
+mathematical principles, we adopted simpler assumptions of single or
+double features:</p>
+<p><span class="math display">\[
+\begin{align*}
+y &amp;= wx + b \\
+z &amp;= w_1x_1 + w_2x_2 + b \\
+\end{align*}
+\]</span></p>
+<p>In practical scenarios, such assumptions are almost impossible to
+apply.</p>
+<blockquote>
+<p>For example, housing prices (y) are influenced by factors such as
+area (x1), floor (x2), orientation (x3), etc.</p>
+</blockquote>
+<p>Once we have multiple features, the formula becomes a lengthy
+summation:</p>
+<p><span class="math display">\[
+\begin{align*}
+y &amp;= w_1x_1 + w_2x_2 + w_3x_3 + ... + w_mx_m + b \\
+\end{align*}
+\]</span> Such an equation is not only difficult to handle but also
+affects computational efficiency. To facilitate calculations, it is
+necessary to introduce tools from linear algebra: vectors and
+matrices.</p>
+<h2 id="vectorization">Vectorization</h2>
+<p>Let’s take the following equation as an example: <span
+class="math display">\[
+\begin{align*}
+y &amp;= w_1x_1 + w_2x_2 + w_3x_3 + ... + w_mx_m + b \tag{1} \\
+\end{align*}
+\]</span></p>
+<h3 id="feature-vector-x-weight-vector-w">Feature Vector x &amp; Weight
+Vector w</h3>
+<p>We pack all features and weights into separate column vectors: <span
+class="math display">\[
+\mathbf{w} =
+\begin{bmatrix}
+w_1 \\
+w_2 \\
+\vdots \\
+w_m \\
+\end{bmatrix}
+\quad
+\mathbf{x} =
+\begin{bmatrix}
+x_1 \\
+x_2 \\
+\vdots \\
+x_m \\
+\end{bmatrix}
+\]</span> In equation <span class="math inline">\(\text{(1)}\)</span>,
+after replacing with vectors, there is still a bias term <span
+class="math inline">\(b\)</span>. To make the overall operation more
+concise, we also include the bias term in the vector. This extended
+vector is called an Augmented Vector: <span class="math display">\[
+\tilde{\mathbf{w}} =
+\begin{bmatrix}
+b \\
+w_1 \\
+w_2 \\
+\vdots \\
+w_m \\
+\end{bmatrix}
+\quad
+\tilde{\mathbf{x}} =
+\begin{bmatrix}
+1 \\
+x_1 \\
+x_2 \\
+\vdots \\
+x_m \\
+\end{bmatrix}
+\]</span> In vector dot product, we transpose one of the vectors (column
+to row vector) to satisfy the conditions for matrix multiplication:
+<span class="math display">\[
+\tilde{\mathbf{w}}^{T} =
+\begin{bmatrix}
+b &amp; w_1 &amp; w_2 &amp; \cdots &amp; w_m
+\end{bmatrix}
+\]</span></p>
+<h3 id="vector-dot-product">Vector Dot Product</h3>
+<p>According to the algebraic definition of vector dot product: <span
+class="math display">\[
+\begin{align*}
+\vec{a} &amp;= [a_1, a_2, \dots, a_n] \\
+\vec{b} &amp;= [b_1, b_2, \dots, b_n] \\
+\vec{a} \cdot \vec{b} &amp;= \sum_{i=1}^{n}a_ib_i = a_1b_1 + a_2b_2 +
+\dots + a_nb_n \\
+\end{align*}
+\]</span> Which can also be expressed as w transpose times x (w
+transpose x): <span
+class="math inline">\(\mathbf{w}^{T}\mathbf{x}\)</span> Therefore: <span
+class="math display">\[
+\mathbf{w}^{T}\mathbf{x} = w_1x_1 + w_2x_2 + ... + w_mx_m
+\]</span> Applying <span
+class="math inline">\(\tilde{\mathbf{x}}\)</span>, <span
+class="math inline">\(\tilde{\mathbf{w}}\)</span>: <span
+class="math display">\[
+\begin{align*}
+\hat{y} &amp;= b\cdot 1 + w_1\cdot x_1 + \cdots + w_m\cdot x_m \\
+&amp;= \tilde{\mathbf{w}}^{T}\tilde{\mathbf{x}}
+\end{align*}
+\]</span></p>
+<h2 id="linear-regression">Linear Regression</h2>
+<h3 id="matrix-form">Matrix Form</h3>
+<p>Assume the number of samples is <span
+class="math inline">\(n\)</span>, and the number of features is <span
+class="math inline">\(m\)</span>. Single sample model: <span
+class="math inline">\(\hat{y}^{(i)} =
+\tilde{\mathbf{w}}^{T}\tilde{\mathbf{x}}^{(i)}\)</span> Shape of <span
+class="math inline">\(\hat{y}^{(i)} = (1\times(m+1))\times((m+1)\times
+1) = 1\times 1\)</span></p>
+<h4 id="expansion-of-feature-matrix-x">Expansion of Feature Matrix
+(X)</h4>
+<p>In the augmented data, each sample contains independent variables for
+each feature, which we represent with a <span
+class="math inline">\(\tilde{\mathbf{x}}\)</span> vector: <span
+class="math display">\[
+\tilde{\mathbf{x}} =
+\begin{bmatrix}1 \\ x_1 \\ x_2 \\ \cdots \\ x_m\end{bmatrix}
+\]</span> When we have one sample, its first feature vector is expressed
+as <span class="math inline">\(\tilde{\mathbf{x}}^{(1)}\)</span>. The
+second is expressed as <span
+class="math inline">\(\tilde{\mathbf{x}}^{(2)}\)</span>, and so on, up
+to <span class="math inline">\(\tilde{\mathbf{x}}^{(n)}\)</span>. The
+size of the entire vector <span
+class="math inline">\(\tilde{\mathbf{x}}\)</span> will be <span
+class="math inline">\(((m + 1)\times 1)\)</span>. Next, we need to stack
+these vectors vertically. However, vectors of size <span
+class="math inline">\(((m + 1)\times 1)\)</span> cannot be stacked
+vertically as rows. So, we transpose each vector <span
+class="math inline">\(\tilde{\mathbf{x}}\)</span> before stacking: <span
+class="math display">\[
+\tilde{\mathbf{X}} =
+\begin{bmatrix}
+(\tilde{\mathbf{x}}^{(1)})^T \\
+(\tilde{\mathbf{x}}^{(2)})^T \\
+\vdots \\
+(\tilde{\mathbf{x}}^{(n)})^T \\
+(\tilde{\mathbf{x}}^{(n)})^T
+\end{bmatrix}
+\]</span> Finally, expanding the matrix: <span class="math display">\[
+\tilde{\mathbf{X}} =
+\begin{bmatrix}
+1 &amp; x_1^{(1)} &amp; x_2^{(1)} &amp; \cdots &amp; x_m^{(1)} \\
+1 &amp; x_1^{(2)} &amp; x_2^{(2)} &amp; \cdots &amp; x_m^{(2)} \\
+\vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+1 &amp; x_1^{(n)} &amp; x_2^{(n)} &amp; \cdots &amp; x_m^{(n)} \\
+1 &amp; x_1^{(n)} &amp; x_2^{(n)} &amp; \cdots &amp; x_m^{(n)}
+\end{bmatrix}
+\]</span> Shape of <span class="math inline">\(\tilde{\mathbf{X}} =
+(n\times (m+1))\)</span></p>
+<h4 id="prediction-vector-hatmathbfy">Prediction Vector (<span
+class="math inline">\(\hat{\mathbf{y}}\)</span>)</h4>
+<p>Each vector <span
+class="math inline">\(\tilde{\mathbf{x}}^{(i)}\)</span> will have a
+corresponding predicted value <span
+class="math inline">\(\hat{y}^{(i)}\)</span>. Stacking all these
+predicted values together forms <span
+class="math inline">\(\hat{\mathbf{y}}\)</span>: <span
+class="math display">\[
+\hat{\mathbf{y}} =
+\begin{bmatrix}
+\hat{y}^{(1)} \\
+\hat{y}^{(2)} \\
+\vdots \\
+\hat{y}^{(n)}
+\end{bmatrix}
+\]</span><br />
+Shape of <span class="math inline">\(\hat{\mathbf{y}} = n\times
+1\)</span></p>
+<h4 id="actual-output-vector-mathbfy">Actual Output Vector (<span
+class="math inline">\(\mathbf{y}\)</span>)</h4>
+<p>The corresponding true outputs can also be stacked into a vector:
+<span class="math display">\[
+\mathbf{y} =
+\begin{bmatrix}
+y^{(1)} \\
+y^{(2)} \\
+\vdots \\
+y^{(n)}
+\end{bmatrix}
+\]</span><br />
+Shape of <span class="math inline">\(\mathbf{y} = n\times 1\)</span></p>
+<h4 id="model-prediction-in-matrix-form">Model Prediction in Matrix
+Form</h4>
+<p>Next, we define the model in matrix form: <span
+class="math display">\[
+\hat{\mathbf{y}} = \tilde{\mathbf{X}}\tilde{\mathbf{w}}
+\]</span> Shape of <span class="math inline">\(\hat{\mathbf{y}} =
+(n\times (m + 1))\times((m + 1)\times 1) = (n\times 1)\)</span></p>
+<h4 id="mean-squared-error-in-matrix-form">Mean Squared Error in Matrix
+Form</h4>
+<p>The formula for calculating the Mean Squared Error (MSE) for all
+samples is as follows: <span class="math display">\[
+J_{MSE} = \frac{1}{n}\sum_{i=1}^{n}(\hat{y}^{(i)} - y^{(i)}) ^ 2
+\]</span> Let <span class="math inline">\(e^{(i)} = \hat{y}^{(i)} -
+y^{(i)}\)</span> and the error vector <span
+class="math inline">\(\mathbf{e} = \hat{\mathbf{y}} -
+\mathbf{y}\)</span>, then: <span class="math display">\[
+\mathbf{e} =
+\begin{bmatrix}
+\hat{y}^{(1)} - y^{(1)} \\
+\hat{y}^{(2)} - y^{(2)} \\
+\vdots \\
+\hat{y}^{(n)} - y^{(n)} \\
+\end{bmatrix}
+\]</span> And since <span
+class="math inline">\(\sum_{i=1}^{n}(e^{(i)})^2 =
+\mathbf{e}^T\mathbf{e}\)</span>, then: <span class="math display">\[
+J_{MSE} = \frac{1}{n}\mathbf{e}^T\mathbf{e} =
+\frac{1}{n}(\hat{\mathbf{y}} - \mathbf{y})^T(\hat{\mathbf{y}} -
+\mathbf{y})
+\]</span> Shape of <span class="math inline">\(J_{MSE} = (1\times
+n)\times(n\times 1)=1\times 1\)</span><br />
+<div class='spoiler collapsed'>
+    <div class='spoiler-title'>
+        [Why does $\sum_{i=1}^{n}(e^{(i)})^2 = \mathbf{e}^{T}\mathbf{e}$?]
+    </div>
+    <div class='spoiler-content'>
+        <p><span class="math display">\[
+\begin{align*}
+\sum_{i=1}^{n}(e^{(i)})^2 &amp;= \mathbf{e}^{T}\mathbf{e} \\
+\because
+\mathbf{e}^{T}\mathbf{e} &amp;=
+\begin{bmatrix}e^{(1)}&amp;e^{(2)}&amp;\cdots&amp;e^{(n)}\end{bmatrix}
+\begin{bmatrix}e^{(1)}\\e^{(2)}\\\vdots\\e^{(n)}\end{bmatrix} \\
+&amp;= (e^{(1)})^2 + (e^{(2)})^2 + \cdots + (e^{(n)})^2 \\
+&amp;= \sum_{i=1}^{n}(e^{(i)})^2 \\
+\therefore \sum_{i=1}^{n}(e^{(i)})^2 &amp;= \mathbf{e}^{T}\mathbf{e} \\
+\end{align*}
+\]</span></p>
+
+    </div>
+</div></p>
+<h3 id="partial-derivatives-for-multiple-features-and-samples">Partial
+Derivatives for Multiple Features and Samples</h3>
+<p>We have written out several matrix forms for linear regression above:
+<span class="math display">\[
+\begin{align*}
+\hat{\mathbf{y}} &amp;= \tilde{\mathbf{X}}\tilde{\mathbf{w}} \\
+J_{MSE} &amp;= \frac{1}{n}(\hat{\mathbf{y}} -
+\mathbf{y})^T(\hat{\mathbf{y}} - \mathbf{y})
+\end{align*}
+\]</span> Next, let’s find the partial derivatives: <span
+class="math display">\[
+\begin{align*}
+\text{Let }L^{(i)} &amp;= \hat{y}^{(i)} - y^{(i)} \\
+J_{MSE} &amp;= \frac{1}{n}\sum_{i=1}^{n}(\hat{y}^{(i)} - y^{(i)})^2 \\
+\dfrac{dJ_{MSE}}{d\tilde{\mathbf{w}}} &amp;=
+\frac{1}{n}\sum_{i=1}^{n}\dfrac{d(L^{(i)})^2}{d\tilde{\mathbf{w}}}
+\end{align*}
+\]</span> Chain Rule: <span class="math display">\[
+\dfrac{d(L^{(i)})^2}{d\tilde{\mathbf{w}}} =
+\dfrac{d(L^{(i)})^2}{dL^{(i)}}\dfrac{dL^{(i)}}{d\tilde{\mathbf{w}}}
+\]</span> First step, find <span
+class="math inline">\(\dfrac{d(L^{(i)})^2}{dL^{(i)}}\)</span>: <span
+class="math display">\[
+\begin{align*}
+\dfrac{d(L^{(i)})^2}{dL^{(i)}} &amp;= 2L^{(i)} \\
+&amp;= 2(\hat{y}^{(i)} - y^{(i)})
+\end{align*}
+\]</span> Next, find <span
+class="math inline">\(\dfrac{dL^{(i)}}{d\tilde{\mathbf{w}}}\)</span>:
+<span class="math display">\[
+\begin{align*}
+\dfrac{dL^{(i)}}{d\tilde{\mathbf{w}}} &amp;= \dfrac{d(\hat{y}^{(i)} -
+y^{(i)})}{d\tilde{\mathbf{w}}} \\
+&amp;= \dfrac{d(\tilde{\mathbf{w}}^T\tilde{\mathbf{x}}^{(i)} -
+y^{(i)})}{d\tilde{\mathbf{w}}} \\
+&amp;= \tilde{\mathbf{x}}^{(i)} - 0 \\
+&amp;= \tilde{\mathbf{x}}^{(i)} \\
+\end{align*}
+\]</span> Combine back into the chain rule: <span
+class="math display">\[
+\begin{align*}
+\dfrac{d(L^{(i)})^2}{d\tilde{\mathbf{w}}} &amp;=
+\dfrac{d(L^{(i)})^2}{dL^{(i)}}\dfrac{dL^{(i)}}{d\tilde{\mathbf{w}}} \\
+&amp;= 2(\hat{y}^{(i)} - y^{(i)})\tilde{\mathbf{x}}^{(i)}
+\end{align*}
+\]</span> Finally, substitute back into the derivative of <span
+class="math inline">\(J_{MSE}\)</span> and convert to vector and matrix
+form: <span class="math display">\[
+\begin{align*}
+\dfrac{dJ_{MSE}}{d\tilde{\mathbf{w}}} &amp;=
+\frac{1}{n}\sum_{i=1}^{n}\dfrac{d(L^{(i)})^2}{d\tilde{\mathbf{w}}} \\
+&amp;= \frac{1}{n}\sum_{i=1}^{n}(2(\hat{y}^{(i)} -
+y^{(i)})\tilde{\mathbf{x}}^{(i)}) \\
+&amp;= \frac{2}{n}\sum_{i=1}^{n}(\hat{y}^{(i)} -
+y^{(i)})\tilde{\mathbf{x}}^{(i)} \\
+\nabla{\tilde{\mathbf{w}}}J_{MSE} &amp;=
+\frac{2}{n}\tilde{\mathbf{X}}^{T}(\tilde{\mathbf{X}}\tilde{\mathbf{w}} -
+\mathbf{y}) \\
+\end{align*}
+\]</span></p>
+<h2 id="logistic-regression">Logistic Regression</h2>
+<h3 id="matrix-form-1">Matrix Form</h3>
+<p>Assume the number of samples is <span
+class="math inline">\(n\)</span>, and the number of features is <span
+class="math inline">\(m\)</span>. Single sample model: <span
+class="math inline">\(z^{(i)} =
+\tilde{\mathbf{w}}^{T}\tilde{\mathbf{x}}^{(i)}\)</span> Shape of <span
+class="math inline">\(z^{(i)} = (1\times(m+1))\times((m+1)\times 1) =
+1\times 1\)</span><br />
+Sigmoid function: <span class="math inline">\(\sigma(z^{(i)}) = p^{(i)}
+= \frac{1}{1 + e^{-z^{(i)}}}\)</span> Shape of <span
+class="math inline">\(p^{(i)} = 1\times 1\)</span></p>
+<h4 id="mean-cross-entropy-error-in-matrix-form">Mean Cross-Entropy
+Error in Matrix Form</h4>
+<p>The formula for calculating the Mean Cross-Entropy (MCE) for all
+samples is as follows: <span class="math display">\[
+J_{MCE} = -\frac{1}{n}\sum_{i=1}^{n}[y^{(i)}\ln(p^{(i)}) + (1 -
+y^{(i)})\ln(1 - p^{(i)})]
+\]</span> For <span class="math inline">\(y^{(i)}\)</span> and <span
+class="math inline">\(p^{(i)}\)</span>, we first write them as vectors:
+<span class="math display">\[
+\mathbf{y} = \begin{bmatrix}y^{(1)} \\ y^{(2)} \\ \vdots \\
+y^{(n)}\end{bmatrix}\quad
+\mathbf{p} = \begin{bmatrix}p^{(1)} \\ p^{(2)} \\ \vdots \\
+p^{(n)}\end{bmatrix} \\
+\]</span> Take the natural logarithm <span
+class="math inline">\(\ln\)</span> of each element in the vectors <span
+class="math inline">\(\mathbf{p}\)</span> and <span
+class="math inline">\((1 - \mathbf{p})\)</span>: <span
+class="math display">\[
+\ln(\mathbf{p}) = \begin{bmatrix}\ln(p^{(1)}) \\ \ln(p^{(2)}) \\ \vdots
+\\ \ln(p^{(n)})\end{bmatrix}\quad
+\ln(1 - \mathbf{p}) = \begin{bmatrix}\ln(1 - p^{(1)}) \\ \ln(1 -
+p^{(2)}) \\ \vdots \\ \ln(1- p^{(n)})\end{bmatrix}
+\]</span> Finally, start substituting the elements in <span
+class="math inline">\(J_{MCE}\)</span>: <span class="math display">\[
+\begin{align*}
+J_{MCE} &amp;= -\frac{1}{n}\sum_{i=1}^{n}[y^{(i)}\ln(p^{(i)}) + (1 -
+y^{(i)})\ln(1 - p^{(i)})] \\
+&amp;= -\frac{1}{n}[\sum_{i=1}^{n}y^{(i)}\ln(p^{(i)}) + \sum_{i=1}^{n}(1
+- y^{(i)})\ln(1 - p^{(i)})] \\
+&amp;= -\frac{1}{n}[\mathbf{y}^{T}\ln(\mathbf{p}) + (1 -
+\mathbf{y})^{T}\ln(1 - \mathbf{p})]
+\end{align*}
+\]</span></p>
+<h3 id="partial-derivatives-for-multiple-features-and-samples-1">Partial
+Derivatives for Multiple Features and Samples</h3>
+<p>Here, we will derive the partial derivatives for a single sample and
+then combine them for all samples, expressing the result in vector or
+matrix form. Above, we wrote out several vector forms for logistic
+regression: <span class="math display">\[
+\begin{align*}
+z^{(i)} &amp;= \tilde{\mathbf{w}}^{T}\tilde{\mathbf{x}}^{(i)} \\
+p^{(i)} &amp;= \sigma(z^{(i)}) = \frac{1}{1 + e^{-z^{(i)}}} \\
+J_{MCE} &amp;= -\frac{1}{n}\sum_{i=1}^{n}[y^{(i)}\ln(p^{(i)}) + (1 -
+y^{(i)})\ln(1 - p^{(i)})] \\
+\end{align*}
+\]</span> Next, we start finding the partial derivatives: <span
+class="math display">\[
+\begin{align*}
+\text{Let } L^{(i)} &amp;= -[y^{(i)}\ln(p^{(i)}) + (1 - y^{(i)})\ln(1 -
+p^{(i)})] \\
+\dfrac{dJ_{MCE}}{d\tilde{\mathbf{w}}} &amp;=
+\frac{1}{n}\dfrac{d}{d\tilde{\mathbf{w}}}\sum_{i=1}^{n}[y^{(i)}\ln(p^{(i)})
++ (1 - y^{(i)})\ln(1 - p^{(i)})] \\
+&amp;= \frac{1}{n}\sum_{i=1}^{n}\dfrac{dL^{(i)}}{d\tilde{\mathbf{w}}}
+\end{align*}
+\]</span> Apply the chain rule: <span
+class="math inline">\(\dfrac{dL^{(i)}}{d\tilde{\mathbf{w}}} =
+\dfrac{dL^{(i)}}{dp^{(i)}}\dfrac{dp^{(i)}}{dz^{(i)}}\dfrac{dz^{(i)}}{d\tilde{\mathbf{w}}}\)</span>
+First, find <span
+class="math inline">\(\dfrac{dL^{(i)}}{dp^{(i)}}\)</span>: <span
+class="math display">\[
+\begin{align*}
+\dfrac{dL^{(i)}}{dp^{(i)}} &amp;=
+\dfrac{d}{dp^{(i)}}[-(y^{(i)}\ln(p^{(i)}) + (1 - y^{(i)})\ln(1 -
+p^{(i)}))] \\
+&amp;= -y^{(i)}\frac{1}{p^{(i)}} - (1 - y^{(i)})\frac{-1}{1 -
+p^{(i)}}\quad\because \frac{d}{dx}\ln(x) = \frac{1}{x},
+\frac{d}{dx}\ln(1 - x) = \frac{-1}{1 - x} \\
+&amp;= \frac{-y^{(i)}}{p^{(i)}} + \frac{1-y^{(i)}}{1-p^{(i)}} \\
+&amp;= \frac{-y^{(i)} + y^{(i)}p^{(i)} + p^{(i)} -
+p^{(i)}y^{(i)}}{p^{(i)}(1-p^{(i)})} \\
+&amp;= \frac{p^{(i)} - y^{(i)}}{p^{(i)}(1-p^{(i)})} \\
+\end{align*}
+\]</span></p>
+<p>Second step, find <span
+class="math inline">\(\dfrac{dp^{(i)}}{dz^{(i)}}\)</span>: <span
+class="math display">\[
+\begin{align*}
+p^{(i)} &amp;= \sigma(z^{(i)}) = \frac{1}{1 + e^{-z^{(i)}}} = (1 +
+e^{-z^{(i)}})^{-1} \\
+\text{Let } u &amp;= 1 + e^{-z^{(i)}} \\
+\dfrac{dp^{(i)}}{dz^{(i)}} &amp;=
+\dfrac{dp^{(i)}}{du}\dfrac{du}{dz^{(i)}} \\
+&amp;= \dfrac{du^{-1}}{du}\dfrac{d(1 + e^{-z^{(i)}})}{dz^{(i)}} \\
+&amp;= -1u^{-2} \cdot (0 -e^{-z^{(i)}}) \\
+&amp;= \frac{-1}{u^2}\cdot -e^{-z^{(i)}} \\
+&amp;= \frac{e^{-z^{(i)}}}{(1 + e^{-z^{(i)}})^2} \\
+&amp;= \frac{1 \cdot e^{-z^{(i)}}}{(1 + e^{-z^{(i)}})(1 + e^{-z^{(i)}})}
+\\
+&amp;= p^{(i)}(1 - p^{(i)}) \\
+\end{align*}
+\]</span></p>
+<div class='spoiler collapsed'>
+    <div class='spoiler-title'>
+        [How is $(1-p^{(i)})$ derived?]
+    </div>
+    <div class='spoiler-content'>
+        <p><span class="math display">\[
+\begin{align*}
+\frac{e^{-z^{(i)}}}{1 + e^{-z^{(i)}}} &amp;= \frac{e^{-z^{(i)}} + 1 -
+1}{1 + e^{-z^{(i)}}} \\
+&amp;= \frac{1 + e^{-z^{(i)}}}{1 + e^{-z^{(i)}}} - \frac{1}{1 +
+e^{-z^{(i)}}} \\
+&amp;= 1 - p^{(i)} \\
+\end{align*}
+\]</span></p>
+
+    </div>
+</div>
+<p>Third step, find <span
+class="math inline">\(\dfrac{dz^{(i)}}{d\tilde{\mathbf{w}}}\)</span>:
+<span class="math display">\[
+\begin{align*}
+\dfrac{dz^{(i)}}{d\tilde{\mathbf{w}}} &amp;=
+\dfrac{d}{d\tilde{\mathbf{w}}}(\tilde{\mathbf{w}}^{T}\tilde{\mathbf{x}}^{(i)})
+\\
+&amp;= \tilde{\mathbf{x}}^{(i)} \\
+\end{align*}
+\]</span></p>
+<p>Combine the three parts: <span class="math display">\[
+\begin{align*}
+\dfrac{dL^{(i)}}{d\tilde{\mathbf{w}}} &amp;=
+\dfrac{dL^{(i)}}{dp^{(i)}}\dfrac{dp^{(i)}}{dz^{(i)}}\dfrac{dz^{(i)}}{d\tilde{\mathbf{w}}}
+\\
+&amp;= \frac{p^{(i)} - y^{(i)}}{p^{(i)}(1-p^{(i)})}\cdot p^{(i)}(1 -
+p^{(i)})\cdot \tilde{\mathbf{x}}^{(i)} \\
+&amp;= (p^{(i)} - y^{(i)})\cdot \tilde{\mathbf{x}}^{(i)} \\
+\end{align*}
+\]</span> Finally, substitute back into the derivative of <span
+class="math inline">\(J_{MCE}\)</span> and convert to vector and matrix
+form: <span class="math display">\[
+\begin{align*}
+\dfrac{dJ_{MCE}}{d\tilde{\mathbf{w}}} &amp;=
+\frac{1}{n}\sum_{i=1}^{n}\dfrac{dL^{(i)}}{d\tilde{\mathbf{w}}} \\
+&amp;= \frac{1}{n}\sum_{i=1}^{n}(p^{(i)} - y^{(i)})\cdot
+\tilde{\mathbf{x}}^{(i)} \\
+\nabla{\tilde{\mathbf{w}}}J_{MCE} &amp;=
+\frac{1}{n}\tilde{\mathbf{X}}^{T}(\mathbf{p} - \mathbf{y}) \\
+\end{align*}
+\]</span></p>
+<h2 id="gradient-descent">Gradient Descent</h2>
+<p>For both linear and logistic regression, we have ultimately obtained
+the partial derivatives of the loss function: <span
+class="math display">\[
+\begin{align*}
+\nabla_{\tilde{\mathbf{w}}}J_{MSE} &amp;=
+\frac{2}{n}\tilde{\mathbf{X}}^{T}(\tilde{\mathbf{X}}\tilde{\mathbf{w}} -
+\mathbf{y}) \\
+\nabla_{\tilde{\mathbf{w}}}J_{MCE} &amp;=
+\frac{1}{n}\tilde{\mathbf{X}}^{T}(\mathbf{p} - \mathbf{y})
+\end{align*}
+\]</span> The purpose of these partial derivatives is to iteratively
+update the values of the vector <span
+class="math inline">\(\tilde{\mathbf{w}}\)</span>: Linear Regression:
+<span class="math inline">\(\tilde{\mathbf{w}} := \tilde{\mathbf{w}} -
+\alpha\nabla_{\tilde{\mathbf{w}}}J_{MSE}\)</span> Logistic Regression:
+<span class="math inline">\(\tilde{\mathbf{w}} := \tilde{\mathbf{w}} -
+\alpha\nabla_{\tilde{\mathbf{w}}}J_{MCE}\)</span> Here, <span
+class="math inline">\(\alpha\)</span> is the learning rate, which
+controls the step size, and will not be elaborated on further here.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Through vectorization and matrix operations, we have transformed the
+originally lengthy formulas for linear and logistic regression into
+concise and efficient matrix forms. This not only greatly simplifies the
+mathematical derivation process but also provides a powerful
+computational foundation for machine learning models with multiple
+features and samples. From the predicament of a single feature to the
+elegant expression in multiple dimensions, vectorization is an
+indispensable key step in understanding modern machine learning
+algorithms.</p>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/AI/" rel="tag"># AI</a>
+              <a href="/tags/Machine-Learning/" rel="tag"># Machine Learning</a>
+              <a href="/tags/Regression-Analysis/" rel="tag"># Regression Analysis</a>
+              <a href="/tags/Linear-Regression/" rel="tag"># Linear Regression</a>
+              <a href="/tags/Logistic-Regression/" rel="tag"># Logistic Regression</a>
+              <a href="/tags/Vector/" rel="tag"># Vector</a>
+              <a href="/tags/Matrix/" rel="tag"># Matrix</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/10/07/AI/logistic-regression-and-its-math/" rel="prev" title="Logistic Regression & its mathematics">
+                  <i class="fa fa-chevron-left"></i> Logistic Regression & its mathematics
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2018 – 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">clooooode</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="Word count total">30k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">1:50</span>
+  </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.23.0/firebase-app-compat.js" integrity="sha256-FYa4Xn7MJlI18eIkwawbRKLz7bGeUODtNpSR+bsjlHg=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.23.0/firebase-firestore-compat.js" integrity="sha256-sgbLcRGF3ph6N+ymg9zoy9kFQDWBvJlCd0GbGMKBH0c=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="firestore" type="application/json">{"enable":true,"collection":"articles","apiKey":"AIzaSyCu9-MhzikdJ0BVgPRODV__hMffyr5bgZg","projectId":"clo5de-githubpage"}</script>
+  <script src="/js/third-party/statistics/firestore.js"></script>
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"jackey8616/jackey8616.github.io","issue_term":"title","theme":"github-dark","label":"ChatRoom"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+</body>
+</html>
