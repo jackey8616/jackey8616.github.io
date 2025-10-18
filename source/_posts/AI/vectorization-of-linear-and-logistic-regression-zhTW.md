@@ -134,7 +134,8 @@ $$
 當我們有一個樣本的時候，這個樣本的第一個特徵會表達為: $x_1$。  
 第二個特徵則表達為: $x_2$... 依此類推直到, $x_m$,  
 而整個向量 $\tilde{\mathbf{x}}$ 的尺寸大小會是 $((m + 1)\times 1)$。  
-接下來要垂直堆疊這些向量，但是尺寸大小 $((m + 1)\times 1)$ 的向量不能垂直堆疊，  
+接下來要垂直堆疊這些向量，但是尺寸 $((m + 1)\times 1)$ 的向量直接垂直堆疊的話，  
+會得到一個 $n\times((m + 1)\times 1)$ 的矩陣，這個尺寸明顯不能滿足 $\hat{\mathbf{y}} = \tilde{\mathbf{X}}\tilde{\mathbf{w}}$ 的矩陣乘法條件。  
 所以這邊對於每個向量 $\tilde{\mathbf{x}}$ 進行轉置後堆疊:  
 $$
 \tilde{\mathbf{X}} = 
@@ -275,7 +276,7 @@ $$
 \dfrac{dJ_{MSE}}{d\tilde{\mathbf{w}}} &= \frac{1}{n}\sum_{i=1}^{n}\dfrac{d(L^{(i)})^2}{d\tilde{\mathbf{w}}} \\
 &= \frac{1}{n}\sum_{i=1}^{n}(2(\hat{y}^{(i)} - y^{(i)})\tilde{\mathbf{x}}^{(i)}) \\
 &= \frac{2}{n}\sum_{i=1}^{n}(\hat{y}^{(i)} - y^{(i)})\tilde{\mathbf{x}}^{(i)} \\
-\nabla{\tilde{\mathbf{w}}}J_{MSE} &= \frac{2}{n}\tilde{\mathbf{X}}^{T}(\tilde{\mathbf{X}}\tilde{\mathbf{w}} - \mathbf{y}) \\
+\nabla_{\tilde{\mathbf{w}}}J_{MSE} &= \frac{2}{n}\tilde{\mathbf{X}}^{T}(\tilde{\mathbf{X}}\tilde{\mathbf{w}} - \mathbf{y}) \\
 \end{align*}
 $$  
 
@@ -387,7 +388,7 @@ $$
 \begin{align*}
 \dfrac{dJ_{MCE}}{d\tilde{\mathbf{w}}} &= \frac{1}{n}\sum_{i=1}^{n}\dfrac{dL^{(i)}}{d\tilde{\mathbf{w}}} \\
 &= \frac{1}{n}\sum_{i=1}^{n}(p^{(i)} - y^{(i)})\cdot \tilde{\mathbf{x}}^{(i)} \\
-\nabla{\tilde{\mathbf{w}}}J_{MCE} &= \frac{1}{n}\tilde{\mathbf{X}}^{T}(\mathbf{p} - \mathbf{y}) \\
+\nabla_{\tilde{\mathbf{w}}}J_{MCE} &= \frac{1}{n}\tilde{\mathbf{X}}^{T}(\mathbf{p} - \mathbf{y}) \\
 \end{align*}
 $$
 
@@ -395,13 +396,13 @@ $$
 無論是線性回歸還是邏輯回歸，我們最終取得了損失函數的偏導數:  
 $$
 \begin{align*}
-\nabla{\tilde{\mathbf{w}}}J_{MSE} &= \frac{2}{n}\tilde{\mathbf{X}}^{T}(\tilde{\mathbf{X}}\tilde{\mathbf{w}} - \mathbf{y}) \\
-\nabla{\tilde{\mathbf{w}}}J_{MCE} &= \frac{1}{n}\tilde{\mathbf{X}}^{T}(\mathbf{p} - \mathbf{y}) \\
+\nabla_{\tilde{\mathbf{w}}}J_{MSE} &= \frac{2}{n}\tilde{\mathbf{X}}^{T}(\tilde{\mathbf{X}}\tilde{\mathbf{w}} - \mathbf{y}) \\
+\nabla_{\tilde{\mathbf{w}}}J_{MCE} &= \frac{1}{n}\tilde{\mathbf{X}}^{T}(\mathbf{p} - \mathbf{y}) \\
 \end{align*}
 $$
 這些偏導數的目的是要逐步地修正向量 $\tilde{\mathbf{w}}$ 的值:  
-線性回歸: $\tilde{\mathbf{w}} := \tilde{\mathbf{w}} - \alpha\nabla{\tilde{\mathbf{w}}}J_{MSE}$  
-邏輯回歸: $\tilde{\mathbf{w}} := \tilde{\mathbf{w}} - \alpha\nabla{\tilde{\mathbf{w}}}J_{MCE}$  
+線性回歸: $\tilde{\mathbf{w}} := \tilde{\mathbf{w}} - \alpha\nabla_{\tilde{\mathbf{w}}}J_{MSE}$  
+邏輯回歸: $\tilde{\mathbf{w}} := \tilde{\mathbf{w}} - \alpha\nabla_{\tilde{\mathbf{w}}}J_{MCE}$  
 其中 $\alpha$ 是學習率用以控制步長，在此不多贅述。  
 
 ## 結語

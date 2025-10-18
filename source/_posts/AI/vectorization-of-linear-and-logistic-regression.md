@@ -13,12 +13,12 @@ tags:
 mathjax: true
 ---
 
-Vectorized Derivations of Linear and Logistic Regression
+Vectorized Derivations of Linear and Logistic Regression  
 {% post_link AI/vectorization-of-linear-and-logistic-regression-zhTW '>> [zhTW version] <<' %}  
 <!-- More -->
 
 ## The Predicament of a Single Feature
-In previous articles ({% post_link AI/linear-regression-and-its-math-zhTW '[Linear Regression]' %}, {% post_link AI/logistic-regression-and-its-math-zhTW '[Logistic Regression]' %}), we used a lot of mathematical derivations. However, for the convenience of discussing mathematical principles, we adopted simpler assumptions of single or double features:
+In previous articles ({% post_link AI/linear-regression-and-its-math '[Linear Regression]' %}, {% post_link AI/logistic-regression-and-its-math '[Logistic Regression]' %}), we used a lot of mathematical derivations. However, for the convenience of discussing mathematical principles, we adopted simpler assumptions of single or double features:
 
 $$
 \begin{align*}
@@ -134,7 +134,7 @@ $$
 When we have one sample, its first feature is expressed as $x_1$.
 The second is expressed as $x_2$, and so on, up to $x_m$.
 The size of the entire vector $\tilde{\mathbf{x}}$ will be $((m + 1)\times 1)$.
-Next, we need to stack these vectors vertically. However, vectors of size $((m + 1)\times 1)$ cannot be stacked vertically as rows.
+Next, we need to stack these vectors vertically. However, directly stacking vectors of size $((m + 1)\times 1)$ would result in a matrix with dimensions $n\times((m + 1)\times 1)$, which clearly doesn't meet the requirements for the matrix multiplication $\hat{\mathbf{y}} = \tilde{\mathbf{X}}\tilde{\mathbf{w}}$.  
 So, we transpose each vector $\tilde{\mathbf{x}}$ for stacking:
 $$
 \tilde{\mathbf{X}} = 
@@ -275,7 +275,7 @@ $$
 \dfrac{dJ_{MSE}}{d\tilde{\mathbf{w}}} &= \frac{1}{n}\sum_{i=1}^{n}\dfrac{d(L^{(i)})^2}{d\tilde{\mathbf{w}}} \\
 &= \frac{1}{n}\sum_{i=1}^{n}(2(\hat{y}^{(i)} - y^{(i)})\tilde{\mathbf{x}}^{(i)}) \\
 &= \frac{2}{n}\sum_{i=1}^{n}(\hat{y}^{(i)} - y^{(i)})\tilde{\mathbf{x}}^{(i)} \\
-\nabla{\tilde{\mathbf{w}}}J_{MSE} &= \frac{2}{n}\tilde{\mathbf{X}}^{T}(\tilde{\mathbf{X}}\tilde{\mathbf{w}} - \mathbf{y}) \\
+\nabla_{\tilde{\mathbf{w}}}J_{MSE} &= \frac{2}{n}\tilde{\mathbf{X}}^{T}(\tilde{\mathbf{X}}\tilde{\mathbf{w}} - \mathbf{y}) \\
 \end{align*}
 $$
 
@@ -387,7 +387,7 @@ $$
 \begin{align*}
 \dfrac{dJ_{MCE}}{d\tilde{\mathbf{w}}} &= \frac{1}{n}\sum_{i=1}^{n}\dfrac{dL^{(i)}}{d\tilde{\mathbf{w}}} \\
 &= \frac{1}{n}\sum_{i=1}^{n}(p^{(i)} - y^{(i)})\cdot \tilde{\mathbf{x}}^{(i)} \\
-\nabla{\tilde{\mathbf{w}}}J_{MCE} &= \frac{1}{n}\tilde{\mathbf{X}}^{T}(\mathbf{p} - \mathbf{y}) \\
+\nabla_{\tilde{\mathbf{w}}}J_{MCE} &= \frac{1}{n}\tilde{\mathbf{X}}^{T}(\mathbf{p} - \mathbf{y}) \\
 \end{align*}
 $$
 
