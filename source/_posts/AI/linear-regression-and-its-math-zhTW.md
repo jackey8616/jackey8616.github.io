@@ -11,7 +11,9 @@ tags:
 mathjax: true
 ---
 
-簡單紀錄一下線性回歸跟一些數學。
+![](/images/ai/linear-regression-and-its-math.png?300x)
+<center>簡單紀錄一下線性回歸跟一些數學。</center>
+
 <!-- More -->
 
 ## Linear Regression(線性回歸)

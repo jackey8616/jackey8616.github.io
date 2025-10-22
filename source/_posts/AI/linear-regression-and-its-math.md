@@ -10,8 +10,11 @@ tags:
 mathjax: true
 ---
 
+![](/images/ai/linear-regression-and-its-math.png?300x)
+<center>
 Simply recording something about linear regression and its mathematics.  
 {% post_link AI/linear-regression-and-its-math-zhTW '>> [zhTW version] <<' %}  
+</center>
 
 <!-- More -->
 

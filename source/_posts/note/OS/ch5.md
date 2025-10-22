@@ -24,7 +24,8 @@ mathjax: true
     - CPU Burst在I/O Burst之前。
 
 ## CPU Scheduler
-![](/images/OS/CPU-Cycle.jpg =600x)  
+![](/images/OS/CPU-Cycle.jpg?600)  
+
 - Short-term shceduler
     - 從ready queue中選擇並分配給其中一個核心。
 - CPU Scheduling會在下列四個行程狀態的變更中做出決策：
