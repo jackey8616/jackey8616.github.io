@@ -286,8 +286,9 @@ Nous Research 的 **Hermes Agent**：
 **而每推一格，代價就是狀態要更徹底地落在檔案上。**
 
 <div class="qr">
-  <div><img src="/images/COSCUP/coscup-2026/qr-roma.svg" alt="github.com/jackey8616/roma"><span>roma　這場引到的 ADR 都在裡面</span></div>
-  <div><img src="/images/COSCUP/coscup-2026/qr-me.svg" alt="github.com/jackey8616"><span>clooooode　我</span></div>
+  <div><img src="/images/COSCUP/coscup-2026/qr-slide.svg" alt="這份簡報"><span>這份簡報</span></div>
+  <div><img src="/images/COSCUP/coscup-2026/qr-roma.svg" alt="github.com/jackey8616/roma"><span>roma　引到的 ADR 都在裡面</span></div>
+  <div><img src="/images/COSCUP/coscup-2026/qr-me.svg" alt="github.com/jackey8616"><span>我</span></div>
 </div>
 
 <!-- .slide: class="hero" -->
@@ -317,8 +318,8 @@ Nous Research 的 **Hermes Agent**：
 .reveal .slides section.dense { font-size: 0.85em; }
 
 /* QR：白底是刻意的，反白的 QR 有些掃描器讀不到 */
-.reveal .qr { display: flex; gap: 2.5em; justify-content: center; margin-top: 0.8em; }
-.reveal .qr img { width: 200px; height: 200px; margin: 0; border: none; box-shadow: none;
+.reveal .qr { display: flex; gap: 1.6em; justify-content: center; margin-top: 0.8em; }
+.reveal .qr img { width: 176px; height: 176px; margin: 0; border: none; box-shadow: none;
                   background: #fff; padding: 6px; border-radius: 6px; }
 .reveal .qr span { display: block; font-size: 0.45em; opacity: 0.65; margin-top: 0.6em; }
 
