@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400" role="img"
+     aria-label="十條 session 全部直連我，我是中間那個路由器">
+  <style>
+    .lbl   { font-family: 'Source Sans Pro','PingFang TC','Noto Sans TC','Microsoft JhengHei',sans-serif; fill: #f0f0f0; }
+    .me    { font-size: 34px; font-weight: 700; }
+    .small { font-size: 15px; fill: #9a9a9a; }
+    .note  { font-size: 17px; fill: #ff8b8b; }
+    .wire  { stroke: #ff6b6b; stroke-width: 2.5; fill: none; opacity: .85; }
+    .box   { fill: #232323; stroke: #7a7a7a; stroke-width: 1.5; }
+    .hub   { fill: #1d1d1d; stroke: #ff6b6b; stroke-width: 3.5; }
+  </style>
+
+  <!-- 十條線 -->
+  <g class="wire">
+    <path d="M178 200 C 380 200, 520 33,  700 33"/>
+    <path d="M178 200 C 380 200, 520 69,  700 69"/>
+    <path d="M178 200 C 380 200, 520 105, 700 105"/>
+    <path d="M178 200 C 380 200, 520 141, 700 141"/>
+    <path d="M178 200 C 380 200, 520 177, 700 177"/>
+    <path d="M178 200 C 380 200, 520 213, 700 213"/>
+    <path d="M178 200 C 380 200, 520 249, 700 249"/>
+    <path d="M178 200 C 380 200, 520 285, 700 285"/>
+    <path d="M178 200 C 380 200, 520 321, 700 321"/>
+    <path d="M178 200 C 380 200, 520 357, 700 357"/>
+  </g>
+
+  <!-- session 們 -->
+  <g>
+    <rect class="box" x="700" y="20"  width="150" height="26" rx="6"/>
+    <rect class="box" x="700" y="56"  width="150" height="26" rx="6"/>
+    <rect class="box" x="700" y="92"  width="150" height="26" rx="6"/>
+    <rect class="box" x="700" y="128" width="150" height="26" rx="6"/>
+    <rect class="box" x="700" y="164" width="150" height="26" rx="6"/>
+    <rect class="box" x="700" y="200" width="150" height="26" rx="6"/>
+    <rect class="box" x="700" y="236" width="150" height="26" rx="6"/>
+    <rect class="box" x="700" y="272" width="150" height="26" rx="6"/>
+    <rect class="box" x="700" y="308" width="150" height="26" rx="6"/>
+    <rect class="box" x="700" y="344" width="150" height="26" rx="6"/>
+  </g>
+  <g class="lbl small" text-anchor="middle">
+    <text x="775" y="38">session</text>
+    <text x="775" y="74">session</text>
+    <text x="775" y="110">session</text>
+    <text x="775" y="146">session</text>
+    <text x="775" y="182">session</text>
+    <text x="775" y="218">session</text>
+    <text x="775" y="254">session</text>
+    <text x="775" y="290">session</text>
+    <text x="775" y="326">session</text>
+    <text x="775" y="362">session</text>
+  </g>
+
+  <!-- 我 -->
+  <circle class="hub" cx="110" cy="200" r="68"/>
+  <text class="lbl me" x="110" y="212" text-anchor="middle">我</text>
+
+  <text class="lbl note" x="110" y="306" text-anchor="middle">彙整・守門・傳達・追蹤</text>
+  <text class="lbl small" x="110" y="330" text-anchor="middle">全部親自做</text>
+</svg>

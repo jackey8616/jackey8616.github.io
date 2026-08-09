@@ -56,6 +56,13 @@ prismjs:
   line_number: true
   tab_replace: ''
 
+# Slides (hexo-generator-slidehtml)
+# reveal.js is vendored under source/vendor/ rather than pulled from a CDN — a talk
+# has to survive conference wifi. See source/vendor/reveal/README.txt.
+slidehtml:
+  revealBase: /vendor/reveal
+  revealTheme: black
+
 # Home page setting
 # path: Root path for your blogs index page. (default = '')
 # per_page: Posts displayed per page. (0 = disable pagination)

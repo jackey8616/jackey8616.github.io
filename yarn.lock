@@ -537,7 +537,7 @@ ee-first@1.1.1:
   resolved "https://registry.npmjs.org/ee-first/-/ee-first-1.1.1.tgz"
   integrity sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==
 
-ejs@^3.1.6:
+ejs@^3.1.10, ejs@^3.1.6:
   version "3.1.10"
   dependencies:
     jake "^10.8.5"
@@ -837,10 +837,12 @@ hexo-generator-sitemap@^3.0.1:
     micromatch "^4.0.2"
     nunjucks "^3.1.6"
 
-hexo-generator-slidehtml@^0.0.64:
-  version "0.0.64"
-  resolved "https://registry.npmjs.org/hexo-generator-slidehtml/-/hexo-generator-slidehtml-0.0.64.tgz"
-  integrity sha512-ql8V/LdAnr2QWaL2Luy1GxBHTgbpZRiJZsLwjbRFT2isqUb7QjxConIpmxNLGMDPHD8SMjfJoqAbs8pGQPM7GA==
+hexo-generator-slidehtml@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.npmjs.org/hexo-generator-slidehtml/-/hexo-generator-slidehtml-0.1.0.tgz"
+  integrity sha512-/VAD+khOLMBQDXmALysKONr5ktY2eLeDwGPctc40fP7rMHlKQiiqVYDw01lkA53xoyUcf89NTwx+xnGraJurJg==
+  dependencies:
+    ejs "^3.1.10"
 
 hexo-generator-tag@^2.0.0:
   version "2.0.0"
