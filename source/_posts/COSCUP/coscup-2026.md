@@ -45,6 +45,8 @@ Clooooode　·　COSCUP 2026　·　TR311
 
 ## whoami
 
+![](/images/COSCUP/coscup-2026/avatar.jpg)<!-- .element: class="avatar" -->
+
 **Clooooode**（clo5de）
 
 之前還在摘蘋果，最近回來找個工作寫程式。
@@ -316,6 +318,10 @@ Nous Research 的 **Hermes Agent**：
 
 /* 內容真的塞不下的那幾頁 */
 .reveal .slides section.dense { font-size: 0.85em; }
+
+.reveal .avatar { width: 190px; height: 190px; border-radius: 50%; object-fit: cover;
+                  object-position: 32% 45%;   /* 原圖右邊還有一個人，裁切往左移 */
+                  border: none; box-shadow: none; margin: 0 auto 0.5em; display: block; }
 
 /* QR：白底是刻意的，反白的 QR 有些掃描器讀不到 */
 .reveal .qr { display: flex; gap: 1.6em; justify-content: center; margin-top: 0.8em; }
