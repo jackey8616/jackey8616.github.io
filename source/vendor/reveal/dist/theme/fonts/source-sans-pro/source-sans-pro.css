@@ -1,0 +1,30 @@
+/* Trimmed to woff only when vendoring — the .eot/.ttf variants exist upstream
+   for browsers this site does not target, and they were 1.4 MB of the 1.8 MB. */
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    src: url('./source-sans-pro-regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    src: url('./source-sans-pro-italic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    src: url('./source-sans-pro-semibold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    src: url('./source-sans-pro-semibolditalic.woff') format('woff');
+    font-weight: 600;
+    font-style: italic;
+}
