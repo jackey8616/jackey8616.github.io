@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400" role="img"
+     aria-label="每個人各自跟自己的 agent 講話，agent 都讀同一份 GitHub Issue，但人跟人之間有溝通落差">
+  <style>
+    .lbl   { font-family: 'Source Sans Pro','PingFang TC','Noto Sans TC','Microsoft JhengHei',sans-serif; fill: #f0f0f0; }
+    .who   { font-size: 22px; font-weight: 700; }
+    .small { font-size: 15px; fill: #9a9a9a; }
+    .store { font-size: 19px; font-weight: 700; }
+    .bad   { font-size: 15px; fill: #ff8b8b; }
+    .gapq  { font-size: 26px; font-weight: 700; fill: #ff6b6b; }
+    .link  { stroke: #8a8a8a; stroke-width: 2; fill: none; }
+    .share { stroke: #4ec9b0; stroke-width: 2; fill: none; opacity: .7; }
+    .gap   { stroke: #ff6b6b; stroke-width: 2.5; fill: none; stroke-dasharray: 7 8; }
+    .box   { fill: #232323; stroke: #7a7a7a; stroke-width: 1.5; }
+    .human { fill: #1d1d1d; stroke: #f0f0f0; stroke-width: 2.5; }
+    .issue { fill: #1d1d1d; stroke: #4ec9b0; stroke-width: 3; }
+  </style>
+
+  <!-- 人 → 自己的 agent -->
+  <g class="link">
+    <path d="M118 70  H 192"/>
+    <path d="M118 200 H 192"/>
+    <path d="M118 330 H 192"/>
+  </g>
+
+  <!-- agent → 同一份 issue -->
+  <g class="share">
+    <path d="M348 70  C 460 70,  500 160, 604 160"/>
+    <path d="M348 200 C 460 200, 500 200, 604 200"/>
+    <path d="M348 330 C 460 330, 500 240, 604 240"/>
+  </g>
+
+  <!-- 人跟人之間：沒有線，只有落差 -->
+  <g class="gap">
+    <path d="M56 104 C 8 135, 8 165, 56 196"/>
+    <path d="M56 234 C 8 265, 8 295, 56 326"/>
+  </g>
+  <text class="lbl gapq" x="41" y="158" text-anchor="middle">?</text>
+  <text class="lbl gapq" x="41" y="288" text-anchor="middle">?</text>
+
+  <!-- 人 -->
+  <g>
+    <circle class="human" cx="86" cy="70"  r="32"/>
+    <circle class="human" cx="86" cy="200" r="32"/>
+    <circle class="human" cx="86" cy="330" r="32"/>
+  </g>
+  <g class="lbl who" text-anchor="middle">
+    <text x="86" y="78">我</text>
+    <text x="86" y="208">A</text>
+    <text x="86" y="338">B</text>
+  </g>
+
+  <!-- 各自的 agent -->
+  <g>
+    <rect class="box" x="192" y="48"  width="156" height="44" rx="8"/>
+    <rect class="box" x="192" y="178" width="156" height="44" rx="8"/>
+    <rect class="box" x="192" y="308" width="156" height="44" rx="8"/>
+  </g>
+  <g class="lbl small" text-anchor="middle" style="font-size:16px;fill:#d0d0d0">
+    <text x="270" y="76">自己的 agent</text>
+    <text x="270" y="206">自己的 agent</text>
+    <text x="270" y="336">自己的 agent</text>
+  </g>
+
+  <!-- 同一份 issue -->
+  <rect class="issue" x="604" y="118" width="252" height="164" rx="12"/>
+  <text class="lbl store" x="730" y="188" text-anchor="middle">GitHub Issues</text>
+  <text class="lbl small" x="730" y="216" text-anchor="middle">同一份，大家都讀得到</text>
+
+  <text class="lbl bad" x="86" y="386" text-anchor="middle">看不到彼此</text>
+</svg>

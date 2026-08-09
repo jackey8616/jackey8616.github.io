@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400" role="img"
+     aria-label="agent 之間可以互相傳訊息，彼此接手，不必每次繞回我">
+  <style>
+    .lbl   { font-family: 'Source Sans Pro','PingFang TC','Noto Sans TC','Microsoft JhengHei',sans-serif; fill: #f0f0f0; }
+    .me    { font-size: 26px; font-weight: 700; }
+    .small { font-size: 14px; fill: #b0b0b0; }
+    .note  { font-size: 16px; fill: #4ec9b0; }
+    .thin  { stroke: #8a8a8a; stroke-width: 2; fill: none; }
+    .mesh  { stroke: #4ec9b0; stroke-width: 2; fill: none; opacity: .5; }
+    .node  { fill: #1d1d1d; stroke: #4ec9b0; stroke-width: 2.5; }
+    .human { fill: #1d1d1d; stroke: #f0f0f0; stroke-width: 2.5; }
+  </style>
+
+  <!-- 我 → 其中一顆 -->
+  <path class="thin" d="M148 200 H 434"/>
+
+  <!-- 彼此互通：五個節點兩兩相連 -->
+  <g class="mesh">
+    <path d="M600 78  L 722 166"/>
+    <path d="M722 166 L 676 308"/>
+    <path d="M676 308 L 524 308"/>
+    <path d="M524 308 L 478 166"/>
+    <path d="M478 166 L 600 78"/>
+    <path d="M600 78  L 676 308"/>
+    <path d="M600 78  L 524 308"/>
+    <path d="M722 166 L 524 308"/>
+    <path d="M722 166 L 478 166"/>
+    <path d="M676 308 L 478 166"/>
+  </g>
+
+  <!-- 五顆 agent -->
+  <g>
+    <circle class="node" cx="600" cy="78"  r="42"/>
+    <circle class="node" cx="722" cy="166" r="42"/>
+    <circle class="node" cx="676" cy="308" r="42"/>
+    <circle class="node" cx="524" cy="308" r="42"/>
+    <circle class="node" cx="478" cy="166" r="42"/>
+  </g>
+  <g class="lbl small" text-anchor="middle">
+    <text x="600" y="83">agent</text>
+    <text x="722" y="171">agent</text>
+    <text x="676" y="313">agent</text>
+    <text x="524" y="313">agent</text>
+    <text x="478" y="171">agent</text>
+  </g>
+
+  <!-- 我 -->
+  <circle class="human" cx="100" cy="200" r="48"/>
+  <text class="lbl me" x="100" y="210" text-anchor="middle">我</text>
+
+  <text class="lbl small" x="291" y="186" text-anchor="middle">丟一件事進去</text>
+  <text class="lbl note"  x="600" y="384" text-anchor="middle">它們自己互相接手，不用每次繞回我</text>
+</svg>

@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400" role="img"
+     aria-label="幕僚自己在前景做事，我在等它，底下的子代理一個都沒派出去">
+  <style>
+    .lbl   { font-family: 'Source Sans Pro','PingFang TC','Noto Sans TC','Microsoft JhengHei',sans-serif; fill: #f0f0f0; }
+    .me    { font-size: 30px; font-weight: 700; }
+    .small { font-size: 15px; fill: #6a6a6a; }
+    .bad   { font-size: 17px; fill: #ff8b8b; }
+    .wait  { stroke: #ff6b6b; stroke-width: 5; fill: none; stroke-dasharray: 12 9; }
+    .dead  { stroke: #3a3a3a; stroke-width: 2; fill: none; stroke-dasharray: 5 7; }
+    .box   { fill: #1b1b1b; stroke: #3a3a3a; stroke-width: 1.5; }
+    .hub   { fill: #1d1d1d; stroke: #f0f0f0; stroke-width: 3; }
+    .busy  { fill: #1d1d1d; stroke: #ff6b6b; stroke-width: 3.5; }
+  </style>
+
+  <!-- 我 → 幕僚：卡住 -->
+  <path class="wait" d="M148 200 H 352"/>
+
+  <!-- 幕僚 → 子代理：沒派出去 -->
+  <g class="dead">
+    <path d="M508 200 C 600 200, 640 45,  720 45"/>
+    <path d="M508 200 C 600 200, 640 97,  720 97"/>
+    <path d="M508 200 C 600 200, 640 149, 720 149"/>
+    <path d="M508 200 C 600 200, 640 200, 720 200"/>
+    <path d="M508 200 C 600 200, 640 251, 720 251"/>
+    <path d="M508 200 C 600 200, 640 303, 720 303"/>
+    <path d="M508 200 C 600 200, 640 355, 720 355"/>
+  </g>
+
+  <!-- 子代理：閒置 -->
+  <g>
+    <rect class="box" x="720" y="32"  width="150" height="26" rx="6"/>
+    <rect class="box" x="720" y="84"  width="150" height="26" rx="6"/>
+    <rect class="box" x="720" y="136" width="150" height="26" rx="6"/>
+    <rect class="box" x="720" y="187" width="150" height="26" rx="6"/>
+    <rect class="box" x="720" y="238" width="150" height="26" rx="6"/>
+    <rect class="box" x="720" y="290" width="150" height="26" rx="6"/>
+    <rect class="box" x="720" y="342" width="150" height="26" rx="6"/>
+  </g>
+  <g class="lbl small" text-anchor="middle">
+    <text x="795" y="50">閒置</text>
+    <text x="795" y="102">閒置</text>
+    <text x="795" y="154">閒置</text>
+    <text x="795" y="205">閒置</text>
+    <text x="795" y="256">閒置</text>
+    <text x="795" y="308">閒置</text>
+    <text x="795" y="360">閒置</text>
+  </g>
+
+  <!-- 我 -->
+  <circle class="hub" cx="90" cy="200" r="58"/>
+  <text class="lbl me" x="90" y="211" text-anchor="middle">我</text>
+
+  <!-- 幕僚（在忙） -->
+  <circle class="busy" cx="430" cy="200" r="78"/>
+  <text class="lbl me" x="430" y="196" text-anchor="middle">幕僚</text>
+  <text class="lbl small" x="430" y="226" text-anchor="middle" style="fill:#ff8b8b">自己做完才回</text>
+
+  <text class="lbl bad"   x="250" y="176" text-anchor="middle">我在等它</text>
+  <text class="lbl small" x="700" y="392" text-anchor="middle">併發沒搬過來，一條都沒派出去</text>
+</svg>

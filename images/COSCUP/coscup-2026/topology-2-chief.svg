@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400" role="img"
+     aria-label="我只接一條線到幕僚，幕僚在背景派出一群子代理">
+  <style>
+    .lbl   { font-family: 'Source Sans Pro','PingFang TC','Noto Sans TC','Microsoft JhengHei',sans-serif; fill: #f0f0f0; }
+    .me    { font-size: 30px; font-weight: 700; }
+    .small { font-size: 15px; fill: #9a9a9a; }
+    .good  { font-size: 17px; fill: #4ec9b0; }
+    .one   { stroke: #4ec9b0; stroke-width: 5; fill: none; }
+    .fan   { stroke: #4ec9b0; stroke-width: 2; fill: none; opacity: .55; }
+    .box   { fill: #232323; stroke: #7a7a7a; stroke-width: 1.5; }
+    .hub   { fill: #1d1d1d; stroke: #f0f0f0; stroke-width: 3; }
+    .aide  { fill: #1d1d1d; stroke: #4ec9b0; stroke-width: 3.5; }
+  </style>
+
+  <!-- 我 → 幕僚，只有一條 -->
+  <path class="one" d="M148 200 H 352"/>
+
+  <!-- 幕僚 → 子代理 -->
+  <g class="fan">
+    <path d="M508 200 C 600 200, 640 45,  720 45"/>
+    <path d="M508 200 C 600 200, 640 97,  720 97"/>
+    <path d="M508 200 C 600 200, 640 149, 720 149"/>
+    <path d="M508 200 C 600 200, 640 200, 720 200"/>
+    <path d="M508 200 C 600 200, 640 251, 720 251"/>
+    <path d="M508 200 C 600 200, 640 303, 720 303"/>
+    <path d="M508 200 C 600 200, 640 355, 720 355"/>
+  </g>
+
+  <!-- 子代理 -->
+  <g>
+    <rect class="box" x="720" y="32"  width="150" height="26" rx="6"/>
+    <rect class="box" x="720" y="84"  width="150" height="26" rx="6"/>
+    <rect class="box" x="720" y="136" width="150" height="26" rx="6"/>
+    <rect class="box" x="720" y="187" width="150" height="26" rx="6"/>
+    <rect class="box" x="720" y="238" width="150" height="26" rx="6"/>
+    <rect class="box" x="720" y="290" width="150" height="26" rx="6"/>
+    <rect class="box" x="720" y="342" width="150" height="26" rx="6"/>
+  </g>
+  <g class="lbl small" text-anchor="middle">
+    <text x="795" y="50">子代理</text>
+    <text x="795" y="102">子代理</text>
+    <text x="795" y="154">子代理</text>
+    <text x="795" y="205">子代理</text>
+    <text x="795" y="256">子代理</text>
+    <text x="795" y="308">子代理</text>
+    <text x="795" y="360">子代理</text>
+  </g>
+
+  <!-- 我 -->
+  <circle class="hub" cx="90" cy="200" r="58"/>
+  <text class="lbl me" x="90" y="211" text-anchor="middle">我</text>
+
+  <!-- 幕僚 -->
+  <circle class="aide" cx="430" cy="200" r="78"/>
+  <text class="lbl me" x="430" y="211" text-anchor="middle">幕僚</text>
+
+  <text class="lbl good"  x="250" y="176" text-anchor="middle">只接一條線</text>
+  <text class="lbl small" x="700" y="392" text-anchor="middle">併發搬到這裡，在背景跑</text>
+</svg>

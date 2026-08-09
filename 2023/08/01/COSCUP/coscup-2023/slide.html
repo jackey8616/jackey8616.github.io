@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html>
     <head>
@@ -7,55 +6,11 @@
 
         <title>COSCUP2023: 商業專案開源之旅：跨越技術挑戰與團隊溝通的實戰分享</title>
 
-        <link rel="stylesheet" href="https://cdn.bootcss.com/reveal.js/3.4.1/css/reveal.min.css">
-        
-        <!-- theme -->
-        <script>
-            var link = document.createElement( 'link' );
-            link.rel = 'stylesheet';
-            link.type = 'text/css';
-            var theme ='black';
-            switch (theme){
-                case 'black':
-                    link.href = 'https://cdn.bootcss.com/reveal.js/3.4.1/css/theme/black.min.css';
-                    break;
-                case 'beige':
-                    link.href = 'https://cdn.bootcss.com/reveal.js/3.4.1/css/theme/beige.min.css';
-                    break;
-                case 'blood':
-                    link.href = 'https://cdn.bootcss.com/reveal.js/3.4.1/css/theme/blood.min.css';
-                    break;
-                case 'league':
-                    link.href = 'https://cdn.bootcss.com/reveal.js/3.4.1/css/theme/league.min.css';
-                    break;
-                case 'moon':
-                    link.href = 'https://cdn.bootcss.com/reveal.js/3.4.1/css/theme/moon.min.css';
-                    break;
-                case 'night':
-                    link.href = 'https://cdn.bootcss.com/reveal.js/3.4.1/css/theme/night.min.css';
-                    break;
-                case 'serif':
-                    link.href = 'https://cdn.bootcss.com/reveal.js/3.4.1/css/theme/serif.min.css';
-                    break;
-                case 'sky':
-                    link.href = 'https://cdn.bootcss.com/reveal.js/3.4.1/css/theme/sky.min.css';
-                    break;
-                case 'solarized':
-                    link.href = 'https://cdn.bootcss.com/reveal.js/3.4.1/css/theme/solarized.min.css';
-                    break;
-                case 'white':
-                    link.href = 'https://cdn.bootcss.com/reveal.js/3.4.1/css/theme/white.min.css';
-                    break;
-                default:
-            }
-            
-            document.getElementsByTagName( 'head' )[0].appendChild( link );
-        </script>
+        <link rel="stylesheet" href="/vendor/reveal/dist/reset.css">
+        <link rel="stylesheet" href="/vendor/reveal/dist/reveal.css">
+        <link rel="stylesheet" href="/vendor/reveal/dist/theme/black.css" id="theme">
         <!-- Theme used for syntax highlighting of code -->
-        <link rel="stylesheet" href="https://cdn.bootcss.com/reveal.js/3.4.1/lib/css/zenburn.min.css">
-        <link href="https://cdn.bootcss.com/reveal.js/3.4.1/css/print/paper.min.css" rel="stylesheet">
-        <!-- Printing and PDF exports -->
-        
+        <link rel="stylesheet" href="/vendor/reveal/plugin/highlight/zenburn.css">
     </head>
     <body>
         <div class="reveal">
@@ -380,19 +335,23 @@ https://github.com/urfit-tech/lodestar-server
             </div>
         </div>
 
-        <script src="https://cdn.bootcss.com/reveal.js/3.4.1/lib/js/head.min.js"></script>
-        <script src="https://cdn.bootcss.com/reveal.js/3.4.1/js/reveal.min.js"></script>
+        <script src="/vendor/reveal/dist/reveal.js"></script>
+        <script src="/vendor/reveal/plugin/markdown/markdown.js"></script>
+        <script src="/vendor/reveal/plugin/highlight/highlight.js"></script>
+        <script src="/vendor/reveal/plugin/notes/notes.js"></script>
+        
 
         <script>
-            // More info https://github.com/hakimel/reveal.js#configuration
+            // More info https://revealjs.com/config/
             Reveal.initialize({
-                history: true,
                 // 是否在右下角展示控制条
                 controls: true,
                 // 是否显示演示的进度条
                 progress: true,
                 // 是否显示当前幻灯片的页数编号，也可以使用代码 “slideNumber: 'c/t'” ，表示当前页/总页数。
                 slideNumber: false,
+                // 是否把当前页写进网址的 hash，重新整理后回到同一页
+                hash: true,
                 // 是否将每个幻灯片改变加入到浏览器的历史记录中去
                 history: false,
                 // 是否启用键盘快捷键来导航
@@ -423,12 +382,8 @@ https://github.com/urfit-tech/lodestar-server
                 autoSlide: 0,
                 // 当遇到用户输入的时候停止自动切换
                 autoSlideStoppable: true,
-                // 当自动滑动时，使用此方法进行导航。
-                autoSlideMethod: Reveal.navigateNext,
                 // 是否启用通过鼠标滚轮来导航幻灯片
                 mouseWheel: false,
-                // 是否在移动设备上隐藏地址栏
-                hideAddressBar: true,
                 // 是否在一个弹出的 iframe 中打开幻灯片中的链接
                 previewLinks: false,
                 // 切换过渡效果
@@ -449,13 +404,8 @@ https://github.com/urfit-tech/lodestar-server
                 // - 设置为 0 时，禁止沿轴运动
                 parallaxBackgroundHorizontal: null,
                 parallaxBackgroundVertical: null,
-                // More info https://github.com/hakimel/reveal.js#dependencies
-                dependencies: [
-                    { src: 'https://cdn.bootcss.com/reveal.js/3.4.1/plugin/markdown/marked.js' },
-                    { src: 'https://cdn.bootcss.com/reveal.js/3.4.1/plugin/markdown/markdown.min.js' },
-                    { src: 'https://cdn.bootcss.com/reveal.js/3.4.1/plugin/notes/notes.min.js', async: true },
-                    { src: 'https://cdn.bootcss.com/reveal.js/3.4.1/plugin/highlight/highlight.min.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
-                ]
+                // More info https://revealjs.com/plugins/
+                plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
             });
         </script>
     </body>
