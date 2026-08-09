@@ -37,9 +37,19 @@ slidehtml:
 
 # Agent 可以平行，我不行
 
-clooooode / clo5de　·　COSCUP 2026
+Clooooode　·　COSCUP 2026　·　TR311
 
-<small>2023 也在這裡講過，那次講開源；這次講我被自己的拓撲熱當三次。</small>
+<!-- .slide: class="hero" -->
+
+---
+
+## whoami
+
+**Clooooode**（clo5de）
+
+之前還在摘蘋果，最近回來找個工作寫程式。
+
+2023 也在這裡講過，那次講開源；這次講我被自己的拓撲熱當三次。
 
 <!-- .slide: class="hero" -->
 
@@ -275,7 +285,10 @@ Nous Research 的 **Hermes Agent**：
 **每次加一層，其實只是把瓶頸往外推一格。**
 **而每推一格，代價就是狀態要更徹底地落在檔案上。**
 
-github.com/jackey8616/roma
+<div class="qr">
+  <div><img src="/images/COSCUP/coscup-2026/qr-roma.svg" alt="github.com/jackey8616/roma"><span>roma　這場引到的 ADR 都在裡面</span></div>
+  <div><img src="/images/COSCUP/coscup-2026/qr-me.svg" alt="github.com/jackey8616"><span>clooooode　我</span></div>
+</div>
 
 <!-- .slide: class="hero" -->
 
@@ -302,6 +315,12 @@ github.com/jackey8616/roma
 
 /* 內容真的塞不下的那幾頁 */
 .reveal .slides section.dense { font-size: 0.85em; }
+
+/* QR：白底是刻意的，反白的 QR 有些掃描器讀不到 */
+.reveal .qr { display: flex; gap: 2.5em; justify-content: center; margin-top: 0.8em; }
+.reveal .qr img { width: 200px; height: 200px; margin: 0; border: none; box-shadow: none;
+                  background: #fff; padding: 6px; border-radius: 6px; }
+.reveal .qr span { display: block; font-size: 0.45em; opacity: 0.65; margin-top: 0.6em; }
 
 /* 拓樸圖：滿版、無邊框、不要 reveal 預設的白框跟陰影 */
 .reveal .diagram { width: 100%; max-height: 330px; border: none; box-shadow: none;
