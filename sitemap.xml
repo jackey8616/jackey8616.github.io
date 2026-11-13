@@ -29,6 +29,15 @@
   </url>
   
   <url>
+    <loc>https://www.clo5de.info/2018/05/01/life_geeking/Cracking-APK/</loc>
+    
+    <lastmod>2026-11-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.clo5de.info/2018/04/10/life_geeking/Fish-with-NVM/</loc>
     
     <lastmod>2026-11-13</lastmod>
@@ -47,7 +56,7 @@
   </url>
   
   <url>
-    <loc>https://www.clo5de.info/2018/04/10/note/C-C++/</loc>
+    <loc>https://www.clo5de.info/2026/11/13/life_geeking/working-with-inflight-wifi/</loc>
     
     <lastmod>2026-11-13</lastmod>
     
@@ -56,7 +65,7 @@
   </url>
   
   <url>
-    <loc>https://www.clo5de.info/2026/11/13/life_geeking/working-with-inflight-wifi/</loc>
+    <loc>https://www.clo5de.info/2018/04/10/note/C-C++/</loc>
     
     <lastmod>2026-11-13</lastmod>
     
@@ -119,7 +128,16 @@
   </url>
   
   <url>
-    <loc>https://www.clo5de.info/2019/04/19/paper_reading/Automatic_Memory_Control_of_Multiple_Virtual%20Machines_on_a_Consolidated%20Server/</loc>
+    <loc>https://www.clo5de.info/2018/04/10/tutorial/Django/</loc>
+    
+    <lastmod>2026-11-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.clo5de.info/2018/05/01/application/maybep2p/MaybeP2P-1/</loc>
     
     <lastmod>2026-11-13</lastmod>
     
@@ -129,15 +147,6 @@
   
   <url>
     <loc>https://www.clo5de.info/2023/07/11/note/AWS/EC2-Swap-With-Launch-Template/</loc>
-    
-    <lastmod>2026-11-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.clo5de.info/2018/04/10/tutorial/Django/</loc>
     
     <lastmod>2026-11-13</lastmod>
     
@@ -191,15 +200,6 @@
   </url>
   
   <url>
-    <loc>https://www.clo5de.info/2023/08/01/note/PostgreSQL/PostgreSQL-canceling-statement-due-to-conflict-with-recovery/</loc>
-    
-    <lastmod>2026-11-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://www.clo5de.info/2019/06/19/note/OS/ch8/</loc>
     
     <lastmod>2026-11-13</lastmod>
@@ -218,7 +218,16 @@
   </url>
   
   <url>
-    <loc>https://www.clo5de.info/categories/index.html</loc>
+    <loc>https://www.clo5de.info/2023/08/01/note/PostgreSQL/PostgreSQL-canceling-statement-due-to-conflict-with-recovery/</loc>
+    
+    <lastmod>2026-11-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.clo5de.info/2019/04/19/paper_reading/Automatic_Memory_Control_of_Multiple_Virtual%20Machines_on_a_Consolidated%20Server/</loc>
     
     <lastmod>2026-11-13</lastmod>
     
@@ -228,6 +237,15 @@
   
   <url>
     <loc>https://www.clo5de.info/about/index.html</loc>
+    
+    <lastmod>2026-11-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.clo5de.info/categories/index.html</loc>
     
     <lastmod>2026-11-13</lastmod>
     
@@ -290,34 +308,7 @@
   </url>
   
   <url>
-    <loc>https://www.clo5de.info/2018/05/01/life_geeking/Cracking-APK/</loc>
-    
-    <lastmod>2026-11-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.clo5de.info/2018/05/01/application/maybep2p/MaybeP2P-1/</loc>
-    
-    <lastmod>2026-11-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://www.clo5de.info/2018/05/23/CTF/pwnable-kr/Toddlers_Bottle/1-fd/</loc>
-    
-    <lastmod>2026-11-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.clo5de.info/2018/10/24/CTF/pwnable-kr/Toddlers_Bottle/11-coin1/</loc>
     
     <lastmod>2026-11-13</lastmod>
     
@@ -335,6 +326,15 @@
   </url>
   
   <url>
+    <loc>https://www.clo5de.info/2018/10/24/CTF/pwnable-kr/Toddlers_Bottle/11-coin1/</loc>
+    
+    <lastmod>2026-11-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.clo5de.info/2018/10/23/CTF/pwnable-kr/Toddlers_Bottle/12-blackjack/</loc>
     
     <lastmod>2026-11-13</lastmod>
@@ -344,7 +344,7 @@
   </url>
   
   <url>
-    <loc>https://www.clo5de.info/2018/05/24/CTF/pwnable-kr/Toddlers_Bottle/3-bof/</loc>
+    <loc>https://www.clo5de.info/2018/05/24/CTF/pwnable-kr/Toddlers_Bottle/2-collision/</loc>
     
     <lastmod>2026-11-13</lastmod>
     
@@ -353,7 +353,7 @@
   </url>
   
   <url>
-    <loc>https://www.clo5de.info/2018/05/24/CTF/pwnable-kr/Toddlers_Bottle/2-collision/</loc>
+    <loc>https://www.clo5de.info/2018/05/24/CTF/pwnable-kr/Toddlers_Bottle/3-bof/</loc>
     
     <lastmod>2026-11-13</lastmod>
     
@@ -407,7 +407,7 @@
   </url>
   
   <url>
-    <loc>https://www.clo5de.info/2018/06/03/CTF/AIS3/2018/pre_exam/AIS3-2018-First-Try/</loc>
+    <loc>https://www.clo5de.info/2018/10/23/CTF/pwnable-kr/Toddlers_Bottle/9-mistake/</loc>
     
     <lastmod>2026-11-13</lastmod>
     
@@ -416,7 +416,7 @@
   </url>
   
   <url>
-    <loc>https://www.clo5de.info/2018/10/23/CTF/pwnable-kr/Toddlers_Bottle/9-mistake/</loc>
+    <loc>https://www.clo5de.info/2018/06/03/CTF/AIS3/2018/pre_exam/AIS3-2018-First-Try/</loc>
     
     <lastmod>2026-11-13</lastmod>
     
@@ -744,21 +744,7 @@
   </url>
   
   <url>
-    <loc>https://www.clo5de.info/tags/Paper-Reading/</loc>
-    <lastmod>2026-11-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.clo5de.info/tags/Virtualization/</loc>
-    <lastmod>2026-11-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.clo5de.info/tags/Operating-System/</loc>
+    <loc>https://www.clo5de.info/tags/Django/</loc>
     <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -828,13 +814,6 @@
   </url>
   
   <url>
-    <loc>https://www.clo5de.info/tags/Django/</loc>
-    <lastmod>2026-11-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://www.clo5de.info/tags/GitHub-Actions/</loc>
     <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -856,21 +835,7 @@
   </url>
   
   <url>
-    <loc>https://www.clo5de.info/tags/PostgreSQL/</loc>
-    <lastmod>2026-11-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.clo5de.info/tags/RDBMS/</loc>
-    <lastmod>2026-11-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.clo5de.info/tags/Vacuum/</loc>
+    <loc>https://www.clo5de.info/tags/Operating-System/</loc>
     <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -892,6 +857,27 @@
   
   <url>
     <loc>https://www.clo5de.info/tags/Serial/</loc>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.clo5de.info/tags/PostgreSQL/</loc>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.clo5de.info/tags/RDBMS/</loc>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.clo5de.info/tags/Vacuum/</loc>
     <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -920,6 +906,20 @@
   
   <url>
     <loc>https://www.clo5de.info/tags/WriteUps/</loc>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.clo5de.info/tags/Paper-Reading/</loc>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.clo5de.info/tags/Virtualization/</loc>
     <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -984,7 +984,7 @@
   </url>
   
   <url>
-    <loc>https://www.clo5de.info/categories/PaperReading/</loc>
+    <loc>https://www.clo5de.info/categories/Tutorial/</loc>
     <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1005,13 +1005,6 @@
   </url>
   
   <url>
-    <loc>https://www.clo5de.info/categories/Tutorial/</loc>
-    <lastmod>2026-11-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://www.clo5de.info/categories/PostgreSQL/</loc>
     <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -1026,7 +1019,7 @@
   </url>
   
   <url>
-    <loc>https://www.clo5de.info/categories/CTF/AIS3/</loc>
+    <loc>https://www.clo5de.info/categories/PaperReading/</loc>
     <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1034,6 +1027,13 @@
   
   <url>
     <loc>https://www.clo5de.info/categories/CTF/pwnable-kr/Toddler-s-Bottle/</loc>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.clo5de.info/categories/CTF/AIS3/</loc>
     <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
