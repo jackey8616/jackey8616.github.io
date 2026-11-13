@@ -2,6 +2,8 @@
 title: Migrating python backend to AWS Lambda
 date: 2024-04-16 21:05:32
 categories: AWS
+og_description: "Migrating a Sanic backend from Linode VPC to AWS Lambda."
+og_image: /images/note/AWS/pyfun-migrate-to-aws-lambda/og.png
 tags:
   - AWS
   - GitHub Actions

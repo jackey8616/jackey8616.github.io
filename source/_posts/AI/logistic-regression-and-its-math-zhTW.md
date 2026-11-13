@@ -2,6 +2,8 @@
 title: Logistic Regression & its mathematics(zhTW)
 date: 2025-10-07 15:32:20
 categories: AI
+og_locale: zh_TW
+og_image: /images/ai/logistic-regression-and-its-math.png
 hidden: true
 tags:
   - AI
@@ -10,6 +12,8 @@ tags:
   - Logistic Regression
 mathjax: true
 ---
+
+![](/images/ai/logistic-regression-and-its-math.png?300x)
 
 換講邏輯回歸..  
 需要一點自然對數的概念。  

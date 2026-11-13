@@ -2,6 +2,7 @@
 title: Linear Regression & its mathematics
 date: 2025-10-03 21:21:56
 categories: AI
+og_description: "Simply recording something about linear regression and its mathematics."
 tags:
   - AI
   - Machine Learning

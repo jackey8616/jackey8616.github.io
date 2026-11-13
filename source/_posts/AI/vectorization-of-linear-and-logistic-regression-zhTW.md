@@ -2,6 +2,8 @@
 title: 'Vectorization of Linear and Logistic Regression(zhTW)'
 date: 2025-10-09 19:37:23
 categories: AI
+og_locale: zh_TW
+og_image: /images/ai/vectorization-of-linear-and-logistic-regression.png
 hidden: true
 tags:
   - AI
@@ -13,6 +15,8 @@ tags:
   - Matrix
 mathjax: true
 ---
+
+![](/images/ai/vectorization-of-linear-and-logistic-regression.png?300x)
 
 線性/邏輯迴歸的向量化推導
 <!-- More -->

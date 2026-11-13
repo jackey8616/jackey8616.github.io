@@ -2,6 +2,7 @@
 title: Linear Regression & its mathematics(zhTW)
 date: 2025-10-03 21:21:56
 categories: AI
+og_locale: zh_TW
 hidden: true
 tags:
   - AI
