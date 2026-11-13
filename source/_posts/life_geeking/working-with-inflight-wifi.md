@@ -2,6 +2,8 @@
 title: 'Working w/ in-flight WiFi: herdr, Zero Trust, and mosh'
 date: 2026-11-13 12:00:00
 categories: LifeGeeking
+og_description: "How I keep working on a plane, or anywhere the network is terrible."
+og_image: /images/life_geeking/working-with-inflight-wifi/og.png
 tags:
   - SSH
   - mosh

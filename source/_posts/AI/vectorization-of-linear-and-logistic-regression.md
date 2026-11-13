@@ -2,6 +2,8 @@
 title: 'Vectorization of Linear and Logistic Regression'
 date: 2025-10-09 19:37:23
 categories: AI
+og_description: "Vectorized Derivations of Linear and Logistic Regression."
+og_image: /images/ai/vectorization-of-linear-and-logistic-regression.png
 tags:
   - AI
   - Machine Learning
@@ -12,6 +14,8 @@ tags:
   - Matrix
 mathjax: true
 ---
+
+![](/images/ai/vectorization-of-linear-and-logistic-regression.png?300x)
 
 Vectorized Derivations of Linear and Logistic Regression  
 {% post_link AI/vectorization-of-linear-and-logistic-regression-zhTW '>> [zhTW version] <<' %}  

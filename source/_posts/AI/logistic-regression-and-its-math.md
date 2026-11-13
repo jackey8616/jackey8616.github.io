@@ -2,6 +2,8 @@
 title: Logistic Regression & its mathematics
 date: 2025-10-07 15:32:20
 categories: AI
+og_description: "This time let's talk about Logistic Regression. Readers need some concept of the natural logarithm."
+og_image: /images/ai/logistic-regression-and-its-math.png
 tags:
   - AI
   - Machine Learning
@@ -9,6 +11,8 @@ tags:
   - Logistic Regression
 mathjax: true
 ---
+
+![](/images/ai/logistic-regression-and-its-math.png?300x)
 
 This time let's talk about Logistic Regression.  
 Readers need some concept of the natural logarithm.  

@@ -2,6 +2,8 @@
 title: Migrating python backend to AWS Lambda(zhTW)
 date: 2024-04-19 21:52:32
 categories: AWS
+og_locale: zh_TW
+og_image: /images/note/AWS/pyfun-migrate-to-aws-lambda/og.png
 hidden: true
 tags:
   - AWS

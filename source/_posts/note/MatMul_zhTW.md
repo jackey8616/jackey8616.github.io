@@ -4,6 +4,7 @@ date: 2025-04-30 18:02:00
 tags:
   - Note
 categories: Note
+og_locale: zh_TW
 mathjax: true
 ---
 

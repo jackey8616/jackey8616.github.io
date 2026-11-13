@@ -2,6 +2,8 @@
 title: 'Working w/ in-flight WiFi: herdr, Zero Trust, and mosh(zhTW)'
 date: 2026-11-13 12:00:00
 categories: LifeGeeking
+og_locale: zh_TW
+og_image: /images/life_geeking/working-with-inflight-wifi/og.png
 hidden: true
 tags:
   - SSH
