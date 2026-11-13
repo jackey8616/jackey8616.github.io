@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="750px" height="290px" viewBox="0 0 750 290" class="auto-dark" style="background-color: rgb(255, 255, 255);">
+  <defs>
+    <style type="text/css">
+      @media (prefers-color-scheme: dark) {
+        svg.auto-dark { filter: invert(100%) hue-rotate(180deg); }
+        svg.auto-dark .keep { filter: invert(100%) hue-rotate(180deg); }
+        svg.auto-dark { background-color: #ffffff !important; }
+      }
+      text { font-family: Helvetica, Arial, sans-serif; font-size: 12px; fill: #000; }
+      .lbl { text-anchor: middle; }
+      .edge { text-anchor: middle; fill: #232f3e; }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 L 3 5 Z" fill="#545b64"/>
+    </marker>
+  </defs>
+  <rect fill="#ffffff" width="100%" height="100%"/>
+
+  <!-- Plane group -->
+  <rect x="10" y="40" width="150" height="200" fill="none" stroke="#545b64" stroke-dasharray="4 3"/>
+  <text x="20" y="60">✈ In-flight</text>
+
+  <!-- Laptop -->
+  <g transform="translate(45 95)">
+    <rect x="8" y="0" width="64" height="44" rx="4" fill="#ffffff" stroke="#232f3e" stroke-width="3"/>
+    <rect x="14" y="6" width="52" height="32" fill="#e8f0fb" stroke="none"/>
+    <path d="M 0 48 L 80 48 L 74 56 L 6 56 Z" fill="#232f3e"/>
+  </g>
+  <text class="lbl" x="85" y="172">Laptop</text>
+  <text class="lbl" x="85" y="188">(WARP client)</text>
+
+  <!-- Laptop -> Cloudflare (flaky) -->
+  <path d="M 130 120 L 238 120" stroke="#545b64" stroke-width="1.5" stroke-dasharray="6 4" fill="none" marker-end="url(#arrow)"/>
+  <rect x="152" y="111" width="66" height="18" fill="#ffffff"/>
+  <text class="edge" x="185" y="124">Poor Wi-Fi</text>
+
+  <!-- Cloudflare edge -->
+  <g class="keep" transform="translate(245 85)">
+    <path d="M 22 60 L 98 60 A 20 20 0 0 0 96 22 A 30 30 0 0 0 40 18 A 22 22 0 0 0 10 36 A 13 13 0 0 0 22 60 Z" fill="#F38020"/>
+  </g>
+  <text class="lbl" x="300" y="172">Cloudflare</text>
+  <text class="lbl" x="300" y="188">Zero Trust</text>
+
+  <!-- Company network group -->
+  <rect x="400" y="40" width="340" height="200" fill="none" stroke="#545b64"/>
+  <rect x="400" y="40" width="26" height="26" fill="#545b64"/>
+  <path d="M 406 60 L 406 50 L 413 45 L 420 50 L 420 60 Z" fill="#ffffff"/>
+  <text x="434" y="58">Company Network</text>
+
+  <!-- Cloudflare -> cloudflared -->
+  <path d="M 360 120 L 434 120" stroke="#545b64" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <rect x="368" y="111" width="50" height="18" fill="#ffffff"/>
+  <text class="edge" x="393" y="124">Tunnel</text>
+
+  <!-- cloudflared -->
+  <g class="keep">
+    <rect x="440" y="95" width="86" height="50" rx="4" fill="#F38020"/>
+    <text x="483" y="124" class="lbl" style="fill:#ffffff; font-weight:bold; font-size:11px;">cloudflared</text>
+  </g>
+  <text class="lbl" x="483" y="172">Private Network</text>
+  <text class="lbl" x="483" y="188">route</text>
+
+  <!-- cloudflared -> MBA -->
+  <path d="M 526 120 L 618 120" stroke="#545b64" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <rect x="538" y="111" width="68" height="18" fill="#ffffff"/>
+  <text class="edge" x="572" y="124">SSH / UDP</text>
+
+  <!-- MBA -->
+  <g transform="translate(625 95)">
+    <rect x="8" y="0" width="64" height="44" rx="4" fill="#ffffff" stroke="#232f3e" stroke-width="3"/>
+    <rect x="14" y="6" width="52" height="32" fill="#232f3e" stroke="none"/>
+    <text x="20" y="27" style="fill:#7ee787; font-family: Menlo, monospace; font-size: 11px;">$ _</text>
+    <path d="M 0 48 L 80 48 L 74 56 L 6 56 Z" fill="#232f3e"/>
+  </g>
+  <text class="lbl" x="665" y="172">Company MBA</text>
+  <text class="lbl" x="665" y="188">mosh-server + herdr</text>
+
+  <text x="375" y="266" text-anchor="middle" style="fill:#232f3e">mosh session over WARP · survives drops</text>
+</svg>
