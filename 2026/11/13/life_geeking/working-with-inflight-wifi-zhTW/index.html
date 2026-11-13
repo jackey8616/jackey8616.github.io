@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.clo5de.info","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.17.1","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":true,"nav":null,"activeClass":"utterances"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":10,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="在飛機上、在訊號爛到不行的地方，怎麼還能繼續工作。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Working w&#x2F; in-flight WiFi: herdr, Zero Trust, and mosh(zhTW)">
+<meta property="og:url" content="https://www.clo5de.info/2026/11/13/life_geeking/working-with-inflight-wifi-zhTW/index.html">
+<meta property="og:site_name" content="clooooode">
+<meta property="og:description" content="在飛機上、在訊號爛到不行的地方，怎麼還能繼續工作。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-11-13T12:00:00.000Z">
+<meta property="article:modified_time" content="2026-11-13T04:51:16.894Z">
+<meta property="article:author" content="clooooode">
+<meta property="article:tag" content="SSH">
+<meta property="article:tag" content="mosh">
+<meta property="article:tag" content="Cloudflare">
+<meta property="article:tag" content="Zero Trust">
+<meta property="article:tag" content="herdr">
+<meta property="article:tag" content="zhTW">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.clo5de.info/2026/11/13/life_geeking/working-with-inflight-wifi-zhTW/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.clo5de.info/2026/11/13/life_geeking/working-with-inflight-wifi-zhTW/","path":"2026/11/13/life_geeking/working-with-inflight-wifi-zhTW/","title":"Working w/ in-flight WiFi: herdr, Zero Trust, and mosh(zhTW)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Working w/ in-flight WiFi: herdr, Zero Trust, and mosh(zhTW) | clooooode</title><meta name="robots" content="noindex">
+  
+
+
+
+
+
+
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NGLBLXHD');</script>
+<!-- End Google Tag Manager -->
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGLBLXHD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">clooooode</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">a.k.a. clo5de</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-github"><a href="https://github.com/jackey8616" rel="section" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a></li><li class="menu-item menu-item-e-mail"><a href="mailto:clode@clo5de.info" rel="section" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a></li><li class="menu-item menu-item-linkedin"><a href="https://www.linkedin.com/in/ko-li-mo-294832118/" rel="section" target="_blank"><i class="fab fa-linkedin fa-fw"></i>LinkedIn</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#opening"><span class="nav-number">1.</span> <span class="nav-text">Opening</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%89%88herdr-mobile-relay"><span class="nav-number">2.</span> <span class="nav-text">第一版：herdr mobile relay</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E7%89%88ssh-%E9%80%B2%E5%8E%BB%E5%9C%A8-host-%E4%B8%8A%E9%96%8B-herdr"><span class="nav-number">3.</span> <span class="nav-text">第二版：SSH 進去，在 host 上開
+herdr</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E7%89%88%E5%86%8D%E5%A4%9A%E4%B8%80%E6%A2%9D%E8%B7%AF-mosh"><span class="nav-number">4.</span> <span class="nav-text">第三版：再多一條路 —— mosh</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%82%BA%E4%BB%80%E9%BA%BC%E6%98%AF-mosh"><span class="nav-number">4.1.</span> <span class="nav-text">為什麼是 mosh</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B6%B2%E8%B7%AF%E5%AE%8C%E5%85%A8%E4%B8%8D%E7%94%A8%E5%8B%95"><span class="nav-number">4.2.</span> <span class="nav-text">網路完全不用動</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#zero-trust-%E4%B8%80%E8%B7%AF%E5%B8%B6%E4%BE%86%E7%9A%84%E5%A5%BD%E8%99%95"><span class="nav-number">5.</span> <span class="nav-text">Zero Trust 一路帶來的好處</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#reference"><span class="nav-number">6.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="clooooode"
+      src="https://avatars1.githubusercontent.com/u/12930377?s=400&u=3e932a7f6b769a0e1028806815067be598db3351&v=4">
+  <p class="site-author-name" itemprop="name">clooooode</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">50</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">62</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/jackey8616" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;jackey8616" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:clode@clo5de.info" title="E-Mail → mailto:clode@clo5de.info" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.linkedin.com/in/ko-li-mo-294832118/" title="LinkedIn → https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;ko-li-mo-294832118&#x2F;" rel="noopener me" target="_blank"><i class="fab fa-linkedin fa-fw"></i></a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.clo5de.info/2026/11/13/life_geeking/working-with-inflight-wifi-zhTW/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars1.githubusercontent.com/u/12930377?s=400&u=3e932a7f6b769a0e1028806815067be598db3351&v=4">
+      <meta itemprop="name" content="clooooode">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="clooooode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Working w/ in-flight WiFi: herdr, Zero Trust, and mosh(zhTW) | clooooode">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Working w/ in-flight WiFi: herdr, Zero Trust, and mosh(zhTW)
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2026-11-13 12:00:00 / Modified: 04:51:16" itemprop="dateCreated datePublished" datetime="2026-11-13T12:00:00+00:00">2026-11-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/LifeGeeking/" itemprop="url" rel="index"><span itemprop="name">LifeGeeking</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span class="firestore-visitors-count"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Word count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Word count in article: </span>
+      <span>1.1k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>4 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><img
+src="/images/life_geeking/working-with-inflight-wifi/structure.svg" />
+<center>
+在飛機上、在訊號爛到不行的地方，怎麼還能繼續工作。
+</center>
+<span id="more"></span>
+<h1 id="opening">Opening</h1>
+<p>COSCUP 那篇有講過，幕僚 agent
+一開始就丟在雲上，原因很俗：我通勤搭公車。 先有公車，才有原則。</p>
+<p>這次換成飛機。 我平常的工作介面是 <a target="_blank" rel="noopener" href="https://herdr.dev"
+title="herdr">herdr</a>，agent 都在公司那台 MBA
+上跑，我只是從外面連進去看、下指令。
+為了能在外面順順地用，這套前後換了三次。</p>
+<hr />
+<h1 id="第一版herdr-mobile-relay">第一版：herdr mobile relay</h1>
+<p><img
+src="/images/life_geeking/working-with-inflight-wifi/v1-relay.svg" /></p>
+<p>一開始直接用 herdr 自己的 mobile relay 從外面連進去，最省事。</p>
+<p>MBA 不可能直接開 port 到外網，所以從這時候就是用 Cloudflare Zero
+Trust 的 tunnel 把 relay 接出去， 前面再擋一層 Access：要連 relay
+的裝置得先用 CF 帳號登入、再輸入 OTP。</p>
+<ul>
+<li><strong>壞在</strong>：渲染效能很差，畫面常常卡卡的</li>
+<li><strong>更麻煩的是</strong>：多台裝置同時連到同一個 mobile
+relay，layout 很容易就跑掉</li>
+</ul>
+<hr />
+<h1 id="第二版ssh-進去在-host-上開-herdr">第二版：SSH 進去，在 host 上開
+herdr</h1>
+<p><img
+src="/images/life_geeking/working-with-inflight-wifi/v2-ssh.svg" /></p>
+<ul>
+<li><strong>改成</strong>：直接 SSH 進 MBA，herdr 就在 host
+上跑，我的終端機只負責顯示</li>
+<li>渲染跟多裝置打架的問題就沒了</li>
+</ul>
+<p>連線方式也跟著換成 WARP client + Private Network：</p>
+<ol type="1">
+<li>MBA 上跑 <code>cloudflared</code> tunnel，把它所在的內網網段宣告成
+private network route</li>
+<li>我的筆電裝 WARP client，登入 Zero Trust 組織</li>
+<li>WARP 打開之後，筆電就像在內網裡一樣，直接用內網 IP SSH 進去</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh &lt;user&gt;@&lt;MBA 內網 IP&gt;</span><br></pre></td></tr></table></figure>
+<p>認證也換掉：把 CF 帳號登入 + OTP 那層拿掉，改用 SSH public key。
+細節可以參考 Cloudflare 的文件<small><a
+target="_blank" rel="noopener" href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/private-net/"
+title="Cloudflare Zero Trust - Connect private networks">[註2 Connect
+private networks]</a></small>。</p>
+<p>而且 herdr 剛好補上另外一半：SSH 管的是「連得進去」，herdr
+管的是「工作不斷」。 就算連線斷了（例如筆電沒電），herdr 跟裡面的 agent
+都還在 MBA 上繼續跑，下次連回去接著看就好，什麼都沒丟。</p>
+<ul>
+<li><strong>壞在</strong>：遇到機上 Wi-Fi 就不行了 ——
+延遲高、三不五時斷一下。網路一抖 SSH 就斷，TCP 連線一斷，session
+就沒了</li>
+<li><strong>更糟的是</strong>：重連要重新握手、重新拉畫面，重連本身就很浪費流量</li>
+</ul>
+<hr />
+<h1 id="第三版再多一條路-mosh">第三版：再多一條路 —— mosh</h1>
+<p><img
+src="/images/life_geeking/working-with-inflight-wifi/v3-mosh.svg" /></p>
+<p>SSH 還是留著，只是多加一條給爛網路用的路。</p>
+<h2 id="為什麼是-mosh">為什麼是 mosh</h2>
+<p><a target="_blank" rel="noopener" href="https://mosh.org/" title="mosh: the mobile shell">mosh</a>
+只用 SSH 做一開始的握手，之後就改走 UDP，自己管狀態同步：</p>
+<ul>
+<li><strong>漫遊</strong>：IP 換了、網路斷了一陣子，回來之後 session
+還在，不用重連</li>
+<li><strong>只送畫面差異</strong>：不是把整個 byte stream
+重送一遍，訊號爛的時候差很多</li>
+<li><strong>本地回顯</strong>：打字不用等來回，延遲高的時候手感差最多</li>
+</ul>
+<h2 id="網路完全不用動">網路完全不用動</h2>
+<p>第二版就已經是 WARP + Private Network 了，TCP、UDP 本來就都過得去。
+所以加 mosh 只要在 MBA 上裝好 mosh，連線的指令換一下就好：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mosh &lt;user&gt;@&lt;MBA 內網 IP&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如果遇到 <code>mosh-server: command not found</code>，通常是 macOS
+那端用 Homebrew 裝的，非互動 shell 的 PATH 沒有
+<code>/opt/homebrew/bin</code>。 用
+<code>mosh --server=/opt/homebrew/bin/mosh-server ...</code>
+指定一下就好。</p>
+</blockquote>
+<hr />
+<h1 id="zero-trust-一路帶來的好處">Zero Trust 一路帶來的好處</h1>
+<p>從第一版到現在，ZT 一路都在。一開始只是為了不要開
+port，用下來發現附加價值還不少：</p>
+<ul>
+<li><strong>MBA 完全不用對外開 port</strong>：<code>cloudflared</code>
+是從 MBA 往外連到 Cloudflare，不需要防火牆開洞、不用 port
+forwarding，也不用公網 IP，外面根本掃不到這台機器</li>
+<li><strong>不用自己架 VPN</strong>：公司網路沒有對外的 VPN server
+也沒差，有 tunnel 跟 WARP 就夠了</li>
+<li><strong>認證方式可以跟著換</strong>：第一版用 CF 帳號 + OTP 擋
+relay，第二版改成 SSH public key，WARP 則要先登入 Zero Trust
+組織才連得上；入口都在同一個地方，換認證不用動網路架構</li>
+<li><strong>機上 Wi-Fi 不可信也沒關係</strong>：WARP 到 Cloudflare
+這一段本身就是加密的，公共 Wi-Fi 上的其他人看不到你在幹嘛</li>
+<li><strong>目標位址固定</strong>：不管我人在哪、換了幾個網路，連的永遠都是
+MBA 的內網 IP，<code>~/.ssh/config</code> 寫一次就好</li>
+</ul>
+<hr />
+<h1 id="reference">Reference</h1>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://mosh.org/" title="mosh: the mobile shell">[註1
+mosh: the mobile shell]</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/private-net/"
+title="Cloudflare Zero Trust - Connect private networks">[註2 Cloudflare
+Zero Trust - Connect private networks]</a></li>
+<li><a target="_blank" rel="noopener" href="https://herdr.dev" title="herdr">[註3 herdr]</a></li>
+</ul>
+<!-- This is reference link, below content would not show -->
+<!-- This is reference link, above content would not show -->
+<!-- flag of hidden posts --><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/SSH/" rel="tag"># SSH</a>
+              <a href="/tags/mosh/" rel="tag"># mosh</a>
+              <a href="/tags/Cloudflare/" rel="tag"># Cloudflare</a>
+              <a href="/tags/Zero-Trust/" rel="tag"># Zero Trust</a>
+              <a href="/tags/herdr/" rel="tag"># herdr</a>
+              <a href="/tags/zhTW/" rel="tag"># zhTW</a>
+          </div>
+
+        
+
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2018 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">clooooode</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="Word count total">31k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">1:54</span>
+  </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.23.0/firebase-app-compat.js" integrity="sha256-FYa4Xn7MJlI18eIkwawbRKLz7bGeUODtNpSR+bsjlHg=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.23.0/firebase-firestore-compat.js" integrity="sha256-sgbLcRGF3ph6N+ymg9zoy9kFQDWBvJlCd0GbGMKBH0c=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="firestore" type="application/json">{"enable":true,"collection":"articles","apiKey":"AIzaSyCu9-MhzikdJ0BVgPRODV__hMffyr5bgZg","projectId":"clo5de-githubpage"}</script>
+  <script src="/js/third-party/statistics/firestore.js"></script>
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"jackey8616/jackey8616.github.io","issue_term":"title","theme":"github-dark","label":"ChatRoom"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+<script src="./scripts/image_resize.js"></script>
+</body>
+</html>
