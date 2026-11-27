@@ -20,15 +20,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.clo5de.info","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.17.1","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":true,"nav":null,"activeClass":"utterances"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":10,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="Should I add another agent? I’d start with one agent, a clear procedure, and tests that tell me whether the output is right. Then I’d measure whether a second role actually saves review time. &gt;&gt;">
+    <meta name="description" content="This week’s biggest developments were a gap between two measures of frontier progress, two releases that reuse Transformer layers at inference time, and new evidence on how agents are evaluated. &gt;&amp;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Frontier AI Engineering Weekly | 2026-11-27">
 <meta property="og:url" content="https://www.clo5de.info/2026/11/27/AI/ai-engineering-weekly-2026-11-27/index.html">
 <meta property="og:site_name" content="clooooode">
-<meta property="og:description" content="Should I add another agent? I’d start with one agent, a clear procedure, and tests that tell me whether the output is right. Then I’d measure whether a second role actually saves review time. &gt;&gt;">
+<meta property="og:description" content="This week’s biggest developments were a gap between two measures of frontier progress, two releases that reuse Transformer layers at inference time, and new evidence on how agents are evaluated. &gt;&amp;">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2026-11-27T08:00:00.000Z">
-<meta property="article:modified_time" content="2026-11-27T02:53:32.639Z">
+<meta property="article:modified_time" content="2026-11-27T04:46:20.423Z">
 <meta property="article:author" content="clooooode">
 <meta property="article:tag" content="AI Engineering Weekly">
 <meta name="twitter:card" content="summary">
@@ -152,13 +152,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#nov-20-models-inkling-2-mini-releases-open-weights"><span class="nav-number">1.</span> <span class="nav-text">Nov 20 |
-Models: Inkling 2 Mini releases open weights</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nov-23-skills-a-procedure-still-needs-an-acceptance-test"><span class="nav-number">2.</span> <span class="nav-text">Nov 23
-| Skills: a procedure still needs an acceptance test</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nov-24-orchestration-cheaper-workers-can-take-longer"><span class="nav-number">3.</span> <span class="nav-text">Nov 24 |
-Orchestration: cheaper workers can take longer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nov-25-harnesses-repeat-the-same-agent-eval-under-different-conditions"><span class="nav-number">4.</span> <span class="nav-text">Nov
-25 | Harnesses: repeat the same agent eval under different
-conditions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nov-23-figjam-editing-a-board-is-easier-than-merging-safely"><span class="nav-number">5.</span> <span class="nav-text">Nov
-23 | FigJam: editing a board is easier than merging safely</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#nov-24-metr-pretraining-loss-fell-faster-but-benchmark-scores-did-not-keep-pace"><span class="nav-number">1.</span> <span class="nav-text">Nov
+24 | METR: pretraining loss fell faster, but benchmark scores did not
+keep pace</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nov-2023-model-architecture-two-labs-release-looped-transformers"><span class="nav-number">2.</span> <span class="nav-text">Nov
+20–23 | Model architecture: two labs release looped Transformers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nov-23-skills-higher-completion-but-most-tasks-still-miss-at-least-one-requirement"><span class="nav-number">3.</span> <span class="nav-text">Nov
+23 | Skills: higher completion, but most tasks still miss at least one
+requirement</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nov-24-delegent-cheaper-subagents-longer-coding-runs"><span class="nav-number">4.</span> <span class="nav-text">Nov 24 |
+Delegent: cheaper subagents, longer coding runs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nov-25-qwen4-max-preview-pricing-ends"><span class="nav-number">5.</span> <span class="nav-text">Nov 25 | Qwen4-Max:
+preview pricing ends</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -252,7 +253,7 @@ conditions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" h
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2026-11-27 08:00:00 / Modified: 02:53:32" itemprop="dateCreated datePublished" datetime="2026-11-27T08:00:00+00:00">2026-11-27</time>
+      <time title="Created: 2026-11-27 08:00:00 / Modified: 04:46:20" itemprop="dateCreated datePublished" datetime="2026-11-27T08:00:00+00:00">2026-11-27</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -278,7 +279,7 @@ conditions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" h
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>478</span>
+      <span>534</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
@@ -295,68 +296,82 @@ conditions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" h
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>Should I add another agent? I’d start with one agent, a clear
-procedure, and tests that tell me whether the output is right. Then I’d
-measure whether a second role actually saves review time.</p>
+    <div class="post-body" itemprop="articleBody"><p>This week’s biggest developments were a gap between two measures of
+frontier progress, two releases that reuse Transformer layers at
+inference time, and new evidence on how agents are evaluated.</p>
 <a href="/2026/11/27/AI/ai-engineering-weekly-2026-11-27-zhTW/" title="前沿 AI 工程週報｜2026-11-27">&gt;&gt; [zhTW version] &lt;&lt;</a>
 <span id="more"></span>
-<h2 id="nov-20-models-inkling-2-mini-releases-open-weights">Nov 20 |
-Models: Inkling 2 Mini releases open weights</h2>
-<p>Inkling 2 Mini is a 26.4B mixture-of-experts Transformer that runs
-its middle layers three times per generated token. Thinking Machines Lab
-reports 48.2% on DeepSWE v1.1, but the evaluation setups differ across
-models. For local deployment, measure wall time and memory alongside
-output tokens: fewer tokens don’t necessarily mean less computation. <a
-target="_blank" rel="noopener" href="https://thinkingmachines.ai/news/inkling-2-mini/">Model
-announcement</a></p>
-<h2 id="nov-23-skills-a-procedure-still-needs-an-acceptance-test">Nov 23
-| Skills: a procedure still needs an acceptance test</h2>
-<p>SkillForgeBench v3 evaluates agents on 842 sandboxed tasks. For Opus
-4.8, strict completion rose from 21.7% without a Skill to 40.9% with
-one. That result is specific to the tasks and rubric. Put the procedure
-in the Skill; enforce rules that cannot be broken with permissions or
-tests. <a target="_blank" rel="noopener" href="https://arxiv.org/html/2610.14918v3#S4.SS1">Paper, Table
-2</a></p>
-<h2 id="nov-24-orchestration-cheaper-workers-can-take-longer">Nov 24 |
-Orchestration: cheaper workers can take longer</h2>
-<p>On the same 50 DeepSWE tasks, the Delegent preprint’s all-Sol
-baseline solved 29 with subagents already enabled. Changing only the
-delegation instructions brought that to 34, at 60% of the baseline
-frontier API cost. With those instructions and Qwen 27B workers, it
-solved 29. Estimated cost, including the workers, fell from US$2.11 to
-US$0.81 per task, while median time rose from 25 to 38 minutes. This
-does not compare single-agent and multi-agent setups; equal totals don’t
-establish that they solved the same tasks. <a
-target="_blank" rel="noopener" href="https://arxiv.org/html/2611.33098v1#S4">Results</a> · <a
-target="_blank" rel="noopener" href="https://arxiv.org/html/2611.33098v1#S5">Instruction
-comparison</a></p>
 <h2
-id="nov-25-harnesses-repeat-the-same-agent-eval-under-different-conditions">Nov
-25 | Harnesses: repeat the same agent eval under different
-conditions</h2>
-<p>Together AI open-sourced Hurdle, which can rerun Codex or Claude Code
-under different conditions and check what they produce. Its local mode
-cannot intercept API calls. The hosted sandbox can enforce explicit
-request guards, but doesn’t block everything by default. A first Skill
-A/B test can use synthetic data and artifact checks without touching a
-production system. <a
-target="_blank" rel="noopener" href="https://www.together.ai/blog/introducing-hurdle-run-agent-evals-on-your-api-skills-and-docs">Tool
-announcement</a></p>
-<h2 id="nov-23-figjam-editing-a-board-is-easier-than-merging-safely">Nov
-23 | FigJam: editing a board is easier than merging safely</h2>
-<p>Figma’s built-in agent is generally available in FigJam and Figma
-Slides on paid plans. The announcement does not establish that it
-detects conflicting changes or merges them safely. For a shared board,
-I’d still edit a copy, review the diff, and approve changes before
-merging. <a target="_blank" rel="noopener" href="https://www.figma.com/release-notes/">Figma release
-notes</a></p>
-<p><strong>20-minute experiment:</strong> Build a synthetic board with
-two nodes named <code>Review</code> and crossing connectors. Give the
-same agent the same task on two identical starting copies. The only
-difference is a Skill that says to list node IDs first and propose
-changes only in the specified section. Check attachment IDs and
-arrowhead direction, then record out-of-scope edits and human review
-time. Treat a single pair as a smoke test, not proof of reliability.</p>
+id="nov-24-metr-pretraining-loss-fell-faster-but-benchmark-scores-did-not-keep-pace">Nov
+24 | METR: pretraining loss fell faster, but benchmark scores did not
+keep pace</h2>
+<p>METR analyzed OpenAI’s published base-model data for 13 models. On a
+fixed evaluation set drawn from OpenAI’s codebase, log-perplexity fell
+about <strong>seven times as fast</strong> from early 2026 as it did in
+2022–2025. METR did not see a comparable acceleration in external
+benchmark scores, such as Epoch’s ECI. This is an external analysis of
+one lab’s data, not evidence that models became seven times more
+capable. <a
+target="_blank" rel="noopener" href="https://metr.org/blog/2026-11-24-interpreting-a-recent-acceleration-in-pretraining-loss/">METR
+analysis</a></p>
+<h2
+id="nov-2023-model-architecture-two-labs-release-looped-transformers">Nov
+20–23 | Model architecture: two labs release looped Transformers</h2>
+<p>Thinking Machines Lab released <strong>Inkling 2 Mini</strong>, an
+open-weight 26.4B model that runs its middle layers three times per
+generated token, plus a research checkpoint that lets users vary the
+loop count. Z.ai introduced <strong>GLM-5.4</strong>, its first flagship
+built on a looped Transformer, and made it available on the GLM Coding
+Plan. Both reuse layers to do more internal computation without adding a
+separate set of weights for each pass. Their releases establish the
+approach is available in two different settings, not that it is
+universally faster or more accurate. Z.ai reports that GLM-5.4 can spend
+too long reasoning. <a
+target="_blank" rel="noopener" href="https://thinkingmachines.ai/news/inkling-2-mini/">Thinking
+Machines Lab</a> · <a target="_blank" rel="noopener" href="https://z.ai/blog/glm-5.4?lang=en">Z.ai
+announcement</a> · <a target="_blank" rel="noopener" href="https://zcode.z.ai/en/changelog">ZCode
+release notes</a></p>
+<h2
+id="nov-23-skills-higher-completion-but-most-tasks-still-miss-at-least-one-requirement">Nov
+23 | Skills: higher completion, but most tasks still miss at least one
+requirement</h2>
+<p>SkillForgeBench v3 reports results on <strong>842 sandboxed
+tasks</strong>. With a Skill available, Opus 4.8 met every output
+requirement on <strong>40.9%</strong> of tasks, versus
+<strong>21.7%</strong> without it. In the with-Skill run, the average
+score on individual output criteria was <strong>85.7%</strong>. These
+are different measures: doing well on individual criteria is not the
+same as meeting all of them in one task. The numbers come from the
+benchmark authors and the benchmark is built around Skills, so they do
+not establish the same gain for other workloads. <a
+target="_blank" rel="noopener" href="https://arxiv.org/html/2610.14918v3#S4.SS1">SkillForgeBench v3,
+Table 2</a></p>
+<h2 id="nov-24-delegent-cheaper-subagents-longer-coding-runs">Nov 24 |
+Delegent: cheaper subagents, longer coding runs</h2>
+<p>In the authors’ 50-task DeepSWE experiment, the all-GPT-6.1 Sol setup
+and a steered setup with a Qwen3.8-27B helper both solved <strong>29 of
+50</strong> tasks. The frontier-model charge fell from <strong>US$2.11
+to $0.70 per task</strong> ($0.81 including the estimated helper API
+charge), while median runtime rose from <strong>25 to 38
+minutes</strong>. Both setups already used subagents. The result
+compares two ways of delegating work, not a single agent against a team.
+<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2611.33098">Delegent preprint</a></p>
+<h2 id="nov-25-qwen4-max-preview-pricing-ends">Nov 25 | Qwen4-Max:
+preview pricing ends</h2>
+<p>Alibaba Cloud retired <code>qwen4-max-preview</code>; its release
+notes say the old ID now routes to the standard model and is billed at
+the standard rate. The published international standard rate is
+<strong>US$1.50 input / $4.50 output per million tokens</strong>. This
+is an availability and billing update for a model introduced earlier in
+November, not a new model launch this week. <a
+target="_blank" rel="noopener" href="https://www.alibabacloud.com/help/en/model-studio/newly-released-models">Release
+notes</a> · <a
+target="_blank" rel="noopener" href="https://www.alibabacloud.com/help/en/model-studio/qwen4-max">Model
+and pricing</a></p>
+<p><strong>Further reading:</strong> <a
+target="_blank" rel="noopener" href="https://metr.org/blog/2026-11-24-interpreting-a-recent-acceleration-in-pretraining-loss/">METR’s
+analysis</a> lays out why better next-token prediction on one dataset
+might not translate into equally fast gains on external benchmarks.</p>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
     </div>
 

@@ -20,15 +20,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.clo5de.info","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.17.1","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":true,"nav":null,"activeClass":"utterances"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":10,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="要不要多加一個 agent？我會先讓單一 agent 按清楚的 SOP 工作，再用測試判斷結果對不對。接著才量多一個角色能不能省下人工審查時間。 &gt;&gt; [English version] &lt;&lt;">
+    <meta name="description" content="本週最值得注意的是：前沿模型的兩種進步指標出現落差、兩家實驗室先後發布會重複執行部分層的 Transformer，以及新的 agent 評測結果。 &gt;&gt; [English version] &lt;&lt;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="前沿 AI 工程週報｜2026-11-27">
 <meta property="og:url" content="https://www.clo5de.info/2026/11/27/AI/ai-engineering-weekly-2026-11-27-zhTW/index.html">
 <meta property="og:site_name" content="clooooode">
-<meta property="og:description" content="要不要多加一個 agent？我會先讓單一 agent 按清楚的 SOP 工作，再用測試判斷結果對不對。接著才量多一個角色能不能省下人工審查時間。 &gt;&gt; [English version] &lt;&lt;">
+<meta property="og:description" content="本週最值得注意的是：前沿模型的兩種進步指標出現落差、兩家實驗室先後發布會重複執行部分層的 Transformer，以及新的 agent 評測結果。 &gt;&gt; [English version] &lt;&lt;">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2026-11-27T08:00:00.000Z">
-<meta property="article:modified_time" content="2026-11-27T02:53:32.639Z">
+<meta property="article:modified_time" content="2026-11-27T04:46:20.422Z">
 <meta property="article:author" content="clooooode">
 <meta property="article:tag" content="AI Engineering Weekly">
 <meta name="twitter:card" content="summary">
@@ -152,10 +152,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8Binkling-2-mini-%E9%96%8B%E6%94%BE%E6%AC%8A%E9%87%8D"><span class="nav-number">1.</span> <span class="nav-text">11&#x2F;20｜模型：Inkling 2 Mini
-開放權重</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#skills%E6%9C%89-sop%E9%82%84%E6%98%AF%E8%A6%81%E9%A9%97%E6%94%B6"><span class="nav-number">2.</span> <span class="nav-text">11&#x2F;23｜Skills：有 SOP，還是要驗收</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B7%A8%E6%8E%92%E6%8F%9B%E4%BE%BF%E5%AE%9C-worker-%E6%9C%AA%E5%BF%85%E7%9C%81%E6%99%82%E9%96%93"><span class="nav-number">3.</span> <span class="nav-text">11&#x2F;24｜編排：換便宜 worker
-未必省時間</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#harness%E5%9C%A8%E4%B8%8D%E5%90%8C%E6%A2%9D%E4%BB%B6%E4%B8%8B%E9%87%8D%E8%B7%91%E5%90%8C%E4%B8%80%E5%80%8B-eval"><span class="nav-number">4.</span> <span class="nav-text">11&#x2F;25｜Harness：在不同條件下重跑同一個
-eval</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#figjam%E8%83%BD%E6%94%B9%E5%9C%96%E9%82%84%E6%98%AF%E8%A6%81%E5%AF%A9%E5%90%88%E4%BD%B5"><span class="nav-number">5.</span> <span class="nav-text">11&#x2F;23｜FigJam：能改圖，還是要審合併</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#metr%E9%A0%90%E8%A8%93%E7%B7%B4%E6%90%8D%E5%A4%B1%E9%99%8D%E5%BE%97%E6%9B%B4%E5%BF%AB%E5%A4%96%E9%83%A8%E8%A9%95%E6%B8%AC%E6%B2%92%E6%9C%89%E5%90%8C%E6%AD%A5%E5%8A%A0%E9%80%9F"><span class="nav-number">1.</span> <span class="nav-text">11&#x2F;24｜METR：預訓練損失降得更快，外部評測沒有同步加速</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E6%9E%B6%E6%A7%8B%E5%85%A9%E5%AE%B6%E5%AF%A6%E9%A9%97%E5%AE%A4%E7%99%BC%E5%B8%83-looped-transformer"><span class="nav-number">2.</span> <span class="nav-text">11&#x2F;20–23｜模型架構：兩家實驗室發布
+Looped Transformer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#skills%E5%AE%8C%E6%95%B4%E9%81%94%E6%A8%99%E7%8E%87%E6%9C%89%E6%8F%90%E5%8D%87%E4%BD%86%E5%A4%9A%E6%95%B8%E4%BB%BB%E5%8B%99%E4%BB%8D%E6%9C%AA%E9%81%94%E6%88%90%E6%89%80%E6%9C%89%E6%A2%9D%E4%BB%B6"><span class="nav-number">3.</span> <span class="nav-text">11&#x2F;23｜Skills：完整達標率有提升，但多數任務仍未達成所有條件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#delegent%E5%AD%90-agent-%E9%99%8D%E4%BD%8E%E8%B2%BB%E7%94%A8%E4%BD%86%E7%A8%8B%E5%BC%8F%E4%BB%BB%E5%8B%99%E8%80%97%E6%99%82%E5%A2%9E%E5%8A%A0"><span class="nav-number">4.</span> <span class="nav-text">11&#x2F;24｜Delegent：子
+agent 降低費用，但程式任務耗時增加</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#qwen4-max%E9%A0%90%E8%A6%BD%E5%AE%9A%E5%83%B9%E7%B5%90%E6%9D%9F"><span class="nav-number">5.</span> <span class="nav-text">11&#x2F;25｜Qwen4-Max：預覽定價結束</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -249,7 +248,7 @@ eval</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2026-11-27 08:00:00 / Modified: 02:53:32" itemprop="dateCreated datePublished" datetime="2026-11-27T08:00:00+00:00">2026-11-27</time>
+      <time title="Created: 2026-11-27 08:00:00 / Modified: 04:46:20" itemprop="dateCreated datePublished" datetime="2026-11-27T08:00:00+00:00">2026-11-27</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -275,7 +274,7 @@ eval</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>694</span>
+      <span>794</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
@@ -292,50 +291,63 @@ eval</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>要不要多加一個 agent？我會先讓單一 agent 按清楚的 SOP
-工作，再用測試判斷結果對不對。接著才量多一個角色能不能省下人工審查時間。</p>
+    <div class="post-body" itemprop="articleBody"><p>本週最值得注意的是：前沿模型的兩種進步指標出現落差、兩家實驗室先後發布會重複執行部分層的
+Transformer，以及新的 agent 評測結果。</p>
 <a href="/2026/11/27/AI/ai-engineering-weekly-2026-11-27/" title="Frontier AI Engineering Weekly | 2026-11-27">&gt;&gt; [English version] &lt;&lt;</a>
 <span id="more"></span>
-<h2 id="模型inkling-2-mini-開放權重">11/20｜模型：Inkling 2 Mini
-開放權重</h2>
-<p>Inkling 2 Mini 是一個 26.4B MoE Transformer。它每生成一個
-token，就把中間層跑三遍。Thinking Machines Lab 在 DeepSWE v1.1 報告
-48.2%，但不同模型的評測設定不一。本地部署時，除了輸出 token
-數，也要量總耗時與記憶體：少吐 token 不等於少做運算。<a
-target="_blank" rel="noopener" href="https://thinkingmachines.ai/news/inkling-2-mini/">模型公告</a></p>
-<h2 id="skills有-sop還是要驗收">11/23｜Skills：有 SOP，還是要驗收</h2>
-<p>SkillForgeBench v3 在 842 個沙盒任務上評估 agent。Opus 4.8
-的嚴格完成率有 Skill 時是 40.9%，沒有時是
-21.7%。這是特定任務與評分規則下的結果。可以把流程寫進
-Skill；不能違反的規則，還是要靠權限或測試來守。<a
-target="_blank" rel="noopener" href="https://arxiv.org/html/2610.14918v3#S4.SS1">論文表 2</a></p>
-<h2 id="編排換便宜-worker-未必省時間">11/24｜編排：換便宜 worker
-未必省時間</h2>
-<p>Delegent 預印本比較同一組 50 道 DeepSWE 題。基線本來就有 Sol
-subagents，解了 29 題。仍用 Sol、只改委派指令，解了 34 題，前沿模型 API
-成本為基線的 60%。保留委派指令但改用 Qwen 27B 助手，解了 29
-題；含助手估價，每題從 US$2.11 降到約 US$0.81，但中位耗時從 25 分鐘增為
-38 分鐘。這不是單 agent 對多 agent
-的比較，總數相同也不代表解的是同一些題。<a
-target="_blank" rel="noopener" href="https://arxiv.org/html/2611.33098v1#S4">結果</a> · <a
-target="_blank" rel="noopener" href="https://arxiv.org/html/2611.33098v1#S5">委派指令實驗</a></p>
 <h2
-id="harness在不同條件下重跑同一個-eval">11/25｜Harness：在不同條件下重跑同一個
-eval</h2>
-<p>Together AI 開源 Hurdle，可以讓 Codex 或 Claude Code
-在不同條件下重跑任務並檢查產出。本機模式不能攔 API
-請求；代管沙盒可以攔截，但要明確設定規則，不是預設全擋。第一次做 Skill
-A/B，用假資料和可驗證的輸出就夠了，不必接正式系統。<a
-target="_blank" rel="noopener" href="https://www.together.ai/blog/introducing-hurdle-run-agent-evals-on-your-api-skills-and-docs">工具公告</a></p>
+id="metr預訓練損失降得更快外部評測沒有同步加速">11/24｜METR：預訓練損失降得更快，外部評測沒有同步加速</h2>
+<p>METR 分析了 OpenAI 公開的 13 個基礎模型數據。固定使用取自 OpenAI
+自家程式碼庫的測試集時，2026 年初以來的
+log-perplexity（對數困惑度）下降速度，約是 2022 至 2025 年的 <strong>7
+倍</strong>。但 Epoch 的 ECI
+等外部評測，並未出現相近的加速。這是外部研究團隊對單一實驗室數據的分析，不代表模型能力也進步了七倍。<a
+target="_blank" rel="noopener" href="https://metr.org/blog/2026-11-24-interpreting-a-recent-acceleration-in-pretraining-loss/">METR
+分析</a></p>
 <h2
-id="figjam能改圖還是要審合併">11/23｜FigJam：能改圖，還是要審合併</h2>
-<p>Figma 內建 agent 正式開放給 FigJam 與 Figma Slides
-的付費方案。公告沒有證明它能偵測多人修改衝突或安全合併。同一張圖有多人維護時，我還是會保留副本、差異審查和核准合併。<a
-target="_blank" rel="noopener" href="https://www.figma.com/release-notes/">Figma 更新紀錄</a></p>
-<p><strong>20 分鐘試驗：</strong> 做一張有兩個同名 <code>Review</code>
-節點、連線互相交叉的測試白板。從兩份相同起始副本各跑一次，唯一差別是其中一次有「先列節點
-ID，只提議修改指定區塊」的
-Skill。核對連線接在哪兩個節點、箭頭是否朝對，也記下越界修改和人工審查時間。先拿這一組當初步測試，不用把一次成功當成可靠性證明。</p>
+id="模型架構兩家實驗室發布-looped-transformer">11/20–23｜模型架構：兩家實驗室發布
+Looped Transformer</h2>
+<p>Thinking Machines Lab 發布開放權重的 <strong>Inkling 2
+Mini</strong>，共 264 億個參數，每生成一個 token
+會把中間層跑三遍，並另外提供可調整循環次數的研究版。Z.ai 的
+<strong>GLM-5.4</strong> 則是自家首款採用這種架構的旗艦模型，已在 GLM
+Coding Plan
+上線。兩者都靠重複使用同一組層來增加內部運算，不必為每一遍新增一組權重。這證明這種架構已出現在兩種不同的發布情境，不代表一定更快或更準；Z.ai
+也指出 GLM-5.4 有時會推理太久。<a
+target="_blank" rel="noopener" href="https://thinkingmachines.ai/news/inkling-2-mini/">Thinking
+Machines Lab</a> · <a target="_blank" rel="noopener" href="https://z.ai/blog/glm-5.4?lang=en">Z.ai
+公告</a> · <a target="_blank" rel="noopener" href="https://zcode.z.ai/en/changelog">ZCode
+更新紀錄</a></p>
+<h2
+id="skills完整達標率有提升但多數任務仍未達成所有條件">11/23｜Skills：完整達標率有提升，但多數任務仍未達成所有條件</h2>
+<p>SkillForgeBench v3 報告了 <strong>842 個沙盒任務</strong>的結果。Opus
+4.8 有 Skill 時，<strong>40.9%</strong> 的任務符合全部輸出要求；沒有
+Skill 時是 <strong>21.7%</strong>。有 Skill 時，逐項計分的平均分數是
+<strong>85.7%</strong>。逐項拿高分，不等於同一項任務的所有條件都達標。數字來自評測作者，而任務本身就是圍繞
+Skills 設計，不能把增幅直接套用到其他工作。<a
+target="_blank" rel="noopener" href="https://arxiv.org/html/2610.14918v3#S4.SS1">SkillForgeBench v3 表
+2</a></p>
+<h2 id="delegent子-agent-降低費用但程式任務耗時增加">11/24｜Delegent：子
+agent 降低費用，但程式任務耗時增加</h2>
+<p>作者在 50 題 DeepSWE 上比較兩種配置：全用 GPT-6.1 Sol，以及用指令引導
+Sol 搭配 Qwen3.8-27B 子 agent。兩組都解出 <strong>29／50
+題</strong>。前沿模型的 API 費用從每題 <strong>US$2.11 降到
+$0.70</strong>（把子 agent 的預估 API 費用算進去是 $0.81），但中位耗時從
+<strong>25 分鐘增至 38 分鐘</strong>。兩組原本就都有子
+agent，這是兩種委派方式的比較，不是單 agent 對多 agent。<a
+target="_blank" rel="noopener" href="https://arxiv.org/abs/2611.33098">Delegent 預印本</a></p>
+<h2 id="qwen4-max預覽定價結束">11/25｜Qwen4-Max：預覽定價結束</h2>
+<p>阿里雲停用 <code>qwen4-max-preview</code>。官方更新紀錄指出，舊的模型
+ID 會自動轉到標準版，並按標準價格計費。國際區公開牌價為每百萬 token
+<strong>輸入 US$1.50、輸出
+US$4.50</strong>。這是本月稍早推出的模型在存取與計費上的變動，不是本週新模型發布。<a
+target="_blank" rel="noopener" href="https://www.alibabacloud.com/help/en/model-studio/newly-released-models">更新紀錄</a>
+· <a
+target="_blank" rel="noopener" href="https://www.alibabacloud.com/help/en/model-studio/qwen4-max">模型與定價</a></p>
+<p><strong>延伸閱讀：</strong> <a
+target="_blank" rel="noopener" href="https://metr.org/blog/2026-11-24-interpreting-a-recent-acceleration-in-pretraining-loss/">METR
+的分析</a> 說明，為什麼在單一資料集上更會預測下一個
+token，不一定會讓外部評測分數同樣快速上升。</p>
 <!-- flag of hidden posts --><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
     </div>
 
