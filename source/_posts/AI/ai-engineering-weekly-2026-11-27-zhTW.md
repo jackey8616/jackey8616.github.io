@@ -33,4 +33,10 @@ SkillForgeBench v3 報告了 **842 個沙盒任務**的結果。Opus 4.8 有 Ski
 
 阿里雲停用 `qwen4-max-preview`。官方更新紀錄指出，舊的模型 ID 會自動轉到標準版，並按標準價格計費。國際區公開牌價為每百萬 token **輸入 US$1.50、輸出 US$4.50**。這是本月稍早推出的模型在存取與計費上的變動，不是本週新模型發布。[更新紀錄](https://www.alibabacloud.com/help/en/model-studio/newly-released-models) · [模型與定價](https://www.alibabacloud.com/help/en/model-studio/qwen4-max)
 
+## 其他值得一看
+
+- **11/23｜Qwen-Audio-3.1-Live。** 阿里雲推出全雙工語音模型，應用程式或背景模型在處理任務時，語音模型仍能繼續和使用者對話。[API 文件](https://www.alibabacloud.com/help/en/model-studio/qwen-audio-3-1-live)
+- **11/24｜ERNIE 5.5 Flash Preview。** 百度釋出仍在後訓練階段的預覽權重，支援 100 萬 token 的上下文；Apache 2.0 授權只適用於這次的預覽權重，不適用於先前的基礎模型。[模型卡](https://huggingface.co/baidu/ERNIE-5.5-Flash-Preview)
+- **11/25｜Hurdle。** Together AI 開源可針對 API、Skills 和文件評測 agent 的工具；託管模式支援明確設定 API 請求規則，本機模式無法攔截 API 流量。[發布公告](https://www.together.ai/blog/introducing-hurdle-run-agent-evals-on-your-api-skills-and-docs)
+
 **延伸閱讀：** [METR 的分析](https://metr.org/blog/2026-11-24-interpreting-a-recent-acceleration-in-pretraining-loss/) 說明，為什麼在單一資料集上更會預測下一個 token，不一定會讓外部評測分數同樣快速上升。

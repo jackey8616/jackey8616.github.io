@@ -32,4 +32,10 @@ In the authors’ 50-task DeepSWE experiment, the all-GPT-6.1 Sol setup and a st
 
 Alibaba Cloud retired `qwen4-max-preview`; its release notes say the old ID now routes to the standard model and is billed at the standard rate. The published international standard rate is **US$1.50 input / $4.50 output per million tokens**. This is an availability and billing update for a model introduced earlier in November, not a new model launch this week. [Release notes](https://www.alibabacloud.com/help/en/model-studio/newly-released-models) · [Model and pricing](https://www.alibabacloud.com/help/en/model-studio/qwen4-max)
 
+## Also worth a look
+
+- **Nov 23 · Qwen-Audio-3.1-Live.** Alibaba Cloud released a full-duplex voice model that can keep talking with the user while an application or background model processes a task. [API documentation](https://www.alibabacloud.com/help/en/model-studio/qwen-audio-3-1-live)
+- **Nov 24 · ERNIE 5.5 Flash Preview.** Baidu released an intermediate post-training checkpoint with a one-million-token context window and Apache 2.0 weights; that license applies to the preview weights, not to the earlier base checkpoint. [Model card](https://huggingface.co/baidu/ERNIE-5.5-Flash-Preview)
+- **Nov 25 · Hurdle.** Together AI open-sourced a tool for evaluating agents against APIs, Skills, and docs; hosted runs support explicitly configured request guards, while local runs cannot intercept API traffic. [Release announcement](https://www.together.ai/blog/introducing-hurdle-run-agent-evals-on-your-api-skills-and-docs)
+
 **Further reading:** [METR’s analysis](https://metr.org/blog/2026-11-24-interpreting-a-recent-acceleration-in-pretraining-loss/) lays out why better next-token prediction on one dataset might not translate into equally fast gains on external benchmarks.
