@@ -7,30 +7,30 @@ tags:
   - AI Engineering Weekly
 ---
 
-要不要多加一個 agent？我會先讓單一 agent 按清楚的 SOP 工作，再用測試判斷結果對不對。接著才量多一個角色能不能省下人工審查時間。
+本週最值得注意的是：前沿模型的兩種進步指標出現落差、兩家實驗室先後發布會重複執行部分層的 Transformer，以及新的 agent 評測結果。
 
 {% post_link AI/ai-engineering-weekly-2026-11-27 '>> [English version] <<' %}
 
 <!-- More -->
 
-## 11/20｜模型：Inkling 2 Mini 開放權重
+## 11/24｜METR：預訓練損失降得更快，外部評測沒有同步加速
 
-Inkling 2 Mini 是一個 26.4B MoE Transformer。它每生成一個 token，就把中間層跑三遍。Thinking Machines Lab 在 DeepSWE v1.1 報告 48.2%，但不同模型的評測設定不一。本地部署時，除了輸出 token 數，也要量總耗時與記憶體：少吐 token 不等於少做運算。[模型公告](https://thinkingmachines.ai/news/inkling-2-mini/)
+METR 分析了 OpenAI 公開的 13 個基礎模型數據。固定使用取自 OpenAI 自家程式碼庫的測試集時，2026 年初以來的 log-perplexity（對數困惑度）下降速度，約是 2022 至 2025 年的 **7 倍**。但 Epoch 的 ECI 等外部評測，並未出現相近的加速。這是外部研究團隊對單一實驗室數據的分析，不代表模型能力也進步了七倍。[METR 分析](https://metr.org/blog/2026-11-24-interpreting-a-recent-acceleration-in-pretraining-loss/)
 
-## 11/23｜Skills：有 SOP，還是要驗收
+## 11/20–23｜模型架構：兩家實驗室發布 Looped Transformer
 
-SkillForgeBench v3 在 842 個沙盒任務上評估 agent。Opus 4.8 的嚴格完成率有 Skill 時是 40.9%，沒有時是 21.7%。這是特定任務與評分規則下的結果。可以把流程寫進 Skill；不能違反的規則，還是要靠權限或測試來守。[論文表 2](https://arxiv.org/html/2610.14918v3#S4.SS1)
+Thinking Machines Lab 發布開放權重的 **Inkling 2 Mini**，共 264 億個參數，每生成一個 token 會把中間層跑三遍，並另外提供可調整循環次數的研究版。Z.ai 的 **GLM-5.4** 則是自家首款採用這種架構的旗艦模型，已在 GLM Coding Plan 上線。兩者都靠重複使用同一組層來增加內部運算，不必為每一遍新增一組權重。這證明這種架構已出現在兩種不同的發布情境，不代表一定更快或更準；Z.ai 也指出 GLM-5.4 有時會推理太久。[Thinking Machines Lab](https://thinkingmachines.ai/news/inkling-2-mini/) · [Z.ai 公告](https://z.ai/blog/glm-5.4?lang=en) · [ZCode 更新紀錄](https://zcode.z.ai/en/changelog)
 
-## 11/24｜編排：換便宜 worker 未必省時間
+## 11/23｜Skills：完整達標率有提升，但多數任務仍未達成所有條件
 
-Delegent 預印本比較同一組 50 道 DeepSWE 題。基線本來就有 Sol subagents，解了 29 題。仍用 Sol、只改委派指令，解了 34 題，前沿模型 API 成本為基線的 60%。保留委派指令但改用 Qwen 27B 助手，解了 29 題；含助手估價，每題從 US$2.11 降到約 US$0.81，但中位耗時從 25 分鐘增為 38 分鐘。這不是單 agent 對多 agent 的比較，總數相同也不代表解的是同一些題。[結果](https://arxiv.org/html/2611.33098v1#S4) · [委派指令實驗](https://arxiv.org/html/2611.33098v1#S5)
+SkillForgeBench v3 報告了 **842 個沙盒任務**的結果。Opus 4.8 有 Skill 時，**40.9%** 的任務符合全部輸出要求；沒有 Skill 時是 **21.7%**。有 Skill 時，逐項計分的平均分數是 **85.7%**。逐項拿高分，不等於同一項任務的所有條件都達標。數字來自評測作者，而任務本身就是圍繞 Skills 設計，不能把增幅直接套用到其他工作。[SkillForgeBench v3 表 2](https://arxiv.org/html/2610.14918v3#S4.SS1)
 
-## 11/25｜Harness：在不同條件下重跑同一個 eval
+## 11/24｜Delegent：子 agent 降低費用，但程式任務耗時增加
 
-Together AI 開源 Hurdle，可以讓 Codex 或 Claude Code 在不同條件下重跑任務並檢查產出。本機模式不能攔 API 請求；代管沙盒可以攔截，但要明確設定規則，不是預設全擋。第一次做 Skill A/B，用假資料和可驗證的輸出就夠了，不必接正式系統。[工具公告](https://www.together.ai/blog/introducing-hurdle-run-agent-evals-on-your-api-skills-and-docs)
+作者在 50 題 DeepSWE 上比較兩種配置：全用 GPT-6.1 Sol，以及用指令引導 Sol 搭配 Qwen3.8-27B 子 agent。兩組都解出 **29／50 題**。前沿模型的 API 費用從每題 **US$2.11 降到 $0.70**（把子 agent 的預估 API 費用算進去是 $0.81），但中位耗時從 **25 分鐘增至 38 分鐘**。兩組原本就都有子 agent，這是兩種委派方式的比較，不是單 agent 對多 agent。[Delegent 預印本](https://arxiv.org/abs/2611.33098)
 
-## 11/23｜FigJam：能改圖，還是要審合併
+## 11/25｜Qwen4-Max：預覽定價結束
 
-Figma 內建 agent 正式開放給 FigJam 與 Figma Slides 的付費方案。公告沒有證明它能偵測多人修改衝突或安全合併。同一張圖有多人維護時，我還是會保留副本、差異審查和核准合併。[Figma 更新紀錄](https://www.figma.com/release-notes/)
+阿里雲停用 `qwen4-max-preview`。官方更新紀錄指出，舊的模型 ID 會自動轉到標準版，並按標準價格計費。國際區公開牌價為每百萬 token **輸入 US$1.50、輸出 US$4.50**。這是本月稍早推出的模型在存取與計費上的變動，不是本週新模型發布。[更新紀錄](https://www.alibabacloud.com/help/en/model-studio/newly-released-models) · [模型與定價](https://www.alibabacloud.com/help/en/model-studio/qwen4-max)
 
-**20 分鐘試驗：** 做一張有兩個同名 `Review` 節點、連線互相交叉的測試白板。從兩份相同起始副本各跑一次，唯一差別是其中一次有「先列節點 ID，只提議修改指定區塊」的 Skill。核對連線接在哪兩個節點、箭頭是否朝對，也記下越界修改和人工審查時間。先拿這一組當初步測試，不用把一次成功當成可靠性證明。
+**延伸閱讀：** [METR 的分析](https://metr.org/blog/2026-11-24-interpreting-a-recent-acceleration-in-pretraining-loss/) 說明，為什麼在單一資料集上更會預測下一個 token，不一定會讓外部評測分數同樣快速上升。

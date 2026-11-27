@@ -6,30 +6,30 @@ tags:
   - AI Engineering Weekly
 ---
 
-Should I add another agent? I’d start with one agent, a clear procedure, and tests that tell me whether the output is right. Then I’d measure whether a second role actually saves review time.
+This week’s biggest developments were a gap between two measures of frontier progress, two releases that reuse Transformer layers at inference time, and new evidence on how agents are evaluated.
 
 {% post_link AI/ai-engineering-weekly-2026-11-27-zhTW '>> [zhTW version] <<' %}
 
 <!-- More -->
 
-## Nov 20 | Models: Inkling 2 Mini releases open weights
+## Nov 24 | METR: pretraining loss fell faster, but benchmark scores did not keep pace
 
-Inkling 2 Mini is a 26.4B mixture-of-experts Transformer that runs its middle layers three times per generated token. Thinking Machines Lab reports 48.2% on DeepSWE v1.1, but the evaluation setups differ across models. For local deployment, measure wall time and memory alongside output tokens: fewer tokens don’t necessarily mean less computation. [Model announcement](https://thinkingmachines.ai/news/inkling-2-mini/)
+METR analyzed OpenAI’s published base-model data for 13 models. On a fixed evaluation set drawn from OpenAI’s codebase, log-perplexity fell about **seven times as fast** from early 2026 as it did in 2022–2025. METR did not see a comparable acceleration in external benchmark scores, such as Epoch’s ECI. This is an external analysis of one lab’s data, not evidence that models became seven times more capable. [METR analysis](https://metr.org/blog/2026-11-24-interpreting-a-recent-acceleration-in-pretraining-loss/)
 
-## Nov 23 | Skills: a procedure still needs an acceptance test
+## Nov 20–23 | Model architecture: two labs release looped Transformers
 
-SkillForgeBench v3 evaluates agents on 842 sandboxed tasks. For Opus 4.8, strict completion rose from 21.7% without a Skill to 40.9% with one. That result is specific to the tasks and rubric. Put the procedure in the Skill; enforce rules that cannot be broken with permissions or tests. [Paper, Table 2](https://arxiv.org/html/2610.14918v3#S4.SS1)
+Thinking Machines Lab released **Inkling 2 Mini**, an open-weight 26.4B model that runs its middle layers three times per generated token, plus a research checkpoint that lets users vary the loop count. Z.ai introduced **GLM-5.4**, its first flagship built on a looped Transformer, and made it available on the GLM Coding Plan. Both reuse layers to do more internal computation without adding a separate set of weights for each pass. Their releases establish the approach is available in two different settings, not that it is universally faster or more accurate. Z.ai reports that GLM-5.4 can spend too long reasoning. [Thinking Machines Lab](https://thinkingmachines.ai/news/inkling-2-mini/) · [Z.ai announcement](https://z.ai/blog/glm-5.4?lang=en) · [ZCode release notes](https://zcode.z.ai/en/changelog)
 
-## Nov 24 | Orchestration: cheaper workers can take longer
+## Nov 23 | Skills: higher completion, but most tasks still miss at least one requirement
 
-On the same 50 DeepSWE tasks, the Delegent preprint’s all-Sol baseline solved 29 with subagents already enabled. Changing only the delegation instructions brought that to 34, at 60% of the baseline frontier API cost. With those instructions and Qwen 27B workers, it solved 29. Estimated cost, including the workers, fell from US$2.11 to US$0.81 per task, while median time rose from 25 to 38 minutes. This does not compare single-agent and multi-agent setups; equal totals don’t establish that they solved the same tasks. [Results](https://arxiv.org/html/2611.33098v1#S4) · [Instruction comparison](https://arxiv.org/html/2611.33098v1#S5)
+SkillForgeBench v3 reports results on **842 sandboxed tasks**. With a Skill available, Opus 4.8 met every output requirement on **40.9%** of tasks, versus **21.7%** without it. In the with-Skill run, the average score on individual output criteria was **85.7%**. These are different measures: doing well on individual criteria is not the same as meeting all of them in one task. The numbers come from the benchmark authors and the benchmark is built around Skills, so they do not establish the same gain for other workloads. [SkillForgeBench v3, Table 2](https://arxiv.org/html/2610.14918v3#S4.SS1)
 
-## Nov 25 | Harnesses: repeat the same agent eval under different conditions
+## Nov 24 | Delegent: cheaper subagents, longer coding runs
 
-Together AI open-sourced Hurdle, which can rerun Codex or Claude Code under different conditions and check what they produce. Its local mode cannot intercept API calls. The hosted sandbox can enforce explicit request guards, but doesn’t block everything by default. A first Skill A/B test can use synthetic data and artifact checks without touching a production system. [Tool announcement](https://www.together.ai/blog/introducing-hurdle-run-agent-evals-on-your-api-skills-and-docs)
+In the authors’ 50-task DeepSWE experiment, the all-GPT-6.1 Sol setup and a steered setup with a Qwen3.8-27B helper both solved **29 of 50** tasks. The frontier-model charge fell from **US$2.11 to $0.70 per task** ($0.81 including the estimated helper API charge), while median runtime rose from **25 to 38 minutes**. Both setups already used subagents. The result compares two ways of delegating work, not a single agent against a team. [Delegent preprint](https://arxiv.org/abs/2611.33098)
 
-## Nov 23 | FigJam: editing a board is easier than merging safely
+## Nov 25 | Qwen4-Max: preview pricing ends
 
-Figma’s built-in agent is generally available in FigJam and Figma Slides on paid plans. The announcement does not establish that it detects conflicting changes or merges them safely. For a shared board, I’d still edit a copy, review the diff, and approve changes before merging. [Figma release notes](https://www.figma.com/release-notes/)
+Alibaba Cloud retired `qwen4-max-preview`; its release notes say the old ID now routes to the standard model and is billed at the standard rate. The published international standard rate is **US$1.50 input / $4.50 output per million tokens**. This is an availability and billing update for a model introduced earlier in November, not a new model launch this week. [Release notes](https://www.alibabacloud.com/help/en/model-studio/newly-released-models) · [Model and pricing](https://www.alibabacloud.com/help/en/model-studio/qwen4-max)
 
-**20-minute experiment:** Build a synthetic board with two nodes named `Review` and crossing connectors. Give the same agent the same task on two identical starting copies. The only difference is a Skill that says to list node IDs first and propose changes only in the specified section. Check attachment IDs and arrowhead direction, then record out-of-scope edits and human review time. Treat a single pair as a smoke test, not proof of reliability.
+**Further reading:** [METR’s analysis](https://metr.org/blog/2026-11-24-interpreting-a-recent-acceleration-in-pretraining-loss/) lays out why better next-token prediction on one dataset might not translate into equally fast gains on external benchmarks.
