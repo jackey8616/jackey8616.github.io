@@ -1,6 +1,6 @@
 ---
 name: frontier-ai-brief
-description: Research and write a Traditional Chinese frontier AI engineering digest, or convert an existing edition into a Hexo blog draft. Use for recurring briefs on frontier models, Agent Skills, harnesses, and agent orchestration.
+description: Research and write a Traditional Chinese frontier AI engineering digest, or convert an existing edition into paired English and Traditional Chinese Hexo drafts. Use for recurring briefs on frontier models, Agent Skills, harnesses, and agent orchestration.
 ---
 
 # 前沿 AI 工程週報
@@ -17,5 +17,5 @@ Produce a short brief that helps an engineer decide what to try, change, or leav
 ## Output
 
 - Chat: plain Traditional Chinese, concise bullets and direct Markdown links.
-- Blog draft: read [the Hexo profile](references/hexo-profile.md). Use the same verified findings but omit private chat references, internal projects, and names not needed for the article.
+- Blog drafts: read [the Hexo profile](references/hexo-profile.md). Produce an English and a zh-TW draft from the same verified findings. Keep claims, dates, numbers, caveats, and sources aligned. Keep private references out of both versions.
 - Draft only unless publication is explicitly authorized for that edition or under a clear standing rule. Do not commit, push, publish, or change automation settings just because the Skill was invoked. If research and blog drafting run weekly, generate both from the same evidence set rather than researching twice.
